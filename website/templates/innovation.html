@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Innovation & Systems Design — Danny R. Jenkins{% endblock %}
+{% block description %}Beacon Innovation, LLC and Whole Life Journey — a personal operating system applying executive-discipline systems design to individual life.{% endblock %}
+
+{% block content %}
+<section class="section--hero">
+    <div class="container container--narrow">
+        <p class="eyebrow">Innovation</p>
+        <h1 class="page-title">Innovation &amp; Systems Design</h1>
+        {% if overview.intro %}<div class="lead">{{ overview.intro|safe }}</div>{% endif %}
+    </div>
+</section>
+
+<section class="section section--tight bordered">
+    <div class="container container--narrow">
+        <article class="narrative-block">
+            <p class="eyebrow">Beacon Innovation</p>
+            <h2>Beacon Innovation, LLC</h2>
+            <div class="body">{{ overview.beacon_positioning|safe }}</div>
+        </article>
+
+        <article class="narrative-block">
+            <p class="eyebrow">Whole Life Journey</p>
+            <h2>Whole Life Journey</h2>
+            {% if overview.wlj_positioning %}<p class="positioning-line">{{ overview.wlj_positioning }}</p>{% endif %}
+            <div class="body">{{ overview.wlj_overview|safe }}</div>
+        </article>
+
+        <article class="narrative-block">
+            <p class="eyebrow">Architecture</p>
+            <h2>Data &rarr; Signals &rarr; Decisions</h2>
+            <figure class="pipeline">
+                <svg class="pipeline__diagram" viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="pipelineTitle pipelineDesc">
+                    <title id="pipelineTitle">Data to Signals to Decisions pipeline</title>
+                    <desc id="pipelineDesc">Three stages — raw data from sources, interpreted signals worth attending to, and prioritized decisions.</desc>
+                    <defs>
+                        <marker id="pipeArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                            <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
+                        </marker>
+                    </defs>
+
+                    <g fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="40"  y="50" width="140" height="80" rx="2" />
+                        <rect x="250" y="50" width="140" height="80" rx="2" />
+                        <rect x="460" y="50" width="140" height="80" rx="2" />
+                    </g>
+
+                    <g font-family="'Source Serif 4', Georgia, serif" font-size="22" fill="currentColor" text-anchor="middle">
+                        <text x="110" y="97">Data</text>
+                        <text x="320" y="97">Signals</text>
+                        <text x="530" y="97">Decisions</text>
+                    </g>
+
+                    <g fill="none" stroke="currentColor" stroke-width="1.5">
+                        <line x1="185" y1="90" x2="245" y2="90" marker-end="url(#pipeArrow)" />
+                        <line x1="395" y1="90" x2="455" y2="90" marker-end="url(#pipeArrow)" />
+                    </g>
+
+                    <g font-family="Inter, sans-serif" font-size="10" letter-spacing="1.5" fill="#60646C" text-anchor="middle">
+                        <text x="110" y="162">WHAT SYSTEMS EMIT</text>
+                        <text x="320" y="162">PATTERNS WORTH WATCHING</text>
+                        <text x="530" y="162">ACTION TO TAKE NEXT</text>
+                    </g>
+                </svg>
+                {% if overview.architecture_caption %}<figcaption class="pipeline__caption">{{ overview.architecture_caption|safe }}</figcaption>{% endif %}
+            </figure>
+
+            {% if overview.practical_example %}
+            <div class="in-practice">
+                <p class="eyebrow">In Practice</p>
+                <div class="body">{{ overview.practical_example|safe }}</div>
+            </div>
+            {% endif %}
+        </article>
+
+        <article class="narrative-block">
+            <p class="eyebrow">AI Chief of Staff</p>
+            <h2>AI Chief of Staff</h2>
+            <div class="body">{{ overview.chief_of_staff|safe }}</div>
+        </article>
+
+        {% if overview.what_this_demonstrates %}
+        <article class="narrative-block">
+            <p class="eyebrow">What This Demonstrates</p>
+            <h2>What this demonstrates</h2>
+            <div class="body">{{ overview.what_this_demonstrates|safe }}</div>
+        </article>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

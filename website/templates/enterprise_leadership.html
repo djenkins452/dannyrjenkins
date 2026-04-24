@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Enterprise Leadership — Danny R. Jenkins{% endblock %}
+{% block description %}Running HR operations at scale: compensation, HRIS, and payroll for a 6,000-employee academic medical center.{% endblock %}
+
+{% block content %}
+<section class="section--hero">
+    <div class="container container--narrow">
+        <p class="eyebrow">Enterprise Leadership</p>
+        <h1 class="page-title">Running HR operations at scale</h1>
+        <p class="lead">Three functions, one operating discipline. The overview below is how the role is shaped; the function sections are what the role actually does.</p>
+    </div>
+</section>
+
+<section class="section section--tight bordered">
+    <div class="container container--narrow">
+        <article class="narrative-block">
+            <p class="eyebrow">Scope</p>
+            <h2>Scope</h2>
+            <div class="body">{{ overview.scope|safe }}</div>
+        </article>
+
+        <article class="narrative-block">
+            <p class="eyebrow">Impact</p>
+            <h2>Impact</h2>
+            <div class="body">{{ overview.impact|safe }}</div>
+        </article>
+    </div>
+</section>
+
+<section class="section section--tight">
+    <div class="container container--narrow">
+        <div class="section-heading">
+            <p class="eyebrow">The Function</p>
+            <h2>What I lead</h2>
+        </div>
+
+        {% for function in functions %}
+        <article class="function-block">
+            <h3 class="function-block__title">{{ function.title }}</h3>
+            {% if function.summary %}<p class="function-block__summary">{{ function.summary }}</p>{% endif %}
+
+            <div class="function-block__facet">
+                <p class="eyebrow">Responsibilities</p>
+                <div class="body">{{ function.responsibilities|safe }}</div>
+            </div>
+
+            <div class="function-block__facet">
+                <p class="eyebrow">Systems Led</p>
+                <div class="body">{{ function.systems_led|safe }}</div>
+            </div>
+
+            <div class="function-block__facet">
+                <p class="eyebrow">Role in the Organization</p>
+                <div class="body">{{ function.organizational_role|safe }}</div>
+            </div>
+        </article>
+        {% empty %}
+        <p class="muted">No functions defined yet.</p>
+        {% endfor %}
+    </div>
+</section>
+
+{% if overview.system_integration %}
+<section class="section section--tight bordered">
+    <div class="container container--narrow">
+        <article class="narrative-block">
+            <p class="eyebrow">System Integration</p>
+            <h2>How the system works together</h2>
+            <div class="body">{{ overview.system_integration|safe }}</div>
+        </article>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

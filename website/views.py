@@ -1,7 +1,14 @@
 from django.http import Http404
 from django.shortcuts import get_object_or_404, render
 
-from .models import CaseStudy, HomepagePillar, Page
+from .models import (
+    CaseStudy,
+    EnterpriseFunction,
+    EnterpriseOverview,
+    HomepagePillar,
+    InnovationOverview,
+    Page,
+)
 
 
 def home(request):
@@ -22,6 +29,18 @@ def profile(request):
     except Page.DoesNotExist:
         raise Http404('Profile page has not been created yet.')
     return render(request, 'profile.html', {'page': page})
+
+
+def enterprise_leadership(request):
+    context = {
+        'overview': EnterpriseOverview.load(),
+        'functions': EnterpriseFunction.objects.all(),
+    }
+    return render(request, 'enterprise_leadership.html', context)
+
+
+def innovation(request):
+    return render(request, 'innovation.html', {'overview': InnovationOverview.load()})
 
 
 def case_study_index(request):

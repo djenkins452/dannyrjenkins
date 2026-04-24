@@ -156,6 +156,157 @@ class CaseStudy(models.Model):
         return self.title
 
 
+class EnterpriseOverview(models.Model):
+    """Singleton: top-of-page overview for /enterprise-leadership/.
+
+    Kept minimal (scope + impact) on purpose. The deeper structure lives
+    in EnterpriseFunction records below.
+    """
+
+    scope = HTMLField(
+        blank=True,
+        help_text='Scale of responsibility — employees, systems, divisions.',
+    )
+    impact = HTMLField(
+        blank=True,
+        help_text='What the function is measured on; transformation outcomes.',
+    )
+    system_integration = HTMLField(
+        blank=True,
+        verbose_name='How the system works together',
+        help_text=(
+            'Closing paragraph at the bottom of the Enterprise Leadership page. '
+            'Explain how Compensation, HRIS, and Payroll operate as one system — '
+            'not three parallel jobs.'
+        ),
+    )
+
+    class Meta:
+        verbose_name = 'Enterprise Overview'
+        verbose_name_plural = 'Enterprise Overview'
+
+    def __str__(self):
+        return 'Enterprise Overview'
+
+    def save(self, *args, **kwargs):
+        self.pk = 1
+        super().save(*args, **kwargs)
+
+    @classmethod
+    def load(cls):
+        obj, _ = cls.objects.get_or_create(pk=1)
+        return obj
+
+
+class EnterpriseFunction(models.Model):
+    """One function under the director remit: Compensation, HRIS, Payroll.
+
+    Three fixed sub-sections per function — responsibilities, systems led,
+    role in the organization — all as TinyMCE-restricted HTML. Structure is
+    enforced by schema so the Enterprise Leadership page reads uniformly
+    no matter which function you look at.
+    """
+
+    slug = models.SlugField(unique=True, max_length=60)
+    title = models.CharField(max_length=80)
+    summary = models.CharField(
+        max_length=300,
+        blank=True,
+        help_text='One-line framing shown under the function title.',
+    )
+    responsibilities = HTMLField(help_text='What this function leads.')
+    systems_led = HTMLField(help_text='Systems, tools, and programs owned.')
+    organizational_role = HTMLField(
+        help_text='How this function fits into the organization.',
+    )
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order', 'id']
+
+    def __str__(self):
+        return self.title
+
+
+class InnovationOverview(models.Model):
+    """Singleton for /innovation/.
+
+    Structured sections — Beacon positioning, WLJ overview, architecture
+    caption, AI Chief of Staff. The Data → Signals → Decisions diagram is
+    design, not content, and lives in the template as inline SVG.
+    """
+
+    intro = HTMLField(
+        blank=True,
+        help_text='Page lead paragraph. Keep brief.',
+    )
+    beacon_positioning = HTMLField(
+        blank=True,
+        verbose_name='Beacon Innovation positioning',
+        help_text='What Beacon Innovation, LLC is and why it exists separately from any enterprise role.',
+    )
+    wlj_positioning = models.CharField(
+        max_length=300,
+        blank=True,
+        verbose_name='WLJ positioning line',
+        help_text=(
+            'One-line framing statement rendered as a pull-quote above the '
+            'WLJ overview. Keep to a single sentence or two short sentences.'
+        ),
+    )
+    wlj_overview = HTMLField(
+        blank=True,
+        verbose_name='Whole Life Journey overview',
+        help_text='What WLJ is, why it was built, who it is for.',
+    )
+    architecture_caption = HTMLField(
+        blank=True,
+        help_text=(
+            'Paragraph accompanying the Data → Signals → Decisions diagram. '
+            'Explain the three stages in plain language.'
+        ),
+    )
+    practical_example = HTMLField(
+        blank=True,
+        verbose_name='Architecture — in-practice example',
+        help_text=(
+            'A concrete scenario showing the pipeline producing one decision '
+            '(e.g. prioritizing a quick task before a meeting). Grounds the '
+            'abstract architecture in real use.'
+        ),
+    )
+    chief_of_staff = HTMLField(
+        blank=True,
+        verbose_name='AI Chief of Staff concept',
+        help_text='The AI layer as an executive Chief of Staff — not a chatbot metaphor.',
+    )
+    what_this_demonstrates = HTMLField(
+        blank=True,
+        verbose_name='What this demonstrates',
+        help_text=(
+            'Closing section. What the WLJ work demonstrates about the '
+            'author: systems thinking, AI application, cross-domain '
+            'integration, focus on decision-making.'
+        ),
+    )
+
+    class Meta:
+        verbose_name = 'Innovation Overview'
+        verbose_name_plural = 'Innovation Overview'
+
+    def __str__(self):
+        return 'Innovation Overview'
+
+    def save(self, *args, **kwargs):
+        self.pk = 1
+        super().save(*args, **kwargs)
+
+    @classmethod
+    def load(cls):
+        obj, _ = cls.objects.get_or_create(pk=1)
+        return obj
+
+
 class HomepagePillar(models.Model):
     """A pillar on the homepage. Category routes it to one of the two columns."""
 

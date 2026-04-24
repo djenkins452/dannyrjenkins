@@ -2,7 +2,16 @@ from django.contrib import admin
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from .models import CaseStudy, HomepagePillar, NarrativeBlock, Page, SiteConfig
+from .models import (
+    CaseStudy,
+    EnterpriseFunction,
+    EnterpriseOverview,
+    HomepagePillar,
+    InnovationOverview,
+    NarrativeBlock,
+    Page,
+    SiteConfig,
+)
 
 
 class NarrativeBlockInline(admin.StackedInline):
@@ -59,6 +68,67 @@ class HomepagePillarAdmin(admin.ModelAdmin):
     list_filter = ('category',)
     list_editable = ('order',)
     ordering = ('category', 'order')
+
+
+@admin.register(EnterpriseOverview)
+class EnterpriseOverviewAdmin(admin.ModelAdmin):
+    """Singleton: redirect changelist to the sole instance."""
+
+    fields = ('scope', 'impact', 'system_integration')
+
+    def has_add_permission(self, request):
+        return not EnterpriseOverview.objects.exists()
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def changelist_view(self, request, extra_context=None):
+        obj = EnterpriseOverview.load()
+        return HttpResponseRedirect(
+            reverse('admin:website_enterpriseoverview_change', args=[obj.pk])
+        )
+
+
+@admin.register(InnovationOverview)
+class InnovationOverviewAdmin(admin.ModelAdmin):
+    """Singleton: redirect changelist to the sole instance."""
+
+    fieldsets = (
+        (None, {'fields': ('intro',)}),
+        ('Beacon Innovation', {'fields': ('beacon_positioning',)}),
+        ('Whole Life Journey', {'fields': ('wlj_positioning', 'wlj_overview')}),
+        ('Architecture', {'fields': ('architecture_caption', 'practical_example')}),
+        ('AI Chief of Staff', {'fields': ('chief_of_staff',)}),
+        ('What This Demonstrates', {'fields': ('what_this_demonstrates',)}),
+    )
+
+    def has_add_permission(self, request):
+        return not InnovationOverview.objects.exists()
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def changelist_view(self, request, extra_context=None):
+        obj = InnovationOverview.load()
+        return HttpResponseRedirect(
+            reverse('admin:website_innovationoverview_change', args=[obj.pk])
+        )
+
+
+@admin.register(EnterpriseFunction)
+class EnterpriseFunctionAdmin(admin.ModelAdmin):
+    list_display = ('title', 'slug', 'order')
+    list_editable = ('order',)
+    prepopulated_fields = {'slug': ('title',)}
+    fields = (
+        'title',
+        'slug',
+        'summary',
+        'responsibilities',
+        'systems_led',
+        'organizational_role',
+        'order',
+    )
 
 
 @admin.register(SiteConfig)

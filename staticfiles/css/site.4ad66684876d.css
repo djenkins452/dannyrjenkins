@@ -279,26 +279,6 @@ p { margin: 0 0 1em; max-width: 66ch; }
 /* ---------- Case study detail ---------- */
 .case-detail__meta { margin: 0 0 var(--space-3); }
 
-/* ---------- Positioning line (serif pull-quote) ---------- */
-.positioning-line {
-    font-family: var(--font-serif);
-    font-size: clamp(1.25rem, 2.2vw, 1.5rem);
-    line-height: 1.35;
-    font-style: italic;
-    color: var(--ink);
-    margin: var(--space-3) 0 var(--space-4);
-    max-width: 38em;
-}
-
-/* ---------- In-practice sub-block (inside Architecture) ---------- */
-.in-practice {
-    margin-top: var(--space-4);
-    padding-top: var(--space-4);
-    border-top: 1px dashed var(--rule);
-}
-.in-practice .body { max-width: var(--content); }
-.in-practice .body p { color: var(--ink-body); }
-
 /* ---------- Pipeline diagram (Innovation) ---------- */
 .pipeline {
     margin: var(--space-4) 0 var(--space-2);

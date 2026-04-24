@@ -7,8 +7,7 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path(
         'enterprise-leadership/',
-        views.placeholder,
-        {'title': 'Enterprise Leadership'},
+        views.enterprise_leadership,
         name='enterprise',
     ),
     path('case-studies/', views.case_study_index, name='case_studies'),
@@ -17,12 +16,7 @@ urlpatterns = [
         views.case_study_detail,
         name='case_study_detail',
     ),
-    path(
-        'innovation/',
-        views.placeholder,
-        {'title': 'Innovation'},
-        name='innovation',
-    ),
+    path('innovation/', views.innovation, name='innovation'),
     path(
         'perspectives/',
         views.placeholder,
