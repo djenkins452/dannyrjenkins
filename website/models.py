@@ -307,6 +307,74 @@ class InnovationOverview(models.Model):
         return obj
 
 
+class Perspective(models.Model):
+    """A Perspective — an argument presented as an operator would write it.
+
+    Sections are separate (PerspectiveSection records) so the H2 headings
+    stay structured and consistent across pieces. The editor never writes
+    headings inside TinyMCE.
+    """
+
+    slug = models.SlugField(unique=True, max_length=120)
+    title = models.CharField(max_length=200)
+    deck = models.CharField(
+        max_length=300,
+        blank=True,
+        help_text='Short subtitle / summary — shown under the title and on index cards.',
+    )
+    eyebrow = models.CharField(
+        max_length=40,
+        blank=True,
+        help_text='Category label (e.g. "COMPENSATION", "HRIS", "SYSTEMS").',
+    )
+    lead = HTMLField(
+        blank=True,
+        help_text='Opening paragraph — the argument in one paragraph. Serif lead styling.',
+    )
+    closing = HTMLField(
+        blank=True,
+        help_text='Final closing paragraph. Rendered below the sections.',
+    )
+    order = models.PositiveIntegerField(
+        default=0,
+        help_text='Lower numbers sort first on the index page.',
+    )
+    published = models.BooleanField(default=True)
+    published_at = models.DateField(null=True, blank=True)
+
+    seo_title = models.CharField(max_length=120, blank=True)
+    seo_description = models.CharField(max_length=300, blank=True)
+
+    class Meta:
+        ordering = ['order', '-published_at', 'id']
+
+    def __str__(self):
+        return self.title
+
+
+class PerspectiveSection(models.Model):
+    """Ordered section within a Perspective.
+
+    heading is a structured CharField (design controls typography).
+    body is TinyMCE-restricted HTML.
+    """
+
+    perspective = models.ForeignKey(
+        Perspective,
+        related_name='sections',
+        on_delete=models.CASCADE,
+    )
+    order = models.PositiveIntegerField(default=0)
+    heading = models.CharField(max_length=200)
+    body = HTMLField()
+
+    class Meta:
+        ordering = ['order', 'id']
+
+    def __str__(self):
+        return f'{self.perspective.slug} · {self.heading}'
+
+
 class HomepagePillar(models.Model):
     """A pillar on the homepage. Category routes it to one of the two columns."""
 

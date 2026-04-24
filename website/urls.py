@@ -17,11 +17,11 @@ urlpatterns = [
         name='case_study_detail',
     ),
     path('innovation/', views.innovation, name='innovation'),
+    path('perspectives/', views.perspective_index, name='perspectives'),
     path(
-        'perspectives/',
-        views.placeholder,
-        {'title': 'Perspectives'},
-        name='perspectives',
+        'perspectives/<slug:slug>/',
+        views.perspective_detail,
+        name='perspective_detail',
     ),
     path(
         'resume/',

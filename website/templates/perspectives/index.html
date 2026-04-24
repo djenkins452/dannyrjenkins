@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Perspectives — Danny R. Jenkins{% endblock %}
+{% block description %}Perspectives on HR operations — compensation, HRIS, payroll, and system fragmentation — written as an operator.{% endblock %}
+
+{% block content %}
+<section class="section--hero">
+    <div class="container container--narrow">
+        <p class="eyebrow">Perspectives</p>
+        <h1 class="page-title">Perspectives</h1>
+        <p class="lead">A small library of arguments about how HR operations actually work — compensation, HRIS, payroll, and the systems beneath them. Written as an operator explaining the work, not as a blog.</p>
+    </div>
+</section>
+
+<section class="section section--tight bordered">
+    <div class="container container--narrow">
+        {% for piece in perspectives %}
+        <article class="case-card">
+            {% if piece.eyebrow %}<p class="eyebrow">{{ piece.eyebrow }}</p>{% endif %}
+            <h2 class="case-card__title">
+                <a href="{% url 'perspective_detail' slug=piece.slug %}">{{ piece.title }}</a>
+            </h2>
+            {% if piece.deck %}<p class="case-card__summary">{{ piece.deck }}</p>{% endif %}
+            <p class="case-card__more">
+                <a href="{% url 'perspective_detail' slug=piece.slug %}">Read &rarr;</a>
+            </p>
+        </article>
+        {% empty %}
+        <p class="muted">No perspectives published yet.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

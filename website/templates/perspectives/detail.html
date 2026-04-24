@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}{{ perspective.seo_title|default:perspective.title }} — Perspectives{% endblock %}
+{% block description %}{{ perspective.seo_description|default:perspective.deck }}{% endblock %}
+
+{% block content %}
+<section class="section--hero">
+    <div class="container container--narrow">
+        <p class="eyebrow"><a href="{% url 'perspectives' %}" class="muted">&larr; All Perspectives</a></p>
+        {% if perspective.eyebrow %}<p class="eyebrow">{{ perspective.eyebrow }}</p>{% endif %}
+        <h1 class="page-title">{{ perspective.title }}</h1>
+        {% if perspective.deck %}<p class="perspective-deck">{{ perspective.deck }}</p>{% endif %}
+        {% if perspective.lead %}<div class="lead">{{ perspective.lead|safe }}</div>{% endif %}
+    </div>
+</section>
+
+{% if perspective.sections.all or perspective.closing %}
+<section class="section section--tight bordered">
+    <div class="container container--narrow">
+        {% for section in perspective.sections.all %}
+        <article class="narrative-block">
+            <h2>{{ section.heading }}</h2>
+            <div class="body">{{ section.body|safe }}</div>
+        </article>
+        {% endfor %}
+
+        {% if perspective.closing %}
+        <article class="narrative-block narrative-block--closing">
+            <p class="eyebrow">Closing</p>
+            <div class="body">{{ perspective.closing|safe }}</div>
+        </article>
+        {% endif %}
+    </div>
+</section>
+{% endif %}
+
+<section class="section section--tight">
+    <div class="container container--narrow">
+        <p class="muted"><a href="{% url 'perspectives' %}">&larr; Back to all Perspectives</a></p>
+    </div>
+</section>
+{% endblock %}

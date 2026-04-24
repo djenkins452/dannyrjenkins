@@ -8,6 +8,7 @@ from .models import (
     HomepagePillar,
     InnovationOverview,
     Page,
+    Perspective,
 )
 
 
@@ -51,6 +52,20 @@ def case_study_index(request):
 def case_study_detail(request, slug):
     study = get_object_or_404(CaseStudy, slug=slug, published=True)
     return render(request, 'case_studies/detail.html', {'study': study})
+
+
+def perspective_index(request):
+    perspectives = Perspective.objects.filter(published=True)
+    return render(request, 'perspectives/index.html', {'perspectives': perspectives})
+
+
+def perspective_detail(request, slug):
+    perspective = get_object_or_404(
+        Perspective.objects.prefetch_related('sections'),
+        slug=slug,
+        published=True,
+    )
+    return render(request, 'perspectives/detail.html', {'perspective': perspective})
 
 
 def placeholder(request, title):

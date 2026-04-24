@@ -279,6 +279,17 @@ p { margin: 0 0 1em; max-width: 66ch; }
 /* ---------- Case study detail ---------- */
 .case-detail__meta { margin: 0 0 var(--space-3); }
 
+/* ---------- Perspective deck (subtitle) ---------- */
+.perspective-deck {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    line-height: 1.45;
+    color: var(--ink-body);
+    font-weight: 400;
+    margin: 0 0 var(--space-3);
+    max-width: 44ch;
+}
+
 /* ---------- Positioning line (serif pull-quote) ---------- */
 .positioning-line {
     font-family: var(--font-serif);

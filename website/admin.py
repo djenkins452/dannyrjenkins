@@ -10,6 +10,8 @@ from .models import (
     InnovationOverview,
     NarrativeBlock,
     Page,
+    Perspective,
+    PerspectiveSection,
     SiteConfig,
 )
 
@@ -113,6 +115,38 @@ class InnovationOverviewAdmin(admin.ModelAdmin):
         return HttpResponseRedirect(
             reverse('admin:website_innovationoverview_change', args=[obj.pk])
         )
+
+
+class PerspectiveSectionInline(admin.StackedInline):
+    model = PerspectiveSection
+    extra = 1
+    fields = ('order', 'heading', 'body')
+    ordering = ('order',)
+
+
+@admin.register(Perspective)
+class PerspectiveAdmin(admin.ModelAdmin):
+    list_display = ('title', 'eyebrow', 'order', 'published', 'published_at')
+    list_filter = ('published',)
+    list_editable = ('order', 'published')
+    prepopulated_fields = {'slug': ('title',)}
+    fieldsets = (
+        (None, {'fields': ('title', 'slug', 'eyebrow', 'deck')}),
+        ('Body', {
+            'fields': ('lead', 'closing'),
+            'description': (
+                'Lead is the opening paragraph (the argument in one paragraph). '
+                'Closing is the final paragraph. Use the Sections inline below '
+                'for the middle sections.'
+            ),
+        }),
+        ('Publication', {'fields': ('published', 'published_at', 'order')}),
+        ('SEO', {
+            'classes': ('collapse',),
+            'fields': ('seo_title', 'seo_description'),
+        }),
+    )
+    inlines = [PerspectiveSectionInline]
 
 
 @admin.register(EnterpriseFunction)

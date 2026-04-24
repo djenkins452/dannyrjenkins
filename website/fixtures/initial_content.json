@@ -204,6 +204,54 @@
     },
 
     {
+        "model": "website.perspective",
+        "pk": 1,
+        "fields": {
+            "slug": "compensation-is-a-trust-system",
+            "title": "Compensation is a trust system",
+            "deck": "What the pay function is actually doing, and why getting it wrong looks like a market problem when it isn't.",
+            "eyebrow": "COMPENSATION",
+            "lead": "<p>Compensation is presented as a technical function. Philosophy, job architecture, market pricing — the artifacts are quantitative, so compensation gets spoken about in quantitative language. This is a mistake. The function's job is not to produce accurate numbers. It is to produce trust — and trust, not dollars, is what the function is actually on the hook for.</p>",
+            "closing": "<p>The operating test for a compensation function is not whether the market percentile is correct. It is whether, three years from now, the architecture still produces decisions the organization can trust and defend — without requiring the person who built it to be in the room.</p><p>That is the asset. The numbers are the byproduct.</p>",
+            "order": 1,
+            "published": true,
+            "published_at": "2026-04-20",
+            "seo_title": "Compensation is a trust system",
+            "seo_description": "Why compensation is a trust system, not a pricing function — and why market-competitiveness problems are usually architecture problems underneath."
+        }
+    },
+    {
+        "model": "website.perspectivesection",
+        "pk": 1,
+        "fields": {
+            "perspective": 1,
+            "order": 1,
+            "heading": "The symptom is rarely the problem",
+            "body": "<p>When a compensation function is in trouble, the conversation almost always starts with market data. Offers lost at the final stage. Turnover concentrated in specific roles. A department head arguing a salary range doesn't match reality. The reflex is to benchmark harder — survey more sources, tighten the percentile, price to a different comparator.</p><p>It is almost never the right move. A well-governed compensation function does not lose offers because its benchmarks are wrong. It loses offers because candidates and managers do not trust the reasoning behind the offer — and better benchmarks do not fix that. They produce the same offer for the same reason, only documented with more data.</p><p>Treating a trust problem as a pricing problem is how compensation functions end up in a loop: benchmark harder, lose the next candidate, benchmark harder again. The loop continues until someone acknowledges that the conversation is not about the number.</p>"
+        }
+    },
+    {
+        "model": "website.perspectivesection",
+        "pk": 2,
+        "fields": {
+            "perspective": 1,
+            "order": 2,
+            "heading": "The architecture beneath the number",
+            "body": "<p>Every pay decision rests on three things the recipient cannot see: a philosophy, a job architecture, and a pricing discipline. When those three are aligned, the number at the end is explainable. When they drift out of alignment — usually through accretion rather than any single decision — the number stops being explainable, and the function stops being trusted.</p><p>The common failure mode is to treat these as three separate projects. Philosophy gets a workshop. Architecture gets a rebuild. Pricing gets a cycle. Then they drift on their own timelines, and the next time a department head asks why a role pays what it pays, there is no coherent answer — because the three layers no longer tell the same story.</p><p>The discipline is to operate them as one system, on one cadence, governed by one owner. Not three projects with three timelines. One operating model, continuously maintained.</p>"
+        }
+    },
+    {
+        "model": "website.perspectivesection",
+        "pk": 3,
+        "fields": {
+            "perspective": 1,
+            "order": 3,
+            "heading": "Trust is the product",
+            "body": "<p>The way to know a compensation function is healthy is not to look at the pay data. It is to look at conversations.</p><p>Can managers explain pay decisions without getting defensive? Can a candidate ask why they were offered what they were offered and get a real answer? Does leadership defend the philosophy the way they would defend any other strategic commitment — or does it become negotiable at the first pushback?</p><p>When those conversations go well, the numbers end up being right, even if they are not flawless. When those conversations go badly, no amount of benchmarking fixes it — because the problem was never the numbers.</p>"
+        }
+    },
+
+    {
         "model": "website.innovationoverview",
         "pk": 1,
         "fields": {
