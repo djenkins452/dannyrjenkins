@@ -3,13 +3,14 @@ from django.shortcuts import get_object_or_404, render
 
 from .models import (
     CaseStudy,
+    ConnectPage,
     EnterpriseFunction,
     EnterpriseOverview,
     HomepagePillar,
     InnovationOverview,
     Page,
     Perspective,
-    ResumePage,
+    ResumeVersion,
 )
 
 
@@ -45,8 +46,17 @@ def innovation(request):
     return render(request, 'innovation.html', {'overview': InnovationOverview.load()})
 
 
-def resume(request):
-    return render(request, 'resume.html', {'page': ResumePage.load()})
+def resume_version(request, slug):
+    version = get_object_or_404(
+        ResumeVersion.objects.prefetch_related('sections'),
+        slug=slug,
+        is_active=True,
+    )
+    return render(request, 'resume.html', {'version': version})
+
+
+def connect(request):
+    return render(request, 'connect.html', {'page': ConnectPage.load()})
 
 
 def case_study_index(request):

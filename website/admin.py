@@ -4,6 +4,7 @@ from django.urls import reverse
 
 from .models import (
     CaseStudy,
+    ConnectPage,
     EnterpriseFunction,
     EnterpriseOverview,
     HomepagePillar,
@@ -12,7 +13,8 @@ from .models import (
     Page,
     Perspective,
     PerspectiveSection,
-    ResumePage,
+    ResumeSection,
+    ResumeVersion,
     SiteConfig,
 )
 
@@ -166,36 +168,49 @@ class EnterpriseFunctionAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(ResumePage)
-class ResumePageAdmin(admin.ModelAdmin):
+class ResumeSectionInline(admin.StackedInline):
+    model = ResumeSection
+    extra = 1
+    fields = ('order', 'section_type', 'heading', 'content')
+    ordering = ('order',)
+
+
+@admin.register(ResumeVersion)
+class ResumeVersionAdmin(admin.ModelAdmin):
+    list_display = ('name', 'slug', 'type', 'is_active', 'updated_at')
+    list_filter = ('type', 'is_active')
+    list_editable = ('is_active',)
+    prepopulated_fields = {'slug': ('name',)}
+    fieldsets = (
+        (None, {'fields': ('name', 'slug', 'type', 'is_active')}),
+    )
+    inlines = [ResumeSectionInline]
+
+
+@admin.register(ConnectPage)
+class ConnectPageAdmin(admin.ModelAdmin):
     """Singleton: redirect changelist to the sole instance."""
 
     fieldsets = (
-        ('Header', {'fields': ('positioning_line',)}),
-        ('Executive Summary', {'fields': ('executive_summary',)}),
-        ('Current Role', {
-            'fields': (
-                'current_role_title',
-                'current_role_org',
-                'current_role_dates',
-                'current_role_bullets',
-            ),
+        (None, {'fields': ('intro',)}),
+        ('Conversation CTA', {
+            'fields': ('conversation_label', 'conversation_blurb', 'conversation_href'),
         }),
-        ('Prior Roles', {'fields': ('prior_roles',)}),
-        ('Education & Certifications', {'fields': ('education',)}),
-        ('Key Impact Highlights', {'fields': ('key_impact',)}),
+        ('Resume CTA', {
+            'fields': ('resume_label', 'resume_blurb', 'resume_href'),
+        }),
     )
 
     def has_add_permission(self, request):
-        return not ResumePage.objects.exists()
+        return not ConnectPage.objects.exists()
 
     def has_delete_permission(self, request, obj=None):
         return False
 
     def changelist_view(self, request, extra_context=None):
-        obj = ResumePage.load()
+        obj = ConnectPage.load()
         return HttpResponseRedirect(
-            reverse('admin:website_resumepage_change', args=[obj.pk])
+            reverse('admin:website_connectpage_change', args=[obj.pk])
         )
 
 

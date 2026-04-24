@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Connect — Danny R. Jenkins{% endblock %}
+{% block description %}Direct introduction — conversation or tailored resume request.{% endblock %}
+
+{% block content %}
+<section class="section--hero">
+    <div class="container container--narrow">
+        <p class="eyebrow">Connect</p>
+        <h1 class="page-title">Connect</h1>
+        {% if page.intro %}<div class="lead">{{ page.intro|safe }}</div>{% endif %}
+    </div>
+</section>
+
+<section class="section section--tight bordered">
+    <div class="container container--narrow">
+        <div class="connect-ctas">
+            <article class="connect-cta">
+                <h2 class="connect-cta__label">{{ page.conversation_label }}</h2>
+                {% if page.conversation_blurb %}<p class="connect-cta__blurb">{{ page.conversation_blurb }}</p>{% endif %}
+                <p class="connect-cta__action"><a href="{{ page.conversation_href }}">{{ page.conversation_label }} &rarr;</a></p>
+            </article>
+
+            <article class="connect-cta">
+                <h2 class="connect-cta__label">{{ page.resume_label }}</h2>
+                {% if page.resume_blurb %}<p class="connect-cta__blurb">{{ page.resume_blurb }}</p>{% endif %}
+                <p class="connect-cta__action"><a href="{{ page.resume_href }}">{{ page.resume_label }} &rarr;</a></p>
+            </article>
+        </div>
+    </div>
+</section>
+{% endblock %}

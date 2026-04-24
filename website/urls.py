@@ -23,5 +23,6 @@ urlpatterns = [
         views.perspective_detail,
         name='perspective_detail',
     ),
-    path('resume/', views.resume, name='resume'),
+    path('connect/', views.connect, name='connect'),
+    path('resume/<slug:slug>/', views.resume_version, name='resume_version'),
 ]

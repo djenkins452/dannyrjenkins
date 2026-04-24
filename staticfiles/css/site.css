@@ -279,7 +279,47 @@ p { margin: 0 0 1em; max-width: 66ch; }
 /* ---------- Case study detail ---------- */
 .case-detail__meta { margin: 0 0 var(--space-3); }
 
-/* ---------- Resume page ---------- */
+/* ---------- Connect page (CTA cards) ---------- */
+.connect-ctas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-5);
+    align-items: stretch;
+}
+.connect-cta {
+    padding: var(--space-5) 0;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+}
+.connect-cta__label {
+    font-family: var(--font-serif);
+    font-size: var(--step-xl);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0 0 var(--space-2);
+    line-height: 1.2;
+}
+.connect-cta__blurb {
+    color: var(--ink-body);
+    margin: 0 0 var(--space-3);
+    max-width: 40ch;
+}
+.connect-cta__action {
+    margin: auto 0 0;
+    font-size: var(--step-m);
+}
+.connect-cta__action a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+@media (max-width: 720px) {
+    .connect-ctas { grid-template-columns: 1fr; gap: 0; }
+}
+
+/* ---------- Resume page (version-driven) ---------- */
 .resume-positioning {
     font-family: var(--font-serif);
     font-size: clamp(1.125rem, 1.8vw, 1.375rem);
@@ -304,16 +344,64 @@ p { margin: 0 0 1em; max-width: 66ch; }
     color: var(--ink-muted);
     margin: 0 0 var(--space-3);
 }
-.resume-bullets ul {
+.resume-bullets ul,
+.resume-section-body ul {
     padding-left: 1.25em;
     margin: 0 0 1em;
     max-width: var(--content);
     list-style: disc;
 }
-.resume-bullets li {
+.resume-bullets li,
+.resume-section-body li {
     margin: 0.5em 0;
     line-height: 1.55;
     color: var(--ink-body);
+}
+.resume-print-controls {
+    margin-top: var(--space-3);
+}
+.btn-print {
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 8px 14px;
+    font-family: var(--font-sans);
+    font-size: var(--step-s);
+    color: var(--ink);
+    cursor: pointer;
+    transition: border-color 120ms ease, color 120ms ease;
+}
+.btn-print:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* ---------- Print styles ---------- */
+@media print {
+    .site-header,
+    .site-footer,
+    .no-print { display: none !important; }
+    body { background: #fff; color: #000; }
+    .container,
+    .container--narrow {
+        max-width: 100%;
+        padding: 0;
+    }
+    .section,
+    .section--tight,
+    .section--hero { padding: 0.4in 0; }
+    .bordered { border-top: none !important; }
+    .narrative-block {
+        padding: 0.2in 0;
+        border: none;
+        page-break-inside: avoid;
+    }
+    a { color: #000; text-decoration: none; }
+    h1, h2 { page-break-after: avoid; }
+    .eyebrow {
+        color: #555;
+        letter-spacing: 0.14em;
+    }
 }
 
 /* ---------- Perspective deck (subtitle) ---------- */

@@ -375,50 +375,129 @@ class PerspectiveSection(models.Model):
         return f'{self.perspective.slug} · {self.heading}'
 
 
-class ResumePage(models.Model):
-    """Singleton for /resume/ — the executive-level validation layer.
+class ResumeVersion(models.Model):
+    """A tailored resume version (HR Ops, Total Rewards, General, etc.).
 
-    Structured fields per resume section. Admin edits each labelled field;
-    the template renders the section only if the field is populated.
+    URL: /resume/<slug>/ — only accessible if is_active=True. Not linked
+    from the public nav; the URL is shared by the owner on request.
     """
 
-    positioning_line = models.CharField(
+    HR_OPS = 'HR_OPS'
+    TOTAL_REWARDS = 'TOTAL_REWARDS'
+    GENERAL = 'GENERAL'
+    TYPE_CHOICES = [
+        (HR_OPS, 'HR Operations'),
+        (TOTAL_REWARDS, 'Total Rewards'),
+        (GENERAL, 'General'),
+    ]
+
+    slug = models.SlugField(
+        unique=True,
+        max_length=80,
+        help_text='URL identifier, e.g. "general", "hr-ops", "total-rewards".',
+    )
+    name = models.CharField(
+        max_length=200,
+        help_text='Short label shown as the deck under the name (e.g. "HR Operations").',
+    )
+    type = models.CharField(max_length=30, choices=TYPE_CHOICES, default=GENERAL)
+    is_active = models.BooleanField(
+        default=True,
+        help_text='Uncheck to take the URL offline without deleting the content.',
+    )
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['type', 'name']
+
+    def __str__(self):
+        return f'{self.name} ({self.get_type_display()})'
+
+
+class ResumeSection(models.Model):
+    """Ordered section within a ResumeVersion.
+
+    content is TinyMCE-restricted HTML. The editor is responsible for
+    laying out the section body (titles, orgs, dates, bullets) — the
+    template renders {{ content|safe }} inside the section heading.
+    """
+
+    SUMMARY = 'SUMMARY'
+    CURRENT_ROLE = 'CURRENT_ROLE'
+    PRIOR_ROLES = 'PRIOR_ROLES'
+    EDUCATION = 'EDUCATION'
+    HIGHLIGHTS = 'HIGHLIGHTS'
+    CUSTOM = 'CUSTOM'
+    SECTION_CHOICES = [
+        (SUMMARY, 'Executive Summary'),
+        (CURRENT_ROLE, 'Current Role'),
+        (PRIOR_ROLES, 'Prior Roles'),
+        (EDUCATION, 'Education & Certifications'),
+        (HIGHLIGHTS, 'Key Impact Highlights'),
+        (CUSTOM, 'Custom Section'),
+    ]
+
+    version = models.ForeignKey(
+        ResumeVersion,
+        related_name='sections',
+        on_delete=models.CASCADE,
+    )
+    section_type = models.CharField(max_length=30, choices=SECTION_CHOICES)
+    heading = models.CharField(
+        max_length=200,
+        blank=True,
+        help_text='Override the default heading for this section type. Required if type=CUSTOM.',
+    )
+    content = HTMLField()
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order', 'id']
+
+    def __str__(self):
+        return f'{self.version.slug} · {self.get_section_type_display()}'
+
+    def get_display_heading(self):
+        if self.heading:
+            return self.heading
+        return dict(self.SECTION_CHOICES).get(self.section_type, self.section_type)
+
+
+class ConnectPage(models.Model):
+    """Singleton for /connect/ — two CTAs (conversation + resume request)."""
+
+    intro = HTMLField(blank=True, help_text='Lead paragraph under the title.')
+    conversation_label = models.CharField(
+        max_length=100,
+        default='Request a conversation',
+    )
+    conversation_blurb = models.CharField(
         max_length=300,
         blank=True,
-        help_text='One line below the name at the top. Positioning, not title.',
+        help_text='One short line under the label.',
     )
-    executive_summary = HTMLField(
-        blank=True,
-        help_text='2–3 lines. Do not duplicate the Enterprise Leadership page.',
+    conversation_href = models.CharField(
+        max_length=500,
+        default='mailto:',
+        help_text='mailto: link or URL (Calendly, etc.).',
     )
-    current_role_title = models.CharField(max_length=200, blank=True)
-    current_role_org = models.CharField(max_length=200, blank=True)
-    current_role_dates = models.CharField(
+    resume_label = models.CharField(
         max_length=100,
-        blank=True,
-        help_text='e.g. "2023 — Present"',
+        default='Request a resume',
     )
-    current_role_bullets = HTMLField(
-        blank=True,
-        help_text='4–6 bullets. Use the list button in the editor. Declarative verbs, no "responsible for".',
-    )
-    prior_roles = HTMLField(
-        blank=True,
-        help_text='Condensed — one or two lines each. No bullet list for prior roles.',
-    )
-    education = HTMLField(blank=True)
-    key_impact = HTMLField(
-        blank=True,
-        verbose_name='Key impact highlights',
-        help_text='Optional. Bulleted.',
+    resume_blurb = models.CharField(max_length=300, blank=True)
+    resume_href = models.CharField(
+        max_length=500,
+        default='mailto:',
+        help_text='mailto: link the requester uses to ask for a tailored resume URL.',
     )
 
     class Meta:
-        verbose_name = 'Resume Page'
-        verbose_name_plural = 'Resume Page'
+        verbose_name = 'Connect Page'
+        verbose_name_plural = 'Connect Page'
 
     def __str__(self):
-        return 'Resume Page'
+        return 'Connect Page'
 
     def save(self, *args, **kwargs):
         self.pk = 1
