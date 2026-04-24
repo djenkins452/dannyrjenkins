@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.seo_title|default:page.title }} — Danny R. Jenkins{% endblock %}
+{% block description %}{{ page.seo_description|default:"Executive profile." }}{% endblock %}
+
+{% block content %}
+<section class="section--hero">
+    <div class="container container--narrow">
+        {% if page.eyebrow %}<p class="eyebrow">{{ page.eyebrow }}</p>{% endif %}
+        <h1 class="page-title">{{ page.title }}</h1>
+        {% if page.intro %}<div class="lead">{{ page.intro|safe }}</div>{% endif %}
+    </div>
+</section>
+
+<section class="section section--tight bordered">
+    <div class="container container--narrow">
+        {% for block in page.blocks.all %}
+        <article class="narrative-block">
+            {% if block.eyebrow %}<p class="eyebrow">{{ block.eyebrow }}</p>{% endif %}
+            {% if block.heading %}<h2>{{ block.heading }}</h2>{% endif %}
+            <div class="body">{{ block.body|safe }}</div>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

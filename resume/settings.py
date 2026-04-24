@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-!yonxx)qol3=3ef0l4lkpmsz(edd9s141ig)+-*=4)bj%9#pl_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://dannyrjenkins.com','dannyrjenkins.com','https://beacon-innovation.com','beacon-innovation.com','https://django-resume-production-6ada.up.railway.app', 'django-resume-production-6ada.up.railway.app', 'localhost']
+ALLOWED_HOSTS = ['https://dannyrjenkins.com','dannyrjenkins.com','https://beacon-innovation.com','beacon-innovation.com','https://django-resume-production-6ada.up.railway.app', 'django-resume-production-6ada.up.railway.app', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -25,10 +25,32 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tinymce',
     'website',
     'whitenoise.runserver_nostatic',
 
 ]
+
+# TinyMCE: restricted toolbar — paragraphs, bold/italic, lists, links only.
+# No font changes, colors, sizing, or headings (headings are controlled by
+# structured model fields, not the editor). valid_elements enforces this
+# server-side even if the browser bypasses the toolbar restrictions.
+TINYMCE_DEFAULT_CONFIG = {
+    'menubar': False,
+    'statusbar': False,
+    'branding': False,
+    'height': 340,
+    'plugins': 'link lists',
+    'toolbar': 'bold italic | bullist numlist | link | undo redo',
+    'valid_elements': 'p,br,strong,em,b,i,ul,ol,li,a[href|title|target|rel]',
+    'extended_valid_elements': 'a[href|title|target|rel]',
+    'forced_root_block': 'p',
+    'content_style': (
+        'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", '
+        'Helvetica, Arial, sans-serif; font-size: 15px; line-height: 1.6; '
+        'color: #111; max-width: 72ch; }'
+    ),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,6 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'website.context_processors.site',
             ],
         },
     },

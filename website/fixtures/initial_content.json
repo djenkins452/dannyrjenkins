@@ -1,0 +1,155 @@
+[
+    {
+        "model": "website.siteconfig",
+        "pk": 1,
+        "fields": {
+            "homepage_headline": "Leading HR Transformation at Scale, Pioneering Personal AI Systems",
+            "homepage_subheadline": "<p>I lead compensation, HRIS, and payroll operations for a 6,000-employee academic medical center. I treat HR operations as a system of systems — designed to generate trust, reduce decision friction, and run quietly at scale.</p>",
+            "enterprise_section_intro": "<p>Three functions, one operating discipline: make the decisions that matter clearer, and make the operations that run the workforce quieter.</p>",
+            "innovation_section_intro": "<p>A separate endeavor, built on the same principles — unify the sources, surface the signals, prioritize the action.</p>",
+            "contact_email": "dannyjenkins71@gmail.com",
+            "linkedin_url": "https://www.linkedin.com/in/dannyjenkins/"
+        }
+    },
+
+    {
+        "model": "website.homepagepillar",
+        "pk": 1,
+        "fields": {
+            "category": "ENTERPRISE",
+            "order": 1,
+            "title": "Compensation Strategy",
+            "body": "<p>Philosophy, job architecture, and market pricing designed as a trust system — between the organization and the workforce it depends on.</p>"
+        }
+    },
+    {
+        "model": "website.homepagepillar",
+        "pk": 2,
+        "fields": {
+            "category": "ENTERPRISE",
+            "order": 2,
+            "title": "HR Technology & Systems",
+            "body": "<p>ERP, LMS, ATS, and the integrations between them. Treated not as software, but as a decision engine for senior leadership.</p>"
+        }
+    },
+    {
+        "model": "website.homepagepillar",
+        "pk": 3,
+        "fields": {
+            "category": "ENTERPRISE",
+            "order": 3,
+            "title": "Payroll Operations at Scale",
+            "body": "<p>Accurate, compliant, on-time compensation for thousands of employees. A high-risk operational discipline where the standard is zero error.</p>"
+        }
+    },
+
+    {
+        "model": "website.homepagepillar",
+        "pk": 4,
+        "fields": {
+            "category": "INNOVATION",
+            "order": 1,
+            "title": "Beacon Innovation, LLC",
+            "body": "<p>An independent studio for AI-assisted personal systems. Owned and operated outside any employer context.</p>"
+        }
+    },
+    {
+        "model": "website.homepagepillar",
+        "pk": 5,
+        "fields": {
+            "category": "INNOVATION",
+            "order": 2,
+            "title": "Whole Life Journey",
+            "body": "<p>A personal operating system integrating faith, health, journaling, tasks, and goals. One view of a life, engineered from fragmented sources.</p>"
+        }
+    },
+    {
+        "model": "website.homepagepillar",
+        "pk": 6,
+        "fields": {
+            "category": "INNOVATION",
+            "order": 3,
+            "title": "AI Chief of Staff",
+            "body": "<p>A pipeline that turns cross-domain signals into ranked, proactive guidance. Data to signals to decisions — designed as an executive would think, not as an assistant would chat.</p>"
+        }
+    },
+
+    {
+        "model": "website.page",
+        "pk": 1,
+        "fields": {
+            "slug": "profile",
+            "title": "How I lead, how I think",
+            "eyebrow": "EXECUTIVE PROFILE",
+            "intro": "<p>A short accounting of scope, operating approach, and the strategic questions I spend my attention on.</p>",
+            "seo_title": "Executive Profile",
+            "seo_description": "Danny R. Jenkins — executive profile. HR leadership, HRIS, payroll, and personal AI systems.",
+            "updated_at": "2026-04-24T12:00:00Z"
+        }
+    },
+
+    {
+        "model": "website.narrativeblock",
+        "pk": 1,
+        "fields": {
+            "page": 1,
+            "order": 1,
+            "eyebrow": "LEADERSHIP",
+            "heading": "How I Lead",
+            "body": "<p>I lead by reducing ambiguity. The work of a senior HR leader is to convert unstructured organizational pressure into a small set of decisions worth making — and then to make sure execution follows. I favor durable answers over novel ones, and I hold the function accountable to what it said it would do.</p>"
+        }
+    },
+    {
+        "model": "website.narrativeblock",
+        "pk": 2,
+        "fields": {
+            "page": 1,
+            "order": 2,
+            "eyebrow": "WORKFORCE",
+            "heading": "Compensation & Workforce Strategy",
+            "body": "<p>Compensation is a trust system. Philosophy, job architecture, and market pricing are not three projects — they are one integrated design problem, and inconsistency is a reputational failure, not a technical one. I treat the workforce decisions it produces (how we hire, how we pay, how we promote, how we explain it) as the real product of the function.</p>"
+        }
+    },
+    {
+        "model": "website.narrativeblock",
+        "pk": 3,
+        "fields": {
+            "page": 1,
+            "order": 3,
+            "eyebrow": "SYSTEMS",
+            "heading": "Systems Thinking",
+            "body": "<p>HR at scale is a system of systems. I design for how the levers connect — how a policy change lands in the HRIS, how a market adjustment propagates to payroll, how an incentive shows up in behavior six months later. The job isn't to produce dashboards. It's to remove the noise between raw operational data and the decisions leadership actually has to make.</p>"
+        }
+    },
+    {
+        "model": "website.narrativeblock",
+        "pk": 4,
+        "fields": {
+            "page": 1,
+            "order": 4,
+            "eyebrow": "INNOVATION",
+            "heading": "Innovation & WLJ",
+            "body": "<p>Outside my enterprise role, I founded <strong>Beacon Innovation</strong> and built <strong>Whole Life Journey</strong> — a personal operating system that applies the same discipline to individual life: unify the sources, surface the signals, prioritize the action. The two domains stay cleanly separated, but they reinforce the same way of thinking.</p>"
+        }
+    },
+
+    {
+        "model": "website.casestudy",
+        "pk": 1,
+        "fields": {
+            "slug": "compensation-transformation",
+            "title": "Compensation Transformation",
+            "category": "ENTERPRISE",
+            "summary": "Rebuilding a fragmented compensation function into a coherent philosophy, job architecture, and market pricing discipline that both leadership and staff can trust.",
+            "problem": "<p>The compensation function had grown through accretion rather than design. A 6,000-employee academic medical center was paying against a patchwork of inherited job titles, inconsistent grade structures, and market surveys layered over each other across years of reorganization.</p><p>The symptoms were visible everywhere: managers couldn't explain pay decisions to their teams. Recruiting was losing candidates in final offers. HR leadership had no durable answer to the obvious executive question — <em>why does this role pay what it pays?</em></p><p>What presented as market-competitiveness issues were really the symptoms of missing architecture underneath. Competitiveness is impossible to demonstrate when the structure being measured is internally inconsistent.</p>",
+            "role": "<p>I led the transformation end to end. Reporting to senior HR leadership and partnering with Finance, clinical operations, and non-clinical division heads, my remit was explicit: set the compensation philosophy, design a job architecture, and stand up a pricing discipline the organization could run on.</p><p>The work was scoped not as a project with a completion date but as an operating system with ongoing governance — one that had to survive staff transitions, leadership changes, and continuous organizational growth.</p>",
+            "approach": "<p>The work moved in three layers, done in sequence because each depended on the one beneath it.</p><p><strong>First, a stated philosophy.</strong> Pay targets, positioning against market, and the relationship between internal equity and external competitiveness — committed to paper and signed off by executive leadership. Without a stated philosophy, every downstream decision remained re-negotiable and the function had no center.</p><p><strong>Second, a job architecture.</strong> Jobs were grouped into families, leveled against common criteria, and mapped to salary structures. This took roughly six months of analysis and stakeholder review across clinical and non-clinical divisions. The outcome was a system where placing a new role did not require inventing a pay decision — it required placing the role in the architecture.</p><p><strong>Third, a market pricing discipline.</strong> Survey sources were rationalized. Pricing cycles were scheduled and documented. Adjustments were tied to defined thresholds rather than case-by-case negotiation, and exceptions were governed rather than tolerated.</p><p>Governance — not a one-time rollout — was the deliverable. The architecture had to function without me in the room.</p>",
+            "outcome": "<p>Managers could explain pay. Recruiting saw a measurable reduction in offer-stage loss. Compensation moved from a reactive, request-driven function to a governed one — with documented philosophy, a job architecture owned by the function, and a defensible market pricing cycle.</p><p>The most important outcome was not a number. It was that senior leadership had, for the first time, a coherent answer to the <em>why does this pay what it pays</em> question — and that the answer held up under scrutiny from inside and outside the organization.</p>",
+            "order": 1,
+            "published": true,
+            "published_at": "2026-04-01",
+            "seo_title": "Compensation Transformation Case Study",
+            "seo_description": "How a fragmented compensation function at a 6,000-employee academic medical center was rebuilt into a governed system of philosophy, architecture, and pricing."
+        }
+    }
+]

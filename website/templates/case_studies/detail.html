@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}{{ study.seo_title|default:study.title }} — Case Study{% endblock %}
+{% block description %}{{ study.seo_description|default:study.summary }}{% endblock %}
+
+{% block content %}
+<section class="section--hero">
+    <div class="container container--narrow">
+        <p class="eyebrow"><a href="{% url 'case_studies' %}" class="muted">← All Case Studies</a></p>
+        <div class="case-detail__meta">
+            <span class="chip chip--{{ study.category|lower }}">{{ study.get_category_display }} Case Study</span>
+        </div>
+        <h1 class="page-title">{{ study.title }}</h1>
+        <p class="lead">{{ study.summary }}</p>
+    </div>
+</section>
+
+<section class="section section--tight bordered">
+    <div class="container container--narrow">
+        <article class="narrative-block">
+            <p class="eyebrow">Problem</p>
+            <h2>The problem</h2>
+            <div class="body">{{ study.problem|safe }}</div>
+        </article>
+
+        <article class="narrative-block">
+            <p class="eyebrow">Role</p>
+            <h2>My role</h2>
+            <div class="body">{{ study.role|safe }}</div>
+        </article>
+
+        <article class="narrative-block">
+            <p class="eyebrow">Approach</p>
+            <h2>Approach</h2>
+            <div class="body">{{ study.approach|safe }}</div>
+        </article>
+
+        <article class="narrative-block">
+            <p class="eyebrow">Outcome</p>
+            <h2>Outcome</h2>
+            <div class="body">{{ study.outcome|safe }}</div>
+        </article>
+    </div>
+</section>
+
+<section class="section section--tight">
+    <div class="container container--narrow">
+        <p class="muted"><a href="{% url 'case_studies' %}">← Back to all case studies</a></p>
+    </div>
+</section>
+{% endblock %}

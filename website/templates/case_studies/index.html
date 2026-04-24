@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Case Studies — Danny R. Jenkins{% endblock %}
+{% block description %}Selected case studies in HR operations leadership and personal AI systems.{% endblock %}
+
+{% block content %}
+<section class="section--hero">
+    <div class="container container--narrow">
+        <p class="eyebrow">Case Studies</p>
+        <h1 class="page-title">Selected work</h1>
+        <p class="lead">Structured studies of problems I've owned — in HR operations at scale, and in personal AI systems design. Each runs the same four beats: problem, role, approach, outcome.</p>
+    </div>
+</section>
+
+<section class="section section--tight bordered">
+    <div class="container container--narrow">
+        {% for study in studies %}
+        <article class="case-card">
+            <div class="case-card__meta">
+                <span class="chip chip--{{ study.category|lower }}">{{ study.get_category_display }}</span>
+            </div>
+            <h2 class="case-card__title">
+                <a href="{% url 'case_study_detail' slug=study.slug %}">{{ study.title }}</a>
+            </h2>
+            <p class="case-card__summary">{{ study.summary }}</p>
+            <p class="case-card__more">
+                <a href="{% url 'case_study_detail' slug=study.slug %}">Read case study →</a>
+            </p>
+        </article>
+        {% empty %}
+        <p class="muted">No published case studies yet.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

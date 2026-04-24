@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section_title }} — Danny R. Jenkins{% endblock %}
+
+{% block content %}
+<section class="section--hero">
+    <div class="container container--narrow">
+        <p class="eyebrow">Coming soon</p>
+        <h1 class="page-title">{{ section_title }}</h1>
+        <p class="lead">This section is being built in a later phase. The structure is in place; the content is in progress.</p>
+        <p class="muted"><a href="{% url 'home' %}">← Back to home</a></p>
+    </div>
+</section>
+{% endblock %}

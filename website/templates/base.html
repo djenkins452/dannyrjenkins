@@ -1,0 +1,63 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Danny R. Jenkins{% endblock %}</title>
+    <meta name="description" content="{% block description %}Director of Compensation, HRIS, and Payroll. Founder, Beacon Innovation.{% endblock %}" />
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="{% static 'css/site.css' %}" />
+    {% block head_extra %}{% endblock %}
+</head>
+<body>
+<header class="site-header">
+    <div class="site-header__inner">
+        <a class="site-header__brand" href="{% url 'home' %}">Danny R. Jenkins</a>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+        <nav class="site-nav" id="primary-nav" aria-label="Primary">
+            <ul>
+                <li><a href="{% url 'home' %}" {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}>Home</a></li>
+                <li><a href="{% url 'profile' %}" {% if request.resolver_match.url_name == 'profile' %}aria-current="page"{% endif %}>Profile</a></li>
+                <li><a href="{% url 'enterprise' %}" {% if request.resolver_match.url_name == 'enterprise' %}aria-current="page"{% endif %}>Enterprise Leadership</a></li>
+                <li><a href="{% url 'case_studies' %}" {% if request.resolver_match.url_name == 'case_studies' %}aria-current="page"{% endif %}>Case Studies</a></li>
+                <li><a href="{% url 'innovation' %}" {% if request.resolver_match.url_name == 'innovation' %}aria-current="page"{% endif %}>Innovation</a></li>
+                <li><a href="{% url 'perspectives' %}" {% if request.resolver_match.url_name == 'perspectives' %}aria-current="page"{% endif %}>Perspectives</a></li>
+                <li><a href="{% url 'resume' %}" {% if request.resolver_match.url_name == 'resume' %}aria-current="page"{% endif %}>Resume</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main id="main">
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+    <div class="container site-footer__inner">
+        <div>© {% now "Y" %} Danny R. Jenkins</div>
+        <div class="site-footer__links">
+            {% if site_config.contact_email %}<a href="mailto:{{ site_config.contact_email }}">{{ site_config.contact_email }}</a>{% endif %}
+            {% if site_config.linkedin_url %}<a href="{{ site_config.linkedin_url }}" rel="noopener">LinkedIn</a>{% endif %}
+        </div>
+    </div>
+</footer>
+
+<script nonce="{{ csp_nonce }}">
+    (function () {
+        var btn = document.querySelector('.nav-toggle');
+        var nav = document.getElementById('primary-nav');
+        if (!btn || !nav) return;
+        btn.addEventListener('click', function () {
+            var open = nav.getAttribute('data-open') === 'true';
+            nav.setAttribute('data-open', open ? 'false' : 'true');
+            btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+        });
+    })();
+</script>
+</body>
+</html>
