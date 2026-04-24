@@ -211,8 +211,8 @@
             "title": "Compensation is a trust system",
             "deck": "What the pay function is actually doing, and why getting it wrong looks like a market problem when it isn't.",
             "eyebrow": "COMPENSATION",
-            "lead": "<p>Compensation is presented as a technical function. Philosophy, job architecture, market pricing — the artifacts are quantitative, so compensation gets spoken about in quantitative language. This is a mistake. The function's job is not to produce accurate numbers. It is to produce trust — and trust, not dollars, is what the function is actually on the hook for.</p>",
-            "closing": "<p>The operating test for a compensation function is not whether the market percentile is correct. It is whether, three years from now, the architecture still produces decisions the organization can trust and defend — without requiring the person who built it to be in the room.</p><p>That is the asset. The numbers are the byproduct.</p>",
+            "lead": "<p>Compensation is treated as a pricing function. That is the mistake. The function is on the hook for trust — and trust, not benchmarks, is what it is measured on.</p>",
+            "closing": "<p>The operating test for a compensation function is not whether the market percentile is correct. It is whether, three years from now, the system still produces decisions the organization can trust and defend — without requiring the person who built it to be in the room.</p><p>The system is the asset. The numbers are an output, not the objective.</p>",
             "order": 1,
             "published": true,
             "published_at": "2026-04-20",
@@ -227,7 +227,7 @@
             "perspective": 1,
             "order": 1,
             "heading": "The symptom is rarely the problem",
-            "body": "<p>When a compensation function is in trouble, the conversation almost always starts with market data. Offers lost at the final stage. Turnover concentrated in specific roles. A department head arguing a salary range doesn't match reality. The reflex is to benchmark harder — survey more sources, tighten the percentile, price to a different comparator.</p><p>It is almost never the right move. A well-governed compensation function does not lose offers because its benchmarks are wrong. It loses offers because candidates and managers do not trust the reasoning behind the offer — and better benchmarks do not fix that. They produce the same offer for the same reason, only documented with more data.</p><p>Treating a trust problem as a pricing problem is how compensation functions end up in a loop: benchmark harder, lose the next candidate, benchmark harder again. The loop continues until someone acknowledges that the conversation is not about the number.</p>"
+            "body": "<p>When a compensation function is in trouble, the conversation starts with market data. Offers lost at the final stage. Turnover concentrated in specific roles. A department head arguing a salary range doesn't match reality. The reflex is to benchmark harder.</p><p>It is almost never the right move. A well-governed compensation function does not lose offers because its benchmarks are wrong. It loses offers because candidates and managers do not trust the reasoning behind the offer.</p><p>Treating a trust problem as a pricing problem is how functions end up in a loop: benchmark harder, lose the next candidate, benchmark harder again.</p>"
         }
     },
     {
@@ -247,7 +247,55 @@
             "perspective": 1,
             "order": 3,
             "heading": "Trust is the product",
-            "body": "<p>The way to know a compensation function is healthy is not to look at the pay data. It is to look at conversations.</p><p>Can managers explain pay decisions without getting defensive? Can a candidate ask why they were offered what they were offered and get a real answer? Does leadership defend the philosophy the way they would defend any other strategic commitment — or does it become negotiable at the first pushback?</p><p>When those conversations go well, the numbers end up being right, even if they are not flawless. When those conversations go badly, no amount of benchmarking fixes it — because the problem was never the numbers.</p>"
+            "body": "<p>The way to know a compensation function is healthy is not to look at the pay data. It is to look at conversations.</p><p>If managers cannot explain pay decisions to their teams, the system is already broken — regardless of what the benchmarks say.</p><p>Can a candidate ask why they were offered what they were offered and get a real answer? Does leadership defend the philosophy the way they would defend any other strategic commitment?</p><p>When those conversations go well, the numbers end up being right. When they go badly, no amount of benchmarking fixes it — because the problem was never the numbers.</p>"
+        }
+    },
+
+    {
+        "model": "website.perspective",
+        "pk": 2,
+        "fields": {
+            "slug": "hris-is-a-decision-engine",
+            "title": "HRIS is a decision engine, not a reporting tool",
+            "deck": "Why the best-run HR technology functions treat the system as infrastructure, and why treating it as a reporting layer is why workforce decisions stop holding up.",
+            "eyebrow": "HRIS",
+            "lead": "<p>Most HRIS failures are not technical. They come from treating the system as a place to run reports — and then asking it to make decisions it was never architected to inform. HRIS is not a reporting tool. It is the decision system for the workforce, and it either holds up under that load or it does not.</p>",
+            "closing": "<p>The test for an HRIS is not how many reports it produces. It is whether leadership can ask a workforce question and get an answer they can defend.</p><p>The HRIS is the decision system. The reports are an output, not the objective.</p>",
+            "order": 2,
+            "published": true,
+            "published_at": "2026-04-22",
+            "seo_title": "HRIS is a decision engine, not a reporting tool",
+            "seo_description": "Why HRIS is infrastructure for workforce decisions — and why treating it as a reporting layer is why those decisions stop holding up."
+        }
+    },
+    {
+        "model": "website.perspectivesection",
+        "pk": 4,
+        "fields": {
+            "perspective": 2,
+            "order": 1,
+            "heading": "The reporting trap",
+            "body": "<p>Most HRIS programs begin with a reporting problem. Leadership asks a workforce question; the answer is slow, inconsistent, or involves three people reconciling spreadsheets. The response is predictable — better reporting. Dashboards, KPIs, a BI tool on top.</p><p>This improves visibility. It does not improve the decisions. And the underlying question — whether the data layer can produce a trustworthy answer in the first place — goes unanswered.</p><p>Reporting is a symptom. The system is the target.</p>"
+        }
+    },
+    {
+        "model": "website.perspectivesection",
+        "pk": 5,
+        "fields": {
+            "perspective": 2,
+            "order": 2,
+            "heading": "The decision load",
+            "body": "<p>When senior leadership asks a workforce question, they are making a decision. How to structure a reorganization. Where to place hiring priority. Whether a compensation adjustment is defensible.</p><p>The HRIS either produces an answer the organization can act on, or it produces numbers that do not match what Finance sees, what operations see, and what HR says in the meeting. The difference is not data volume. It is whether the data model was designed for decisions or for reports.</p><p>A decision system has one version of each fact. A reporting tool has as many versions as there are ways to query it.</p>"
+        }
+    },
+    {
+        "model": "website.perspectivesection",
+        "pk": 6,
+        "fields": {
+            "perspective": 2,
+            "order": 3,
+            "heading": "The product is alignment",
+            "body": "<p>The output of a well-designed HRIS is not a dashboard. It is alignment across the organization — the same number showing up in HR, Finance, and operations when the same question is asked.</p><p>Alignment cannot be retrofit on top of reporting. It has to be built into the data model, the integration contracts, and the governance of who can change what. Most HRIS implementations skip this and try to solve alignment downstream with BI tooling. It does not work.</p><p>If leadership gets three different answers to the same workforce question from three systems, the HRIS is broken — regardless of what the dashboards say.</p>"
         }
     },
 
