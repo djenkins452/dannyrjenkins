@@ -13,7 +13,26 @@ SECRET_KEY = 'django-insecure-!yonxx)qol3=3ef0l4lkpmsz(edd9s141ig)+-*=4)bj%9#pl_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://dannyrjenkins.com','dannyrjenkins.com','https://beacon-innovation.com','beacon-innovation.com','https://django-resume-production-6ada.up.railway.app', 'django-resume-production-6ada.up.railway.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'dannyrjenkins.com',
+    'www.dannyrjenkins.com',
+    'beacon-innovation.com',
+    'www.beacon-innovation.com',
+    'django-resume-production-6ada.up.railway.app',
+    'localhost',
+    '127.0.0.1',
+]
+
+# CSRF: trusted origins must include scheme. Django 4+ requires this for any
+# domain that submits POST requests (e.g. /admin/login/). Without these, the
+# admin login returns 403 "CSRF verification failed — Origin checking failed".
+CSRF_TRUSTED_ORIGINS = [
+    'https://dannyrjenkins.com',
+    'https://www.dannyrjenkins.com',
+    'https://beacon-innovation.com',
+    'https://www.beacon-innovation.com',
+    'https://django-resume-production-6ada.up.railway.app',
+]
 
 
 # Application definition
