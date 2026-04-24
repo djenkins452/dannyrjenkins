@@ -49,6 +49,7 @@ CONTENT_KEY = {
     'website.innovationoverview':  'pk',     # singleton (pk=1)
     'website.perspective':         'slug',
     'website.perspectivesection':  'pk',
+    'website.resumepage':          'pk',     # singleton (pk=1)
 }
 
 FIXTURE_PATH = Path('website/fixtures/initial_content.json')

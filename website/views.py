@@ -9,6 +9,7 @@ from .models import (
     InnovationOverview,
     Page,
     Perspective,
+    ResumePage,
 )
 
 
@@ -42,6 +43,10 @@ def enterprise_leadership(request):
 
 def innovation(request):
     return render(request, 'innovation.html', {'overview': InnovationOverview.load()})
+
+
+def resume(request):
+    return render(request, 'resume.html', {'page': ResumePage.load()})
 
 
 def case_study_index(request):

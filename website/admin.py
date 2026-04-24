@@ -12,6 +12,7 @@ from .models import (
     Page,
     Perspective,
     PerspectiveSection,
+    ResumePage,
     SiteConfig,
 )
 
@@ -163,6 +164,39 @@ class EnterpriseFunctionAdmin(admin.ModelAdmin):
         'organizational_role',
         'order',
     )
+
+
+@admin.register(ResumePage)
+class ResumePageAdmin(admin.ModelAdmin):
+    """Singleton: redirect changelist to the sole instance."""
+
+    fieldsets = (
+        ('Header', {'fields': ('positioning_line',)}),
+        ('Executive Summary', {'fields': ('executive_summary',)}),
+        ('Current Role', {
+            'fields': (
+                'current_role_title',
+                'current_role_org',
+                'current_role_dates',
+                'current_role_bullets',
+            ),
+        }),
+        ('Prior Roles', {'fields': ('prior_roles',)}),
+        ('Education & Certifications', {'fields': ('education',)}),
+        ('Key Impact Highlights', {'fields': ('key_impact',)}),
+    )
+
+    def has_add_permission(self, request):
+        return not ResumePage.objects.exists()
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def changelist_view(self, request, extra_context=None):
+        obj = ResumePage.load()
+        return HttpResponseRedirect(
+            reverse('admin:website_resumepage_change', args=[obj.pk])
+        )
 
 
 @admin.register(SiteConfig)

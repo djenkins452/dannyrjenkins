@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Resume — Danny R. Jenkins{% endblock %}
+{% block description %}Resume — Danny R. Jenkins. Director of compensation, HRIS, and payroll for a 6,000-employee academic medical center.{% endblock %}
+
+{% block content %}
+<section class="section--hero">
+    <div class="container container--narrow">
+        <p class="eyebrow">Resume</p>
+        <h1 class="page-title">Danny R. Jenkins</h1>
+        {% if page.positioning_line %}<p class="resume-positioning">{{ page.positioning_line }}</p>{% endif %}
+    </div>
+</section>
+
+{% if page.executive_summary %}
+<section class="section section--tight bordered">
+    <div class="container container--narrow">
+        <article class="narrative-block">
+            <p class="eyebrow">Executive Summary</p>
+            <div class="body">{{ page.executive_summary|safe }}</div>
+        </article>
+    </div>
+</section>
+{% endif %}
+
+{% if page.current_role_title %}
+<section class="section section--tight bordered">
+    <div class="container container--narrow">
+        <article class="narrative-block">
+            <p class="eyebrow">Current Role</p>
+            <h2 class="resume-role__title">{{ page.current_role_title }}</h2>
+            <p class="resume-role__meta">{{ page.current_role_org }}{% if page.current_role_dates %} &nbsp;·&nbsp; {{ page.current_role_dates }}{% endif %}</p>
+            <div class="body resume-bullets">{{ page.current_role_bullets|safe }}</div>
+        </article>
+    </div>
+</section>
+{% endif %}
+
+{% if page.prior_roles %}
+<section class="section section--tight bordered">
+    <div class="container container--narrow">
+        <article class="narrative-block">
+            <p class="eyebrow">Prior Roles</p>
+            <div class="body">{{ page.prior_roles|safe }}</div>
+        </article>
+    </div>
+</section>
+{% endif %}
+
+{% if page.education %}
+<section class="section section--tight bordered">
+    <div class="container container--narrow">
+        <article class="narrative-block">
+            <p class="eyebrow">Education &amp; Certifications</p>
+            <div class="body">{{ page.education|safe }}</div>
+        </article>
+    </div>
+</section>
+{% endif %}
+
+{% if page.key_impact %}
+<section class="section section--tight bordered">
+    <div class="container container--narrow">
+        <article class="narrative-block">
+            <p class="eyebrow">Key Impact Highlights</p>
+            <div class="body resume-bullets">{{ page.key_impact|safe }}</div>
+        </article>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

@@ -23,10 +23,5 @@ urlpatterns = [
         views.perspective_detail,
         name='perspective_detail',
     ),
-    path(
-        'resume/',
-        views.placeholder,
-        {'title': 'Resume'},
-        name='resume',
-    ),
+    path('resume/', views.resume, name='resume'),
 ]

@@ -375,6 +375,61 @@ class PerspectiveSection(models.Model):
         return f'{self.perspective.slug} · {self.heading}'
 
 
+class ResumePage(models.Model):
+    """Singleton for /resume/ — the executive-level validation layer.
+
+    Structured fields per resume section. Admin edits each labelled field;
+    the template renders the section only if the field is populated.
+    """
+
+    positioning_line = models.CharField(
+        max_length=300,
+        blank=True,
+        help_text='One line below the name at the top. Positioning, not title.',
+    )
+    executive_summary = HTMLField(
+        blank=True,
+        help_text='2–3 lines. Do not duplicate the Enterprise Leadership page.',
+    )
+    current_role_title = models.CharField(max_length=200, blank=True)
+    current_role_org = models.CharField(max_length=200, blank=True)
+    current_role_dates = models.CharField(
+        max_length=100,
+        blank=True,
+        help_text='e.g. "2023 — Present"',
+    )
+    current_role_bullets = HTMLField(
+        blank=True,
+        help_text='4–6 bullets. Use the list button in the editor. Declarative verbs, no "responsible for".',
+    )
+    prior_roles = HTMLField(
+        blank=True,
+        help_text='Condensed — one or two lines each. No bullet list for prior roles.',
+    )
+    education = HTMLField(blank=True)
+    key_impact = HTMLField(
+        blank=True,
+        verbose_name='Key impact highlights',
+        help_text='Optional. Bulleted.',
+    )
+
+    class Meta:
+        verbose_name = 'Resume Page'
+        verbose_name_plural = 'Resume Page'
+
+    def __str__(self):
+        return 'Resume Page'
+
+    def save(self, *args, **kwargs):
+        self.pk = 1
+        super().save(*args, **kwargs)
+
+    @classmethod
+    def load(cls):
+        obj, _ = cls.objects.get_or_create(pk=1)
+        return obj
+
+
 class HomepagePillar(models.Model):
     """A pillar on the homepage. Category routes it to one of the two columns."""
 

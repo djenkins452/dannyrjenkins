@@ -348,6 +348,22 @@
     },
 
     {
+        "model": "website.resumepage",
+        "pk": 1,
+        "fields": {
+            "positioning_line": "HR operations leader — compensation, HRIS, and payroll at enterprise scale.",
+            "executive_summary": "<p>Leads compensation, HRIS, and payroll for a 6,000-employee Level 1 trauma and academic medical center. Runs the three functions as one integrated operating model — roughly $33M disbursed monthly across three payroll cycles, with a zero-error operating standard. Approaches HR at scale as a system of systems: unified data, governed decisions, quiet execution.</p>",
+            "current_role_title": "Director of Compensation, HRIS, and Payroll",
+            "current_role_org": "UT Medical Center",
+            "current_role_dates": "2023 — Present",
+            "current_role_bullets": "<ul><li>Lead compensation, HRIS, and payroll for a 6,000-employee academic medical center — ~$33M disbursed monthly across three payroll cycles (monthly, biweekly, supplemental).</li><li>Delivered a full-lifecycle replacement of a legacy UKG Kronos deployment with Infor Workforce Management — RFP through vendor management, hard cutover deadline, no operational disruption.</li><li>Rebuilt the compensation function from a transactional posture into a governed operating model: documented philosophy, owned job architecture, disciplined market pricing cycle.</li><li>Own the HR technology ecosystem end to end — HRIS, ATS, LMS, time and attendance, and integrations to Finance and clinical operations.</li><li>Direct workforce data governance so leadership questions resolve to one answer across HR, Finance, and operations.</li><li>Operate the three functions as one integrated system, with cross-function alignment built into the design rather than patched after.</li></ul>",
+            "prior_roles": "<p>Progressive leadership across HR operations at UT Medical Center — HRIS, payroll, and compensation, with scope expanding over time. Earlier managerial and analyst roles in HR technology and compensation administration. Full history available on request.</p>",
+            "education": "<p>Bachelor's degree. Additional professional certifications relevant to total rewards, HR technology, and payroll operations. Full details available on request.</p>",
+            "key_impact": "<ul><li>Kronos &rarr; Infor WFM cutover delivered on a hard end-of-life deadline with no operational disruption.</li><li>Compensation function rebuilt from a transactional posture into a governed operating model.</li><li>Workforce data aligned across HR, Finance, and operations — from inconsistent cross-function answers to one-version truth.</li><li>Three payroll cycles per month maintained at a zero-error operating standard across ~50 scheduled runs per year.</li></ul>"
+        }
+    },
+
+    {
         "model": "website.innovationoverview",
         "pk": 1,
         "fields": {
