@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -107,11 +109,15 @@ WSGI_APPLICATION = 'resume.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# Database: use DATABASE_URL (Railway Postgres) when set, otherwise fall back
+# to local SQLite for development. dj-database-url parses DATABASE_URL from
+# the environment and produces the correct DATABASES dict.
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=f'sqlite:///{BASE_DIR / "db.sqlite3"}',
+        conn_max_age=600,
+        ssl_require=False,
+    )
 }
 
 
