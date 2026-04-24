@@ -1,5 +1,13 @@
+import logging
+
+from django.conf import settings
+from django.core.mail import EmailMessage
 from django.http import Http404
 from django.shortcuts import get_object_or_404, render
+
+from .forms import ContactForm
+
+logger = logging.getLogger(__name__)
 
 from .models import (
     CaseStudy,
@@ -56,7 +64,55 @@ def resume_version(request, slug):
 
 
 def connect(request):
-    return render(request, 'connect.html', {'page': ConnectPage.load()})
+    page = ConnectPage.load()
+    success = False
+
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            inquiry_display = form.inquiry_display()
+            message_text = form.cleaned_data.get('message', '') or '(no message)'
+
+            body = (
+                f'Name: {name}\n'
+                f'Email: {email}\n'
+                f'Inquiry type: {inquiry_display}\n'
+                f'\n'
+                f'Message:\n{message_text}\n'
+            )
+
+            mail = EmailMessage(
+                subject=f'New {inquiry_display} request from {name}',
+                body=body,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                to=[settings.EMAIL_HOST_USER] if settings.EMAIL_HOST_USER else [],
+                reply_to=[email],
+            )
+
+            try:
+                mail.send(fail_silently=False)
+            except Exception:
+                logger.exception('Contact form email send failed for %s', email)
+                form.add_error(
+                    None,
+                    'Could not send your message right now. Please try again in a few minutes.',
+                )
+            else:
+                logger.info(
+                    'Contact form sent: inquiry=%s from=%s', inquiry_display, email,
+                )
+                success = True
+                form = ContactForm()  # fresh form for the (hidden) state
+    else:
+        form = ContactForm()
+
+    return render(request, 'connect.html', {
+        'page': page,
+        'form': form,
+        'success': success,
+    })
 
 
 def case_study_index(request):

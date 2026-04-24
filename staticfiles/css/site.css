@@ -279,7 +279,86 @@ p { margin: 0 0 1em; max-width: 66ch; }
 /* ---------- Case study detail ---------- */
 .case-detail__meta { margin: 0 0 var(--space-3); }
 
-/* ---------- Connect page (CTA cards) ---------- */
+/* ---------- Contact form (Connect page) ---------- */
+.contact-form {
+    max-width: var(--content);
+}
+.form-field {
+    margin: 0 0 var(--space-4);
+}
+.form-field label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: var(--step-s);
+    color: var(--ink);
+    font-weight: 600;
+    margin-bottom: var(--space-1);
+    letter-spacing: 0.01em;
+}
+.form-field input[type="text"],
+.form-field input[type="email"],
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    font-family: inherit;
+    font-size: var(--step-m);
+    color: var(--ink);
+    background: var(--bg-panel);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 10px 12px;
+    line-height: 1.4;
+    transition: border-color 120ms ease;
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+.form-field textarea {
+    min-height: 120px;
+    resize: vertical;
+    font-family: var(--font-sans);
+}
+.form-field__error {
+    color: #9b1c1c;
+    font-size: var(--step-s);
+    margin: var(--space-1) 0 0;
+}
+.form-errors {
+    padding: var(--space-3);
+    background: #fdf2f2;
+    border: 1px solid #e8b4b4;
+    border-radius: 2px;
+    margin: 0 0 var(--space-4);
+    color: #9b1c1c;
+    font-size: var(--step-s);
+}
+.btn-submit {
+    font-family: var(--font-sans);
+    font-size: var(--step-m);
+    color: #fff;
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    padding: 12px 28px;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    transition: background-color 120ms ease, border-color 120ms ease;
+}
+.btn-submit:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent-soft);
+}
+.form-success {
+    max-width: var(--content);
+}
+.form-success h2 {
+    margin: var(--space-2) 0 var(--space-3);
+}
+
+/* ---------- Connect page (CTA cards — legacy, currently unused) ---------- */
 .connect-ctas {
     display: grid;
     grid-template-columns: 1fr 1fr;
