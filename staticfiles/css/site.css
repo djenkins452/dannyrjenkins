@@ -281,10 +281,11 @@ p { margin: 0 0 1em; max-width: 66ch; }
 
 /* ---------- Contact form (Connect page) ---------- */
 .contact-form {
-    max-width: var(--content);
+    max-width: 600px;
+    margin: 0 auto;
 }
 .form-field {
-    margin: 0 0 var(--space-4);
+    margin: 0 0 var(--space-3);     /* 24px between fields */
 }
 .form-field label {
     display: block;
@@ -301,23 +302,25 @@ p { margin: 0 0 1em; max-width: 66ch; }
 .form-field textarea {
     width: 100%;
     font-family: inherit;
-    font-size: var(--step-m);
+    font-size: var(--step-m);       /* 17px — above iOS zoom threshold */
     color: var(--ink);
     background: var(--bg-panel);
-    border: 1px solid var(--rule);
-    border-radius: 2px;
-    padding: 10px 12px;
+    border: 1px solid #c9c4ba;      /* visible on off-white, warm with palette */
+    border-radius: 5px;
+    padding: 11px 13px;
     line-height: 1.4;
-    transition: border-color 120ms ease;
+    transition: border-color 120ms ease, box-shadow 120ms ease;
+    box-sizing: border-box;
 }
 .form-field input:focus,
 .form-field select:focus,
 .form-field textarea:focus {
     outline: none;
     border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(26, 35, 50, 0.08);   /* subtle focus ring */
 }
 .form-field textarea {
-    min-height: 120px;
+    min-height: 140px;
     resize: vertical;
     font-family: var(--font-sans);
 }
@@ -330,29 +333,41 @@ p { margin: 0 0 1em; max-width: 66ch; }
     padding: var(--space-3);
     background: #fdf2f2;
     border: 1px solid #e8b4b4;
-    border-radius: 2px;
-    margin: 0 0 var(--space-4);
+    border-radius: 5px;
+    margin: 0 0 var(--space-3);
     color: #9b1c1c;
     font-size: var(--step-s);
 }
 .btn-submit {
+    display: block;
+    width: 100%;
     font-family: var(--font-sans);
     font-size: var(--step-m);
+    font-weight: 600;
     color: #fff;
     background: var(--accent);
     border: 1px solid var(--accent);
-    border-radius: 2px;
-    padding: 12px 28px;
+    border-radius: 5px;
+    padding: 14px 24px;
     cursor: pointer;
-    letter-spacing: 0.01em;
-    transition: background-color 120ms ease, border-color 120ms ease;
+    letter-spacing: 0.02em;
+    margin-top: var(--space-2);
+    transition: background-color 120ms ease, border-color 120ms ease, transform 60ms ease;
 }
 .btn-submit:hover {
     background: var(--accent-soft);
     border-color: var(--accent-soft);
 }
+.btn-submit:active {
+    transform: translateY(1px);
+}
+.btn-submit:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
 .form-success {
-    max-width: var(--content);
+    max-width: 600px;
+    margin: 0 auto;
 }
 .form-success h2 {
     margin: var(--space-2) 0 var(--space-3);
