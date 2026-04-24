@@ -259,8 +259,8 @@
             "title": "HRIS is a decision engine, not a reporting tool",
             "deck": "Why the best-run HR technology functions treat the system as infrastructure, and why treating it as a reporting layer is why workforce decisions stop holding up.",
             "eyebrow": "HRIS",
-            "lead": "<p>Most HRIS failures are not technical. They come from treating the system as a place to run reports — and then asking it to make decisions it was never architected to inform. HRIS is not a reporting tool. It is the decision system for the workforce, and it either holds up under that load or it does not.</p>",
-            "closing": "<p>The test for an HRIS is not how many reports it produces. It is whether leadership can ask a workforce question and get an answer they can defend.</p><p>The HRIS is the decision system. The reports are an output, not the objective.</p>",
+            "lead": "<p>Most HRIS failures are architectural, not technical. A system built for reports cannot carry the weight of decisions. HRIS is not a reporting tool — it is the decision system for the workforce, and it either holds up under that load or it does not.</p>",
+            "closing": "<p>The test for an HRIS is not how many reports it produces. It is whether, three years from now, leadership can ask a workforce question and get an answer that holds up across the organization.</p><p>The HRIS is the asset. The reports are an output, not the objective.</p>",
             "order": 2,
             "published": true,
             "published_at": "2026-04-22",
@@ -275,7 +275,7 @@
             "perspective": 2,
             "order": 1,
             "heading": "The reporting trap",
-            "body": "<p>Most HRIS programs begin with a reporting problem. Leadership asks a workforce question; the answer is slow, inconsistent, or involves three people reconciling spreadsheets. The response is predictable — better reporting. Dashboards, KPIs, a BI tool on top.</p><p>This improves visibility. It does not improve the decisions. And the underlying question — whether the data layer can produce a trustworthy answer in the first place — goes unanswered.</p><p>Reporting is a symptom. The system is the target.</p>"
+            "body": "<p>Most HRIS programs begin with a reporting problem. Leadership asks a workforce question; the answer is slow, inconsistent, or involves three people reconciling spreadsheets. The response is predictable — better reporting. Dashboards, KPIs, a BI tool on top.</p><p>This improves visibility, not decisions. Worse, better reporting hides the real problem: whether the data layer can produce a trustworthy answer at all. Dashboards make the system look healthier. They do not make it healthier.</p><p>Reporting is a symptom. The system is the target.</p>"
         }
     },
     {
@@ -285,7 +285,7 @@
             "perspective": 2,
             "order": 2,
             "heading": "The decision load",
-            "body": "<p>When senior leadership asks a workforce question, they are making a decision. How to structure a reorganization. Where to place hiring priority. Whether a compensation adjustment is defensible.</p><p>The HRIS either produces an answer the organization can act on, or it produces numbers that do not match what Finance sees, what operations see, and what HR says in the meeting. The difference is not data volume. It is whether the data model was designed for decisions or for reports.</p><p>A decision system has one version of each fact. A reporting tool has as many versions as there are ways to query it.</p>"
+            "body": "<p>When senior leadership asks a workforce question, they are making a decision. How to structure a reorganization. Where to place hiring priority. Whether a compensation adjustment is defensible.</p><p>The HRIS either produces an answer the organization can act on, or it produces numbers that do not match what Finance sees, what operations see, and what HR says in the meeting. The difference is not data volume. It is whether the data model was designed for decisions or for reports.</p><p>More data does not fix a broken model. It makes the cracks wider.</p><p>A decision system has one version of each fact. A reporting tool has as many versions as there are ways to query it.</p>"
         }
     },
     {
@@ -296,6 +296,54 @@
             "order": 3,
             "heading": "The product is alignment",
             "body": "<p>The output of a well-designed HRIS is not a dashboard. It is alignment across the organization — the same number showing up in HR, Finance, and operations when the same question is asked.</p><p>Alignment cannot be retrofit on top of reporting. It has to be built into the data model, the integration contracts, and the governance of who can change what. Most HRIS implementations skip this and try to solve alignment downstream with BI tooling. It does not work.</p><p>If leadership gets three different answers to the same workforce question from three systems, the HRIS is broken — regardless of what the dashboards say.</p>"
+        }
+    },
+
+    {
+        "model": "website.perspective",
+        "pk": 3,
+        "fields": {
+            "slug": "system-fragmentation-is-inherited",
+            "title": "System fragmentation is inherited, not designed",
+            "deck": "Why organizational silos accumulate without anyone deciding to build them, and what it actually takes to resolve them.",
+            "eyebrow": "SYSTEMS",
+            "lead": "<p>Fragmentation is not designed. It is inherited. Every silo that makes a leader's job harder was once a reasonable decision — and then the context changed.</p>",
+            "closing": "<p>The test for an organization's systems is not whether they look coordinated on paper. It is whether, three years from now, the same question produces the same answer across the functions that have to act on it.</p><p>The architecture is the asset. Fragmentation is the absence of ownership.</p>",
+            "order": 3,
+            "published": true,
+            "published_at": "2026-04-23",
+            "seo_title": "System fragmentation is inherited, not designed",
+            "seo_description": "Why organizational fragmentation accumulates without anyone deciding to build it, and why resolving it is an operating discipline — not a project."
+        }
+    },
+    {
+        "model": "website.perspectivesection",
+        "pk": 7,
+        "fields": {
+            "perspective": 3,
+            "order": 1,
+            "heading": "The accumulation is invisible until it isn't",
+            "body": "<p>Fragmentation does not arrive. It accumulates.</p><p>A reorg splits a function. A vendor swap introduces a different data model. A cost pressure consolidates two systems that used to be separate. Each decision is defensible. None of them are architecturally coordinated.</p><p>Leadership does not tolerate fragmentation out of negligence. It tolerates it because each individual decision looked rational at the time — and the cumulative effect only becomes visible after years, when the same question starts producing different answers in different meetings.</p><p>The tolerance is not a failure. It is the mechanism.</p>"
+        }
+    },
+    {
+        "model": "website.perspectivesection",
+        "pk": 8,
+        "fields": {
+            "perspective": 3,
+            "order": 2,
+            "heading": "Systems drift because their owners do",
+            "body": "<p>Systems do not drift because they are neglected. They drift because their owners change — and each new owner inherits the system as a tool to operate, not as a design to maintain.</p><p>The first person who designed the compensation architecture understood why it was shaped that way. The fifth person inherited the shape without the reasoning. A question gets answered the way the system now allows, not the way it was originally intended to answer it. The distance between those two things grows, quietly, every cycle.</p><p>This is why fragmentation is rarely anyone's fault — and also why no one's job is to fix it. Fragmentation belongs to a role that does not exist on any org chart: the person who holds the architecture across ownership transitions.</p><p>At senior levels, that role becomes the job.</p>"
+        }
+    },
+    {
+        "model": "website.perspectivesection",
+        "pk": 9,
+        "fields": {
+            "perspective": 3,
+            "order": 3,
+            "heading": "Resolving what was never designed",
+            "body": "<p>Resolving fragmentation is not a project. It is an operating discipline.</p><p>The move is not to redesign everything. That is what accumulates the next generation of fragmentation. The move is to identify the load-bearing misalignments — the specific points where the same question produces different answers — and resolve those first, one layer at a time.</p><p>The work requires acknowledging that no existing owner is fully to blame, and that no existing owner has the authority to resolve it alone. Senior leadership does not execute fragmentation resolution. It sponsors it — by naming the architecture as an asset the organization will now maintain, and by making that maintenance someone's job.</p><p>If fragmentation is not explicitly someone's job, it remains everyone's problem.</p>"
         }
     },
 
