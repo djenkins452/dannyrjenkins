@@ -112,9 +112,9 @@ p { margin: 0 0 1em; max-width: 66ch; }
 }
 .container--narrow { max-width: 780px; }
 
-.section { padding: var(--space-7) 0; }
-.section--tight { padding: var(--space-6) 0; }
-.section--hero  { padding: var(--space-8) 0 var(--space-7); }
+.section { padding: var(--space-6) 0; }
+.section--tight { padding: var(--space-5) 0; }
+.section--hero  { padding: var(--space-8) 0 var(--space-6); }
 
 .section + .section.bordered { border-top: 1px solid var(--rule); }
 
@@ -288,10 +288,18 @@ p { margin: 0 0 1em; max-width: 66ch; }
 .contact-form {
     max-width: 600px;
     margin: 0 auto;
-    padding: var(--space-4);                 /* 32px */
+    padding: 36px;                           /* slightly more interior than the 32px tier */
     border: 1px solid var(--rule);
     border-radius: 4px;
     background: var(--bg-panel);             /* lift above warmed page bg */
+}
+.form-prelude {
+    font-family: var(--font-serif);
+    font-size: var(--step-m);                /* 17px — soft serif bridge into the form */
+    color: var(--ink-body);
+    line-height: 1.5;
+    max-width: 600px;
+    margin: 0 auto var(--space-5);           /* 48px above the form */
 }
 .form-field {
     margin: 0 0 var(--space-3);              /* 24px between fields */
@@ -384,13 +392,17 @@ p { margin: 0 0 1em; max-width: 66ch; }
 .form-success {
     max-width: 600px;
     margin: 0 auto;
-    padding: var(--space-4);
+    padding: 36px;
     border: 1px solid var(--rule);
     border-radius: 4px;
     background: var(--bg-panel);
 }
 .form-success h2 {
-    margin: var(--space-2) 0 var(--space-3);
+    margin: 0 0 var(--space-3);
+}
+.form-success p {
+    margin: 0;
+    color: var(--ink-body);
 }
 
 /* ---------- Connect page (CTA cards — legacy, currently unused) ---------- */
@@ -602,8 +614,8 @@ p { margin: 0 0 1em; max-width: 66ch; }
 
 /* ---------- Footer ---------- */
 .site-footer {
-    margin-top: var(--space-7);
-    padding: var(--space-6) 0;
+    margin-top: var(--space-6);
+    padding: var(--space-5) 0;
     border-top: 1px solid var(--rule);
     color: var(--ink-muted);
     font-size: var(--step-s);
