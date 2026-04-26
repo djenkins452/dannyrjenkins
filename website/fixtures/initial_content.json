@@ -4,7 +4,7 @@
         "pk": 1,
         "fields": {
             "homepage_headline": "Leading HR Transformation at Scale, Pioneering Personal AI Systems",
-            "homepage_subheadline": "<p>I lead compensation, HRIS, and payroll for a 6,000-employee academic medical center. I run HR operations as a system of systems — built to generate trust, reduce decision friction, and run quietly at scale.</p>",
+            "homepage_subheadline": "<p>I lead compensation, HRIS, and payroll for a 6,000-employee Level 1 academic medical center — $30M+ in monthly payroll across continuous cycles, 24/7. I run HR operations as a system of systems: built to generate trust, reduce decision friction, and run quietly at scale.</p>",
             "enterprise_section_intro": "<p>Three functions, one operating discipline: make the decisions that matter clearer, and make the operations that run the workforce quieter.</p>",
             "innovation_section_intro": "<p>A separate endeavor, built on the same principles — unify the sources, surface the signals, prioritize the action.</p>",
             "contact_email": "dannyjenkins71@gmail.com",
@@ -137,8 +137,8 @@
         "model": "website.enterpriseoverview",
         "pk": 1,
         "fields": {
-            "scope": "<p>Enterprise HR operations for a 6,000-employee Level 1 trauma and academic medical center. Three operating functions — compensation, HRIS, and payroll — across a multi-system HR technology stack, compensating thousands of clinical and non-clinical staff every week. Director-level ownership across all three.</p>",
-            "impact": "<p>Measured on three outcomes: trust in compensation decisions, reliability of workforce data, and consistency of payroll execution. Each has moved from a reactive posture to a governed discipline — documented, repeatable, and durable through staff and organizational change.</p>",
+            "scope": "<p>Enterprise HR operations for a 6,000-employee Level 1 trauma and academic medical center. Three operating functions — compensation, HRIS, and payroll — across a multi-system HR technology stack, with 50+ payroll runs annually for thousands of clinical and non-clinical staff. Director-level ownership across all three.</p>",
+            "impact": "<p>Measured on three outcomes: trust in compensation decisions, reliability of workforce data, and consistency of payroll execution. Each has moved from a reactive posture to a governed discipline — documented, repeatable, and durable through staff and organizational change.</p><p>In a 24/7 hospital, HR operations is not a back-office function — it is the operating system the workforce runs on, and zero error is the baseline.</p>",
             "system_integration": "<p>Compensation, HRIS, and Payroll are presented as three functions because that is how work is organized. They operate as one system. A job architecture decision surfaces in the HRIS. An HRIS configuration determines what payroll can process. A payroll incident lands on trust in the compensation philosophy. The role is not three parallel jobs — it is one: keeping them aligned so the organization experiences a single, coherent HR operation.</p>"
         }
     },
@@ -149,8 +149,8 @@
         "fields": {
             "slug": "compensation",
             "title": "Compensation",
-            "summary": "Compensation is treated as a system, not a series of transactions. Philosophy, job architecture, and market pricing run as one integrated design problem.",
-            "responsibilities": "<p>Set and maintain compensation philosophy. Own job architecture and salary structures. Govern the market pricing cycle and exception process. Partner with Finance and operations on total rewards, salary planning, and incentive design.</p><p>The compensation system spans the full workforce — exempt and non-exempt roles, advanced practice providers, nursing (full-time and part-time), and specialized areas such as event medicine.</p><p>It supports multiple compensation models and layered differential structures required for 24/7 clinical operations.</p><p>The complexity is not in the number of structures. It is maintaining consistency across them.</p><p>Without that alignment, the system fragments — and trust erodes.</p>",
+            "summary": "Compensation is treated as a system, not a series of transactions. Philosophy, job architecture, and market pricing — owned and governed as one integrated design problem.",
+            "responsibilities": "<p>Set and maintain compensation philosophy. Own job architecture and salary structures. Govern the market pricing cycle and exception process. Partner with Finance and operations on total rewards, salary planning, and incentive design.</p><p>The compensation system spans the full workforce — exempt and non-exempt roles, advanced practice providers, nursing (full-time and part-time), and specialized areas such as event medicine.</p><p>It governs multiple compensation models and layered differential structures required for 24/7 clinical operations.</p><p>The complexity is not in the number of structures. It is maintaining consistency across them.</p><p>Without that alignment, the system fragments — and trust erodes.</p>",
             "systems_led": "<p>Market survey sources across clinical and non-clinical categories, salary administration tooling within the HRIS, and the internal review and approval workflow for new roles, promotions, and off-cycle adjustments.</p>",
             "organizational_role": "<p>The compensation function is the organization's answer to <em>why does this role pay what it pays?</em> The function's job is to make that answer coherent and repeatable — and to keep the philosophy defensible under scrutiny from leadership, staff, and regulators. Every answer it produces has to land in the HRIS the same way.</p>",
             "order": 1
@@ -162,7 +162,7 @@
         "fields": {
             "slug": "hris",
             "title": "HRIS",
-            "summary": "The infrastructure behind workforce operations — and the foundation of every consistent leadership choice about hiring, pay, and organizational design.",
+            "summary": "The infrastructure behind workforce operations — and the foundation of every consistent leadership choice about hiring, pay, and organizational design across HR, Finance, and operations.",
             "responsibilities": "<p>Own the HR technology ecosystem end to end: configuration, vendor relationships, integration strategy, data governance, and the roadmap for how the stack evolves with the business. Accountable for the integrity of the workforce data leadership uses to make decisions, and for its consistency across functions.</p><p>Led the replacement of a legacy UKG Kronos deployment with Infor Workforce Management — RFP, vendor selection, implementation, and ongoing vendor management. In a 24/7 hospital environment with a hard cutover deadline. Live on schedule, no operational disruption.</p><p>That data does not stay in HR. It feeds finance, operations, and downstream systems across the organization.</p>",
             "systems_led": "<p>Core HRIS (ERP-integrated), Applicant Tracking System, Learning Management System, time and attendance, and integrations to Finance and clinical operations platforms.</p>",
             "organizational_role": "<p>HRIS is not a reporting tool. It is the infrastructure behind every workforce decision the organization makes. When leadership asks a question, the answer has to hold across systems, and it has to match between what HR says, what Finance records, and what operations see. That alignment is the function's primary product — and the spine that payroll runs on.</p>",
