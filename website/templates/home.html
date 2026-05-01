@@ -7,6 +7,9 @@
     <div class="container">
         <div class="hero__text">
             <h1 class="hero__headline">{{ site_config.homepage_headline }}</h1>
+            {% if site_config.homepage_positioning_line %}
+            <p class="hero__positioning">{{ site_config.homepage_positioning_line }}</p>
+            {% endif %}
             <div class="hero__divider" aria-hidden="true"></div>
             <div class="lead hero__sub">{{ site_config.homepage_subheadline|safe }}</div>
         </div>

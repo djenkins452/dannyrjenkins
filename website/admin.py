@@ -222,6 +222,7 @@ class SiteConfigAdmin(admin.ModelAdmin):
         ('Homepage', {
             'fields': (
                 'homepage_headline',
+                'homepage_positioning_line',
                 'homepage_subheadline',
                 'homepage_vision',
                 'enterprise_section_intro',

@@ -9,6 +9,17 @@ class SiteConfig(models.Model):
         max_length=200,
         default='Leading HR Transformation at Scale, Pioneering Personal AI Systems',
     )
+    homepage_positioning_line = models.CharField(
+        max_length=300,
+        blank=True,
+        verbose_name='Homepage positioning line',
+        help_text=(
+            'One bridge sentence rendered between the headline and the '
+            'supporting paragraph. Plain text, no formatting. Sized between '
+            'headline and body so the eye reads it as a natural extension '
+            'of the headline.'
+        ),
+    )
     homepage_subheadline = HTMLField(
         blank=True,
         verbose_name='Homepage positioning statement',

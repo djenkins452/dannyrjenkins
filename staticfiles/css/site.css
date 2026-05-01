@@ -191,6 +191,15 @@ p { margin: 0 0 1em; max-width: 66ch; }
     margin: 0;
     max-width: 22ch;
 }
+.hero__positioning {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 2.6vw, 1.75rem);   /* 24–28px — bigger than body, smaller than headline */
+    line-height: 1.3;
+    color: var(--ink-on-dark);
+    font-weight: 500;
+    margin: var(--space-2) 0 var(--space-4);     /* 16 above (tight to headline), 32 below (extra room before divider) */
+    max-width: 36em;
+}
 .hero__divider {
     width: 56px;
     height: 2px;
