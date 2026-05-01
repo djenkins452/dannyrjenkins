@@ -209,6 +209,14 @@ p { margin: 0 0 1em; max-width: 66ch; }
 }
 .pillar p { color: var(--ink-body); margin: 0; }
 
+.domain__closing {
+    margin-top: var(--space-4);
+    color: var(--ink-body);
+    max-width: 38em;
+}
+.domain__closing p { margin: 0 0 var(--space-2); }
+.domain__closing p:last-child { margin-bottom: 0; }
+
 /* Subtle tag on innovation column to reinforce separation */
 .domain--innovation h2::after {
     content: "INNOVATION";

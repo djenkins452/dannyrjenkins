@@ -37,6 +37,9 @@
                     </li>
                     {% endfor %}
                 </ul>
+                {% if site_config.enterprise_section_closing %}
+                <div class="domain__closing">{{ site_config.enterprise_section_closing|safe }}</div>
+                {% endif %}
             </div>
 
             <div class="domain domain--innovation">

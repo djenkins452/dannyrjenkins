@@ -225,6 +225,7 @@ class SiteConfigAdmin(admin.ModelAdmin):
                 'homepage_subheadline',
                 'homepage_vision',
                 'enterprise_section_intro',
+                'enterprise_section_closing',
                 'innovation_section_intro',
             ),
         }),

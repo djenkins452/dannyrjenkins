@@ -30,6 +30,10 @@ class SiteConfig(models.Model):
         blank=True,
         help_text='Intro paragraph above the three enterprise pillars.',
     )
+    enterprise_section_closing = HTMLField(
+        blank=True,
+        help_text='Closing statement below the three enterprise pillars on the homepage.',
+    )
     innovation_section_intro = HTMLField(
         blank=True,
         help_text='Intro paragraph above the three innovation highlights.',
