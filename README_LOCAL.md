@@ -36,8 +36,10 @@ python manage.py collectstatic --noinput
 
 ```bash
 source venv/bin/activate
-python manage.py runserver
+DJANGO_DEBUG=true python manage.py runserver
 ```
+
+`DJANGO_DEBUG=true` enables verbose error pages and the dev static handler. Without it, `DEBUG` defaults to **False** (production-safe). Optionally export it once per shell: `export DJANGO_DEBUG=true`.
 
 - Home:  http://127.0.0.1:8000/  or  http://localhost:8000/
 - Admin: http://127.0.0.1:8000/admin/  (login: `admin` / `admin`)
@@ -65,7 +67,7 @@ python manage.py runserver
 ## Notes / things to watch
 
 - `SECRET_KEY` is committed in `resume/settings.py` and marked insecure — fine for local, rotate for production.
-- `DEBUG = True` is hardcoded — fine for local, but prod should override via env var.
+- `DEBUG` is now env-driven (`DJANGO_DEBUG`, default `False`). Production runs `DEBUG=False`, which is required for `ManifestStaticFilesStorage` to emit hashed (cache-busted) static URLs.
 - `procfile` references `website.wsgi` but `WSGI_APPLICATION = 'resume.wsgi.application'`. Production deploy may break — doesn't affect local dev.
 - `runtime.txt` pins Python 3.14.0 (for Heroku/Railway). Locally we use 3.12 since 3.14 isn't installed; Django 5.0.6 supports both.
 - No `website` models have migrations beyond Django defaults — only built-in migrations run.

@@ -16,6 +16,9 @@
     --rule:          #DED9CB;
     --accent:        #1A2332;   /* ink navy */
     --accent-soft:   #374151;
+    --navy-deep:     #0F1B2D;   /* hero / dark band background */
+    --gold:          #C9A352;   /* executive accent — used sparingly */
+    --ink-on-dark:   #F4EEDF;   /* warm off-white for text on navy */
 
     --font-serif:    "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif;
     --font-sans:     "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -167,20 +170,50 @@ p { margin: 0 0 1em; max-width: 66ch; }
     font-size: var(--step-s); color: var(--ink); cursor: pointer;
 }
 
-/* ---------- Homepage hero ---------- */
+/* ---------- Homepage hero ----------
+   Dark navy band with the executive headline + supporting paragraph.
+   Single thin gold accent line between them — the only decorative
+   element on the page. */
 .hero {
-    padding: var(--space-8) 0 var(--space-6);
+    background: var(--navy-deep);
+    color: var(--ink-on-dark);
+    padding: var(--space-8) 0 var(--space-7);
 }
 .hero__headline {
-    font-size: clamp(2.25rem, 4.4vw, 4.25rem);
+    font-size: clamp(2.25rem, 4.4vw, 4rem);
     font-family: var(--font-serif);
-    color: var(--ink);
-    line-height: 1.05;
+    color: var(--ink-on-dark);
+    line-height: 1.08;
     letter-spacing: -0.02em;
-    margin: 0 0 var(--space-4);
-    max-width: 20ch;
+    margin: 0;
+    max-width: 22ch;
 }
-.hero__sub { max-width: 44ch; }
+.hero__divider {
+    width: 56px;
+    height: 2px;
+    background: var(--gold);
+    margin: var(--space-3) 0 var(--space-3);
+}
+.hero__sub {
+    max-width: 44ch;
+    color: rgba(244, 238, 223, 0.86);
+}
+.hero__sub p { color: inherit; }
+
+/* ---------- Dark section modifier ----------
+   Used for the Vision section on the homepage so the brand band
+   continues from the hero into the leadership-philosophy block. */
+.section--dark {
+    background: var(--navy-deep);
+    color: var(--ink-on-dark);
+    border-top: 0;
+}
+.section--dark .eyebrow { color: var(--gold); }
+.section--dark h2,
+.section--dark h3 { color: var(--ink-on-dark); }
+.section--dark .body,
+.section--dark .body p { color: rgba(244, 238, 223, 0.86); }
+.section--dark a { color: var(--gold); }
 
 /* ---------- Domain split (homepage) ---------- */
 .domains {
@@ -516,6 +549,18 @@ p { margin: 0 0 1em; max-width: 66ch; }
     .site-footer,
     .no-print { display: none !important; }
     body { background: #fff; color: #000; }
+    .hero,
+    .section--dark {
+        background: #fff !important;
+        color: #000 !important;
+    }
+    .hero__divider { display: none !important; }
+    .hero__headline,
+    .section--dark h2,
+    .section--dark h3,
+    .section--dark .body,
+    .section--dark .body p { color: #000 !important; }
+    .section--dark .eyebrow { color: #555 !important; }
     .container,
     .container--narrow {
         max-width: 100%;
@@ -650,6 +695,7 @@ p { margin: 0 0 1em; max-width: 66ch; }
     .container { padding: 0 var(--space-3); }
     .section { padding: var(--space-6) 0; }
     .section--hero { padding: var(--space-6) 0 var(--space-5); }
+
 
     .nav-toggle { display: inline-block; }
     .site-nav {

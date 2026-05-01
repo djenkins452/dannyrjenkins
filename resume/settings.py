@@ -14,7 +14,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-!yonxx)qol3=3ef0l4lkpmsz(edd9s141ig)+-*=4)bj%9#pl_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG=True forces ManifestStaticFilesStorage to return UNHASHED URLs
+# (Django's _url() short-circuits the hash lookup when DEBUG is on),
+# which defeats cache-busting on every CSS/JS change. Default to False
+# so production gets hashed URLs automatically. Set DJANGO_DEBUG=true
+# in your local shell to enable debug mode for local development.
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False').lower() in ('1', 'true', 'yes')
 
 ALLOWED_HOSTS = [
     'dannyrjenkins.com',

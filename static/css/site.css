@@ -171,22 +171,14 @@ p { margin: 0 0 1em; max-width: 66ch; }
 }
 
 /* ---------- Homepage hero ----------
-   Dark navy band with the executive headline on the left and a
-   circular headshot on the right. Single thin gold accent between the
-   headline and the supporting paragraph — the only decorative element
-   on the page. */
+   Dark navy band with the executive headline + supporting paragraph.
+   Single thin gold accent line between them — the only decorative
+   element on the page. */
 .hero {
     background: var(--navy-deep);
     color: var(--ink-on-dark);
     padding: var(--space-8) 0 var(--space-7);
 }
-.hero__inner {
-    display: grid;
-    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-    gap: var(--space-6);
-    align-items: center;
-}
-.hero__text { min-width: 0; }
 .hero__headline {
     font-size: clamp(2.25rem, 4.4vw, 4rem);
     font-family: var(--font-serif);
@@ -207,17 +199,6 @@ p { margin: 0 0 1em; max-width: 66ch; }
     color: rgba(244, 238, 223, 0.86);
 }
 .hero__sub p { color: inherit; }
-.hero__photo { display: flex; justify-content: center; }
-.hero__photo img {
-    width: 100%;
-    max-width: 320px;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    object-position: center 18%;
-    border-radius: 50%;
-    border: 1px solid rgba(201, 163, 82, 0.45);
-    background: var(--navy-deep);
-}
 
 /* ---------- Dark section modifier ----------
    Used for the Vision section on the homepage so the brand band
@@ -573,9 +554,7 @@ p { margin: 0 0 1em; max-width: 66ch; }
         background: #fff !important;
         color: #000 !important;
     }
-    .hero__photo,
     .hero__divider { display: none !important; }
-    .hero__inner { grid-template-columns: 1fr !important; }
     .hero__headline,
     .section--dark h2,
     .section--dark h3,
@@ -717,13 +696,6 @@ p { margin: 0 0 1em; max-width: 66ch; }
     .section { padding: var(--space-6) 0; }
     .section--hero { padding: var(--space-6) 0 var(--space-5); }
 
-    /* Stack the homepage hero on mobile: photo above text. */
-    .hero__inner {
-        grid-template-columns: 1fr;
-        gap: var(--space-4);
-    }
-    .hero__photo { order: -1; }
-    .hero__photo img { max-width: 200px; }
 
     .nav-toggle { display: inline-block; }
     .site-nav {
