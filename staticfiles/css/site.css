@@ -40,8 +40,8 @@
     --space-7: 6rem;
     --space-8: 8rem;
 
-    --container: 1160px;
-    --content:   680px;
+    --container: 1240px;
+    --content:   740px;
 }
 
 /* ---------- Reset ---------- */
@@ -113,10 +113,10 @@ p { margin: 0 0 1em; max-width: 66ch; }
     margin: 0 auto;
     padding: 0 var(--space-4);
 }
-.container--narrow { max-width: 780px; }
+.container--narrow { max-width: 880px; }
 
-.section { padding: var(--space-6) 0; }
-.section--tight { padding: var(--space-5) 0; }
+.section { padding: var(--space-5) 0; }              /* 48 — was 64 */
+.section--tight { padding: 2.5rem 0; }                /* 40 — was 48 */
 .section--hero  { padding: var(--space-8) 0 var(--space-6); }
 
 .section + .section.bordered { border-top: 1px solid var(--rule); }
@@ -177,10 +177,10 @@ p { margin: 0 0 1em; max-width: 66ch; }
 .hero {
     background: linear-gradient(135deg, #0E1A2C 0%, #1A2A44 100%);
     color: var(--ink-on-dark);
-    padding: var(--space-6) 0;        /* compact and balanced — 64/64 */
+    padding: var(--space-6) 0 var(--space-5);   /* 64 top, 48 bottom — tighter exit into Vision */
 }
 .hero__text {
-    max-width: 760px;
+    max-width: 880px;
 }
 .hero__headline {
     font-size: clamp(2.25rem, 4.4vw, 4rem);
