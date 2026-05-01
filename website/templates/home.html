@@ -1,17 +1,24 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Danny R. Jenkins — HR Leadership & AI Systems{% endblock %}
 
 {% block content %}
 <section class="hero">
-    <div class="container">
-        <h1 class="hero__headline">{{ site_config.homepage_headline }}</h1>
-        <div class="lead hero__sub">{{ site_config.homepage_subheadline|safe }}</div>
+    <div class="container hero__inner">
+        <div class="hero__text">
+            <h1 class="hero__headline">{{ site_config.homepage_headline }}</h1>
+            <div class="hero__divider" aria-hidden="true"></div>
+            <div class="lead hero__sub">{{ site_config.homepage_subheadline|safe }}</div>
+        </div>
+        <div class="hero__photo">
+            <img src="{% static 'assets/img/profile.jpeg' %}" alt="Danny R. Jenkins" loading="eager" />
+        </div>
     </div>
 </section>
 
 {% if site_config.homepage_vision %}
-<section class="section section--tight bordered">
+<section class="section section--tight section--dark">
     <div class="container container--narrow">
         <article class="narrative-block">
             <p class="eyebrow">Vision</p>
