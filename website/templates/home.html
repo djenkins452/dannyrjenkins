@@ -5,9 +5,11 @@
 {% block content %}
 <section class="hero">
     <div class="container">
-        <h1 class="hero__headline">{{ site_config.homepage_headline }}</h1>
-        <div class="hero__divider" aria-hidden="true"></div>
-        <div class="lead hero__sub">{{ site_config.homepage_subheadline|safe }}</div>
+        <div class="hero__text">
+            <h1 class="hero__headline">{{ site_config.homepage_headline }}</h1>
+            <div class="hero__divider" aria-hidden="true"></div>
+            <div class="lead hero__sub">{{ site_config.homepage_subheadline|safe }}</div>
+        </div>
     </div>
 </section>
 
