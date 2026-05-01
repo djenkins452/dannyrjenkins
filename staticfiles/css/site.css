@@ -130,7 +130,6 @@ p { margin: 0 0 1em; max-width: 66ch; }
     background: rgba(247, 243, 234, 0.92);        /* matches --bg (warmed) */
     backdrop-filter: saturate(140%) blur(10px);
     -webkit-backdrop-filter: saturate(140%) blur(10px);
-    border-bottom: 1px solid var(--rule);
 }
 .site-header__inner {
     display: flex; align-items: center; justify-content: space-between;
@@ -178,7 +177,7 @@ p { margin: 0 0 1em; max-width: 66ch; }
 .hero {
     background: linear-gradient(135deg, #0E1A2C 0%, #1A2A44 100%);
     color: var(--ink-on-dark);
-    padding: calc(var(--space-8) + var(--space-2)) 0 var(--space-7);
+    padding: var(--space-6) 0;        /* compact and balanced — 64/64 */
 }
 .hero__text {
     max-width: 760px;
