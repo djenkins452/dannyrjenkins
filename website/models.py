@@ -18,6 +18,14 @@ class SiteConfig(models.Model):
             '2–3 sentences max.'
         ),
     )
+    homepage_vision = HTMLField(
+        blank=True,
+        verbose_name='Homepage vision section',
+        help_text=(
+            'Leadership philosophy block rendered between the hero and the '
+            'enterprise/innovation split. Use multiple paragraphs.'
+        ),
+    )
     enterprise_section_intro = HTMLField(
         blank=True,
         help_text='Intro paragraph above the three enterprise pillars.',

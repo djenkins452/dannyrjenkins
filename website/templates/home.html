@@ -10,6 +10,18 @@
     </div>
 </section>
 
+{% if site_config.homepage_vision %}
+<section class="section section--tight bordered">
+    <div class="container container--narrow">
+        <article class="narrative-block">
+            <p class="eyebrow">Vision</p>
+            <h2>How HR operations should work</h2>
+            <div class="body">{{ site_config.homepage_vision|safe }}</div>
+        </article>
+    </div>
+</section>
+{% endif %}
+
 <section class="section bordered">
     <div class="container">
         <div class="domains">
