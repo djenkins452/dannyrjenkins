@@ -243,7 +243,14 @@ p { margin: 0 0 1em; max-width: 66ch; }
 .section--dark h2,
 .section--dark h3 { color: var(--ink-on-dark); }
 .section--dark .body,
-.section--dark .body p { color: var(--ink-on-dark); }
+.section--dark .body p,
+.section--dark .narrative-block .body,
+.section--dark .narrative-block .body p {
+    color: var(--ink-on-dark);     /* full-opacity warm off-white — beats .narrative-block .body p */
+}
+.section--dark .narrative-block .body p {
+    line-height: 1.7;              /* slight readability bump on dark surface */
+}
 .section--dark a { color: var(--gold); }
 
 /* ---------- Domain split (homepage) ---------- */
