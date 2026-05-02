@@ -1,10 +1,14 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Danny R. Jenkins — HR Leadership & AI Systems{% endblock %}
 
 {% block content %}
 <section class="hero">
-    <div class="container">
+    <div class="container hero__inner">
+        <div class="hero__photo">
+            <img src="{% static 'assets/img/headshot.png' %}" alt="Danny R. Jenkins" loading="eager" />
+        </div>
         <div class="hero__text">
             <h1 class="hero__headline">{{ site_config.homepage_headline }}</h1>
             {% if site_config.homepage_positioning_line %}
