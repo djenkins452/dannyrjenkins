@@ -71,7 +71,7 @@ h1, h2, h3, .display {
     font-weight: 500;
     letter-spacing: -0.01em;
     line-height: 1.15;
-    margin: 0 0 var(--space-3);
+    margin: 0 0 var(--space-2);              /* 16 — tighter heading-to-content rhythm; .page-title and component-specific headings still override */
 }
 h1, .display { font-size: var(--step-3xl); line-height: 1.05; letter-spacing: -0.02em; }
 h2            { font-size: var(--step-2xl); }
@@ -92,7 +92,7 @@ h4 {
     text-transform: uppercase;
     color: var(--ink-muted);
     font-weight: 600;
-    margin: 0 0 var(--space-3);
+    margin: 0 0 var(--space-2);              /* 16 — pairs eyebrow tighter to heading below */
 }
 
 .lead {
@@ -335,7 +335,11 @@ p { margin: 0 0 1em; max-width: 66ch; }
 }
 .narrative-block:last-child { border-bottom: 1px solid var(--rule); }
 .narrative-block .body { max-width: var(--content); }
-.narrative-block .body p { color: inherit; }                   /* inherits from section context — light or dark */
+.narrative-block .body p {
+    color: inherit;                                 /* inherits from section context — light or dark */
+    margin-bottom: 0.85em;                          /* slight tighten on paragraph rhythm inside body content */
+}
+.narrative-block .body p:last-child { margin-bottom: 0; }
 .narrative-block .body a { text-decoration-thickness: 1px; }
 
 /* ---------- Chip (category tag) ---------- */
@@ -608,7 +612,8 @@ p { margin: 0 0 1em; max-width: 66ch; }
     .no-print { display: none !important; }
     body { background: #fff; color: #000; }
     .hero,
-    .section--dark {
+    .section--dark,
+    .section--hero {
         background: #fff !important;
         color: #000 !important;
     }
@@ -619,8 +624,20 @@ p { margin: 0 0 1em; max-width: 66ch; }
     .section--dark h2,
     .section--dark h3,
     .section--dark .body,
-    .section--dark .body p { color: #000 !important; }
-    .section--dark .eyebrow { color: #555 !important; }
+    .section--dark .body p,
+    .section--hero h1,
+    .section--hero h2,
+    .section--hero h3,
+    .section--hero .lead,
+    .section--hero .lead p,
+    .section--hero .resume-positioning,
+    .section--hero .perspective-deck,
+    .section--hero .chip { color: #000 !important; }
+    .section--dark .eyebrow,
+    .section--hero .eyebrow,
+    .section--hero .muted { color: #555 !important; }
+    .section--hero a { color: #000 !important; }
+    .section--hero .chip { border-color: #999 !important; }
     .container,
     .container--narrow {
         max-width: 100%;
