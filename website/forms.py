@@ -5,11 +5,15 @@ class ContactForm(forms.Form):
     """Contact form for /connect/. Not backed by a model — submissions are
     emailed only, never stored."""
 
-    CONVERSATION = 'conversation'
+    EXECUTIVE_CONVERSATION = 'executive_conversation'
+    ROLE_DISCUSSION = 'role_discussion'
+    ADVISORY_SPEAKING = 'advisory_speaking'
     RESUME = 'resume'
     INQUIRY_CHOICES = [
-        (CONVERSATION, 'Conversation'),
-        (RESUME, 'Resume Request'),
+        (EXECUTIVE_CONVERSATION, 'Executive conversation'),
+        (ROLE_DISCUSSION, 'Role discussion'),
+        (ADVISORY_SPEAKING, 'Advisory / speaking'),
+        (RESUME, 'Resume request'),
     ]
 
     name = forms.CharField(
