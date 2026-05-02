@@ -42,7 +42,7 @@
         <div>© {% now "Y" %} Danny R. Jenkins</div>
         <div class="site-footer__links">
             {% if site_config.contact_email %}<a href="mailto:{{ site_config.contact_email }}">{{ site_config.contact_email }}</a>{% endif %}
-            {% if site_config.linkedin_url %}<a href="{{ site_config.linkedin_url }}" rel="noopener">LinkedIn</a>{% endif %}
+            {% if site_config.linkedin_url %}<a href="{{ site_config.linkedin_url }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>{% endif %}
         </div>
     </div>
 </footer>
