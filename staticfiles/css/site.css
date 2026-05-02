@@ -230,28 +230,24 @@ p { margin: 0 0 1em; max-width: 66ch; }
 .hero__sub p { color: inherit; }
 
 /* ---------- Dark section modifier ----------
-   Used for the Vision section on the homepage so the brand band
-   continues from the hero into the leadership-philosophy block. Body
-   text uses the same full-opacity warm off-white as the hero so
-   readability is consistent across the dark band. */
+   Sections set the color context; components inherit. Body copy gets
+   --ink-on-dark via cascade from the .section--dark color property —
+   no per-element color rules needed for paragraphs.
+
+   The remaining color overrides (headings, eyebrow, links) exist
+   because those components define their own colors elsewhere
+   (h2/h3/h4 → --ink, .eyebrow → --ink-muted, a → --accent), so each
+   needs an explicit dark-context value. */
 .section--dark {
     background: linear-gradient(135deg, #0E1A2C 0%, #1A2A44 100%);
     color: var(--ink-on-dark);
     border-top: 0;
 }
-.section--dark .eyebrow { color: var(--gold); }
 .section--dark h2,
 .section--dark h3 { color: var(--ink-on-dark); }
-.section--dark .body,
-.section--dark .body p,
-.section--dark .narrative-block .body,
-.section--dark .narrative-block .body p {
-    color: var(--ink-on-dark);     /* full-opacity warm off-white — beats .narrative-block .body p */
-}
-.section--dark .narrative-block .body p {
-    line-height: 1.7;              /* slight readability bump on dark surface */
-}
+.section--dark .eyebrow { color: var(--gold); }
 .section--dark a { color: var(--gold); }
+.section--dark .narrative-block .body p { line-height: 1.7; }   /* readability lift on dark surface */
 
 /* ---------- Domain split (homepage) ---------- */
 .domains {
@@ -315,7 +311,7 @@ p { margin: 0 0 1em; max-width: 66ch; }
 }
 .narrative-block:last-child { border-bottom: 1px solid var(--rule); }
 .narrative-block .body { max-width: var(--content); }
-.narrative-block .body p { color: var(--ink-body); }
+.narrative-block .body p { color: inherit; }                   /* inherits from section context — light or dark */
 .narrative-block .body a { text-decoration-thickness: 1px; }
 
 /* ---------- Chip (category tag) ---------- */
