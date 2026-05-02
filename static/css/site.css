@@ -115,9 +115,33 @@ p { margin: 0 0 1em; max-width: 66ch; }
 }
 .container--narrow { max-width: 880px; }
 
-.section { padding: var(--space-5) 0; }              /* 48 — was 64 */
-.section--tight { padding: 2.5rem 0; }                /* 40 — was 48 */
-.section--hero  { padding: var(--space-8) 0 var(--space-6); }
+.section { padding: var(--space-5) 0; }                       /* 48 */
+.section--tight { padding: var(--space-4) 0; }                /* 32 — interior rhythm */
+.section--hero {
+    /* Interior-page hero: same dark navy band the homepage uses, so
+       every page begins with the same brand surface and transitions
+       into light content beneath. */
+    background: linear-gradient(135deg, #0E1A2C 0%, #1A2A44 100%);
+    color: var(--ink-on-dark);
+    padding: var(--space-6) 0 var(--space-5);                 /* 64 / 48 — matches homepage .hero */
+    border-top: 0;
+}
+.section--hero h1,
+.section--hero h2,
+.section--hero h3 { color: var(--ink-on-dark); }
+.section--hero .eyebrow,
+.section--hero .eyebrow a { color: var(--gold); text-decoration: none; }
+.section--hero .eyebrow a:hover { text-decoration: underline; }
+.section--hero a { color: var(--gold); }
+.section--hero .lead { color: var(--ink-on-dark); }
+.section--hero .lead p { color: inherit; }
+.section--hero .muted { color: rgba(244, 238, 223, 0.72); }
+.section--hero .resume-positioning,
+.section--hero .perspective-deck { color: rgba(244, 238, 223, 0.86); }
+.section--hero .chip {
+    color: var(--ink-on-dark);
+    border-color: rgba(244, 238, 223, 0.35);
+}
 
 .section + .section.bordered { border-top: 1px solid var(--rule); }
 
@@ -584,7 +608,8 @@ p { margin: 0 0 1em; max-width: 66ch; }
     .no-print { display: none !important; }
     body { background: #fff; color: #000; }
     .hero,
-    .section--dark {
+    .section--dark,
+    .section--hero {
         background: #fff !important;
         color: #000 !important;
     }
@@ -595,8 +620,20 @@ p { margin: 0 0 1em; max-width: 66ch; }
     .section--dark h2,
     .section--dark h3,
     .section--dark .body,
-    .section--dark .body p { color: #000 !important; }
-    .section--dark .eyebrow { color: #555 !important; }
+    .section--dark .body p,
+    .section--hero h1,
+    .section--hero h2,
+    .section--hero h3,
+    .section--hero .lead,
+    .section--hero .lead p,
+    .section--hero .resume-positioning,
+    .section--hero .perspective-deck,
+    .section--hero .chip { color: #000 !important; }
+    .section--dark .eyebrow,
+    .section--hero .eyebrow,
+    .section--hero .muted { color: #555 !important; }
+    .section--hero a { color: #000 !important; }
+    .section--hero .chip { border-color: #999 !important; }
     .container,
     .container--narrow {
         max-width: 100%;
@@ -729,8 +766,9 @@ p { margin: 0 0 1em; max-width: 66ch; }
 @media (max-width: 720px) {
     :root { --step-3xl: 2.5rem; --step-2xl: 1.875rem; --step-xl: 1.375rem; }
     .container { padding: 0 var(--space-3); }
-    .section { padding: var(--space-6) 0; }
-    .section--hero { padding: var(--space-6) 0 var(--space-5); }
+    .section { padding: var(--space-5) 0; }       /* matches desktop now */
+    /* .section--hero already at var(--space-6) 0 var(--space-5) on desktop —
+       no separate mobile override needed */
 
     /* Hero stacks: photo above text, no large gap. */
     .hero__inner {
