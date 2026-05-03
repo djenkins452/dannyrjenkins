@@ -13,10 +13,10 @@ Inline JS uses the CSP nonce; no external scripts.
     <button type="button"
             class="adm-help__toggle"
             id="adm-help-toggle"
-            aria-label="Open admin help"
+            aria-label="Open editor's guide"
             aria-expanded="false"
             aria-controls="adm-help-panel"
-            title="Admin help (staff only)">?</button>
+            title="Editor's guide (staff only)">?</button>
 
     <aside class="adm-help__panel"
            id="adm-help-panel"
@@ -33,127 +33,276 @@ Inline JS uses the CSP nonce; no external scripts.
             <button type="button"
                     class="adm-help__close"
                     id="adm-help-close"
-                    aria-label="Close admin help">&times;</button>
+                    aria-label="Close editor's guide">&times;</button>
         </header>
 
         <p class="adm-help__intro">
-            Quick reference for what each page renders and where to edit it.
-            Every link below opens the relevant Django admin screen in a new tab.
+            Plain-language pointers for every page on your site. Each link below
+            opens the right Site Configuration screen in a new tab.
         </p>
 
         <nav class="adm-help__toc" aria-label="Help sections">
-            <a href="#help-home">Home</a>
-            <a href="#help-profile">Profile</a>
-            <a href="#help-enterprise">Enterprise Leadership</a>
-            <a href="#help-case-studies">Case Studies</a>
-            <a href="#help-innovation">Innovation</a>
-            <a href="#help-perspectives">Perspectives</a>
-            <a href="#help-connect">Connect</a>
-            <a href="#help-resume">Resume</a>
-            <a href="#help-global">Footer & Navigation</a>
+            <a href="#help-home" data-page="home">Home</a>
+            <a href="#help-profile" data-page="profile">Profile</a>
+            <a href="#help-enterprise" data-page="enterprise">Enterprise Leadership</a>
+            <a href="#help-case-studies" data-page="case_studies case_study_detail">Case Studies</a>
+            <a href="#help-innovation" data-page="innovation">Innovation</a>
+            <a href="#help-perspectives" data-page="perspectives perspective_detail">Perspectives</a>
+            <a href="#help-connect" data-page="connect">Connect</a>
+            <a href="#help-resume" data-page="resume_version">Resume</a>
+            <a href="#help-global">Footer & navigation</a>
         </nav>
 
         <section class="adm-help__section" id="help-home" data-page="home">
             <h3>Home</h3>
-            <p class="adm-help__path">Path: <code>/</code></p>
+            <p class="adm-help__where">The page visitors land on first — your name, the headshot, and the two columns below it.</p>
             <ul>
-                <li><strong>Hero headline, positioning line, sub-headline</strong> — <a href="/admin/website/siteconfig/1/change/" target="_blank" rel="noopener">Site Config → Homepage hero</a>.</li>
-                <li><strong>Vision section</strong> (heading + body) — Site Config → "Homepage Vision section". Hide the section by clearing the body.</li>
-                <li><strong>Enterprise column</strong> (heading, intro, closing) — Site Config → "Homepage Enterprise Leadership column".</li>
-                <li><strong>Innovation column</strong> (heading, intro) — Site Config → "Homepage Innovation column".</li>
-                <li><strong>Pillar bullets under each column</strong> — <a href="/admin/website/homepagepillar/" target="_blank" rel="noopener">Homepage Pillars</a>. Set Category to Enterprise or Innovation; order with Position.</li>
-                <li><strong>"Read the executive profile →" link label</strong> — Site Config → "Read the executive profile" link label.</li>
+                <li>
+                    <strong>Headline</strong> — the large serif text at the top of the homepage, beside your photo.
+                    <span class="adm-help__path">Site Configuration → Homepage hero → "Homepage headline"</span>
+                </li>
+                <li>
+                    <strong>Positioning line</strong> — the single sentence below the headline, slightly smaller.
+                    <span class="adm-help__path">Site Configuration → Homepage hero → "Homepage positioning line"</span>
+                </li>
+                <li>
+                    <strong>Supporting paragraph</strong> — the two-to-three-sentence description under the positioning line.
+                    <span class="adm-help__path">Site Configuration → Homepage hero → "Homepage positioning statement"</span>
+                </li>
+                <li>
+                    <strong>"Vision" section</strong> (the dark band below the hero) — heading and body.
+                    <span class="adm-help__path">Site Configuration → Homepage Vision section. Clear the body to hide the section.</span>
+                </li>
+                <li>
+                    <strong>Left column heading</strong> ("Running HR operations that people can depend on") and the intro paragraph above the bullets.
+                    <span class="adm-help__path">Site Configuration → Homepage Enterprise Leadership column</span>
+                </li>
+                <li>
+                    <strong>Right column heading</strong> ("Designing personal AI systems") and intro paragraph.
+                    <span class="adm-help__path">Site Configuration → Homepage Innovation column</span>
+                </li>
+                <li>
+                    <strong>Bullets under each column</strong> (the three short items in each).
+                    <span class="adm-help__path">Homepage Pillars. Set Category to Enterprise or Innovation; reorder with Position.</span>
+                </li>
+                <li>
+                    <strong>Closing block</strong> under the Enterprise column, and the "Read the executive profile →" link at the very bottom.
+                    <span class="adm-help__path">Site Configuration → Homepage Enterprise Leadership column / "Read the executive profile" link label</span>
+                </li>
             </ul>
+            <p class="adm-help__shortcut">
+                <a href="/admin/website/siteconfig/1/change/" target="_blank" rel="noopener">Open Site Configuration →</a>
+                &nbsp;·&nbsp;
+                <a href="/admin/website/homepagepillar/" target="_blank" rel="noopener">Open Homepage Pillars →</a>
+            </p>
         </section>
 
         <section class="adm-help__section" id="help-profile" data-page="profile">
             <h3>Profile</h3>
-            <p class="adm-help__path">Path: <code>/profile/</code></p>
+            <p class="adm-help__where">The "Profile" page in the top nav — your executive narrative.</p>
             <ul>
-                <li><strong>Page title, intro</strong> — <a href="/admin/website/page/" target="_blank" rel="noopener">Pages</a> → choose <em>profile</em>.</li>
-                <li><strong>Body sections</strong> — Page Blocks inline on the same screen. Each block has its own heading + body. Reorder with Position.</li>
+                <li>
+                    <strong>Page title and intro paragraph</strong> at the top.
+                    <span class="adm-help__path">Pages → choose "profile"</span>
+                </li>
+                <li>
+                    <strong>Each body section below</strong> (heading + paragraphs) is a "Page Block" inline on the same screen. Reorder with Position.
+                </li>
             </ul>
+            <p class="adm-help__shortcut">
+                <a href="/admin/website/page/" target="_blank" rel="noopener">Open Pages →</a>
+            </p>
         </section>
 
         <section class="adm-help__section" id="help-enterprise" data-page="enterprise">
             <h3>Enterprise Leadership</h3>
-            <p class="adm-help__path">Path: <code>/enterprise-leadership/</code></p>
+            <p class="adm-help__where">"Enterprise Leadership" page in the top nav. Hero on top, Scope and Impact below it, three function blocks underneath.</p>
             <ul>
-                <li><strong>Hero heading + lead paragraph, Scope, Impact, "What I lead" heading, System Integration heading + body</strong> — <a href="/admin/website/enterpriseoverview/1/change/" target="_blank" rel="noopener">Enterprise Overview</a>.</li>
-                <li><strong>The three function blocks</strong> (Compensation, HRIS, Payroll) — <a href="/admin/website/enterprisefunction/" target="_blank" rel="noopener">Enterprise Functions</a>. Each function has Title, Summary, Responsibilities, Systems Led, Role in the Organization. Reorder with Position.</li>
-                <li><strong>Eyebrow labels</strong> ("Scope", "Impact", "Responsibilities", etc.) are intentionally hardcoded — they label the structure, not the copy.</li>
+                <li>
+                    <strong>Hero heading and lead paragraph</strong> at the top of the page.
+                    <span class="adm-help__path">Enterprise Overview → Hero heading / Hero lead paragraph</span>
+                </li>
+                <li>
+                    <strong>"Scope" and "Impact" blocks</strong> directly below the hero.
+                    <span class="adm-help__path">Enterprise Overview → Scope / Impact</span>
+                </li>
+                <li>
+                    <strong>"What I lead" heading</strong> above the three function blocks.
+                    <span class="adm-help__path">Enterprise Overview → Function section heading</span>
+                </li>
+                <li>
+                    <strong>The three function blocks</strong> (Compensation, HRIS, Payroll) — title, summary, Responsibilities, Systems Led, Role in the Organization.
+                    <span class="adm-help__path">Enterprise Functions. Reorder with Position.</span>
+                </li>
+                <li>
+                    <strong>"How the system works together"</strong> closing block at the bottom.
+                    <span class="adm-help__path">Enterprise Overview → System integration heading / body</span>
+                </li>
             </ul>
+            <p class="adm-help__note">
+                Small uppercase labels like "Scope", "Impact", "Responsibilities", "Systems Led" are intentionally fixed — they label the structure of the page, not the content inside it.
+            </p>
+            <p class="adm-help__shortcut">
+                <a href="/admin/website/enterpriseoverview/1/change/" target="_blank" rel="noopener">Open Enterprise Overview →</a>
+                &nbsp;·&nbsp;
+                <a href="/admin/website/enterprisefunction/" target="_blank" rel="noopener">Open Enterprise Functions →</a>
+            </p>
         </section>
 
         <section class="adm-help__section" id="help-case-studies" data-page="case_studies case_study_detail">
             <h3>Case Studies</h3>
-            <p class="adm-help__path">Path: <code>/case-studies/</code> and <code>/case-studies/&lt;slug&gt;/</code></p>
+            <p class="adm-help__where">"Case Studies" in the top nav. The index page lists every published case study; clicking one opens its detail page.</p>
             <ul>
-                <li><strong>Add or edit a case study</strong> — <a href="/admin/website/casestudy/" target="_blank" rel="noopener">Case Studies</a>. Each one has four structured fields: Problem, Role, Approach, Outcome. Keep them as separate fields — never collapse into one freeform body.</li>
-                <li><strong>Toggle visibility</strong> with the <em>Published</em> checkbox.</li>
-                <li><strong>Order on the index page</strong> — Position field.</li>
+                <li>
+                    <strong>Add or edit a case study</strong> — each one has four labeled sections: Problem, Role, Approach, Outcome. Keep them as separate fields.
+                    <span class="adm-help__path">Case Studies</span>
+                </li>
+                <li>
+                    <strong>Show or hide</strong> a case study with the "Published" checkbox.
+                </li>
+                <li>
+                    <strong>Order on the index page</strong> — Position field. Lower numbers appear first.
+                </li>
             </ul>
+            <p class="adm-help__shortcut">
+                <a href="/admin/website/casestudy/" target="_blank" rel="noopener">Open Case Studies →</a>
+            </p>
         </section>
 
         <section class="adm-help__section" id="help-innovation" data-page="innovation">
             <h3>Innovation</h3>
-            <p class="adm-help__path">Path: <code>/innovation/</code></p>
+            <p class="adm-help__where">"Innovation" in the top nav. Hero, Beacon Innovation block, Whole Life Journey block, the Data → Signals → Decisions diagram, AI Chief of Staff, and a closing link.</p>
             <ul>
-                <li><strong>Hero heading, intro, Beacon positioning, WLJ overview, architecture caption, AI Chief of Staff, "What this demonstrates", case-study link label</strong> — <a href="/admin/website/innovationoverview/1/change/" target="_blank" rel="noopener">Innovation Overview</a>.</li>
-                <li>The Data → Signals → Decisions diagram is rendered in SVG and is intentionally code-controlled. Change the caption underneath it via the Architecture caption field.</li>
+                <li>
+                    <strong>Hero heading and intro</strong> at the top of the page.
+                    <span class="adm-help__path">Innovation Overview → Hero heading / Intro</span>
+                </li>
+                <li>
+                    <strong>Beacon Innovation block</strong> (positioning paragraph for Beacon Innovation, LLC).
+                    <span class="adm-help__path">Innovation Overview → Beacon positioning</span>
+                </li>
+                <li>
+                    <strong>Whole Life Journey block</strong> (one-line positioning + overview paragraphs).
+                    <span class="adm-help__path">Innovation Overview → WLJ positioning / WLJ overview</span>
+                </li>
+                <li>
+                    <strong>Caption under the Data → Signals → Decisions diagram</strong> and the "In Practice" example beneath it.
+                    <span class="adm-help__path">Innovation Overview → Architecture caption / Practical example</span>
+                </li>
+                <li>
+                    <strong>AI Chief of Staff block</strong> and the "What this demonstrates" closing block.
+                    <span class="adm-help__path">Innovation Overview → Chief of staff / What this demonstrates</span>
+                </li>
+                <li>
+                    <strong>Link at the bottom</strong> ("See how this operates in practice → WLJ Case Study").
+                    <span class="adm-help__path">Innovation Overview → WLJ case study link label</span>
+                </li>
             </ul>
+            <p class="adm-help__note">
+                The diagram itself (the three boxes with arrows) is drawn in code. To change what's underneath it, edit the Architecture caption.
+            </p>
+            <p class="adm-help__shortcut">
+                <a href="/admin/website/innovationoverview/1/change/" target="_blank" rel="noopener">Open Innovation Overview →</a>
+            </p>
         </section>
 
         <section class="adm-help__section" id="help-perspectives" data-page="perspectives perspective_detail">
             <h3>Perspectives</h3>
-            <p class="adm-help__path">Path: <code>/perspectives/</code> and <code>/perspectives/&lt;slug&gt;/</code></p>
+            <p class="adm-help__where">"Perspectives" in the top nav. Index page lists every published essay; click one to open the full essay.</p>
             <ul>
-                <li><strong>Add or edit an essay</strong> — <a href="/admin/website/perspective/" target="_blank" rel="noopener">Perspectives</a>.</li>
-                <li><strong>Body sections</strong> are inline Perspective Sections — heading + body, ordered by Position.</li>
-                <li><strong>Toggle visibility</strong> with <em>Published</em>.</li>
+                <li>
+                    <strong>Add or edit an essay</strong> — title, dek, and ordered sections (each with a heading and body).
+                    <span class="adm-help__path">Perspectives</span>
+                </li>
+                <li>
+                    <strong>Show or hide</strong> with the "Published" checkbox.
+                </li>
+                <li>
+                    <strong>Section order within an essay</strong> — Position field on each Perspective Section.
+                </li>
             </ul>
+            <p class="adm-help__shortcut">
+                <a href="/admin/website/perspective/" target="_blank" rel="noopener">Open Perspectives →</a>
+            </p>
         </section>
 
         <section class="adm-help__section" id="help-connect" data-page="connect">
             <h3>Connect</h3>
-            <p class="adm-help__path">Path: <code>/connect/</code></p>
+            <p class="adm-help__where">"Connect" in the top nav. The contact form page.</p>
             <ul>
-                <li><strong>Page intro, form prelude, success heading, success body</strong> — <a href="/admin/website/connectpage/1/change/" target="_blank" rel="noopener">Connect Page</a>.</li>
-                <li>Form field labels (Name, Email, Reason for reaching out, Message) are intentionally code-controlled.</li>
-                <li>Inquiry-type options come from the form definition; change them in code if the dropdown needs new categories.</li>
+                <li>
+                    <strong>Page intro</strong> at the top of the page (above the form).
+                    <span class="adm-help__path">Connect Page → Intro</span>
+                </li>
+                <li>
+                    <strong>Sentence directly above the form</strong> (the prompt to fill it in).
+                    <span class="adm-help__path">Connect Page → Form prelude</span>
+                </li>
+                <li>
+                    <strong>Confirmation message after a visitor submits the form</strong> — heading and body.
+                    <span class="adm-help__path">Connect Page → Success heading / Success body</span>
+                </li>
             </ul>
+            <p class="adm-help__note">
+                Field labels (Name, Email, Reason for reaching out, Message) and the dropdown options are fixed in code — changing them would change what the form actually collects.
+            </p>
+            <p class="adm-help__shortcut">
+                <a href="/admin/website/connectpage/1/change/" target="_blank" rel="noopener">Open Connect Page →</a>
+            </p>
         </section>
 
         <section class="adm-help__section" id="help-resume" data-page="resume_version">
-            <h3>Resume versions</h3>
-            <p class="adm-help__path">Path: <code>/resume/&lt;slug&gt;/</code></p>
+            <h3>Resume</h3>
+            <p class="adm-help__where">A printable resume page reachable at /resume/&lt;version&gt;/. One version is "active" and live at any given URL.</p>
             <ul>
-                <li><strong>Each version</strong> — <a href="/admin/website/resumeversion/" target="_blank" rel="noopener">Resume Versions</a>. Toggle <em>Active</em> to make a slug live.</li>
-                <li><strong>Resume sections</strong> are inline (Experience, Education, etc.) with heading + body, ordered by Position.</li>
+                <li>
+                    <strong>Each resume version</strong> — toggle "Active" to make a slug live. The structured sections (Experience, Education, etc.) are inline below.
+                    <span class="adm-help__path">Resume Versions</span>
+                </li>
+                <li>
+                    <strong>Order of resume sections</strong> — Position field on each Resume Section.
+                </li>
             </ul>
+            <p class="adm-help__shortcut">
+                <a href="/admin/website/resumeversion/" target="_blank" rel="noopener">Open Resume Versions →</a>
+            </p>
         </section>
 
         <section class="adm-help__section" id="help-global">
             <h3>Footer & navigation</h3>
+            <p class="adm-help__where">Appears at the bottom of every page (footer) and the top of every page (nav).</p>
             <ul>
-                <li><strong>Contact email and LinkedIn URL</strong> in the footer — <a href="/admin/website/siteconfig/1/change/" target="_blank" rel="noopener">Site Config → Footer & contact</a>.</li>
-                <li>Top-nav labels and the "Danny R. Jenkins" brand wordmark are intentionally code-controlled.</li>
-                <li>Page <code>&lt;title&gt;</code> tags and meta descriptions live in templates. If you want one in admin, ask and we'll wire it.</li>
+                <li>
+                    <strong>Contact email and LinkedIn URL</strong> shown in the footer.
+                    <span class="adm-help__path">Site Configuration → Footer & contact</span>
+                </li>
             </ul>
+            <p class="adm-help__note">
+                The top-nav labels ("Home", "Profile", etc.) and the "Danny R. Jenkins" wordmark are fixed in code. Page titles and meta descriptions also live in code today — let me know if you want them in admin.
+            </p>
         </section>
 
         <section class="adm-help__section" id="help-conventions">
             <h3>Editing conventions</h3>
             <ul>
-                <li><strong>Headings</strong> live in CharFields, never inside the rich-text editor. The editor strips heading tags by design.</li>
-                <li><strong>Singletons</strong> (Site Config, Enterprise Overview, Innovation Overview, Connect Page) always have a single record at id=1. Never create a second.</li>
-                <li><strong>Production sync mode</strong> — when <code>CONTENT_SYNC_MODE=run</code>, deploys preserve admin edits. Default is <code>build</code>, which upserts from the fixture.</li>
-                <li><strong>Static files</strong> — if a CSS or image change isn't appearing, the edit may need a fresh <code>collectstatic</code> on deploy.</li>
+                <li>
+                    <strong>Headings</strong> live in their own short text fields, never inside the rich-text editor. The editor strips heading tags by design.
+                </li>
+                <li>
+                    <strong>Site Configuration, Enterprise Overview, Innovation Overview, and Connect Page</strong> are single-record screens. Edit the existing one — never create a second.
+                </li>
+                <li>
+                    <strong>Your edits are the source of truth.</strong> Deploys never overwrite admin edits. (If a fixture-driven rebuild is ever needed, it now requires an explicit one-shot command.)
+                </li>
+                <li>
+                    <strong>Save and refresh</strong> — admin edits appear on the public site immediately. No cache to clear.
+                </li>
             </ul>
         </section>
 
         <footer class="adm-help__footer">
             <a href="/admin/" target="_blank" rel="noopener">Open Django admin →</a>
+            <button type="button" class="adm-help__top" data-help-top>Back to top ↑</button>
         </footer>
     </aside>
 </div>
@@ -167,32 +316,50 @@ Inline JS uses the CSP nonce; no external scripts.
         var closeBtn = document.getElementById('adm-help-close');
         if (!toggle || !panel || !closeBtn) return;
 
+        var current = root.getAttribute('data-current-page') || '';
+
+        function findCurrentSection() {
+            if (!current) return null;
+            var sections = panel.querySelectorAll('.adm-help__section[data-page]');
+            for (var i = 0; i < sections.length; i++) {
+                var pages = (sections[i].getAttribute('data-page') || '').split(/\s+/);
+                if (pages.indexOf(current) !== -1) return sections[i];
+            }
+            return null;
+        }
+
+        // Mark the current-page section + ToC link before the panel ever opens,
+        // so the visual cue is correct on first paint.
+        (function markCurrent() {
+            var section = findCurrentSection();
+            if (section) section.classList.add('adm-help__section--current');
+            var tocLinks = panel.querySelectorAll('.adm-help__toc a[data-page]');
+            for (var k = 0; k < tocLinks.length; k++) {
+                var pages = (tocLinks[k].getAttribute('data-page') || '').split(/\s+/);
+                if (pages.indexOf(current) !== -1) {
+                    tocLinks[k].classList.add('adm-help__toc-link--current');
+                    tocLinks[k].setAttribute('aria-current', 'page');
+                }
+            }
+        })();
+
         function openPanel() {
             panel.hidden = false;
-            // allow next frame so the transition triggers
             requestAnimationFrame(function () {
                 panel.setAttribute('data-open', 'true');
             });
             toggle.setAttribute('aria-expanded', 'true');
-            // scroll to current page section if known
-            var current = root.getAttribute('data-current-page') || '';
-            if (current) {
-                var sections = panel.querySelectorAll('.adm-help__section[data-page]');
-                for (var i = 0; i < sections.length; i++) {
-                    var pages = (sections[i].getAttribute('data-page') || '').split(/\s+/);
-                    if (pages.indexOf(current) !== -1) {
-                        sections[i].scrollIntoView({ block: 'start' });
-                        sections[i].classList.add('adm-help__section--current');
-                        break;
-                    }
-                }
+            var section = findCurrentSection();
+            if (section) {
+                // Use auto so it lands instantly on open; smooth feels laggy in
+                // a slide-in panel.
+                section.scrollIntoView({ block: 'start' });
             }
         }
 
         function closePanel() {
             panel.setAttribute('data-open', 'false');
             toggle.setAttribute('aria-expanded', 'false');
-            // hide after the transition so it leaves the a11y tree
             setTimeout(function () {
                 if (panel.getAttribute('data-open') === 'false') {
                     panel.hidden = true;
@@ -217,7 +384,7 @@ Inline JS uses the CSP nonce; no external scripts.
             }
         });
 
-        // smooth-scroll TOC links to their sections inside the panel
+        // Smooth-scroll ToC links to their sections inside the panel.
         var tocLinks = panel.querySelectorAll('.adm-help__toc a');
         for (var j = 0; j < tocLinks.length; j++) {
             tocLinks[j].addEventListener('click', function (ev) {
@@ -227,6 +394,14 @@ Inline JS uses the CSP nonce; no external scripts.
                 if (!target) return;
                 ev.preventDefault();
                 target.scrollIntoView({ block: 'start', behavior: 'smooth' });
+            });
+        }
+
+        // "Back to top" jumps the panel scroll position back to its header.
+        var topBtn = panel.querySelector('[data-help-top]');
+        if (topBtn) {
+            topBtn.addEventListener('click', function () {
+                panel.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
     })();

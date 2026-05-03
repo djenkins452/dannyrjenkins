@@ -1,25 +1,36 @@
-"""Idempotent production bootstrap with dual-mode content sync.
+"""Idempotent production bootstrap.
 
 Runs on every deploy (from Procfile) and performs two actions safely:
 
-1. Content sync — behavior depends on CONTENT_SYNC_MODE env var:
-     - "build"          : upsert every record from initial_content.json
-                          into the DB (match by natural key — slug or
-                          singleton pk — update if present, create if
-                          not). Records in the DB but not in the fixture
-                          are left untouched. Deploy = content matches
-                          what's in code.
-     - "run" (default)  : seed initial_content.json only if the Page
-                          table is empty. Existing content is never
-                          touched. Deploy = content unchanged.
-   Apply only to content models (see CONTENT_KEY). Users and other
-   non-content tables are never touched.
+1. Content sync — default behavior is **seed-if-empty**:
+   load initial_content.json only when the Page table is empty.
+   Existing content is never touched, so admin edits always survive
+   a deploy or dyno restart. The fixture is a one-time bootstrap, not
+   a source of truth.
+
+   To force a fixture-driven rebuild (e.g. after editing the fixture
+   file during a content rebuild phase), pass the explicit CLI flag:
+
+       python manage.py bootstrap_prod --rebuild-from-fixture
+
+   This upserts every record from initial_content.json by natural key
+   (slug or singleton pk) and **will overwrite admin edits** for any
+   record that exists in the fixture. Records in the DB but not in the
+   fixture are left untouched. The flag is intentionally not exposed
+   via an environment variable, so no Railway env var can accidentally
+   trigger an overwrite from the Procfile chain.
 
 2. Create a Django superuser from DJANGO_SUPERUSER_{USERNAME,EMAIL,
    PASSWORD} env vars if a user with that username does not already
-   exist. Independent of CONTENT_SYNC_MODE.
+   exist. Always runs.
 
 Both steps are idempotent — running the command repeatedly is safe.
+
+Deprecated: CONTENT_SYNC_MODE env var. Previously, setting it to "build"
+would trigger a fixture rebuild on every Procfile boot, which silently
+clobbered admin edits when the dyno restarted. The env var is now
+ignored (a deprecation notice is printed if it's set). Use the
+--rebuild-from-fixture CLI flag instead.
 """
 
 import json
@@ -58,19 +69,44 @@ FIXTURE_PATH = Path('website/fixtures/initial_content.json')
 
 
 class Command(BaseCommand):
-    help = 'Idempotent production bootstrap: dual-mode content sync + superuser from env.'
+    help = (
+        'Idempotent production bootstrap: seed content if DB empty + create '
+        'superuser from env. Use --rebuild-from-fixture to force an upsert.'
+    )
+
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '--rebuild-from-fixture',
+            action='store_true',
+            help=(
+                'Force-upsert every record from initial_content.json into '
+                'the DB by natural key. WILL OVERWRITE ADMIN EDITS for '
+                'records in the fixture. Manual one-shot only — never '
+                'wired into the Procfile.'
+            ),
+        )
 
     def handle(self, *args, **options):
-        mode = (os.environ.get('CONTENT_SYNC_MODE') or 'run').lower()
-        self.stdout.write(f'CONTENT_SYNC_MODE = {mode!r}')
+        # Deprecation notice for the old env-var-driven mode. Any value is
+        # now ignored — the only way to trigger a rebuild is the CLI flag,
+        # which prevents a Railway env var from silently clobbering admin
+        # edits on every dyno restart.
+        legacy_mode = os.environ.get('CONTENT_SYNC_MODE')
+        if legacy_mode:
+            self.stdout.write(
+                f'NOTE: CONTENT_SYNC_MODE={legacy_mode!r} is set but is '
+                'now IGNORED. Admin edits are the source of truth. To '
+                'force a fixture rebuild, run: '
+                'python manage.py bootstrap_prod --rebuild-from-fixture'
+            )
 
-        if mode == 'build':
+        if options.get('rebuild_from_fixture'):
+            self.stdout.write(
+                'Rebuild requested via --rebuild-from-fixture. Admin edits '
+                'for fixture-listed records will be overwritten.'
+            )
             self._sync_content()
         else:
-            if mode != 'run':
-                self.stdout.write(
-                    f'Unknown CONTENT_SYNC_MODE {mode!r}; defaulting to "run".'
-                )
             self._seed_if_empty()
 
         self._maybe_create_superuser()

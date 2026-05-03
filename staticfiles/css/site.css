@@ -936,9 +936,18 @@ button { cursor: pointer; }
     outline: none;
 }
 
+/* Current-page treatment in the ToC pill list */
+.adm-help__toc a.adm-help__toc-link--current {
+    background: var(--navy-deep);
+    border-color: var(--navy-deep);
+    color: var(--ink-on-dark);
+    font-weight: 600;
+}
+
 .adm-help__section {
     border-bottom: 1px dashed var(--rule);
     padding-bottom: var(--space-3);
+    scroll-margin-top: var(--space-3);
 }
 .adm-help__section:last-of-type { border-bottom: 0; }
 .adm-help__section h3 {
@@ -947,35 +956,77 @@ button { cursor: pointer; }
     color: var(--ink);
     margin: 0 0 4px;
 }
+
+/* Stronger current-page cue: gold left rail + badge on the heading. */
+.adm-help__section--current {
+    background: linear-gradient(to right, rgba(201, 163, 82, 0.06), transparent 60%);
+    border-left: 3px solid var(--gold);
+    padding-left: 12px;
+    margin-left: -12px;
+}
 .adm-help__section--current h3::after {
-    content: " · current page";
+    content: "Current page";
+    display: inline-block;
     font-family: var(--font-sans);
-    font-size: 0.6875rem;
+    font-size: 0.625rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--navy-deep);
+    background: var(--gold);
     font-weight: 600;
-    margin-left: 8px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 10px;
+    vertical-align: middle;
 }
+
+/* Plain-language "where on the page" line under each section heading. */
+.adm-help__where {
+    font-size: var(--step-s);
+    color: var(--ink-body);
+    margin: 0 0 10px;
+    font-style: italic;
+}
+
+/* Inline pointer to the admin field — appears under each bullet item. */
 .adm-help__path {
+    display: block;
     font-size: 0.75rem;
     color: var(--ink-muted);
-    margin: 0 0 8px;
+    margin-top: 3px;
+    line-height: 1.4;
 }
-.adm-help__path code {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 0.75rem;
+
+/* Aside note under sections, e.g. "labels are intentionally fixed". */
+.adm-help__note {
+    font-size: 0.8125rem;
+    color: var(--ink-muted);
     background: var(--bg-subtle);
-    padding: 1px 6px;
-    border-radius: 3px;
+    border-left: 2px solid var(--rule);
+    padding: 8px 12px;
+    margin: 10px 0 0;
+    border-radius: 0 3px 3px 0;
 }
+
+/* "Open in admin →" link cluster at the bottom of each section. */
+.adm-help__shortcut {
+    margin: 12px 0 0;
+    font-size: 0.8125rem;
+}
+.adm-help__shortcut a {
+    color: var(--accent);
+    font-weight: 500;
+    text-decoration: none;
+}
+.adm-help__shortcut a:hover { text-decoration: underline; }
+
 .adm-help__section ul {
     margin: 0;
     padding-left: 1.1rem;
     font-size: var(--step-s);
     line-height: 1.55;
 }
-.adm-help__section li + li { margin-top: 6px; }
+.adm-help__section li + li { margin-top: 8px; }
 .adm-help__section a {
     color: var(--accent);
     text-decoration: underline;
@@ -988,6 +1039,10 @@ button { cursor: pointer; }
     padding-top: var(--space-2);
     border-top: 1px solid var(--rule);
     font-size: var(--step-s);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
 }
 .adm-help__footer a {
     color: var(--accent);
@@ -995,6 +1050,21 @@ button { cursor: pointer; }
     font-weight: 500;
 }
 .adm-help__footer a:hover { text-decoration: underline; }
+.adm-help__top {
+    border: 1px solid var(--rule);
+    background: transparent;
+    color: var(--ink-body);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+.adm-help__top:hover,
+.adm-help__top:focus-visible {
+    border-color: var(--gold);
+    color: var(--ink);
+    outline: none;
+}
 
 @media (max-width: 480px) {
     .adm-help__toggle {
