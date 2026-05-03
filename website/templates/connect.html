@@ -16,11 +16,11 @@
     <div class="container container--narrow">
         {% if success %}
         <div class="form-success" role="status">
-            <h2>Thank you — I&rsquo;ve received your message.</h2>
-            <p>I&rsquo;ll review it and follow up directly. No automated sequences, no CRM.</p>
+            <h2>{{ page.success_heading|default:"Thank you — I’ve received your message." }}</h2>
+            {% if page.success_body %}{{ page.success_body|safe }}{% else %}<p>I’ll review it and follow up directly. No automated sequences, no CRM.</p>{% endif %}
         </div>
         {% else %}
-        <p class="form-prelude">If you&rsquo;d like to connect, share a few details below.</p>
+        <p class="form-prelude">{{ page.form_prelude|default:"If you’d like to connect, share a few details below." }}</p>
         <form method="post" class="contact-form">
             {% csrf_token %}
 

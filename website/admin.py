@@ -1,3 +1,12 @@
+"""Admin registration for the website app.
+
+The admin is structured so a non-developer site owner can find every
+public-facing piece of content. Each fieldset name mirrors the
+language used on the site; every field has help_text saying where it
+appears. Use the in-page help panel on the public site (the "?" icon
+visible to staff users) for a quick map.
+"""
+
 from django.contrib import admin
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -19,6 +28,10 @@ from .models import (
 )
 
 
+# ---------------------------------------------------------------------------
+# Profile page (uses Page + NarrativeBlock)
+# ---------------------------------------------------------------------------
+
 class NarrativeBlockInline(admin.StackedInline):
     model = NarrativeBlock
     extra = 1
@@ -31,7 +44,13 @@ class PageAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'updated_at')
     prepopulated_fields = {'slug': ('title',)}
     fieldsets = (
-        (None, {'fields': ('title', 'slug', 'eyebrow', 'intro')}),
+        ('Page header', {
+            'fields': ('title', 'slug', 'eyebrow', 'intro'),
+            'description': (
+                'These render as the page hero. The Profile page uses this '
+                'model — slug must remain "profile" for the URL to resolve.'
+            ),
+        }),
         ('SEO', {
             'classes': ('collapse',),
             'fields': ('seo_title', 'seo_description'),
@@ -40,25 +59,41 @@ class PageAdmin(admin.ModelAdmin):
     inlines = [NarrativeBlockInline]
 
 
+# ---------------------------------------------------------------------------
+# Case studies (4-field structured)
+# ---------------------------------------------------------------------------
+
 @admin.register(CaseStudy)
 class CaseStudyAdmin(admin.ModelAdmin):
     list_display = ('title', 'category', 'order', 'published', 'published_at')
     list_filter = ('category', 'published')
     list_editable = ('order', 'published')
+    search_fields = ('title', 'summary')
     prepopulated_fields = {'slug': ('title',)}
     fieldsets = (
-        (None, {
+        ('Case study identity', {
             'fields': ('title', 'slug', 'category', 'summary'),
+            'description': (
+                'Title appears as the H1 on the case study page and as the '
+                'card title on /case-studies/. Summary appears under the '
+                'card title and as the lead paragraph on the detail page.'
+            ),
         }),
-        ('Case study body', {
+        ('Case study body — fixed structure', {
             'fields': ('problem', 'role', 'approach', 'outcome'),
             'description': (
-                'Structure is fixed: every case study renders Problem, Role, '
-                'Approach, Outcome in order. Write each as 1–3 paragraphs.'
+                'Every case study renders Problem → Role → Approach → Outcome '
+                'in that fixed order. Write each section as 1–3 paragraphs. '
+                'The section headings ("The problem," "My role," etc.) are '
+                'rendered by the template and don\'t need to be set here.'
             ),
         }),
         ('Publication', {
             'fields': ('published', 'published_at', 'order'),
+            'description': (
+                'Order controls position on the /case-studies/ index. '
+                'Uncheck Published to take a study offline without deleting.'
+            ),
         }),
         ('SEO', {
             'classes': ('collapse',),
@@ -67,6 +102,10 @@ class CaseStudyAdmin(admin.ModelAdmin):
     )
 
 
+# ---------------------------------------------------------------------------
+# Homepage pillars
+# ---------------------------------------------------------------------------
+
 @admin.register(HomepagePillar)
 class HomepagePillarAdmin(admin.ModelAdmin):
     list_display = ('title', 'category', 'order')
@@ -74,12 +113,46 @@ class HomepagePillarAdmin(admin.ModelAdmin):
     list_editable = ('order',)
     ordering = ('category', 'order')
 
+    fieldsets = (
+        (None, {
+            'fields': ('category', 'title', 'body', 'order'),
+            'description': (
+                'Pillars appear on the homepage in two columns. ENTERPRISE '
+                'pillars render in the Enterprise Leadership column; '
+                'INNOVATION pillars render in the Innovation column. Order '
+                'controls position within the column.'
+            ),
+        }),
+    )
+
+
+# ---------------------------------------------------------------------------
+# Enterprise Leadership page
+# ---------------------------------------------------------------------------
 
 @admin.register(EnterpriseOverview)
 class EnterpriseOverviewAdmin(admin.ModelAdmin):
     """Singleton: redirect changelist to the sole instance."""
 
-    fields = ('scope', 'impact', 'system_integration')
+    fieldsets = (
+        ('Page hero', {
+            'fields': ('hero_heading', 'hero_lead'),
+        }),
+        ('Scope section', {
+            'fields': ('scope',),
+        }),
+        ('Impact section', {
+            'fields': ('impact',),
+        }),
+        ('Function section heading', {
+            'fields': ('function_section_heading',),
+            'description': 'The H2 above the three function blocks (Compensation, HRIS, Payroll).',
+        }),
+        ('Closing section', {
+            'fields': ('system_integration_heading', 'system_integration'),
+            'description': 'The "How the system works together" closing.',
+        }),
+    )
 
     def has_add_permission(self, request):
         return not EnterpriseOverview.objects.exists()
@@ -94,17 +167,57 @@ class EnterpriseOverviewAdmin(admin.ModelAdmin):
         )
 
 
+@admin.register(EnterpriseFunction)
+class EnterpriseFunctionAdmin(admin.ModelAdmin):
+    list_display = ('title', 'slug', 'order')
+    list_editable = ('order',)
+    search_fields = ('title',)
+    prepopulated_fields = {'slug': ('title',)}
+    fieldsets = (
+        ('Function identity', {
+            'fields': ('title', 'slug', 'summary', 'order'),
+        }),
+        ('Function body — fixed structure', {
+            'fields': ('responsibilities', 'systems_led', 'organizational_role'),
+            'description': (
+                'Every function renders Responsibilities → Systems Led → '
+                'Role in the Organization in that fixed order on the '
+                'Enterprise Leadership page.'
+            ),
+        }),
+    )
+
+
+# ---------------------------------------------------------------------------
+# Innovation page
+# ---------------------------------------------------------------------------
+
 @admin.register(InnovationOverview)
 class InnovationOverviewAdmin(admin.ModelAdmin):
     """Singleton: redirect changelist to the sole instance."""
 
     fieldsets = (
-        (None, {'fields': ('intro',)}),
-        ('Beacon Innovation', {'fields': ('beacon_positioning',)}),
-        ('Whole Life Journey', {'fields': ('wlj_positioning', 'wlj_overview')}),
-        ('Architecture', {'fields': ('architecture_caption', 'practical_example')}),
-        ('AI Chief of Staff', {'fields': ('chief_of_staff',)}),
-        ('What This Demonstrates', {'fields': ('what_this_demonstrates',)}),
+        ('Page hero', {
+            'fields': ('hero_heading', 'intro'),
+        }),
+        ('Beacon Innovation section', {
+            'fields': ('beacon_positioning',),
+        }),
+        ('Whole Life Journey section', {
+            'fields': ('wlj_positioning', 'wlj_overview'),
+        }),
+        ('Architecture section', {
+            'fields': ('architecture_caption', 'practical_example'),
+        }),
+        ('AI Chief of Staff section', {
+            'fields': ('chief_of_staff',),
+        }),
+        ('What This Demonstrates section', {
+            'fields': ('what_this_demonstrates',),
+        }),
+        ('Footer link', {
+            'fields': ('wlj_case_study_link_label',),
+        }),
     )
 
     def has_add_permission(self, request):
@@ -120,6 +233,10 @@ class InnovationOverviewAdmin(admin.ModelAdmin):
         )
 
 
+# ---------------------------------------------------------------------------
+# Perspectives
+# ---------------------------------------------------------------------------
+
 class PerspectiveSectionInline(admin.StackedInline):
     model = PerspectiveSection
     extra = 1
@@ -132,9 +249,16 @@ class PerspectiveAdmin(admin.ModelAdmin):
     list_display = ('title', 'eyebrow', 'order', 'published', 'published_at')
     list_filter = ('published',)
     list_editable = ('order', 'published')
+    search_fields = ('title', 'deck')
     prepopulated_fields = {'slug': ('title',)}
     fieldsets = (
-        (None, {'fields': ('title', 'slug', 'eyebrow', 'deck')}),
+        ('Perspective identity', {
+            'fields': ('title', 'slug', 'eyebrow', 'deck'),
+            'description': (
+                'Title is the H1. Eyebrow is the small uppercase category '
+                'label above the title. Deck is the subtitle below the title.'
+            ),
+        }),
         ('Body', {
             'fields': ('lead', 'closing'),
             'description': (
@@ -143,7 +267,9 @@ class PerspectiveAdmin(admin.ModelAdmin):
                 'for the middle sections.'
             ),
         }),
-        ('Publication', {'fields': ('published', 'published_at', 'order')}),
+        ('Publication', {
+            'fields': ('published', 'published_at', 'order'),
+        }),
         ('SEO', {
             'classes': ('collapse',),
             'fields': ('seo_title', 'seo_description'),
@@ -152,21 +278,9 @@ class PerspectiveAdmin(admin.ModelAdmin):
     inlines = [PerspectiveSectionInline]
 
 
-@admin.register(EnterpriseFunction)
-class EnterpriseFunctionAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug', 'order')
-    list_editable = ('order',)
-    prepopulated_fields = {'slug': ('title',)}
-    fields = (
-        'title',
-        'slug',
-        'summary',
-        'responsibilities',
-        'systems_led',
-        'organizational_role',
-        'order',
-    )
-
+# ---------------------------------------------------------------------------
+# Resume versions
+# ---------------------------------------------------------------------------
 
 class ResumeSectionInline(admin.StackedInline):
     model = ResumeSection
@@ -180,24 +294,46 @@ class ResumeVersionAdmin(admin.ModelAdmin):
     list_display = ('name', 'slug', 'type', 'is_active', 'updated_at')
     list_filter = ('type', 'is_active')
     list_editable = ('is_active',)
+    search_fields = ('name', 'slug')
     prepopulated_fields = {'slug': ('name',)}
     fieldsets = (
-        (None, {'fields': ('name', 'slug', 'type', 'is_active')}),
+        ('Resume version', {
+            'fields': ('name', 'slug', 'type', 'is_active'),
+            'description': (
+                'Each resume version is reachable at /resume/&lt;slug&gt;/ when '
+                'is_active is checked. The URL is not linked from the public '
+                'nav; share it directly with recipients.'
+            ),
+        }),
     )
-    inlines = [ResumeSectionInline]
 
+
+# ---------------------------------------------------------------------------
+# Connect page
+# ---------------------------------------------------------------------------
 
 @admin.register(ConnectPage)
 class ConnectPageAdmin(admin.ModelAdmin):
     """Singleton: redirect changelist to the sole instance."""
 
     fieldsets = (
-        (None, {'fields': ('intro',)}),
-        ('Conversation CTA', {
-            'fields': ('conversation_label', 'conversation_blurb', 'conversation_href'),
+        ('Hero & form', {
+            'fields': ('intro', 'form_prelude'),
         }),
-        ('Resume CTA', {
-            'fields': ('resume_label', 'resume_blurb', 'resume_href'),
+        ('Confirmation message (after form submit)', {
+            'fields': ('success_heading', 'success_body'),
+        }),
+        ('Legacy CTA fields (no longer rendered)', {
+            'classes': ('collapse',),
+            'fields': (
+                'conversation_label', 'conversation_blurb', 'conversation_href',
+                'resume_label', 'resume_blurb', 'resume_href',
+            ),
+            'description': (
+                'These fields backed the old mailto CTAs that the contact '
+                'form replaced. They are not rendered anywhere on the public '
+                'site. Safe to ignore.'
+            ),
         }),
     )
 
@@ -214,23 +350,58 @@ class ConnectPageAdmin(admin.ModelAdmin):
         )
 
 
+# ---------------------------------------------------------------------------
+# Site Configuration (homepage hero, homepage sections, footer)
+# ---------------------------------------------------------------------------
+
 @admin.register(SiteConfig)
 class SiteConfigAdmin(admin.ModelAdmin):
     """Singleton: redirect changelist to the sole instance's edit view."""
 
     fieldsets = (
-        ('Homepage', {
+        ('Homepage hero', {
             'fields': (
                 'homepage_headline',
                 'homepage_positioning_line',
                 'homepage_subheadline',
-                'homepage_vision',
+            ),
+            'description': 'The dark navy band at the top of the homepage.',
+        }),
+        ('Homepage Vision section', {
+            'fields': ('vision_heading', 'homepage_vision'),
+            'description': 'The dark band below the hero with the leadership philosophy.',
+        }),
+        ('Homepage Enterprise Leadership column', {
+            'fields': (
+                'enterprise_column_heading',
                 'enterprise_section_intro',
                 'enterprise_section_closing',
-                'innovation_section_intro',
+            ),
+            'description': (
+                'Left column of the homepage domain split. Pillars (Compensation, '
+                'HRIS, Payroll) are managed under "Homepage Pillars" — filter by '
+                'Enterprise category.'
             ),
         }),
-        ('Contact', {'fields': ('contact_email', 'linkedin_url')}),
+        ('Homepage Innovation column', {
+            'fields': (
+                'innovation_column_heading',
+                'innovation_section_intro',
+            ),
+            'description': (
+                'Right column of the homepage domain split. Pillars (Beacon '
+                'Innovation, Whole Life Journey, AI Chief of Staff) are managed '
+                'under "Homepage Pillars" — filter by Innovation category.'
+            ),
+        }),
+        ('Homepage closing link', {
+            'fields': ('read_profile_link_label',),
+            'description': 'The "Read the executive profile →" link below the domain split.',
+        }),
+        ('Footer & contact', {
+            'fields': ('contact_email', 'linkedin_url'),
+            'description': 'Rendered in the footer of every page.',
+        }),
     )
 
     def has_add_permission(self, request):
@@ -244,3 +415,11 @@ class SiteConfigAdmin(admin.ModelAdmin):
         return HttpResponseRedirect(
             reverse('admin:website_siteconfig_change', args=[obj.pk])
         )
+
+
+# ---------------------------------------------------------------------------
+# Admin site headers
+# ---------------------------------------------------------------------------
+admin.site.site_header = 'Danny R. Jenkins — Site Admin'
+admin.site.site_title = 'Site Admin'
+admin.site.index_title = 'Site Content'

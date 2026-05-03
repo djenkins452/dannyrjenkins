@@ -6,6 +6,10 @@
             "homepage_headline": "Leading HR Operations and Transformation, Building Practical AI Systems",
             "homepage_positioning_line": "Compensation, HRIS, and payroll don’t operate separately. I lead them as one.",
             "homepage_subheadline": "<p>I lead compensation, HRIS, and payroll for a 6,000-employee Level 1 academic medical center, $30M+ in monthly payroll across continuous cycles, 24/7. I run HR operations as an integrated operating model, designed to generate trust, reduce decision friction, and perform reliably under complexity.</p>",
+            "vision_heading": "How HR operations should work",
+            "enterprise_column_heading": "Running HR operations that people can depend on",
+            "innovation_column_heading": "Designing personal AI systems",
+            "read_profile_link_label": "Read the executive profile →",
             "homepage_vision": "<p>My vision is to transform HR operations into a true enterprise system that enables leadership, not just administration.</p><p>Compensation, HRIS, and payroll are often managed as separate functions. I believe they must operate as a unified system, aligned to support decision-making, reduce complexity, and build trust across the organization.</p><p>In a 24/7 healthcare environment, HR operations is not a back-office function. It is the operating system the workforce depends on. Accuracy, consistency, and scalability are not goals. They are the baseline.</p><p>I focus on building systems that align data, processes, and people into a single, reliable foundation that supports both operational execution and strategic leadership.</p>",
             "enterprise_section_intro": "<p>Three functions, one operating system. Compensation, HRIS, and payroll are not separate disciplines. They work together to support decisions, reduce friction, and keep the organization running without disruption.</p>",
             "enterprise_section_closing": "<p>This is not about managing functions. It is about building an operating system the organization can rely on.</p><p>When compensation, HRIS, and payroll work together, decisions become clearer, execution becomes more consistent, and the organization runs with less friction.</p>",
@@ -140,7 +144,11 @@
         "model": "website.enterpriseoverview",
         "pk": 1,
         "fields": {
-            "scope": "<p>Enterprise HR operations for a 6,000-employee Level 1 trauma and academic medical center. Three operating functions — compensation, HRIS, and payroll — across a multi-system HR technology stack, with 50+ payroll runs annually for thousands of clinical and non-clinical staff. Director-level ownership across all three.</p>",
+            "hero_heading": "Running HR operations at scale",
+            "hero_lead": "<p>Three functions, one operating discipline. The overview below is how the role is shaped; the function sections are what the role actually does.</p>",
+            "function_section_heading": "What I lead",
+            "system_integration_heading": "How the system works together",
+            "scope":"<p>Enterprise HR operations for a 6,000-employee Level 1 trauma and academic medical center. Three operating functions — compensation, HRIS, and payroll — across a multi-system HR technology stack, with 50+ payroll runs annually for thousands of clinical and non-clinical staff. Director-level ownership across all three.</p>",
             "impact": "<p>Measured on three outcomes: trust in compensation decisions, reliability of workforce data, and consistency of payroll execution. Each has moved from a reactive posture to a governed discipline — documented, repeatable, and durable through staff and organizational change.</p><p>In a 24/7 hospital, HR operations is not a back-office function — it is the operating system the workforce runs on, and zero error is the baseline.</p>",
             "system_integration": "<p>Compensation, HRIS, and Payroll are presented as three functions because that is how work is organized. They operate as one system. A job architecture decision surfaces in the HRIS. An HRIS configuration determines what payroll can process. A payroll incident lands on trust in the compensation philosophy. The role is not three parallel jobs — it is one: keeping them aligned so the organization experiences a single, coherent HR operation.</p>"
         }
@@ -355,6 +363,9 @@
         "pk": 1,
         "fields": {
             "intro": "<p>Direct outreach for VP HR Operations, VP Total Rewards, and Executive Director HR opportunities. Also: advisory engagements, speaking, and conversations about how the work actually gets done.</p>",
+            "form_prelude": "If you’d like to connect, share a few details below.",
+            "success_heading": "Thank you — I’ve received your message.",
+            "success_body": "<p>I’ll review it and follow up directly. No automated sequences, no CRM.</p>",
             "conversation_label": "Request a conversation",
             "conversation_blurb": "Direct introduction. No recruiter, no form.",
             "conversation_href": "mailto:dannyjenkins71@gmail.com?subject=Conversation%20request",
@@ -435,7 +446,9 @@
         "model": "website.innovationoverview",
         "pk": 1,
         "fields": {
-            "intro": "<p>This is not separate from my work. It changes how I make decisions, not just how I think about them. The same discipline that runs HR operations for a 6,000-employee academic medical center runs Whole Life Journey — enforcing accountability between data, interpretation, and action, on a smaller surface area.</p>",
+            "hero_heading": "Innovation & Systems Design",
+            "wlj_case_study_link_label": "See how this operates in practice → WLJ Case Study",
+            "intro":"<p>This is not separate from my work. It changes how I make decisions, not just how I think about them. The same discipline that runs HR operations for a 6,000-employee academic medical center runs Whole Life Journey — enforcing accountability between data, interpretation, and action, on a smaller surface area.</p>",
             "beacon_positioning": "<p>Beacon Innovation, LLC is an independent design studio I own outside any employer context. It exists to build AI-assisted personal systems. The work is mine end to end — not a side project, not a hobby — and it operates under the same discipline I apply to enterprise HR operations.</p>",
             "wlj_positioning": "Most tools optimize individual functions. WLJ is designed to optimize decisions across functions.",
             "wlj_overview": "<p>Whole Life Journey integrates the data sources a life actually runs on — calendar, health, tasks, faith practice, journaling — into one model under one cadence. The point is not the integration. It is the decision-making the integration makes possible: fewer decisions, better ordered, closer to the moment they matter.</p>",

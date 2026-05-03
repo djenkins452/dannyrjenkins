@@ -8,14 +8,15 @@ class SiteConfig(models.Model):
     homepage_headline = models.CharField(
         max_length=200,
         default='Leading HR Transformation at Scale, Pioneering Personal AI Systems',
+        help_text='Appears on the homepage hero as the large H1 headline.',
     )
     homepage_positioning_line = models.CharField(
         max_length=300,
         blank=True,
         verbose_name='Homepage positioning line',
         help_text=(
-            'One bridge sentence rendered between the headline and the '
-            'supporting paragraph. Plain text, no formatting. Sized between '
+            'Appears on the homepage hero, between the headline and the '
+            'supporting paragraph. One sentence; plain text. Sized between '
             'headline and body so the eye reads it as a natural extension '
             'of the headline.'
         ),
@@ -24,33 +25,64 @@ class SiteConfig(models.Model):
         blank=True,
         verbose_name='Homepage positioning statement',
         help_text=(
-            'Short positioning statement under the headline. Should define '
-            'enterprise leadership scope and systems-thinking approach. '
-            '2–3 sentences max.'
+            'Appears on the homepage hero, below the positioning line, as the '
+            'supporting paragraph. Should define enterprise leadership scope '
+            'and systems-thinking approach. 2–3 sentences max.'
         ),
     )
     homepage_vision = HTMLField(
         blank=True,
         verbose_name='Homepage vision section',
         help_text=(
-            'Leadership philosophy block rendered between the hero and the '
-            'enterprise/innovation split. Use multiple paragraphs.'
+            'Appears on the homepage between the hero and the enterprise/'
+            'innovation split. The body of the Vision section. Use multiple '
+            'paragraphs.'
         ),
+    )
+    vision_heading = models.CharField(
+        max_length=200,
+        default='How HR operations should work',
+        blank=True,
+        help_text='Appears on the homepage Vision section as the H2 heading (above the Vision paragraphs).',
+    )
+    enterprise_column_heading = models.CharField(
+        max_length=200,
+        default='Running HR operations that people can depend on',
+        blank=True,
+        help_text='Appears on the homepage as the H2 heading of the Enterprise Leadership column.',
     )
     enterprise_section_intro = HTMLField(
         blank=True,
-        help_text='Intro paragraph above the three enterprise pillars.',
+        help_text='Appears on the homepage Enterprise Leadership column as the intro paragraph above the three pillars.',
     )
     enterprise_section_closing = HTMLField(
         blank=True,
-        help_text='Closing statement below the three enterprise pillars on the homepage.',
+        help_text='Appears on the homepage Enterprise Leadership column as the closing block below the three pillars.',
+    )
+    innovation_column_heading = models.CharField(
+        max_length=200,
+        default='Designing personal AI systems',
+        blank=True,
+        help_text='Appears on the homepage as the H2 heading of the Innovation column.',
     )
     innovation_section_intro = HTMLField(
         blank=True,
-        help_text='Intro paragraph above the three innovation highlights.',
+        help_text='Appears on the homepage Innovation column as the intro paragraph above the three highlights.',
     )
-    contact_email = models.EmailField(blank=True)
-    linkedin_url = models.URLField(blank=True)
+    read_profile_link_label = models.CharField(
+        max_length=120,
+        default='Read the executive profile →',
+        blank=True,
+        help_text='Appears at the bottom of the homepage as the link to the Executive Profile page.',
+    )
+    contact_email = models.EmailField(
+        blank=True,
+        help_text='Appears in the footer of every page as the contact email link.',
+    )
+    linkedin_url = models.URLField(
+        blank=True,
+        help_text='Appears in the footer as the LinkedIn link (opens in new tab).',
+    )
 
     class Meta:
         verbose_name = 'Site Configuration'
@@ -186,21 +218,44 @@ class EnterpriseOverview(models.Model):
     in EnterpriseFunction records below.
     """
 
+    hero_heading = models.CharField(
+        max_length=200,
+        default='Running HR operations at scale',
+        blank=True,
+        help_text='Appears on the Enterprise Leadership page hero as the H1 headline.',
+    )
+    hero_lead = HTMLField(
+        blank=True,
+        verbose_name='Hero lead paragraph',
+        help_text='Appears on the Enterprise Leadership page hero, below the headline, as the supporting paragraph.',
+    )
     scope = HTMLField(
         blank=True,
-        help_text='Scale of responsibility — employees, systems, divisions.',
+        help_text='Appears on the Enterprise Leadership page as the body of the Scope section.',
     )
     impact = HTMLField(
         blank=True,
-        help_text='What the function is measured on; transformation outcomes.',
+        help_text='Appears on the Enterprise Leadership page as the body of the Impact section.',
+    )
+    function_section_heading = models.CharField(
+        max_length=200,
+        default='What I lead',
+        blank=True,
+        help_text='Appears on the Enterprise Leadership page as the H2 heading above the three function blocks (Compensation, HRIS, Payroll).',
+    )
+    system_integration_heading = models.CharField(
+        max_length=200,
+        default='How the system works together',
+        blank=True,
+        help_text='Appears on the Enterprise Leadership page as the H2 heading of the closing section.',
     )
     system_integration = HTMLField(
         blank=True,
-        verbose_name='How the system works together',
+        verbose_name='Closing section body',
         help_text=(
-            'Closing paragraph at the bottom of the Enterprise Leadership page. '
-            'Explain how Compensation, HRIS, and Payroll operate as one system — '
-            'not three parallel jobs.'
+            'Appears on the Enterprise Leadership page as the body of the closing '
+            'section. Explain how Compensation, HRIS, and Payroll operate as one '
+            'system — not three parallel jobs.'
         ),
     )
 
@@ -259,14 +314,26 @@ class InnovationOverview(models.Model):
     design, not content, and lives in the template as inline SVG.
     """
 
+    hero_heading = models.CharField(
+        max_length=200,
+        default='Innovation & Systems Design',
+        blank=True,
+        help_text='Appears on the Innovation page hero as the H1 headline.',
+    )
     intro = HTMLField(
         blank=True,
-        help_text='Page lead paragraph. Keep brief.',
+        help_text='Appears on the Innovation page hero, below the headline, as the lead paragraph.',
     )
     beacon_positioning = HTMLField(
         blank=True,
         verbose_name='Beacon Innovation positioning',
-        help_text='What Beacon Innovation, LLC is and why it exists separately from any enterprise role.',
+        help_text='Appears on the Innovation page as the body of the Beacon Innovation, LLC section.',
+    )
+    wlj_case_study_link_label = models.CharField(
+        max_length=200,
+        default='See how this operates in practice → WLJ Case Study',
+        blank=True,
+        help_text='Appears at the bottom of the Innovation page as the link to the WLJ case study.',
     )
     wlj_positioning = models.CharField(
         max_length=300,
@@ -489,31 +556,35 @@ class ResumeSection(models.Model):
 class ConnectPage(models.Model):
     """Singleton for /connect/ — two CTAs (conversation + resume request)."""
 
-    intro = HTMLField(blank=True, help_text='Lead paragraph under the title.')
-    conversation_label = models.CharField(
-        max_length=100,
-        default='Request a conversation',
-    )
-    conversation_blurb = models.CharField(
-        max_length=300,
+    intro = HTMLField(
         blank=True,
-        help_text='One short line under the label.',
+        help_text='Appears on the Connect page hero, below the headline, as the lead paragraph.',
     )
-    conversation_href = models.CharField(
-        max_length=500,
-        default='mailto:',
-        help_text='mailto: link or URL (Calendly, etc.).',
+    form_prelude = models.CharField(
+        max_length=300,
+        default='If you’d like to connect, share a few details below.',
+        blank=True,
+        help_text='Appears on the Connect page as the bridge sentence above the contact form.',
     )
-    resume_label = models.CharField(
-        max_length=100,
-        default='Request a resume',
+    success_heading = models.CharField(
+        max_length=200,
+        default='Thank you — I’ve received your message.',
+        blank=True,
+        help_text='Appears on the Connect page after a successful form submission, as the H2 of the confirmation block.',
     )
+    success_body = HTMLField(
+        blank=True,
+        help_text='Appears on the Connect page after a successful form submission, as the paragraph below the confirmation heading.',
+    )
+    # Legacy mailto-CTA fields — retained for schema compatibility but no longer
+    # rendered on the Connect page (the contact form replaced them). Will be
+    # removed in a follow-up cleanup migration.
+    conversation_label = models.CharField(max_length=100, default='Request a conversation', blank=True)
+    conversation_blurb = models.CharField(max_length=300, blank=True)
+    conversation_href = models.CharField(max_length=500, default='mailto:', blank=True)
+    resume_label = models.CharField(max_length=100, default='Request a resume', blank=True)
     resume_blurb = models.CharField(max_length=300, blank=True)
-    resume_href = models.CharField(
-        max_length=500,
-        default='mailto:',
-        help_text='mailto: link the requester uses to ask for a tailored resume URL.',
-    )
+    resume_href = models.CharField(max_length=500, default='mailto:', blank=True)
 
     class Meta:
         verbose_name = 'Connect Page'

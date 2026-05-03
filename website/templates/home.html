@@ -25,7 +25,7 @@
     <div class="container container--narrow">
         <article class="narrative-block">
             <p class="eyebrow">Vision</p>
-            <h2>How HR operations should work</h2>
+            <h2>{{ site_config.vision_heading|default:"How HR operations should work" }}</h2>
             <div class="body">{{ site_config.homepage_vision|safe }}</div>
         </article>
     </div>
@@ -37,7 +37,7 @@
         <div class="domains">
             <div class="domain domain--enterprise">
                 <p class="eyebrow">Enterprise Leadership</p>
-                <h2>Running HR operations that people can depend on</h2>
+                <h2>{{ site_config.enterprise_column_heading|default:"Running HR operations that people can depend on" }}</h2>
                 <div class="domain__intro">{{ site_config.enterprise_section_intro|safe }}</div>
                 <ul class="pillar-list">
                     {% for pillar in enterprise_pillars %}
@@ -54,7 +54,7 @@
 
             <div class="domain domain--innovation">
                 <p class="eyebrow">Innovation</p>
-                <h2>Designing personal AI systems</h2>
+                <h2>{{ site_config.innovation_column_heading|default:"Designing personal AI systems" }}</h2>
                 <div class="domain__intro">{{ site_config.innovation_section_intro|safe }}</div>
                 <ul class="pillar-list">
                     {% for pillar in innovation_pillars %}
@@ -71,7 +71,7 @@
 
 <section class="section section--tight">
     <div class="container">
-        <p class="muted"><a href="{% url 'profile' %}">Read the executive profile →</a></p>
+        <p class="muted"><a href="{% url 'profile' %}">{{ site_config.read_profile_link_label|default:"Read the executive profile →" }}</a></p>
     </div>
 </section>
 {% endblock %}

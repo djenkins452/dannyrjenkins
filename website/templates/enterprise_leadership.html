@@ -7,8 +7,8 @@
 <section class="section--hero">
     <div class="container container--narrow">
         <p class="eyebrow">Enterprise Leadership</p>
-        <h1 class="page-title">Running HR operations at scale</h1>
-        <p class="lead">Three functions, one operating discipline. The overview below is how the role is shaped; the function sections are what the role actually does.</p>
+        <h1 class="page-title">{{ overview.hero_heading|default:"Running HR operations at scale" }}</h1>
+        {% if overview.hero_lead %}<div class="lead">{{ overview.hero_lead|safe }}</div>{% else %}<p class="lead">Three functions, one operating discipline. The overview below is how the role is shaped; the function sections are what the role actually does.</p>{% endif %}
     </div>
 </section>
 
@@ -32,7 +32,7 @@
     <div class="container container--narrow">
         <div class="section-heading">
             <p class="eyebrow">The Function</p>
-            <h2>What I lead</h2>
+            <h2>{{ overview.function_section_heading|default:"What I lead" }}</h2>
         </div>
 
         {% for function in functions %}
@@ -66,7 +66,7 @@
     <div class="container container--narrow">
         <article class="narrative-block">
             <p class="eyebrow">System Integration</p>
-            <h2>How the system works together</h2>
+            <h2>{{ overview.system_integration_heading|default:"How the system works together" }}</h2>
             <div class="body">{{ overview.system_integration|safe }}</div>
         </article>
     </div>

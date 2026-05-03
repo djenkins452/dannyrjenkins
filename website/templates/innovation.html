@@ -7,7 +7,7 @@
 <section class="section--hero">
     <div class="container container--narrow">
         <p class="eyebrow">Innovation</p>
-        <h1 class="page-title">Innovation &amp; Systems Design</h1>
+        <h1 class="page-title">{{ overview.hero_heading|default:"Innovation & Systems Design" }}</h1>
         {% if overview.intro %}<div class="lead">{{ overview.intro|safe }}</div>{% endif %}
     </div>
 </section>
@@ -92,7 +92,7 @@
 
 <section class="section section--tight">
     <div class="container container--narrow">
-        <p class="muted"><a href="{% url 'case_study_detail' slug='unified-life-wlj' %}">See how this operates in practice &rarr; WLJ Case Study</a></p>
+        <p class="muted"><a href="{% url 'case_study_detail' slug='unified-life-wlj' %}">{{ overview.wlj_case_study_link_label|default:"See how this operates in practice → WLJ Case Study" }}</a></p>
     </div>
 </section>
 {% endblock %}
