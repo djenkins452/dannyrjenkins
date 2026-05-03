@@ -41,6 +41,15 @@ Inline JS uses the CSP nonce; no external scripts.
             opens the right Site Configuration screen in a new tab.
         </p>
 
+        <div class="adm-help__mode-bar" data-help-mode-bar hidden>
+            <button type="button"
+                    class="adm-help__mode-toggle"
+                    id="adm-help-mode-toggle"
+                    data-help-mode-toggle>
+                View full site guide →
+            </button>
+        </div>
+
         <nav class="adm-help__toc" aria-label="Help sections">
             <a href="#help-home" data-page="home">Home</a>
             <a href="#help-profile" data-page="profile">Profile</a>
@@ -317,6 +326,8 @@ Inline JS uses the CSP nonce; no external scripts.
         if (!toggle || !panel || !closeBtn) return;
 
         var current = root.getAttribute('data-current-page') || '';
+        var modeBar = panel.querySelector('[data-help-mode-bar]');
+        var modeToggle = panel.querySelector('[data-help-mode-toggle]');
 
         function findCurrentSection() {
             if (!current) return null;
@@ -328,20 +339,50 @@ Inline JS uses the CSP nonce; no external scripts.
             return null;
         }
 
-        // Mark the current-page section + ToC link before the panel ever opens,
-        // so the visual cue is correct on first paint.
-        (function markCurrent() {
-            var section = findCurrentSection();
-            if (section) section.classList.add('adm-help__section--current');
-            var tocLinks = panel.querySelectorAll('.adm-help__toc a[data-page]');
-            for (var k = 0; k < tocLinks.length; k++) {
-                var pages = (tocLinks[k].getAttribute('data-page') || '').split(/\s+/);
-                if (pages.indexOf(current) !== -1) {
-                    tocLinks[k].classList.add('adm-help__toc-link--current');
-                    tocLinks[k].setAttribute('aria-current', 'page');
-                }
+        var currentSection = findCurrentSection();
+        var hasCurrent = !!currentSection;
+
+        // Mark the current-page section + ToC link so the visual cue is right
+        // on first paint and CSS can target it for focused-mode filtering.
+        if (currentSection) currentSection.classList.add('adm-help__section--current');
+        var tocLinks = panel.querySelectorAll('.adm-help__toc a[data-page]');
+        for (var k = 0; k < tocLinks.length; k++) {
+            var pages = (tocLinks[k].getAttribute('data-page') || '').split(/\s+/);
+            if (pages.indexOf(current) !== -1) {
+                tocLinks[k].classList.add('adm-help__toc-link--current');
+                tocLinks[k].setAttribute('aria-current', 'page');
             }
-        })();
+        }
+
+        // Mode handling. If we recognize the current page, default to "focused"
+        // (only that section is visible) and reveal the toggle. Otherwise the
+        // panel falls back to the full guide and the toggle stays hidden,
+        // preserving the previous behavior on unmapped routes.
+        function applyMode(mode) {
+            root.setAttribute('data-mode', mode);
+            if (mode === 'focused') {
+                modeToggle.textContent = 'View full site guide →';
+                modeToggle.setAttribute('aria-label', 'View the full site guide');
+            } else {
+                modeToggle.textContent = '← Back to this page';
+                modeToggle.setAttribute('aria-label', 'Back to the guide for this page');
+            }
+            // After a mode change, scroll the panel back to the top so the user
+            // is always looking at the start of whatever's now visible.
+            panel.scrollTop = 0;
+        }
+
+        if (hasCurrent && modeBar && modeToggle) {
+            applyMode('focused');
+            modeBar.hidden = false;
+            modeToggle.addEventListener('click', function () {
+                var next = root.getAttribute('data-mode') === 'focused' ? 'full' : 'focused';
+                applyMode(next);
+            });
+        } else {
+            // No mapped section for this URL — just show the full guide.
+            root.setAttribute('data-mode', 'full');
+        }
 
         function openPanel() {
             panel.hidden = false;
@@ -349,11 +390,13 @@ Inline JS uses the CSP nonce; no external scripts.
                 panel.setAttribute('data-open', 'true');
             });
             toggle.setAttribute('aria-expanded', 'true');
-            var section = findCurrentSection();
-            if (section) {
-                // Use auto so it lands instantly on open; smooth feels laggy in
-                // a slide-in panel.
-                section.scrollIntoView({ block: 'start' });
+            // In focused mode the only section is already at the top of the
+            // panel, so no scroll is needed. In full mode, jump to the current
+            // section if one exists, else leave the panel at the top.
+            if (root.getAttribute('data-mode') === 'full' && currentSection) {
+                currentSection.scrollIntoView({ block: 'start' });
+            } else {
+                panel.scrollTop = 0;
             }
         }
 

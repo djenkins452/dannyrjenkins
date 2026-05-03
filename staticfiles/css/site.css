@@ -944,6 +944,47 @@ button { cursor: pointer; }
     font-weight: 600;
 }
 
+/* Mode toggle bar — single underlined link, right-aligned. */
+.adm-help__mode-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -4px;
+}
+.adm-help__mode-toggle {
+    border: 0;
+    background: transparent;
+    color: var(--accent);
+    font-size: 0.8125rem;
+    font-family: var(--font-sans);
+    padding: 4px 0;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+.adm-help__mode-toggle:hover,
+.adm-help__mode-toggle:focus-visible {
+    color: var(--ink);
+    outline: none;
+}
+
+/* Focused mode — only the current page's section is shown.
+   The ToC and the global/conventions sections collapse out of the way.
+   Full mode (default when no current page detected) shows everything. */
+.adm-help[data-mode="focused"] .adm-help__toc { display: none; }
+.adm-help[data-mode="focused"] .adm-help__section:not(.adm-help__section--current) {
+    display: none;
+}
+.adm-help[data-mode="focused"] .adm-help__section--current {
+    /* Section is already the only one visible; the gold rail is now
+       redundant noise, so quiet the cue down to just the badge. */
+    background: none;
+    border-left: 0;
+    padding-left: 0;
+    margin-left: 0;
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
 .adm-help__section {
     border-bottom: 1px dashed var(--rule);
     padding-bottom: var(--space-3);
