@@ -6,9 +6,9 @@
 {% block content %}
 <section class="section--hero">
     <div class="container container--narrow">
-        <p class="eyebrow">Case Studies</p>
-        <h1 class="page-title">Selected work</h1>
-        <p class="lead">Structured studies of problems I've owned — in HR operations at scale, and in personal AI systems design. Each runs the same four beats: problem, role, approach, outcome.</p>
+        <p class="eyebrow">{{ page.page_eyebrow|default:"Case Studies" }}</p>
+        <h1 class="page-title">{{ page.page_title|default:"Selected work" }}</h1>
+        {% if page.page_lead %}<div class="lead">{{ page.page_lead|safe }}</div>{% else %}<p class="lead">Structured studies of problems I've owned — in HR operations at scale, and in personal AI systems design. Each runs the same four beats: problem, role, approach, outcome.</p>{% endif %}
     </div>
 </section>
 
@@ -24,11 +24,11 @@
             </h2>
             <p class="case-card__summary">{{ study.summary }}</p>
             <p class="case-card__more">
-                <a href="{% url 'case_study_detail' slug=study.slug %}">Read case study →</a>
+                <a href="{% url 'case_study_detail' slug=study.slug %}">{{ page.read_more_label|default:"Read case study →" }}</a>
             </p>
         </article>
         {% empty %}
-        <p class="muted">No published case studies yet.</p>
+        <p class="muted">{{ page.empty_state_label|default:"No published case studies yet." }}</p>
         {% endfor %}
     </div>
 </section>

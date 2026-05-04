@@ -6,7 +6,7 @@
 {% block content %}
 <section class="section--hero">
     <div class="container container--narrow">
-        <p class="eyebrow">Enterprise Leadership</p>
+        <p class="eyebrow">{{ overview.page_eyebrow|default:"Enterprise Leadership" }}</p>
         <h1 class="page-title">{{ overview.hero_heading|default:"Running HR operations at scale" }}</h1>
         {% if overview.hero_lead %}<div class="lead">{{ overview.hero_lead|safe }}</div>{% else %}<p class="lead">Three functions, one operating discipline. The overview below is how the role is shaped; the function sections are what the role actually does.</p>{% endif %}
     </div>
@@ -15,14 +15,14 @@
 <section class="section section--tight bordered">
     <div class="container container--narrow">
         <article class="narrative-block">
-            <p class="eyebrow">Scope</p>
-            <h2>Scope</h2>
+            <p class="eyebrow">{{ overview.scope_label|default:"Scope" }}</p>
+            <h2>{{ overview.scope_label|default:"Scope" }}</h2>
             <div class="body">{{ overview.scope|safe }}</div>
         </article>
 
         <article class="narrative-block">
-            <p class="eyebrow">Impact</p>
-            <h2>Impact</h2>
+            <p class="eyebrow">{{ overview.impact_label|default:"Impact" }}</p>
+            <h2>{{ overview.impact_label|default:"Impact" }}</h2>
             <div class="body">{{ overview.impact|safe }}</div>
         </article>
     </div>
@@ -31,7 +31,7 @@
 <section class="section section--tight">
     <div class="container container--narrow">
         <div class="section-heading">
-            <p class="eyebrow">The Function</p>
+            <p class="eyebrow">{{ overview.function_section_eyebrow|default:"The Function" }}</p>
             <h2>{{ overview.function_section_heading|default:"What I lead" }}</h2>
         </div>
 
@@ -41,7 +41,7 @@
             {% if function.summary %}<p class="function-block__summary">{{ function.summary }}</p>{% endif %}
 
             <div class="function-block__facet">
-                <p class="eyebrow">Responsibilities</p>
+                <p class="eyebrow">{{ function.responsibilities_label|default:"RESPONSIBILITIES" }}</p>
                 <div class="body">{{ function.responsibilities|safe }}</div>
             </div>
 
@@ -65,7 +65,7 @@
 <section class="section section--tight bordered">
     <div class="container container--narrow">
         <article class="narrative-block">
-            <p class="eyebrow">System Integration</p>
+            <p class="eyebrow">{{ overview.system_integration_eyebrow|default:"System Integration" }}</p>
             <h2>{{ overview.system_integration_heading|default:"How the system works together" }}</h2>
             <div class="body">{{ overview.system_integration|safe }}</div>
         </article>

@@ -6,7 +6,7 @@
 {% block content %}
 <section class="section--hero">
     <div class="container container--narrow">
-        <p class="eyebrow"><a href="{% url 'perspectives' %}" class="muted">&larr; All Perspectives</a></p>
+        <p class="eyebrow"><a href="{% url 'perspectives' %}" class="muted">{{ site_config.perspective_back_link_label|default:"← All Perspectives" }}</a></p>
         {% if perspective.eyebrow %}<p class="eyebrow">{{ perspective.eyebrow }}</p>{% endif %}
         <h1 class="page-title">{{ perspective.title }}</h1>
         {% if perspective.deck %}<p class="perspective-deck">{{ perspective.deck }}</p>{% endif %}
@@ -26,7 +26,7 @@
 
         {% if perspective.closing %}
         <article class="narrative-block narrative-block--closing">
-            <p class="eyebrow">Closing</p>
+            <p class="eyebrow">{{ site_config.perspective_closing_eyebrow|default:"Closing" }}</p>
             <div class="body">{{ perspective.closing|safe }}</div>
         </article>
         {% endif %}
@@ -36,7 +36,7 @@
 
 <section class="section section--tight">
     <div class="container container--narrow">
-        <p class="muted"><a href="{% url 'perspectives' %}">&larr; Back to all Perspectives</a></p>
+        <p class="muted"><a href="{% url 'perspectives' %}">{{ site_config.perspective_back_to_all_label|default:"← Back to all Perspectives" }}</a></p>
     </div>
 </section>
 {% endblock %}

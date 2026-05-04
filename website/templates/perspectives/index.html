@@ -6,9 +6,9 @@
 {% block content %}
 <section class="section--hero">
     <div class="container container--narrow">
-        <p class="eyebrow">Perspectives</p>
-        <h1 class="page-title">Perspectives</h1>
-        <p class="lead">A small library of arguments about how HR operations actually work — compensation, HRIS, payroll, and the systems beneath them. Written as an operator explaining the work, not as a blog.</p>
+        <p class="eyebrow">{{ page.page_eyebrow|default:"Perspectives" }}</p>
+        <h1 class="page-title">{{ page.page_title|default:"Perspectives" }}</h1>
+        {% if page.page_lead %}<div class="lead">{{ page.page_lead|safe }}</div>{% else %}<p class="lead">A small library of arguments about how HR operations actually work — compensation, HRIS, payroll, and the systems beneath them. Written as an operator explaining the work, not as a blog.</p>{% endif %}
     </div>
 </section>
 
@@ -22,11 +22,11 @@
             </h2>
             {% if piece.deck %}<p class="case-card__summary">{{ piece.deck }}</p>{% endif %}
             <p class="case-card__more">
-                <a href="{% url 'perspective_detail' slug=piece.slug %}">Read &rarr;</a>
+                <a href="{% url 'perspective_detail' slug=piece.slug %}">{{ page.read_more_label|default:"Read →" }}</a>
             </p>
         </article>
         {% empty %}
-        <p class="muted">No perspectives published yet.</p>
+        <p class="muted">{{ page.empty_state_label|default:"No perspectives published yet." }}</p>
         {% endfor %}
     </div>
 </section>

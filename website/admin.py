@@ -12,6 +12,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from .models import (
+    CaseStudiesIndexPage,
     CaseStudy,
     ConnectPage,
     EnterpriseFunction,
@@ -22,6 +23,7 @@ from .models import (
     Page,
     Perspective,
     PerspectiveSection,
+    PerspectivesIndexPage,
     ResumeSection,
     ResumeVersion,
     SiteConfig,
@@ -136,21 +138,24 @@ class EnterpriseOverviewAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Page hero', {
-            'fields': ('hero_heading', 'hero_lead'),
+            'fields': ('page_eyebrow', 'hero_heading', 'hero_lead'),
+            'description': 'Eyebrow above the H1, the H1 itself, and the lead paragraph below it.',
         }),
         ('Scope section', {
-            'fields': ('scope',),
+            'fields': ('scope_label', 'scope'),
+            'description': 'Scope label drives both the eyebrow and the H2 of this block.',
         }),
         ('Impact section', {
-            'fields': ('impact',),
+            'fields': ('impact_label', 'impact'),
+            'description': 'Impact label drives both the eyebrow and the H2 of this block.',
         }),
-        ('Function section heading', {
-            'fields': ('function_section_heading',),
-            'description': 'The H2 above the three function blocks (Compensation, HRIS, Payroll).',
+        ('"What I lead" section heading', {
+            'fields': ('function_section_eyebrow', 'function_section_heading'),
+            'description': 'Eyebrow and H2 above the three function blocks (Compensation, HRIS, Payroll).',
         }),
         ('Closing section', {
-            'fields': ('system_integration_heading', 'system_integration'),
-            'description': 'The "How the system works together" closing.',
+            'fields': ('system_integration_eyebrow', 'system_integration_heading', 'system_integration'),
+            'description': 'The "How the system works together" closing block.',
         }),
     )
 
@@ -180,6 +185,7 @@ class EnterpriseFunctionAdmin(admin.ModelAdmin):
         ('Function body — fixed structure', {
             'fields': (
                 'responsibilities',
+                'responsibilities_label',
                 'systems_led',
                 'platforms_and_tools_label',
                 'organizational_role',
@@ -188,11 +194,11 @@ class EnterpriseFunctionAdmin(admin.ModelAdmin):
             'description': (
                 'Every function renders three blocks in fixed order: '
                 'Responsibilities → Systems Led → Role in the Organization. '
-                'The small uppercase label above each of the latter two '
-                'blocks is editable per function — see the two label fields '
-                'placed directly below their content. Leave a label blank to '
-                'fall back to its default ("PLATFORMS AND TOOLS" / '
-                '"ROLE AND ACCOUNTABILITY").'
+                'The small uppercase label above each of the three blocks '
+                'is editable per function — see the label fields placed '
+                'directly below their content. Leave a label blank to fall '
+                'back to its default ("RESPONSIBILITIES" / "PLATFORMS AND '
+                'TOOLS" / "ROLE AND ACCOUNTABILITY").'
             ),
         }),
     )
@@ -208,22 +214,40 @@ class InnovationOverviewAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Page hero', {
-            'fields': ('hero_heading', 'intro'),
+            'fields': ('page_eyebrow', 'hero_heading', 'intro'),
         }),
         ('Beacon Innovation section', {
-            'fields': ('beacon_positioning',),
+            'fields': ('beacon_eyebrow', 'beacon_heading', 'beacon_positioning'),
         }),
         ('Whole Life Journey section', {
-            'fields': ('wlj_positioning', 'wlj_overview'),
+            'fields': ('wlj_eyebrow', 'wlj_heading', 'wlj_positioning', 'wlj_overview'),
         }),
         ('Architecture section', {
-            'fields': ('architecture_caption', 'practical_example'),
+            'fields': ('architecture_eyebrow', 'architecture_heading', 'architecture_caption'),
+            'description': 'Eyebrow, H2, and caption surrounding the Data → Signals → Decisions diagram.',
+        }),
+        ('Architecture diagram labels (rare to edit)', {
+            'classes': ('collapse',),
+            'fields': (
+                'diagram_box_1_label', 'diagram_caption_1',
+                'diagram_box_2_label', 'diagram_caption_2',
+                'diagram_box_3_label', 'diagram_caption_3',
+            ),
+            'description': (
+                'The three labels inside the diagram boxes and the small '
+                'caption under each. Defaults: Data / Signals / Decisions '
+                'with captions WHAT SYSTEMS EMIT / PATTERNS WORTH WATCHING '
+                '/ ACTION TO TAKE NEXT.'
+            ),
+        }),
+        ('In-practice example', {
+            'fields': ('in_practice_eyebrow', 'practical_example'),
         }),
         ('AI Chief of Staff section', {
-            'fields': ('chief_of_staff',),
+            'fields': ('chief_of_staff_eyebrow', 'chief_of_staff_heading', 'chief_of_staff'),
         }),
         ('What This Demonstrates section', {
-            'fields': ('what_this_demonstrates',),
+            'fields': ('what_this_demonstrates_eyebrow', 'what_this_demonstrates_heading', 'what_this_demonstrates'),
         }),
         ('Footer link', {
             'fields': ('wlj_case_study_link_label',),
@@ -327,8 +351,24 @@ class ConnectPageAdmin(admin.ModelAdmin):
     """Singleton: redirect changelist to the sole instance."""
 
     fieldsets = (
-        ('Hero & form', {
-            'fields': ('intro', 'form_prelude'),
+        ('Page hero', {
+            'fields': ('page_eyebrow', 'page_title', 'intro'),
+            'description': 'Eyebrow above the H1, the H1 itself, and the lead paragraph below it.',
+        }),
+        ('Above the form', {
+            'fields': ('form_prelude',),
+            'description': 'The bridge sentence rendered between the lead and the form.',
+        }),
+        ('Form labels', {
+            'fields': (
+                'name_label',
+                'email_label',
+                'inquiry_label',
+                'message_label',
+                'message_optional_label',
+                'submit_button_label',
+            ),
+            'description': 'Visible labels above each input + the submit-button text.',
         }),
         ('Confirmation message (after form submit)', {
             'fields': ('success_heading', 'success_body'),
@@ -444,9 +484,65 @@ class SiteConfigAdmin(admin.ModelAdmin):
             'fields': ('read_profile_link_label',),
             'description': 'The "Read the executive profile →" link below the domain split.',
         }),
+        ('Homepage section eyebrows', {
+            'fields': ('vision_eyebrow', 'enterprise_column_eyebrow', 'innovation_column_eyebrow'),
+            'description': 'Small uppercase labels above each homepage section heading.',
+        }),
+        ('Brand & navigation (every page)', {
+            'fields': (
+                'brand_wordmark',
+                'nav_menu_toggle_label',
+                'nav_home_label',
+                'nav_profile_label',
+                'nav_enterprise_label',
+                'nav_case_studies_label',
+                'nav_innovation_label',
+                'nav_perspectives_label',
+                'nav_connect_label',
+            ),
+            'description': 'Wordmark and the seven nav labels in the top header.',
+        }),
         ('Footer & contact', {
-            'fields': ('contact_email', 'linkedin_url'),
+            'fields': (
+                'contact_email',
+                'linkedin_url',
+                'footer_owner_name',
+                'footer_linkedin_label',
+            ),
             'description': 'Rendered in the footer of every page.',
+        }),
+        ('Case Study detail labels (apply to every case study)', {
+            'classes': ('collapse',),
+            'fields': (
+                'case_study_back_link_label',
+                'case_study_chip_suffix',
+                'case_study_problem_eyebrow',
+                'case_study_problem_heading',
+                'case_study_role_eyebrow',
+                'case_study_role_heading',
+                'case_study_approach_eyebrow',
+                'case_study_approach_heading',
+                'case_study_outcome_eyebrow',
+                'case_study_outcome_heading',
+                'case_study_back_to_all_label',
+            ),
+            'description': (
+                'Universal labels used on every case study detail page. '
+                'Edit once and they apply across all case studies.'
+            ),
+        }),
+        ('Perspective detail labels (apply to every perspective)', {
+            'classes': ('collapse',),
+            'fields': (
+                'perspective_back_link_label',
+                'perspective_closing_eyebrow',
+                'perspective_back_to_all_label',
+            ),
+        }),
+        ('Resume page chrome', {
+            'classes': ('collapse',),
+            'fields': ('resume_eyebrow_prefix', 'resume_print_button_label'),
+            'description': 'Used on every /resume/<slug>/ page. The H1 on those pages is the brand wordmark above.',
         }),
     )
 
@@ -474,6 +570,65 @@ class SiteConfigAdmin(admin.ModelAdmin):
             if name in form.base_fields:
                 form.base_fields[name].help_text = text
         return form
+
+
+# ---------------------------------------------------------------------------
+# Index-page singletons (Case Studies index, Perspectives index)
+# ---------------------------------------------------------------------------
+
+@admin.register(CaseStudiesIndexPage)
+class CaseStudiesIndexPageAdmin(admin.ModelAdmin):
+    """Singleton: redirect changelist to the sole instance's edit view."""
+
+    fieldsets = (
+        ('Page hero', {
+            'fields': ('page_eyebrow', 'page_title', 'page_lead'),
+            'description': 'Eyebrow, H1, and lead paragraph at the top of /case-studies/.',
+        }),
+        ('Per-card label & empty state', {
+            'fields': ('read_more_label', 'empty_state_label'),
+            'description': '"Read case study →" link text per card and the message shown when there are no published studies.',
+        }),
+    )
+
+    def has_add_permission(self, request):
+        return not CaseStudiesIndexPage.objects.exists()
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def changelist_view(self, request, extra_context=None):
+        obj = CaseStudiesIndexPage.load()
+        return HttpResponseRedirect(
+            reverse('admin:website_casestudiesindexpage_change', args=[obj.pk])
+        )
+
+
+@admin.register(PerspectivesIndexPage)
+class PerspectivesIndexPageAdmin(admin.ModelAdmin):
+    """Singleton: redirect changelist to the sole instance's edit view."""
+
+    fieldsets = (
+        ('Page hero', {
+            'fields': ('page_eyebrow', 'page_title', 'page_lead'),
+            'description': 'Eyebrow, H1, and lead paragraph at the top of /perspectives/.',
+        }),
+        ('Per-card label & empty state', {
+            'fields': ('read_more_label', 'empty_state_label'),
+        }),
+    )
+
+    def has_add_permission(self, request):
+        return not PerspectivesIndexPage.objects.exists()
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def changelist_view(self, request, extra_context=None):
+        obj = PerspectivesIndexPage.load()
+        return HttpResponseRedirect(
+            reverse('admin:website_perspectivesindexpage_change', args=[obj.pk])
+        )
 
 
 # ---------------------------------------------------------------------------

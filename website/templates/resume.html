@@ -6,11 +6,11 @@
 {% block content %}
 <section class="section--hero resume-hero">
     <div class="container container--narrow">
-        <p class="eyebrow">Resume · {{ version.get_type_display }}</p>
-        <h1 class="page-title">Danny R. Jenkins</h1>
+        <p class="eyebrow">{{ site_config.resume_eyebrow_prefix|default:"Resume" }} · {{ version.get_type_display }}</p>
+        <h1 class="page-title">{{ site_config.brand_wordmark|default:"Danny R. Jenkins" }}</h1>
         <p class="resume-positioning">{{ version.name }}</p>
         <p class="resume-print-controls no-print">
-            <button type="button" data-print-trigger class="btn-print">Print / Save as PDF</button>
+            <button type="button" data-print-trigger class="btn-print">{{ site_config.resume_print_button_label|default:"Print / Save as PDF" }}</button>
         </p>
     </div>
 </section>

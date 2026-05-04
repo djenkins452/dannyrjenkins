@@ -84,6 +84,81 @@ class SiteConfig(models.Model):
         help_text='Appears in the footer as the LinkedIn link (opens in new tab).',
     )
 
+    # ----- Global site chrome (every page) -----
+    brand_wordmark = models.CharField(
+        max_length=120,
+        default='Danny R. Jenkins',
+        blank=True,
+        help_text='Wordmark in the top-left of every page header. Also used as the H1 on the resume page.',
+    )
+    nav_menu_toggle_label = models.CharField(
+        max_length=40,
+        default='Menu',
+        blank=True,
+        help_text='Visible text on the mobile nav toggle button.',
+    )
+    nav_home_label = models.CharField(max_length=40, default='Home', blank=True, help_text='Top-nav label for the Home page.')
+    nav_profile_label = models.CharField(max_length=40, default='Profile', blank=True, help_text='Top-nav label for the Profile page.')
+    nav_enterprise_label = models.CharField(max_length=60, default='Enterprise Leadership', blank=True, help_text='Top-nav label for the Enterprise Leadership page.')
+    nav_case_studies_label = models.CharField(max_length=40, default='Case Studies', blank=True, help_text='Top-nav label for the Case Studies index.')
+    nav_innovation_label = models.CharField(max_length=40, default='Innovation', blank=True, help_text='Top-nav label for the Innovation page.')
+    nav_perspectives_label = models.CharField(max_length=40, default='Perspectives', blank=True, help_text='Top-nav label for the Perspectives index.')
+    nav_connect_label = models.CharField(max_length=40, default='Connect', blank=True, help_text='Top-nav label for the Connect page.')
+    footer_owner_name = models.CharField(
+        max_length=120,
+        default='Danny R. Jenkins',
+        blank=True,
+        help_text='Name shown after the © year in the footer of every page.',
+    )
+    footer_linkedin_label = models.CharField(
+        max_length=40,
+        default='LinkedIn',
+        blank=True,
+        help_text='Visible text of the LinkedIn link in the footer (the URL is set above).',
+    )
+
+    # ----- Homepage section eyebrows -----
+    vision_eyebrow = models.CharField(
+        max_length=80,
+        default='Vision',
+        blank=True,
+        help_text='Small uppercase label above the Vision heading on the homepage.',
+    )
+    enterprise_column_eyebrow = models.CharField(
+        max_length=80,
+        default='Enterprise Leadership',
+        blank=True,
+        help_text='Small uppercase label above the left-column heading on the homepage.',
+    )
+    innovation_column_eyebrow = models.CharField(
+        max_length=80,
+        default='Innovation',
+        blank=True,
+        help_text='Small uppercase label above the right-column heading on the homepage.',
+    )
+
+    # ----- Case Study detail labels (apply to every case-study page) -----
+    case_study_back_link_label = models.CharField(max_length=80, default='← All Case Studies', blank=True, help_text='Breadcrumb at the top of every case study detail page.')
+    case_study_chip_suffix = models.CharField(max_length=40, default='Case Study', blank=True, help_text='Word(s) appended after the category in the chip on a case study detail page (e.g. "Enterprise Case Study").')
+    case_study_problem_eyebrow = models.CharField(max_length=80, default='Problem', blank=True, help_text='Eyebrow above the Problem block on every case study.')
+    case_study_problem_heading = models.CharField(max_length=120, default='The problem', blank=True, help_text='H2 of the Problem block on every case study.')
+    case_study_role_eyebrow = models.CharField(max_length=80, default='Role', blank=True, help_text='Eyebrow above the Role block on every case study.')
+    case_study_role_heading = models.CharField(max_length=120, default='My role', blank=True, help_text='H2 of the Role block on every case study.')
+    case_study_approach_eyebrow = models.CharField(max_length=80, default='Approach', blank=True, help_text='Eyebrow above the Approach block on every case study.')
+    case_study_approach_heading = models.CharField(max_length=120, default='Approach', blank=True, help_text='H2 of the Approach block on every case study.')
+    case_study_outcome_eyebrow = models.CharField(max_length=80, default='Outcome', blank=True, help_text='Eyebrow above the Outcome block on every case study.')
+    case_study_outcome_heading = models.CharField(max_length=120, default='Outcome', blank=True, help_text='H2 of the Outcome block on every case study.')
+    case_study_back_to_all_label = models.CharField(max_length=80, default='← Back to all case studies', blank=True, help_text='Bottom-of-page back link on every case study.')
+
+    # ----- Perspective detail labels (apply to every perspective page) -----
+    perspective_back_link_label = models.CharField(max_length=80, default='← All Perspectives', blank=True, help_text='Breadcrumb at the top of every perspective detail page.')
+    perspective_closing_eyebrow = models.CharField(max_length=80, default='Closing', blank=True, help_text='Eyebrow above the closing paragraph on a perspective detail page.')
+    perspective_back_to_all_label = models.CharField(max_length=80, default='← Back to all Perspectives', blank=True, help_text='Bottom-of-page back link on every perspective detail page.')
+
+    # ----- Resume page chrome -----
+    resume_eyebrow_prefix = models.CharField(max_length=40, default='Resume', blank=True, help_text='Word that prefixes the eyebrow on a resume page (renders as "Resume · <type>").')
+    resume_print_button_label = models.CharField(max_length=80, default='Print / Save as PDF', blank=True, help_text='Button text on the resume page that triggers print / save-as-PDF.')
+
     class Meta:
         verbose_name = 'Site Configuration'
         verbose_name_plural = 'Site Configuration'
@@ -218,6 +293,12 @@ class EnterpriseOverview(models.Model):
     in EnterpriseFunction records below.
     """
 
+    page_eyebrow = models.CharField(
+        max_length=80,
+        default='Enterprise Leadership',
+        blank=True,
+        help_text='Small uppercase label above the H1 at the top of the Enterprise Leadership page.',
+    )
     hero_heading = models.CharField(
         max_length=200,
         default='Running HR operations at scale',
@@ -229,19 +310,43 @@ class EnterpriseOverview(models.Model):
         verbose_name='Hero lead paragraph',
         help_text='Appears on the Enterprise Leadership page hero, below the headline, as the supporting paragraph.',
     )
+    scope_label = models.CharField(
+        max_length=80,
+        default='Scope',
+        blank=True,
+        help_text='Drives both the eyebrow and the H2 of the Scope section on the Enterprise Leadership page.',
+    )
     scope = HTMLField(
         blank=True,
         help_text='Appears on the Enterprise Leadership page as the body of the Scope section.',
     )
+    impact_label = models.CharField(
+        max_length=80,
+        default='Impact',
+        blank=True,
+        help_text='Drives both the eyebrow and the H2 of the Impact section on the Enterprise Leadership page.',
+    )
     impact = HTMLField(
         blank=True,
         help_text='Appears on the Enterprise Leadership page as the body of the Impact section.',
+    )
+    function_section_eyebrow = models.CharField(
+        max_length=80,
+        default='The Function',
+        blank=True,
+        help_text='Eyebrow above the "What I lead" heading (the section that holds the three function blocks).',
     )
     function_section_heading = models.CharField(
         max_length=200,
         default='What I lead',
         blank=True,
         help_text='Appears on the Enterprise Leadership page as the H2 heading above the three function blocks (Compensation, HRIS, Payroll).',
+    )
+    system_integration_eyebrow = models.CharField(
+        max_length=80,
+        default='System Integration',
+        blank=True,
+        help_text='Eyebrow above the closing-section heading at the bottom of the Enterprise Leadership page.',
     )
     system_integration_heading = models.CharField(
         max_length=200,
@@ -292,6 +397,17 @@ class EnterpriseFunction(models.Model):
         blank=True,
         help_text='One-line framing shown under the function title.',
     )
+    responsibilities_label = models.CharField(
+        max_length=80,
+        default='RESPONSIBILITIES',
+        blank=True,
+        verbose_name='"Responsibilities" section label',
+        help_text=(
+            'Small uppercase label above the "Responsibilities" block on '
+            'the Enterprise Leadership page. Edit per function. Leave blank '
+            'to fall back to "RESPONSIBILITIES".'
+        ),
+    )
     responsibilities = HTMLField(help_text='What this function leads.')
     systems_led = HTMLField(help_text='Systems, tools, and programs owned.')
     platforms_and_tools_label = models.CharField(
@@ -337,6 +453,12 @@ class InnovationOverview(models.Model):
     design, not content, and lives in the template as inline SVG.
     """
 
+    page_eyebrow = models.CharField(
+        max_length=80,
+        default='Innovation',
+        blank=True,
+        help_text='Small uppercase label above the H1 at the top of the Innovation page.',
+    )
     hero_heading = models.CharField(
         max_length=200,
         default='Innovation & Systems Design',
@@ -346,6 +468,18 @@ class InnovationOverview(models.Model):
     intro = HTMLField(
         blank=True,
         help_text='Appears on the Innovation page hero, below the headline, as the lead paragraph.',
+    )
+    beacon_eyebrow = models.CharField(
+        max_length=80,
+        default='Beacon Innovation',
+        blank=True,
+        help_text='Eyebrow above the Beacon Innovation block on the Innovation page.',
+    )
+    beacon_heading = models.CharField(
+        max_length=200,
+        default='Beacon Innovation, LLC',
+        blank=True,
+        help_text='H2 of the Beacon Innovation block on the Innovation page.',
     )
     beacon_positioning = HTMLField(
         blank=True,
@@ -357,6 +491,18 @@ class InnovationOverview(models.Model):
         default='See how this operates in practice → WLJ Case Study',
         blank=True,
         help_text='Appears at the bottom of the Innovation page as the link to the WLJ case study.',
+    )
+    wlj_eyebrow = models.CharField(
+        max_length=80,
+        default='Whole Life Journey',
+        blank=True,
+        help_text='Eyebrow above the Whole Life Journey block on the Innovation page.',
+    )
+    wlj_heading = models.CharField(
+        max_length=200,
+        default='Whole Life Journey',
+        blank=True,
+        help_text='H2 of the Whole Life Journey block on the Innovation page.',
     )
     wlj_positioning = models.CharField(
         max_length=300,
@@ -372,12 +518,36 @@ class InnovationOverview(models.Model):
         verbose_name='Whole Life Journey overview',
         help_text='What WLJ is, why it was built, who it is for.',
     )
+    architecture_eyebrow = models.CharField(
+        max_length=80,
+        default='Architecture',
+        blank=True,
+        help_text='Eyebrow above the Data → Signals → Decisions block on the Innovation page.',
+    )
+    architecture_heading = models.CharField(
+        max_length=200,
+        default='Data → Signals → Decisions',
+        blank=True,
+        help_text='H2 above the Data → Signals → Decisions diagram on the Innovation page.',
+    )
+    diagram_box_1_label = models.CharField(max_length=40, default='Data', blank=True, help_text='Label inside the FIRST box of the architecture diagram.')
+    diagram_box_2_label = models.CharField(max_length=40, default='Signals', blank=True, help_text='Label inside the SECOND box of the architecture diagram.')
+    diagram_box_3_label = models.CharField(max_length=40, default='Decisions', blank=True, help_text='Label inside the THIRD box of the architecture diagram.')
+    diagram_caption_1 = models.CharField(max_length=80, default='WHAT SYSTEMS EMIT', blank=True, help_text='Small uppercase caption under the FIRST diagram box.')
+    diagram_caption_2 = models.CharField(max_length=80, default='PATTERNS WORTH WATCHING', blank=True, help_text='Small uppercase caption under the SECOND diagram box.')
+    diagram_caption_3 = models.CharField(max_length=80, default='ACTION TO TAKE NEXT', blank=True, help_text='Small uppercase caption under the THIRD diagram box.')
     architecture_caption = HTMLField(
         blank=True,
         help_text=(
             'Paragraph accompanying the Data → Signals → Decisions diagram. '
             'Explain the three stages in plain language.'
         ),
+    )
+    in_practice_eyebrow = models.CharField(
+        max_length=80,
+        default='In Practice',
+        blank=True,
+        help_text='Eyebrow above the in-practice example beneath the architecture diagram.',
     )
     practical_example = HTMLField(
         blank=True,
@@ -388,10 +558,34 @@ class InnovationOverview(models.Model):
             'abstract architecture in real use.'
         ),
     )
+    chief_of_staff_eyebrow = models.CharField(
+        max_length=80,
+        default='AI Chief of Staff',
+        blank=True,
+        help_text='Eyebrow above the AI Chief of Staff block on the Innovation page.',
+    )
+    chief_of_staff_heading = models.CharField(
+        max_length=200,
+        default='AI Chief of Staff',
+        blank=True,
+        help_text='H2 of the AI Chief of Staff block on the Innovation page.',
+    )
     chief_of_staff = HTMLField(
         blank=True,
         verbose_name='AI Chief of Staff concept',
         help_text='The AI layer as an executive Chief of Staff — not a chatbot metaphor.',
+    )
+    what_this_demonstrates_eyebrow = models.CharField(
+        max_length=80,
+        default='What This Demonstrates',
+        blank=True,
+        help_text='Eyebrow above the closing block on the Innovation page.',
+    )
+    what_this_demonstrates_heading = models.CharField(
+        max_length=200,
+        default='What this demonstrates',
+        blank=True,
+        help_text='H2 of the closing block on the Innovation page.',
     )
     what_this_demonstrates = HTMLField(
         blank=True,
@@ -579,6 +773,18 @@ class ResumeSection(models.Model):
 class ConnectPage(models.Model):
     """Singleton for /connect/ — two CTAs (conversation + resume request)."""
 
+    page_eyebrow = models.CharField(
+        max_length=80,
+        default='Connect',
+        blank=True,
+        help_text='Small uppercase label above the H1 at the top of the Connect page.',
+    )
+    page_title = models.CharField(
+        max_length=120,
+        default='Connect',
+        blank=True,
+        help_text='H1 (page title) at the top of the Connect page.',
+    )
     intro = HTMLField(
         blank=True,
         help_text='Appears on the Connect page hero, below the headline, as the lead paragraph.',
@@ -589,6 +795,12 @@ class ConnectPage(models.Model):
         blank=True,
         help_text='Appears on the Connect page as the bridge sentence above the contact form.',
     )
+    name_label = models.CharField(max_length=40, default='Name', blank=True, help_text='Label above the Name input on the contact form.')
+    email_label = models.CharField(max_length=40, default='Email', blank=True, help_text='Label above the Email input on the contact form.')
+    inquiry_label = models.CharField(max_length=80, default='Reason for reaching out', blank=True, help_text='Label above the inquiry-type dropdown on the contact form.')
+    message_label = models.CharField(max_length=40, default='Message', blank=True, help_text='Label above the Message textarea on the contact form.')
+    message_optional_label = models.CharField(max_length=20, default='(optional)', blank=True, help_text='Small parenthetical note next to the Message label.')
+    submit_button_label = models.CharField(max_length=80, default='Request a Conversation', blank=True, help_text='Visible text on the contact-form submit button.')
     success_heading = models.CharField(
         max_length=200,
         default='Thank you — I’ve received your message.',
@@ -649,3 +861,107 @@ class HomepagePillar(models.Model):
 
     def __str__(self):
         return f'[{self.get_category_display()}] {self.title}'
+
+
+class CaseStudiesIndexPage(models.Model):
+    """Singleton: copy for the /case-studies/ index page (the list page)."""
+
+    page_eyebrow = models.CharField(
+        max_length=80,
+        default='Case Studies',
+        blank=True,
+        help_text='Small uppercase label above the H1 on the Case Studies index.',
+    )
+    page_title = models.CharField(
+        max_length=200,
+        default='Selected work',
+        blank=True,
+        help_text='H1 at the top of the Case Studies index.',
+    )
+    page_lead = HTMLField(
+        blank=True,
+        help_text=(
+            'Lead paragraph below the H1 on the Case Studies index. '
+            'Leave blank to fall back to the design-time default.'
+        ),
+    )
+    read_more_label = models.CharField(
+        max_length=60,
+        default='Read case study →',
+        blank=True,
+        help_text='Per-card link text on the Case Studies index ("Read case study →").',
+    )
+    empty_state_label = models.CharField(
+        max_length=120,
+        default='No published case studies yet.',
+        blank=True,
+        help_text='Message shown when there are zero published case studies.',
+    )
+
+    class Meta:
+        verbose_name = 'Case Studies Index Page'
+        verbose_name_plural = 'Case Studies Index Page'
+
+    def __str__(self):
+        return 'Case Studies Index Page'
+
+    def save(self, *args, **kwargs):
+        self.pk = 1
+        super().save(*args, **kwargs)
+
+    @classmethod
+    def load(cls):
+        obj, _ = cls.objects.get_or_create(pk=1)
+        return obj
+
+
+class PerspectivesIndexPage(models.Model):
+    """Singleton: copy for the /perspectives/ index page (the list page)."""
+
+    page_eyebrow = models.CharField(
+        max_length=80,
+        default='Perspectives',
+        blank=True,
+        help_text='Small uppercase label above the H1 on the Perspectives index.',
+    )
+    page_title = models.CharField(
+        max_length=200,
+        default='Perspectives',
+        blank=True,
+        help_text='H1 at the top of the Perspectives index.',
+    )
+    page_lead = HTMLField(
+        blank=True,
+        help_text=(
+            'Lead paragraph below the H1 on the Perspectives index. '
+            'Leave blank to fall back to the design-time default.'
+        ),
+    )
+    read_more_label = models.CharField(
+        max_length=60,
+        default='Read →',
+        blank=True,
+        help_text='Per-card link text on the Perspectives index.',
+    )
+    empty_state_label = models.CharField(
+        max_length=120,
+        default='No perspectives published yet.',
+        blank=True,
+        help_text='Message shown when there are zero published perspectives.',
+    )
+
+    class Meta:
+        verbose_name = 'Perspectives Index Page'
+        verbose_name_plural = 'Perspectives Index Page'
+
+    def __str__(self):
+        return 'Perspectives Index Page'
+
+    def save(self, *args, **kwargs):
+        self.pk = 1
+        super().save(*args, **kwargs)
+
+    @classmethod
+    def load(cls):
+        obj, _ = cls.objects.get_or_create(pk=1)
+        return obj

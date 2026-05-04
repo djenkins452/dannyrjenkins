@@ -24,7 +24,7 @@
 <section class="section section--tight section--dark">
     <div class="container container--narrow">
         <article class="narrative-block">
-            <p class="eyebrow">Vision</p>
+            <p class="eyebrow">{{ site_config.vision_eyebrow|default:"Vision" }}</p>
             <h2>{{ site_config.vision_heading|default:"How HR operations should work" }}</h2>
             <div class="body">{{ site_config.homepage_vision|safe }}</div>
         </article>
@@ -36,7 +36,7 @@
     <div class="container">
         <div class="domains">
             <div class="domain domain--enterprise">
-                <p class="eyebrow">Enterprise Leadership</p>
+                <p class="eyebrow">{{ site_config.enterprise_column_eyebrow|default:"Enterprise Leadership" }}</p>
                 <h2>{{ site_config.enterprise_column_heading|default:"Running HR operations that people can depend on" }}</h2>
                 <div class="domain__intro">{{ site_config.enterprise_section_intro|safe }}</div>
                 <ul class="pillar-list">
@@ -53,7 +53,7 @@
             </div>
 
             <div class="domain domain--innovation">
-                <p class="eyebrow">Innovation</p>
+                <p class="eyebrow">{{ site_config.innovation_column_eyebrow|default:"Innovation" }}</p>
                 <h2>{{ site_config.innovation_column_heading|default:"Designing personal AI systems" }}</h2>
                 <div class="domain__intro">{{ site_config.innovation_section_intro|safe }}</div>
                 <ul class="pillar-list">

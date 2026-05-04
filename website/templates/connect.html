@@ -6,8 +6,8 @@
 {% block content %}
 <section class="section--hero">
     <div class="container container--narrow">
-        <p class="eyebrow">Connect</p>
-        <h1 class="page-title">Connect</h1>
+        <p class="eyebrow">{{ page.page_eyebrow|default:"Connect" }}</p>
+        <h1 class="page-title">{{ page.page_title|default:"Connect" }}</h1>
         {% if page.intro %}<div class="lead">{{ page.intro|safe }}</div>{% endif %}
     </div>
 </section>
@@ -31,30 +31,30 @@
             {% endif %}
 
             <div class="form-field">
-                <label for="{{ form.name.id_for_label }}">Name</label>
+                <label for="{{ form.name.id_for_label }}">{{ page.name_label|default:"Name" }}</label>
                 {{ form.name }}
                 {% if form.name.errors %}<p class="form-field__error">{{ form.name.errors|join:" " }}</p>{% endif %}
             </div>
 
             <div class="form-field">
-                <label for="{{ form.email.id_for_label }}">Email</label>
+                <label for="{{ form.email.id_for_label }}">{{ page.email_label|default:"Email" }}</label>
                 {{ form.email }}
                 {% if form.email.errors %}<p class="form-field__error">{{ form.email.errors|join:" " }}</p>{% endif %}
             </div>
 
             <div class="form-field">
-                <label for="{{ form.inquiry_type.id_for_label }}">Reason for reaching out</label>
+                <label for="{{ form.inquiry_type.id_for_label }}">{{ page.inquiry_label|default:"Reason for reaching out" }}</label>
                 {{ form.inquiry_type }}
                 {% if form.inquiry_type.errors %}<p class="form-field__error">{{ form.inquiry_type.errors|join:" " }}</p>{% endif %}
             </div>
 
             <div class="form-field">
-                <label for="{{ form.message.id_for_label }}">Message <span class="muted">(optional)</span></label>
+                <label for="{{ form.message.id_for_label }}">{{ page.message_label|default:"Message" }} <span class="muted">{{ page.message_optional_label|default:"(optional)" }}</span></label>
                 {{ form.message }}
                 {% if form.message.errors %}<p class="form-field__error">{{ form.message.errors|join:" " }}</p>{% endif %}
             </div>
 
-            <button type="submit" class="btn-submit">Request a Conversation</button>
+            <button type="submit" class="btn-submit">{{ page.submit_button_label|default:"Request a Conversation" }}</button>
         </form>
         {% endif %}
     </div>

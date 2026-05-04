@@ -17,17 +17,17 @@
 <body>
 <header class="site-header">
     <div class="site-header__inner">
-        <a class="site-header__brand" href="{% url 'home' %}">Danny R. Jenkins</a>
-        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+        <a class="site-header__brand" href="{% url 'home' %}">{{ site_config.brand_wordmark|default:"Danny R. Jenkins" }}</a>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">{{ site_config.nav_menu_toggle_label|default:"Menu" }}</button>
         <nav class="site-nav" id="primary-nav" aria-label="Primary">
             <ul>
-                <li><a href="{% url 'home' %}" {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}>Home</a></li>
-                <li><a href="{% url 'profile' %}" {% if request.resolver_match.url_name == 'profile' %}aria-current="page"{% endif %}>Profile</a></li>
-                <li><a href="{% url 'enterprise' %}" {% if request.resolver_match.url_name == 'enterprise' %}aria-current="page"{% endif %}>Enterprise Leadership</a></li>
-                <li><a href="{% url 'case_studies' %}" {% if request.resolver_match.url_name == 'case_studies' %}aria-current="page"{% endif %}>Case Studies</a></li>
-                <li><a href="{% url 'innovation' %}" {% if request.resolver_match.url_name == 'innovation' %}aria-current="page"{% endif %}>Innovation</a></li>
-                <li><a href="{% url 'perspectives' %}" {% if request.resolver_match.url_name == 'perspectives' %}aria-current="page"{% endif %}>Perspectives</a></li>
-                <li><a href="{% url 'connect' %}" {% if request.resolver_match.url_name == 'connect' %}aria-current="page"{% endif %}>Connect</a></li>
+                <li><a href="{% url 'home' %}" {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}>{{ site_config.nav_home_label|default:"Home" }}</a></li>
+                <li><a href="{% url 'profile' %}" {% if request.resolver_match.url_name == 'profile' %}aria-current="page"{% endif %}>{{ site_config.nav_profile_label|default:"Profile" }}</a></li>
+                <li><a href="{% url 'enterprise' %}" {% if request.resolver_match.url_name == 'enterprise' %}aria-current="page"{% endif %}>{{ site_config.nav_enterprise_label|default:"Enterprise Leadership" }}</a></li>
+                <li><a href="{% url 'case_studies' %}" {% if request.resolver_match.url_name == 'case_studies' %}aria-current="page"{% endif %}>{{ site_config.nav_case_studies_label|default:"Case Studies" }}</a></li>
+                <li><a href="{% url 'innovation' %}" {% if request.resolver_match.url_name == 'innovation' %}aria-current="page"{% endif %}>{{ site_config.nav_innovation_label|default:"Innovation" }}</a></li>
+                <li><a href="{% url 'perspectives' %}" {% if request.resolver_match.url_name == 'perspectives' %}aria-current="page"{% endif %}>{{ site_config.nav_perspectives_label|default:"Perspectives" }}</a></li>
+                <li><a href="{% url 'connect' %}" {% if request.resolver_match.url_name == 'connect' %}aria-current="page"{% endif %}>{{ site_config.nav_connect_label|default:"Connect" }}</a></li>
             </ul>
         </nav>
     </div>
@@ -39,10 +39,10 @@
 
 <footer class="site-footer">
     <div class="container site-footer__inner">
-        <div>© {% now "Y" %} Danny R. Jenkins</div>
+        <div>© {% now "Y" %} {{ site_config.footer_owner_name|default:"Danny R. Jenkins" }}</div>
         <div class="site-footer__links">
             {% if site_config.contact_email %}<a href="mailto:{{ site_config.contact_email }}">{{ site_config.contact_email }}</a>{% endif %}
-            {% if site_config.linkedin_url %}<a href="{{ site_config.linkedin_url }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>{% endif %}
+            {% if site_config.linkedin_url %}<a href="{{ site_config.linkedin_url }}" target="_blank" rel="noopener noreferrer">{{ site_config.footer_linkedin_label|default:"LinkedIn" }}</a>{% endif %}
         </div>
     </div>
 </footer>

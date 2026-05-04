@@ -6,7 +6,7 @@
 {% block content %}
 <section class="section--hero">
     <div class="container container--narrow">
-        <p class="eyebrow">Innovation</p>
+        <p class="eyebrow">{{ overview.page_eyebrow|default:"Innovation" }}</p>
         <h1 class="page-title">{{ overview.hero_heading|default:"Innovation & Systems Design" }}</h1>
         {% if overview.intro %}<div class="lead">{{ overview.intro|safe }}</div>{% endif %}
     </div>
@@ -15,21 +15,21 @@
 <section class="section section--tight bordered">
     <div class="container container--narrow">
         <article class="narrative-block">
-            <p class="eyebrow">Beacon Innovation</p>
-            <h2>Beacon Innovation, LLC</h2>
+            <p class="eyebrow">{{ overview.beacon_eyebrow|default:"Beacon Innovation" }}</p>
+            <h2>{{ overview.beacon_heading|default:"Beacon Innovation, LLC" }}</h2>
             <div class="body">{{ overview.beacon_positioning|safe }}</div>
         </article>
 
         <article class="narrative-block">
-            <p class="eyebrow">Whole Life Journey</p>
-            <h2>Whole Life Journey</h2>
+            <p class="eyebrow">{{ overview.wlj_eyebrow|default:"Whole Life Journey" }}</p>
+            <h2>{{ overview.wlj_heading|default:"Whole Life Journey" }}</h2>
             {% if overview.wlj_positioning %}<p class="positioning-line">{{ overview.wlj_positioning }}</p>{% endif %}
             <div class="body">{{ overview.wlj_overview|safe }}</div>
         </article>
 
         <article class="narrative-block">
-            <p class="eyebrow">Architecture</p>
-            <h2>Data &rarr; Signals &rarr; Decisions</h2>
+            <p class="eyebrow">{{ overview.architecture_eyebrow|default:"Architecture" }}</p>
+            <h2>{{ overview.architecture_heading|default:"Data → Signals → Decisions" }}</h2>
             <figure class="pipeline">
                 <svg class="pipeline__diagram" viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="pipelineTitle pipelineDesc">
                     <title id="pipelineTitle">Data to Signals to Decisions pipeline</title>
@@ -47,9 +47,9 @@
                     </g>
 
                     <g font-family="'Source Serif 4', Georgia, serif" font-size="22" fill="currentColor" text-anchor="middle">
-                        <text x="110" y="97">Data</text>
-                        <text x="320" y="97">Signals</text>
-                        <text x="530" y="97">Decisions</text>
+                        <text x="110" y="97">{{ overview.diagram_box_1_label|default:"Data" }}</text>
+                        <text x="320" y="97">{{ overview.diagram_box_2_label|default:"Signals" }}</text>
+                        <text x="530" y="97">{{ overview.diagram_box_3_label|default:"Decisions" }}</text>
                     </g>
 
                     <g fill="none" stroke="currentColor" stroke-width="1.5">
@@ -58,9 +58,9 @@
                     </g>
 
                     <g font-family="Inter, sans-serif" font-size="10" letter-spacing="1.5" fill="#60646C" text-anchor="middle">
-                        <text x="110" y="162">WHAT SYSTEMS EMIT</text>
-                        <text x="320" y="162">PATTERNS WORTH WATCHING</text>
-                        <text x="530" y="162">ACTION TO TAKE NEXT</text>
+                        <text x="110" y="162">{{ overview.diagram_caption_1|default:"WHAT SYSTEMS EMIT" }}</text>
+                        <text x="320" y="162">{{ overview.diagram_caption_2|default:"PATTERNS WORTH WATCHING" }}</text>
+                        <text x="530" y="162">{{ overview.diagram_caption_3|default:"ACTION TO TAKE NEXT" }}</text>
                     </g>
                 </svg>
                 {% if overview.architecture_caption %}<figcaption class="pipeline__caption">{{ overview.architecture_caption|safe }}</figcaption>{% endif %}
@@ -68,22 +68,22 @@
 
             {% if overview.practical_example %}
             <div class="in-practice">
-                <p class="eyebrow">In Practice</p>
+                <p class="eyebrow">{{ overview.in_practice_eyebrow|default:"In Practice" }}</p>
                 <div class="body">{{ overview.practical_example|safe }}</div>
             </div>
             {% endif %}
         </article>
 
         <article class="narrative-block">
-            <p class="eyebrow">AI Chief of Staff</p>
-            <h2>AI Chief of Staff</h2>
+            <p class="eyebrow">{{ overview.chief_of_staff_eyebrow|default:"AI Chief of Staff" }}</p>
+            <h2>{{ overview.chief_of_staff_heading|default:"AI Chief of Staff" }}</h2>
             <div class="body">{{ overview.chief_of_staff|safe }}</div>
         </article>
 
         {% if overview.what_this_demonstrates %}
         <article class="narrative-block">
-            <p class="eyebrow">What This Demonstrates</p>
-            <h2>What this demonstrates</h2>
+            <p class="eyebrow">{{ overview.what_this_demonstrates_eyebrow|default:"What This Demonstrates" }}</p>
+            <h2>{{ overview.what_this_demonstrates_heading|default:"What this demonstrates" }}</h2>
             <div class="body">{{ overview.what_this_demonstrates|safe }}</div>
         </article>
         {% endif %}

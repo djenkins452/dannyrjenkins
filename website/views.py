@@ -10,6 +10,7 @@ from .forms import ContactForm
 logger = logging.getLogger(__name__)
 
 from .models import (
+    CaseStudiesIndexPage,
     CaseStudy,
     ConnectPage,
     EnterpriseFunction,
@@ -18,6 +19,7 @@ from .models import (
     InnovationOverview,
     Page,
     Perspective,
+    PerspectivesIndexPage,
     ResumeVersion,
 )
 
@@ -117,7 +119,10 @@ def connect(request):
 
 def case_study_index(request):
     studies = CaseStudy.objects.filter(published=True)
-    return render(request, 'case_studies/index.html', {'studies': studies})
+    return render(request, 'case_studies/index.html', {
+        'studies': studies,
+        'page': CaseStudiesIndexPage.load(),
+    })
 
 
 def case_study_detail(request, slug):
@@ -127,7 +132,10 @@ def case_study_detail(request, slug):
 
 def perspective_index(request):
     perspectives = Perspective.objects.filter(published=True)
-    return render(request, 'perspectives/index.html', {'perspectives': perspectives})
+    return render(request, 'perspectives/index.html', {
+        'perspectives': perspectives,
+        'page': PerspectivesIndexPage.load(),
+    })
 
 
 def perspective_detail(request, slug):
