@@ -811,7 +811,7 @@ class ConnectPage(models.Model):
     inquiry_label = models.CharField(max_length=80, default='Reason for reaching out', blank=True, help_text='Label above the inquiry-type dropdown on the contact form.')
     message_label = models.CharField(max_length=40, default='Message', blank=True, help_text='Label above the Message textarea on the contact form.')
     message_optional_label = models.CharField(max_length=20, default='(optional)', blank=True, help_text='Small parenthetical note next to the Message label.')
-    submit_button_label = models.CharField(max_length=80, default='Request a Conversation', blank=True, help_text='Visible text on the contact-form submit button.')
+    submit_button_label = models.CharField(max_length=80, default='Submit', blank=True, help_text='Visible text on the contact-form submit button. The form covers multiple inquiry types (resume request, conversation, etc.), so a neutral verb like "Submit" is the safe default.')
     success_heading = models.CharField(
         max_length=200,
         default='Thank you — I’ve received your message.',

@@ -54,7 +54,7 @@
                 {% if form.message.errors %}<p class="form-field__error">{{ form.message.errors|join:" " }}</p>{% endif %}
             </div>
 
-            <button type="submit" class="btn-submit">{{ page.submit_button_label|default:"Request a Conversation" }}</button>
+            <button type="submit" class="btn-submit">{{ page.submit_button_label|default:"Submit" }}</button>
         </form>
         {% endif %}
     </div>
