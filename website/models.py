@@ -294,8 +294,31 @@ class EnterpriseFunction(models.Model):
     )
     responsibilities = HTMLField(help_text='What this function leads.')
     systems_led = HTMLField(help_text='Systems, tools, and programs owned.')
+    platforms_and_tools_label = models.CharField(
+        max_length=80,
+        default='PLATFORMS AND TOOLS',
+        blank=True,
+        verbose_name='"Systems Led" section label',
+        help_text=(
+            'The small uppercase label rendered above the "Systems Led" '
+            'block on the Enterprise Leadership page. Edit per function. '
+            'Leave blank to fall back to "PLATFORMS AND TOOLS".'
+        ),
+    )
     organizational_role = HTMLField(
         help_text='How this function fits into the organization.',
+    )
+    role_and_accountability_label = models.CharField(
+        max_length=80,
+        default='ROLE AND ACCOUNTABILITY',
+        blank=True,
+        verbose_name='"Role in the Organization" section label',
+        help_text=(
+            'The small uppercase label rendered above the "Role in the '
+            'Organization" block on the Enterprise Leadership page. Edit '
+            'per function. Leave blank to fall back to '
+            '"ROLE AND ACCOUNTABILITY".'
+        ),
     )
     order = models.PositiveIntegerField(default=0)
 

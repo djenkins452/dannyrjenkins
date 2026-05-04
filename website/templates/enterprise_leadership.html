@@ -46,12 +46,12 @@
             </div>
 
             <div class="function-block__facet">
-                <p class="eyebrow">Systems Led</p>
+                <p class="eyebrow">{{ function.platforms_and_tools_label|default:"PLATFORMS AND TOOLS" }}</p>
                 <div class="body">{{ function.systems_led|safe }}</div>
             </div>
 
             <div class="function-block__facet">
-                <p class="eyebrow">Role in the Organization</p>
+                <p class="eyebrow">{{ function.role_and_accountability_label|default:"ROLE AND ACCOUNTABILITY" }}</p>
                 <div class="body">{{ function.organizational_role|safe }}</div>
             </div>
         </article>

@@ -178,11 +178,21 @@ class EnterpriseFunctionAdmin(admin.ModelAdmin):
             'fields': ('title', 'slug', 'summary', 'order'),
         }),
         ('Function body — fixed structure', {
-            'fields': ('responsibilities', 'systems_led', 'organizational_role'),
+            'fields': (
+                'responsibilities',
+                'systems_led',
+                'platforms_and_tools_label',
+                'organizational_role',
+                'role_and_accountability_label',
+            ),
             'description': (
-                'Every function renders Responsibilities → Systems Led → '
-                'Role in the Organization in that fixed order on the '
-                'Enterprise Leadership page.'
+                'Every function renders three blocks in fixed order: '
+                'Responsibilities → Systems Led → Role in the Organization. '
+                'The small uppercase label above each of the latter two '
+                'blocks is editable per function — see the two label fields '
+                'placed directly below their content. Leave a label blank to '
+                'fall back to its default ("PLATFORMS AND TOOLS" / '
+                '"ROLE AND ACCOUNTABILITY").'
             ),
         }),
     )
