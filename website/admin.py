@@ -356,7 +356,34 @@ class ConnectPageAdmin(admin.ModelAdmin):
 
 @admin.register(SiteConfig)
 class SiteConfigAdmin(admin.ModelAdmin):
-    """Singleton: redirect changelist to the sole instance's edit view."""
+    """Singleton: redirect changelist to the sole instance's edit view.
+
+    The fieldset names and field-level help_text mirror the language used
+    in the public-site help panel exactly, so an editor reading the
+    panel and then opening the admin sees the same words for the same
+    things. Help_text is overridden at the form level (see get_form)
+    rather than on the model, to keep this an admin-only change with
+    no migrations.
+    """
+
+    # Plain-language help text for the three Homepage hero fields.
+    # Matches the public-site help panel exactly. Overridden at form
+    # level in get_form() so we don't generate an AlterField migration.
+    HERO_FIELD_HELP = {
+        'homepage_headline': (
+            'The large serif text at the top of the homepage, beside '
+            'your photo. The first thing a visitor reads.'
+        ),
+        'homepage_positioning_line': (
+            'Appears directly below the headline as a single sentence, '
+            'slightly smaller than the headline. Plain text, no formatting.'
+        ),
+        'homepage_subheadline': (
+            'Appears below the positioning line as the supporting '
+            'paragraph. Two to three sentences that introduce who you '
+            'are and what you do.'
+        ),
+    }
 
     fieldsets = (
         ('Homepage hero', {
@@ -365,11 +392,20 @@ class SiteConfigAdmin(admin.ModelAdmin):
                 'homepage_positioning_line',
                 'homepage_subheadline',
             ),
-            'description': 'The dark navy band at the top of the homepage.',
+            'description': (
+                'The first thing visitors see — the navy band at the top '
+                'of the homepage with your headshot, name, and positioning '
+                'copy. The three fields below render in this exact order: '
+                'Headline → Positioning line → Supporting paragraph.'
+            ),
         }),
         ('Homepage Vision section', {
             'fields': ('vision_heading', 'homepage_vision'),
-            'description': 'The dark band below the hero with the leadership philosophy.',
+            'description': (
+                'A separate dark band that appears below the hero. Holds '
+                'the leadership-philosophy copy. Clear the body to hide '
+                'this section entirely.'
+            ),
         }),
         ('Homepage Enterprise Leadership column', {
             'fields': (
@@ -415,6 +451,19 @@ class SiteConfigAdmin(admin.ModelAdmin):
         return HttpResponseRedirect(
             reverse('admin:website_siteconfig_change', args=[obj.pk])
         )
+
+    def get_form(self, request, obj=None, **kwargs):
+        """Apply plain-language help_text to the Homepage hero fields.
+
+        Overridden at the form level rather than on the model so this
+        change does not require a migration. Each hero field's help_text
+        matches its description in the public-site help panel.
+        """
+        form = super().get_form(request, obj, **kwargs)
+        for name, text in self.HERO_FIELD_HELP.items():
+            if name in form.base_fields:
+                form.base_fields[name].help_text = text
+        return form
 
 
 # ---------------------------------------------------------------------------
