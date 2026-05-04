@@ -68,27 +68,43 @@ Inline JS uses the CSP nonce; no external scripts.
             <ul>
                 <li>
                     <strong>Headline</strong> — the large serif text at the top of the homepage, beside your photo.
+                    <span class="adm-help__current">Currently: <em>{% if site_config.homepage_headline %}"{{ site_config.homepage_headline }}"{% else %}(not yet set){% endif %}</em></span>
                     <span class="adm-help__path">Site Configuration → Homepage hero → "Homepage headline"</span>
                 </li>
                 <li>
                     <strong>Positioning line</strong> — the single sentence below the headline, slightly smaller.
+                    <span class="adm-help__current">Currently: <em>{% if site_config.homepage_positioning_line %}"{{ site_config.homepage_positioning_line }}"{% else %}(not yet set){% endif %}</em></span>
                     <span class="adm-help__path">Site Configuration → Homepage hero → "Homepage positioning line"</span>
                 </li>
                 <li>
                     <strong>Supporting paragraph</strong> — the two-to-three-sentence description under the positioning line.
+                    <span class="adm-help__current">Currently: <em>{% if site_config.homepage_subheadline %}{{ site_config.homepage_subheadline|striptags|truncatechars:240 }}{% else %}(not yet set){% endif %}</em></span>
                     <span class="adm-help__path">Site Configuration → Homepage hero → "Homepage positioning statement"</span>
                 </li>
                 <li>
                     <strong>"Vision" section</strong> (the dark band below the hero) — heading and body.
+                    <span class="adm-help__current">Currently: <em>{% if site_config.vision_heading %}"{{ site_config.vision_heading }}"{% else %}(heading not set){% endif %}</em></span>
                     <span class="adm-help__path">Site Configuration → Homepage Vision section. Clear the body to hide the section.</span>
                 </li>
                 <li>
-                    <strong>Left column heading</strong> ("Running HR operations that people can depend on") and the intro paragraph above the bullets.
-                    <span class="adm-help__path">Site Configuration → Homepage Enterprise Leadership column</span>
+                    <strong>Left column heading</strong> — the H2 above the Enterprise pillars.
+                    <span class="adm-help__current">Currently: <em>{% if site_config.enterprise_column_heading %}"{{ site_config.enterprise_column_heading }}"{% else %}(not yet set — defaults to "Running HR operations that people can depend on"){% endif %}</em></span>
+                    <span class="adm-help__path">Site Configuration → Homepage Enterprise Leadership column → Heading</span>
                 </li>
                 <li>
-                    <strong>Right column heading</strong> ("Designing personal AI systems") and intro paragraph.
-                    <span class="adm-help__path">Site Configuration → Homepage Innovation column</span>
+                    <strong>Left column intro</strong> — paragraph above the three Enterprise bullets.
+                    <span class="adm-help__current">Currently: <em>{% if site_config.enterprise_section_intro %}{{ site_config.enterprise_section_intro|striptags|truncatechars:220 }}{% else %}(not yet set){% endif %}</em></span>
+                    <span class="adm-help__path">Site Configuration → Homepage Enterprise Leadership column → Intro</span>
+                </li>
+                <li>
+                    <strong>Right column heading</strong> — the H2 above the Innovation pillars.
+                    <span class="adm-help__current">Currently: <em>{% if site_config.innovation_column_heading %}"{{ site_config.innovation_column_heading }}"{% else %}(not yet set — defaults to "Designing personal AI systems"){% endif %}</em></span>
+                    <span class="adm-help__path">Site Configuration → Homepage Innovation column → Heading</span>
+                </li>
+                <li>
+                    <strong>Right column intro</strong> — paragraph above the three Innovation bullets.
+                    <span class="adm-help__current">Currently: <em>{% if site_config.innovation_section_intro %}{{ site_config.innovation_section_intro|striptags|truncatechars:220 }}{% else %}(not yet set){% endif %}</em></span>
+                    <span class="adm-help__path">Site Configuration → Homepage Innovation column → Intro</span>
                 </li>
                 <li>
                     <strong>Bullets under each column</strong> (the three short items in each).

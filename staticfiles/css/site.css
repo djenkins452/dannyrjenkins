@@ -308,22 +308,6 @@ p { margin: 0 0 1em; max-width: 66ch; }
 .domain__closing p { margin: 0 0 var(--space-2); }
 .domain__closing p:last-child { margin-bottom: 0; }
 
-/* Subtle tag on innovation column to reinforce separation */
-.domain--innovation h2::after {
-    content: "INNOVATION";
-    display: inline-block;
-    margin-left: var(--space-2);
-    font-family: var(--font-sans);
-    font-size: 0.6875rem;
-    letter-spacing: 0.14em;
-    color: var(--ink-muted);
-    vertical-align: middle;
-    padding: 2px 6px;
-    border: 1px solid var(--rule);
-    border-radius: 2px;
-    font-weight: 600;
-}
-
 /* ---------- Narrative / profile blocks ---------- */
 .page-title {
     max-width: 24ch;
@@ -1036,6 +1020,25 @@ button { cursor: pointer; }
     color: var(--ink-muted);
     margin-top: 3px;
     line-height: 1.4;
+}
+
+/* Live value pulled from SiteConfig — shows the editor what's actually
+   rendering on the page right now, so the help panel never drifts from
+   the real content. Sits between the description and the admin path. */
+.adm-help__current {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--ink-body);
+    background: var(--bg-subtle);
+    padding: 4px 8px;
+    border-left: 2px solid var(--rule);
+    margin-top: 4px;
+    border-radius: 0 3px 3px 0;
+    line-height: 1.45;
+}
+.adm-help__current em {
+    font-style: italic;
+    color: var(--ink);
 }
 
 /* Aside note under sections, e.g. "labels are intentionally fixed". */
