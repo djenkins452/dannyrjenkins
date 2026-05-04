@@ -199,6 +199,10 @@ class Page(models.Model):
     seo_description = models.CharField(max_length=300, blank=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name = 'Profile page'
+        verbose_name_plural = 'Profile pages'
+
     def __str__(self):
         return self.title
 
@@ -280,7 +284,8 @@ class CaseStudy(models.Model):
 
     class Meta:
         ordering = ['order', '-published_at', 'id']
-        verbose_name_plural = 'Case studies'
+        verbose_name = 'Case study entry'
+        verbose_name_plural = 'Case Studies — Entries'
 
     def __str__(self):
         return self.title
@@ -365,11 +370,11 @@ class EnterpriseOverview(models.Model):
     )
 
     class Meta:
-        verbose_name = 'Enterprise Overview'
-        verbose_name_plural = 'Enterprise Overview'
+        verbose_name = 'Enterprise Leadership'
+        verbose_name_plural = 'Enterprise Leadership'
 
     def __str__(self):
-        return 'Enterprise Overview'
+        return 'Enterprise Leadership'
 
     def save(self, *args, **kwargs):
         self.pk = 1
@@ -440,6 +445,8 @@ class EnterpriseFunction(models.Model):
 
     class Meta:
         ordering = ['order', 'id']
+        verbose_name = 'Enterprise Leadership function'
+        verbose_name_plural = 'Enterprise Leadership — Functions'
 
     def __str__(self):
         return self.title
@@ -598,11 +605,11 @@ class InnovationOverview(models.Model):
     )
 
     class Meta:
-        verbose_name = 'Innovation Overview'
-        verbose_name_plural = 'Innovation Overview'
+        verbose_name = 'Innovation'
+        verbose_name_plural = 'Innovation'
 
     def __str__(self):
-        return 'Innovation Overview'
+        return 'Innovation'
 
     def save(self, *args, **kwargs):
         self.pk = 1
@@ -654,6 +661,8 @@ class Perspective(models.Model):
 
     class Meta:
         ordering = ['order', '-published_at', 'id']
+        verbose_name = 'Perspective entry'
+        verbose_name_plural = 'Perspectives — Entries'
 
     def __str__(self):
         return self.title
@@ -716,6 +725,8 @@ class ResumeVersion(models.Model):
 
     class Meta:
         ordering = ['type', 'name']
+        verbose_name = 'Resume version'
+        verbose_name_plural = 'Resume — Versions'
 
     def __str__(self):
         return f'{self.name} ({self.get_type_display()})'
@@ -822,11 +833,11 @@ class ConnectPage(models.Model):
     resume_href = models.CharField(max_length=500, default='mailto:', blank=True)
 
     class Meta:
-        verbose_name = 'Connect Page'
-        verbose_name_plural = 'Connect Page'
+        verbose_name = 'Connect'
+        verbose_name_plural = 'Connect'
 
     def __str__(self):
-        return 'Connect Page'
+        return 'Connect'
 
     def save(self, *args, **kwargs):
         self.pk = 1
@@ -858,6 +869,8 @@ class HomepagePillar(models.Model):
 
     class Meta:
         ordering = ['category', 'order', 'id']
+        verbose_name = 'Homepage pillar'
+        verbose_name_plural = 'Home — Pillars'
 
     def __str__(self):
         return f'[{self.get_category_display()}] {self.title}'
@@ -899,11 +912,11 @@ class CaseStudiesIndexPage(models.Model):
     )
 
     class Meta:
-        verbose_name = 'Case Studies Index Page'
-        verbose_name_plural = 'Case Studies Index Page'
+        verbose_name = 'Case Studies'
+        verbose_name_plural = 'Case Studies'
 
     def __str__(self):
-        return 'Case Studies Index Page'
+        return 'Case Studies'
 
     def save(self, *args, **kwargs):
         self.pk = 1
@@ -951,11 +964,11 @@ class PerspectivesIndexPage(models.Model):
     )
 
     class Meta:
-        verbose_name = 'Perspectives Index Page'
-        verbose_name_plural = 'Perspectives Index Page'
+        verbose_name = 'Perspectives'
+        verbose_name_plural = 'Perspectives'
 
     def __str__(self):
-        return 'Perspectives Index Page'
+        return 'Perspectives'
 
     def save(self, *args, **kwargs):
         self.pk = 1

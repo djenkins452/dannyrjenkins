@@ -435,8 +435,31 @@ class SiteConfigAdmin(admin.ModelAdmin):
         ),
     }
 
+    # Fieldsets are ordered to mirror what an editor sees scanning the live
+    # site top to bottom: header (every page) → homepage hero → homepage body
+    # sections (in render order) → footer (every page) → low-frequency
+    # page-specific labels (collapsed).
     fieldsets = (
-        ('Homepage hero', {
+        # ---------- Header on every page ----------
+        ('Header — brand & navigation (every page)', {
+            'fields': (
+                'brand_wordmark',
+                'nav_menu_toggle_label',
+                'nav_home_label',
+                'nav_profile_label',
+                'nav_enterprise_label',
+                'nav_case_studies_label',
+                'nav_innovation_label',
+                'nav_perspectives_label',
+                'nav_connect_label',
+            ),
+            'description': (
+                'Wordmark in the top-left and the seven nav labels in the top header. '
+                'Visible on every page.'
+            ),
+        }),
+        # ---------- Homepage, in render order ----------
+        ('Homepage — hero', {
             'fields': (
                 'homepage_headline',
                 'homepage_positioning_line',
@@ -449,60 +472,45 @@ class SiteConfigAdmin(admin.ModelAdmin):
                 'Headline → Positioning line → Supporting paragraph.'
             ),
         }),
-        ('Homepage Vision section', {
-            'fields': ('vision_heading', 'homepage_vision'),
+        ('Homepage — Vision section', {
+            'fields': ('vision_eyebrow', 'vision_heading', 'homepage_vision'),
             'description': (
                 'A separate dark band that appears below the hero. Holds '
                 'the leadership-philosophy copy. Clear the body to hide '
                 'this section entirely.'
             ),
         }),
-        ('Homepage Enterprise Leadership column', {
+        ('Homepage — Enterprise Leadership column (left)', {
             'fields': (
+                'enterprise_column_eyebrow',
                 'enterprise_column_heading',
                 'enterprise_section_intro',
                 'enterprise_section_closing',
             ),
             'description': (
                 'Left column of the homepage domain split. Pillars (Compensation, '
-                'HRIS, Payroll) are managed under "Homepage Pillars" — filter by '
+                'HRIS, Payroll) are managed under "Home — Pillars" — filter by '
                 'Enterprise category.'
             ),
         }),
-        ('Homepage Innovation column', {
+        ('Homepage — Innovation column (right)', {
             'fields': (
+                'innovation_column_eyebrow',
                 'innovation_column_heading',
                 'innovation_section_intro',
             ),
             'description': (
                 'Right column of the homepage domain split. Pillars (Beacon '
                 'Innovation, Whole Life Journey, AI Chief of Staff) are managed '
-                'under "Homepage Pillars" — filter by Innovation category.'
+                'under "Home — Pillars" — filter by Innovation category.'
             ),
         }),
-        ('Homepage closing link', {
+        ('Homepage — closing link', {
             'fields': ('read_profile_link_label',),
             'description': 'The "Read the executive profile →" link below the domain split.',
         }),
-        ('Homepage section eyebrows', {
-            'fields': ('vision_eyebrow', 'enterprise_column_eyebrow', 'innovation_column_eyebrow'),
-            'description': 'Small uppercase labels above each homepage section heading.',
-        }),
-        ('Brand & navigation (every page)', {
-            'fields': (
-                'brand_wordmark',
-                'nav_menu_toggle_label',
-                'nav_home_label',
-                'nav_profile_label',
-                'nav_enterprise_label',
-                'nav_case_studies_label',
-                'nav_innovation_label',
-                'nav_perspectives_label',
-                'nav_connect_label',
-            ),
-            'description': 'Wordmark and the seven nav labels in the top header.',
-        }),
-        ('Footer & contact', {
+        # ---------- Footer on every page ----------
+        ('Footer — contact & social (every page)', {
             'fields': (
                 'contact_email',
                 'linkedin_url',
@@ -511,7 +519,8 @@ class SiteConfigAdmin(admin.ModelAdmin):
             ),
             'description': 'Rendered in the footer of every page.',
         }),
-        ('Case Study detail labels (apply to every case study)', {
+        # ---------- Page-specific universal labels (low frequency) ----------
+        ('Case Studies — universal labels (every case study)', {
             'classes': ('collapse',),
             'fields': (
                 'case_study_back_link_label',
@@ -527,11 +536,11 @@ class SiteConfigAdmin(admin.ModelAdmin):
                 'case_study_back_to_all_label',
             ),
             'description': (
-                'Universal labels used on every case study detail page. '
-                'Edit once and they apply across all case studies.'
+                'Labels used on every case study detail page. Edit once '
+                'and they apply across all case studies.'
             ),
         }),
-        ('Perspective detail labels (apply to every perspective)', {
+        ('Perspectives — universal labels (every perspective)', {
             'classes': ('collapse',),
             'fields': (
                 'perspective_back_link_label',
@@ -539,7 +548,7 @@ class SiteConfigAdmin(admin.ModelAdmin):
                 'perspective_back_to_all_label',
             ),
         }),
-        ('Resume page chrome', {
+        ('Resume — page chrome (every resume URL)', {
             'classes': ('collapse',),
             'fields': ('resume_eyebrow_prefix', 'resume_print_button_label'),
             'description': 'Used on every /resume/<slug>/ page. The H1 on those pages is the brand wordmark above.',
@@ -637,3 +646,50 @@ class PerspectivesIndexPageAdmin(admin.ModelAdmin):
 admin.site.site_header = 'Danny R. Jenkins — Site Admin'
 admin.site.site_title = 'Site Admin'
 admin.site.index_title = 'Site Content'
+
+
+# ---------------------------------------------------------------------------
+# Admin index ordering — mirror the public-site nav top to bottom.
+#
+# Django's default get_app_list sorts models alphabetically by their plural
+# verbose name. That doesn't reflect how an editor thinks about the site:
+# "Connect" should be last (it is last in nav), Site Configuration should be
+# first (it's the global panel), Enterprise Leadership should sit before
+# Innovation, etc. We override get_app_list to sort the website app's models
+# by a fixed list keyed off the lowercase model class name. This is purely
+# cosmetic — no model registration, URL, or behavior is changed.
+# ---------------------------------------------------------------------------
+
+_ADMIN_MODEL_ORDER = [
+    'siteconfig',             # Global config (top)
+    'homepagepillar',         # Home — Pillars
+    'page',                   # Profile pages
+    'enterpriseoverview',     # Enterprise Leadership (singleton)
+    'enterprisefunction',     # Enterprise Leadership — Functions
+    'innovationoverview',     # Innovation
+    'casestudiesindexpage',   # Case Studies (singleton)
+    'casestudy',              # Case Studies — Entries
+    'perspectivesindexpage',  # Perspectives (singleton)
+    'perspective',            # Perspectives — Entries
+    'resumeversion',          # Resume — Versions
+    'connectpage',            # Connect
+]
+_MODEL_ORDER_INDEX = {name: i for i, name in enumerate(_ADMIN_MODEL_ORDER)}
+
+_original_get_app_list = admin.site.get_app_list
+
+
+def _get_app_list_in_site_nav_order(request, app_label=None):
+    app_list = _original_get_app_list(request, app_label)
+    for app in app_list:
+        if app.get('app_label') == 'website':
+            app['models'].sort(
+                key=lambda m: _MODEL_ORDER_INDEX.get(
+                    m.get('object_name', '').lower(),
+                    9999,  # unknown models fall to the bottom, alphabetically
+                )
+            )
+    return app_list
+
+
+admin.site.get_app_list = _get_app_list_in_site_nav_order
