@@ -57,12 +57,40 @@ def innovation(request):
 
 
 def resume_version(request, slug):
+    """Executive resume HTML view at /resume/<slug>/.
+
+    Composed by ResumeAssemblyService — identity from SiteConfig + per-version
+    headline; section bodies from canonical site sources unless overridden by
+    ResumeSection.content. The "Download PDF" button on this view triggers
+    browser print-to-PDF using the executive print CSS in static/css/site.css.
+    """
+    from .services.resume_assembly import ResumeAssemblyService
     version = get_object_or_404(
-        ResumeVersion.objects.prefetch_related('sections'),
+        ResumeVersion.objects.prefetch_related('sections', 'featured_case_studies'),
         slug=slug,
         is_active=True,
     )
-    return render(request, 'resume.html', {'version': version})
+    context = ResumeAssemblyService(version).assemble()
+    return render(request, 'resume.html', context)
+
+
+def resume_version_ats(request, slug):
+    """ATS-friendly view at /resume/<slug>/ats/.
+
+    Same assembled context as the executive view; the only difference is the
+    template — resume_ats.html renders flat semantic HTML (h1/h2/p/ul/li with
+    minimal CSS) so ATS parsers can extract structure cleanly. Use case: the
+    operator copies the rendered text directly into a Workday/Taleo upload
+    field, or saves-as-PDF for an ATS that prefers PDF over text.
+    """
+    from .services.resume_assembly import ResumeAssemblyService
+    version = get_object_or_404(
+        ResumeVersion.objects.prefetch_related('sections', 'featured_case_studies'),
+        slug=slug,
+        is_active=True,
+    )
+    context = ResumeAssemblyService(version).assemble()
+    return render(request, 'resume_ats.html', context)
 
 
 def connect(request):

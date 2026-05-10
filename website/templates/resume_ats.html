@@ -1,0 +1,85 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ identity.name }} — {{ version.get_type_display }} (ATS)</title>
+    <meta name="description" content="ATS-friendly resume — {{ identity.name }}, {{ version.get_type_display }}." />
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* ATS-friendly: single column, semantic HTML, minimal CSS, system fonts.
+           Designed to render cleanly in browsers and to copy-paste into Workday /
+           Taleo / iCIMS upload fields without smuggling layout artifacts.
+           Print also works — operator can save-as-PDF if the ATS prefers a file. */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            font-size: 12pt;
+            line-height: 1.45;
+            color: #000;
+            background: #fff;
+            max-width: 720px;
+            margin: 32px auto;
+            padding: 0 24px;
+        }
+        h1 { font-size: 22pt; font-weight: 700; margin: 0 0 4pt; line-height: 1.15; }
+        h2 { font-size: 13pt; font-weight: 700; margin: 18pt 0 6pt; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid #000; padding-bottom: 2pt; }
+        p  { margin: 0 0 8pt; }
+        ul { margin: 0 0 8pt 20pt; padding: 0; }
+        li { margin: 0 0 4pt; }
+        a  { color: #000; text-decoration: underline; }
+        .ats-headline { font-size: 13pt; font-weight: 600; margin: 0 0 4pt; }
+        .ats-meta     { font-size: 11pt; margin: 0 0 2pt; }
+        .ats-controls { margin: 16pt 0; font-size: 10pt; color: #555; }
+        .ats-controls a { color: #555; }
+        @media print {
+            .ats-controls { display: none; }
+            body { margin: 0; padding: 0.5in; max-width: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>{{ identity.name }}</h1>
+    {% if identity.headline %}<p class="ats-headline">{{ identity.headline }}</p>{% endif %}
+    {% if identity.location %}<p class="ats-meta">{{ identity.location }}</p>{% endif %}
+    {% if identity.email or identity.phone %}
+    <p class="ats-meta">
+        {% if identity.email %}{{ identity.email }}{% endif %}
+        {% if identity.email and identity.phone %} | {% endif %}
+        {% if identity.phone %}{{ identity.phone }}{% endif %}
+    </p>
+    {% endif %}
+    {% if identity.linkedin_url or identity.website_url %}
+    <p class="ats-meta">
+        {% if identity.linkedin_url %}LinkedIn: {{ identity.linkedin_url }}{% endif %}
+        {% if identity.linkedin_url and identity.website_url %} | {% endif %}
+        {% if identity.website_url %}Website: {{ identity.website_url }}{% endif %}
+    </p>
+    {% endif %}
+</header>
+
+<div class="ats-controls no-print">
+    <a href="{% url 'resume_version' slug=version.slug %}">← Executive view</a> ·
+    <button type="button" data-print-trigger>Save as PDF</button>
+</div>
+
+{% for section in sections %}
+<section>
+    <h2>{{ section.heading }}</h2>
+    {{ section.body_html|safe }}
+</section>
+{% endfor %}
+
+<script>
+    (function () {
+        document.querySelectorAll('[data-print-trigger]').forEach(function (btn) {
+            btn.addEventListener('click', function () { window.print(); });
+        });
+        var ctrls = document.querySelector('.ats-controls button');
+        if (ctrls) ctrls.style.cssText = 'background:transparent;border:1px solid #888;padding:2pt 6pt;font:inherit;cursor:pointer;color:#555;';
+    })();
+</script>
+
+</body>
+</html>

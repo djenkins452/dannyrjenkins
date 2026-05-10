@@ -157,7 +157,29 @@ class SiteConfig(models.Model):
 
     # ----- Resume page chrome -----
     resume_eyebrow_prefix = models.CharField(max_length=40, default='Resume', blank=True, help_text='Word that prefixes the eyebrow on a resume page (renders as "Resume · <type>").')
-    resume_print_button_label = models.CharField(max_length=80, default='Print / Save as PDF', blank=True, help_text='Button text on the resume page that triggers print / save-as-PDF.')
+    resume_print_button_label = models.CharField(max_length=80, default='Download PDF', blank=True, help_text='Button text on the resume page that triggers print / save-as-PDF in the browser.')
+
+    # ----- Resume identity (resume-page-only contact info) -----
+    # Phone, location, and the canonical site URL are resume-specific identity
+    # data — they are not in the global footer and would be wrong there.
+    # Name (brand_wordmark), email (contact_email), and LinkedIn (linkedin_url)
+    # already live above and are read by the ResumeAssemblyService.
+    resume_phone = models.CharField(
+        max_length=40,
+        blank=True,
+        help_text='Phone number for the resume header (e.g. "423-309-4701"). Plain text; rendered as-is.',
+    )
+    resume_location = models.CharField(
+        max_length=80,
+        blank=True,
+        help_text='City and region for the resume header (e.g. "Knoxville, Tennessee").',
+    )
+    site_url = models.CharField(
+        max_length=120,
+        default='https://dannyrjenkins.com',
+        blank=True,
+        help_text='Canonical site URL printed in the resume header. Default is the production domain.',
+    )
 
     class Meta:
         verbose_name = 'Site Configuration'
@@ -698,29 +720,99 @@ class ResumeVersion(models.Model):
     from the public nav; the URL is shared by the owner on request.
     """
 
-    HR_OPS = 'HR_OPS'
-    TOTAL_REWARDS = 'TOTAL_REWARDS'
+    # Six target-role types. Old codes (HR_OPS, TOTAL_REWARDS) are migrated
+    # to VP_HR / VP_TOTAL_REWARDS by the data step in migration 0017.
+    VP_HR = 'VP_HR'
+    VP_TOTAL_REWARDS = 'VP_TOTAL_REWARDS'
+    VP_PEOPLE_TECH = 'VP_PEOPLE_TECH'
+    ED_HR = 'ED_HR'
+    ED_WORKFORCE_OPS = 'ED_WORKFORCE_OPS'
     GENERAL = 'GENERAL'
     TYPE_CHOICES = [
-        (HR_OPS, 'HR Operations'),
-        (TOTAL_REWARDS, 'Total Rewards'),
-        (GENERAL, 'General'),
+        (VP_HR, 'VP HR'),
+        (VP_TOTAL_REWARDS, 'VP Total Rewards'),
+        (VP_PEOPLE_TECH, 'VP People Technology'),
+        (ED_HR, 'Executive Director HR'),
+        (ED_WORKFORCE_OPS, 'Executive Director Workforce Operations'),
+        (GENERAL, 'General Executive'),
+    ]
+
+    # Source for the SUMMARY section body when its Content override is blank.
+    # MANUAL means: don't auto-assemble — the SUMMARY ResumeSection's Content
+    # field is authoritative even when blank (renders the empty-body
+    # placeholder). The other choices pull from a canonical site source.
+    SUMMARY_MANUAL = 'MANUAL'
+    SUMMARY_HOMEPAGE_SUBHEADLINE = 'HOMEPAGE_SUBHEADLINE'
+    SUMMARY_ENTERPRISE_HERO_LEAD = 'ENTERPRISE_HERO_LEAD'
+    SUMMARY_PROFILE_INTRO = 'PROFILE_INTRO'
+    SUMMARY_SOURCE_CHOICES = [
+        (SUMMARY_MANUAL, 'Manual — use the Summary section\'s Content body'),
+        (SUMMARY_HOMEPAGE_SUBHEADLINE, 'Homepage supporting paragraph'),
+        (SUMMARY_ENTERPRISE_HERO_LEAD, 'Enterprise Leadership hero lead'),
+        (SUMMARY_PROFILE_INTRO, 'Profile page intro'),
     ]
 
     slug = models.SlugField(
         unique=True,
         max_length=80,
-        help_text='URL identifier, e.g. "general", "hr-ops", "total-rewards".',
+        help_text='URL identifier, e.g. "general", "vp-hr", "vp-total-rewards".',
     )
     name = models.CharField(
         max_length=200,
-        help_text='Short label shown as the deck under the name (e.g. "HR Operations").',
+        help_text='Internal label for this version (e.g. "VP HR — Recruiter A draft"). Not rendered on the resume page.',
     )
     type = models.CharField(max_length=30, choices=TYPE_CHOICES, default=GENERAL)
     is_active = models.BooleanField(
         default=True,
         help_text='Uncheck to take the URL offline without deleting the content.',
     )
+
+    # ----- Profile configuration: emphasis the assembly service applies -----
+    headline = models.CharField(
+        max_length=200,
+        blank=True,
+        help_text='Per-version headline rendered below the H1 on the resume page (e.g. "Director, Workforce Operations"). Plain text.',
+    )
+    summary_source = models.CharField(
+        max_length=40,
+        choices=SUMMARY_SOURCE_CHOICES,
+        default=SUMMARY_MANUAL,
+        help_text='What canonical site content the assembly service uses for the Executive Summary section when its Content body is blank.',
+    )
+    include_innovation = models.BooleanField(
+        default=True,
+        help_text='When True, the assembled resume includes a Personal AI Systems block sourced from the Innovation Overview. Uncheck for audiences where this is off-message.',
+    )
+    featured_case_studies = models.ManyToManyField(
+        'CaseStudy',
+        blank=True,
+        related_name='featured_in_resumes',
+        help_text='Case studies to surface in the Key Impact Highlights section. Leave empty to omit highlights for this version.',
+    )
+
+    # ----- Audience emphasis weights (admin documentation; future assembly biasing) -----
+    operational_emphasis = models.PositiveSmallIntegerField(
+        default=5,
+        help_text='0 = no emphasis, 10 = maximum. Operational governance, organizational alignment, payroll reliability.',
+    )
+    technology_emphasis = models.PositiveSmallIntegerField(
+        default=5,
+        help_text='0–10. Workforce technology leadership, HRIS modernization, systems integration.',
+    )
+    transformation_emphasis = models.PositiveSmallIntegerField(
+        default=5,
+        help_text='0–10. Workforce transformation, change leadership, capability building.',
+    )
+    healthcare_emphasis = models.PositiveSmallIntegerField(
+        default=5,
+        help_text='0–10. Healthcare operational complexity, AMC context, 24/7 workforce. Set lower for non-healthcare audiences.',
+    )
+
+    target_role_notes = models.TextField(
+        blank=True,
+        help_text='Internal admin-only scratchpad. Never rendered on the public resume. Use for "what to emphasize for this audience" notes.',
+    )
+
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
@@ -766,7 +858,15 @@ class ResumeSection(models.Model):
         blank=True,
         help_text='Override the default heading for this section type. Required if type=CUSTOM.',
     )
-    content = HTMLField()
+    content = HTMLField(
+        blank=True,
+        help_text=(
+            'Body of this section. Leave blank to let the ResumeAssemblyService '
+            'compose this section from canonical site content (works for SUMMARY, '
+            'CURRENT_ROLE, and HIGHLIGHTS). PRIOR_ROLES, EDUCATION, and CUSTOM '
+            'have no canonical source and require an explicit body here.'
+        ),
+    )
     order = models.PositiveIntegerField(default=0)
 
     class Meta:

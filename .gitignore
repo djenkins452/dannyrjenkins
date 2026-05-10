@@ -25,3 +25,8 @@ media/
 .vscode/
 *.swp
 *.swo
+
+# WhiteNoise generates Brotli-compressed copies of static assets at
+# collectstatic time. We commit the .gz copies but not .br — runtime
+# Brotli compression on-demand is acceptable for this site's traffic.
+staticfiles/**/*.br

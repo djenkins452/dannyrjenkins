@@ -330,13 +330,54 @@ class ResumeVersionAdmin(admin.ModelAdmin):
     list_editable = ('is_active',)
     search_fields = ('name', 'slug')
     prepopulated_fields = {'slug': ('name',)}
+    inlines = [ResumeSectionInline]
     fieldsets = (
         ('Resume version', {
             'fields': ('name', 'slug', 'type', 'is_active'),
             'description': (
                 'Each resume version is reachable at /resume/&lt;slug&gt;/ when '
                 'is_active is checked. The URL is not linked from the public '
-                'nav; share it directly with recipients.'
+                'nav; share it directly with recipients. The ATS-friendly '
+                'view is at /resume/&lt;slug&gt;/ats/.'
+            ),
+        }),
+        ('Profile configuration — assembly emphasis', {
+            'fields': (
+                'headline',
+                'summary_source',
+                'include_innovation',
+                'featured_case_studies',
+            ),
+            'description': (
+                'These fields control what the ResumeAssemblyService composes '
+                'when a section\'s Content body is left blank. Set Content on '
+                'a section directly to override assembly for that section.'
+            ),
+        }),
+        ('Audience emphasis weights (0–10)', {
+            'classes': ('collapse',),
+            'fields': (
+                'operational_emphasis',
+                'technology_emphasis',
+                'transformation_emphasis',
+                'healthcare_emphasis',
+            ),
+            'description': (
+                'Weights the assembly service can use to bias section '
+                'composition toward an audience. 0 = no emphasis, 10 = '
+                'maximum emphasis. Used today as documentation for the '
+                'editor; future assembly logic can read these to rank '
+                'highlights or trim case studies automatically.'
+            ),
+        }),
+        ('Target role notes (admin-only, never rendered)', {
+            'classes': ('collapse',),
+            'fields': ('target_role_notes',),
+            'description': (
+                'Internal scratchpad for what to emphasize for this audience. '
+                'Examples: "Increase workforce-transformation emphasis", '
+                '"Reduce healthcare-heavy language", "Stronger technology '
+                'positioning". Not rendered on the public resume.'
             ),
         }),
     )
@@ -552,6 +593,16 @@ class SiteConfigAdmin(admin.ModelAdmin):
             'classes': ('collapse',),
             'fields': ('resume_eyebrow_prefix', 'resume_print_button_label'),
             'description': 'Used on every /resume/<slug>/ page. The H1 on those pages is the brand wordmark above.',
+        }),
+        ('Resume — identity (resume header only)', {
+            'classes': ('collapse',),
+            'fields': ('resume_phone', 'resume_location', 'site_url'),
+            'description': (
+                'Phone, location, and canonical site URL printed in the resume '
+                'header. Name (brand wordmark), email (contact email), and '
+                'LinkedIn URL come from the Header and Footer fieldsets above '
+                '— do not duplicate them here.'
+            ),
         }),
     )
 

@@ -534,6 +534,56 @@ p { margin: 0 0 1em; max-width: 66ch; }
 }
 
 /* ---------- Resume page (version-driven) ---------- */
+/* Executive resume header: typography-driven hierarchy, no sidebars,
+   no chips, calm spacing. Per the Architecture brief: "feels like an
+   executive briefing document, not a designer portfolio." */
+.resume-name {
+    margin: 0 0 6px;
+    line-height: 1.05;
+}
+.resume-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+    line-height: 1.35;
+    color: var(--ink-body);
+    font-weight: 500;
+    margin: 0 0 var(--space-2);
+    letter-spacing: -0.005em;
+}
+.resume-location {
+    font-family: var(--font-sans);
+    font-size: var(--step-s);
+    color: var(--ink-muted);
+    margin: 0 0 4px;
+}
+.resume-contact,
+.resume-links {
+    font-family: var(--font-sans);
+    font-size: var(--step-s);
+    color: var(--ink-body);
+    margin: 0 0 4px;
+}
+.resume-contact a,
+.resume-links a {
+    color: var(--ink-body);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+}
+.resume-contact a:hover,
+.resume-links a:hover { color: var(--accent); }
+.btn-print-secondary {
+    display: inline-block;
+    margin-left: var(--space-2);
+    font-family: var(--font-sans);
+    font-size: var(--step-s);
+    color: var(--ink-muted);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--rule);
+    padding-bottom: 1px;
+}
+.btn-print-secondary:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
 .resume-positioning {
     font-family: var(--font-serif);
     font-size: clamp(1.125rem, 1.8vw, 1.375rem);
@@ -643,6 +693,56 @@ p { margin: 0 0 1em; max-width: 66ch; }
         color: #555;
         letter-spacing: 0.14em;
     }
+
+    /* ----- Resume-specific print refinements ----- */
+    /* Letter paper, half-inch margins. ATS systems and recruiter PDFs
+       expect Letter, not A4 — set explicitly. */
+    @page {
+        size: Letter;
+        margin: 0.5in;
+    }
+    /* Compact the resume hero so the header + first 2 sections fit on page 1. */
+    .resume-hero { padding: 0 0 0.15in 0 !important; }
+    .resume-hero .resume-name { font-size: 22pt !important; line-height: 1.05; }
+    .resume-hero .resume-headline {
+        font-size: 12pt !important;
+        margin-bottom: 4pt !important;
+    }
+    .resume-hero .resume-location,
+    .resume-hero .resume-contact,
+    .resume-hero .resume-links {
+        font-size: 10pt !important;
+        margin-bottom: 2pt !important;
+        color: #000 !important;
+    }
+    /* Section padding tighter than narrative pages — resume reads as one
+       continuous executive document, not three loose sections. */
+    body:has(.resume-hero) .section--tight { padding: 0.12in 0 !important; }
+    body:has(.resume-hero) .narrative-block {
+        padding: 0.08in 0 !important;
+        page-break-inside: avoid;
+    }
+    body:has(.resume-hero) .resume-section-body {
+        font-size: 10.5pt;
+        line-height: 1.4;
+    }
+    body:has(.resume-hero) .resume-section-body ul {
+        margin: 0 0 4pt 16pt !important;
+    }
+    body:has(.resume-hero) .resume-section-body li { margin: 0 0 2pt; }
+    body:has(.resume-hero) .resume-section-body p { margin: 0 0 4pt; }
+    /* Eyebrow as a section divider — stronger contrast than narrative pages */
+    body:has(.resume-hero) .eyebrow {
+        color: #000 !important;
+        font-weight: 700;
+        font-size: 9pt;
+        margin-bottom: 4pt !important;
+        border-bottom: 1px solid #000;
+        padding-bottom: 2pt;
+        display: inline-block;
+    }
+    /* Hide the staff help panel and any toggles */
+    .adm-help { display: none !important; }
 }
 
 /* ---------- Perspective deck (subtitle) ---------- */

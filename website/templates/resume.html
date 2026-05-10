@@ -1,26 +1,40 @@
 {% extends "base.html" %}
 
-{% block title %}Resume — Danny R. Jenkins ({{ version.name }}){% endblock %}
-{% block description %}Resume — {{ version.name }}. Danny R. Jenkins.{% endblock %}
+{% block title %}{{ identity.name }} — {{ version.get_type_display }}{% endblock %}
+{% block description %}Resume — {{ version.get_type_display }}. {{ identity.name }}.{% endblock %}
 
 {% block content %}
 <section class="section--hero resume-hero">
     <div class="container container--narrow">
         <p class="eyebrow">{{ site_config.resume_eyebrow_prefix|default:"Resume" }} · {{ version.get_type_display }}</p>
-        <h1 class="page-title">{{ site_config.brand_wordmark|default:"Danny R. Jenkins" }}</h1>
-        <p class="resume-positioning">{{ version.name }}</p>
+        <h1 class="page-title resume-name">{{ identity.name }}</h1>
+        {% if identity.headline %}<p class="resume-headline">{{ identity.headline }}</p>{% endif %}
+        {% if identity.location %}<p class="resume-location">{{ identity.location }}</p>{% endif %}
+        {% if identity.has_contact_line %}
+        <p class="resume-contact">
+            {% if identity.email %}<a href="mailto:{{ identity.email }}">{{ identity.email }}</a>{% endif %}
+            {% if identity.email and identity.phone %} · {% endif %}
+            {% if identity.phone %}<span>{{ identity.phone }}</span>{% endif %}
+        </p>
+        {% endif %}
+        <p class="resume-links">
+            {% if identity.linkedin_url %}<a href="{{ identity.linkedin_url }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>{% endif %}
+            {% if identity.linkedin_url and identity.website_url %} · {% endif %}
+            {% if identity.website_url %}<a href="{{ identity.website_url }}">{{ identity.website_url|cut:"https://"|cut:"http://" }}</a>{% endif %}
+        </p>
         <p class="resume-print-controls no-print">
-            <button type="button" data-print-trigger class="btn-print">{{ site_config.resume_print_button_label|default:"Print / Save as PDF" }}</button>
+            <button type="button" data-print-trigger class="btn-print">{{ site_config.resume_print_button_label|default:"Download PDF" }}</button>
+            <a href="{% url 'resume_version_ats' slug=version.slug %}" class="btn-print-secondary">ATS-friendly view →</a>
         </p>
     </div>
 </section>
 
-{% for section in version.sections.all %}
+{% for section in sections %}
 <section class="section section--tight bordered">
     <div class="container container--narrow">
         <article class="narrative-block">
-            <p class="eyebrow">{{ section.get_display_heading }}</p>
-            <div class="body resume-section-body">{{ section.content|safe }}</div>
+            <p class="eyebrow">{{ section.heading }}</p>
+            <div class="body resume-section-body">{{ section.body_html|safe }}</div>
         </article>
     </div>
 </section>

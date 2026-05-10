@@ -25,4 +25,9 @@ urlpatterns = [
     ),
     path('connect/', views.connect, name='connect'),
     path('resume/<slug:slug>/', views.resume_version, name='resume_version'),
+    path(
+        'resume/<slug:slug>/ats/',
+        views.resume_version_ats,
+        name='resume_version_ats',
+    ),
 ]
