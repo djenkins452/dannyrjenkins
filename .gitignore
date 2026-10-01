@@ -30,3 +30,15 @@ media/
 # collectstatic time. We commit the .gz copies but not .br — runtime
 # Brotli compression on-demand is acceptable for this site's traffic.
 staticfiles/**/*.br
+
+# Database files, snapshots, and dumps never belong in this public repo:
+# they can hold admin password hashes and session data. Content backups
+# go in as JSON exports (dumpdata of website models only).
+*.sqlite3
+*.sqlite3-journal
+*.sqlite3-wal
+*.sqlite3-shm
+*.sqlite3.snapshot
+*.db
+*.dump
+*.sql
