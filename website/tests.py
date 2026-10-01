@@ -124,3 +124,8 @@ class PublicUrlRegressionTests(TestCase):
         urls += [f'/perspectives/{s}/' for s in Perspective.objects.values_list('slug', flat=True)]
         for url in urls:
             self.assertEqual(self.client.get(url).status_code, 200, url)
+
+    def test_default_meta_description_uses_official_title(self):
+        body = self.client.get('/').content.decode()
+        self.assertIn('content="Director of HRIS, Compensation, and Payroll.', body)
+        self.assertNotIn('Director of Compensation, HRIS, and Payroll', body)
