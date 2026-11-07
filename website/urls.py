@@ -24,6 +24,8 @@ urlpatterns = [
         name='perspective_detail',
     ),
     path('connect/', views.connect, name='connect'),
+    path('contact/', views.contact, name='contact'),
+    path('contact/contact.vcf', views.contact_vcard, name='contact_vcard'),
     path('resume/<slug:slug>/', views.resume_version, name='resume_version'),
     path(
         'resume/<slug:slug>/ats/',

@@ -2,17 +2,22 @@ import logging
 
 from django.conf import settings
 from django.core.mail import EmailMessage
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, render
+from django.template.defaultfilters import slugify
+from django.utils.http import content_disposition_header
+from django.views.decorators.http import require_safe
 
 from .forms import ContactForm
 
 logger = logging.getLogger(__name__)
 
+from .services.vcard import build_vcard
 from .models import (
     CaseStudiesIndexPage,
     CaseStudy,
     ConnectPage,
+    ContactPage,
     EnterpriseFunction,
     EnterpriseOverview,
     HomepagePillar,
@@ -143,6 +148,28 @@ def connect(request):
         'form': form,
         'success': success,
     })
+
+
+@require_safe
+def contact(request):
+    """Public business-card page. The QR code and NFC tag point here."""
+    return render(request, 'contact.html', {'page': ContactPage.load()})
+
+
+@require_safe
+def contact_vcard(request):
+    """Save Contact download, built from the same row as the page."""
+    page = ContactPage.load()
+    response = HttpResponse(
+        build_vcard(page),
+        content_type='text/vcard; charset=utf-8',
+    )
+    response['Content-Disposition'] = content_disposition_header(
+        True, f'{slugify(page.full_name)}.vcf',
+    )
+    # Revalidate, so an admin edit reaches the next person who saves.
+    response['Cache-Control'] = 'no-cache'
+    return response
 
 
 def case_study_index(request):

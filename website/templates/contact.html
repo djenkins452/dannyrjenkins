@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.full_name }} — {{ page.page_eyebrow|default:"Contact" }}{% endblock %}
+{% block description %}{{ page.full_name }}, {{ page.job_title }}, {{ page.organization }}.{% endblock %}
+{% block head_extra %}<link rel="canonical" href="{{ page.CANONICAL_URL }}" />{% endblock %}
+
+{% block content %}
+<section class="section--hero contact-hero">
+    <div class="container container--narrow">
+        <p class="eyebrow">{{ page.page_eyebrow|default:"Contact" }}</p>
+        <h1 class="contact-hero__name">{{ page.full_name }}</h1>
+        <p class="contact-hero__role">{{ page.job_title }}<br />{{ page.organization }}</p>
+    </div>
+</section>
+
+<section class="section--tight">
+    <div class="container container--narrow">
+        {# email_off stops Cloudflare replacing the address and mailto: link in production. #}
+        <!--email_off-->
+        <div class="contact-card">
+            <dl class="contact-card__details">
+                <div class="contact-card__detail">
+                    <dt>{{ page.email_label|default:"Email" }}</dt>
+                    <dd>{{ page.email }}</dd>
+                </div>
+                <div class="contact-card__detail">
+                    <dt>{{ page.cell_label|default:"Cell" }}</dt>
+                    <dd>{{ page.cell_phone_display }}</dd>
+                </div>
+            </dl>
+            <a class="contact-btn contact-btn--primary" href="{% url 'contact_vcard' %}">{{ page.save_button_label|default:"Save Contact" }}</a>
+            <div class="contact-card__actions">
+                <a class="contact-btn" href="mailto:{{ page.email }}">{{ page.email_button_label|default:"Email" }}</a>
+                <a class="contact-btn" href="tel:{{ page.cell_phone }}">{{ page.call_button_label|default:"Call" }}</a>
+            </div>
+        </div>
+        <!--/email_off-->
+    </div>
+</section>
+{% endblock %}
