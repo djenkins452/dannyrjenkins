@@ -15,6 +15,7 @@ from .models import (
     CaseStudiesIndexPage,
     CaseStudy,
     ConnectPage,
+    ContactPage,
     EnterpriseFunction,
     EnterpriseOverview,
     HomepagePillar,
@@ -442,6 +443,47 @@ class ConnectPageAdmin(admin.ModelAdmin):
 
 
 # ---------------------------------------------------------------------------
+# Contact page (business card)
+# ---------------------------------------------------------------------------
+
+@admin.register(ContactPage)
+class ContactPageAdmin(admin.ModelAdmin):
+    """Singleton: redirect changelist to the sole instance."""
+
+    fieldsets = (
+        ('Contact details', {
+            'fields': (
+                'first_name', 'middle_name', 'last_name',
+                'job_title', 'organization', 'email', 'cell_phone',
+            ),
+            'description': (
+                'Shown on /contact/ and written into the Save Contact file. '
+                'Changes apply immediately; the printed QR code and NFC tag '
+                'keep working because the address does not change.'
+            ),
+        }),
+        ('Page labels', {
+            'fields': (
+                'page_eyebrow', 'email_label', 'cell_label',
+                'save_button_label', 'email_button_label', 'call_button_label',
+            ),
+        }),
+    )
+
+    def has_add_permission(self, request):
+        return not ContactPage.objects.exists()
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def changelist_view(self, request, extra_context=None):
+        obj = ContactPage.load()
+        return HttpResponseRedirect(
+            reverse('admin:website_contactpage_change', args=[obj.pk])
+        )
+
+
+# ---------------------------------------------------------------------------
 # Site Configuration (homepage hero, homepage sections, footer)
 # ---------------------------------------------------------------------------
 
@@ -724,6 +766,7 @@ _ADMIN_MODEL_ORDER = [
     'perspective',            # Perspectives — Entries
     'resumeversion',          # Resume — Versions
     'connectpage',            # Connect
+    'contactpage',            # Contact (business card, not in site nav)
 ]
 _MODEL_ORDER_INDEX = {name: i for i, name in enumerate(_ADMIN_MODEL_ORDER)}
 

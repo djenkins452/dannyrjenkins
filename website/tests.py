@@ -3,9 +3,13 @@ import json
 from pathlib import Path
 
 from django.apps import apps
+from django.contrib.auth import get_user_model
+from django.core.exceptions import ValidationError
 from django.test import TestCase
+from django.urls import reverse
 
-from .models import CaseStudy, Perspective, ResumeSection
+from .models import CaseStudy, ContactPage, Perspective, ResumeSection
+from .services.vcard import build_vcard
 
 alignment = importlib.import_module('website.migrations.0018_align_professional_facts')
 
@@ -117,7 +121,7 @@ class PublicUrlRegressionTests(TestCase):
     def test_public_pages_render(self):
         urls = [
             '/', '/profile/', '/enterprise-leadership/', '/case-studies/',
-            '/innovation/', '/perspectives/', '/connect/',
+            '/innovation/', '/perspectives/', '/connect/', '/contact/',
             '/resume/general/', '/resume/general/ats/',
         ]
         urls += [f'/case-studies/{s}/' for s in CaseStudy.objects.values_list('slug', flat=True)]
@@ -129,3 +133,95 @@ class PublicUrlRegressionTests(TestCase):
         body = self.client.get('/').content.decode()
         self.assertIn('content="Director of HRIS, Compensation, and Payroll.', body)
         self.assertNotIn('Director of Compensation, HRIS, and Payroll', body)
+
+
+class ContactPageTests(TestCase):
+    """/contact/ and its .vcf are printed on business cards: they must stay put."""
+
+    def _vcard(self):
+        return self.client.get('/contact/contact.vcf')
+
+    def test_permanent_urls(self):
+        self.assertEqual(reverse('contact'), '/contact/')
+        self.assertEqual(ContactPage.CANONICAL_URL, 'https://dannyrjenkins.com/contact/')
+
+    def test_page_is_public_and_shows_every_detail(self):
+        response = self.client.get('/contact/')
+        self.assertEqual(response.status_code, 200)
+        for text in (
+            'Danny R. Jenkins', 'Director of HRIS', 'Covenant Health',
+            'djenki11@CovHlth.com', '423-309-4701', 'Save Contact',
+        ):
+            self.assertContains(response, text)
+
+    def test_page_action_links(self):
+        response = self.client.get('/contact/')
+        self.assertContains(response, 'href="mailto:djenki11@CovHlth.com"')
+        self.assertContains(response, 'href="tel:+14233094701"')
+        self.assertContains(response, 'href="/contact/contact.vcf"')
+
+    def test_download_is_public_with_download_headers(self):
+        response = self._vcard()
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response['Content-Type'], 'text/vcard; charset=utf-8')
+        self.assertEqual(
+            response['Content-Disposition'],
+            'attachment; filename="danny-r-jenkins.vcf"',
+        )
+
+    def test_vcard_contents(self):
+        self.assertEqual(self._vcard().content.decode(), (
+            'BEGIN:VCARD\r\n'
+            'VERSION:3.0\r\n'
+            'N:Jenkins;Danny;R.;;\r\n'
+            'FN:Danny R. Jenkins\r\n'
+            'ORG:Covenant Health\r\n'
+            'TITLE:Director of HRIS\r\n'
+            'EMAIL;TYPE=INTERNET;TYPE=WORK:djenki11@CovHlth.com\r\n'
+            'TEL;TYPE=CELL;TYPE=VOICE:+14233094701\r\n'
+            'URL:https://dannyrjenkins.com/contact/\r\n'
+            'END:VCARD\r\n'
+        ))
+
+    def test_vcard_url_ignores_request_host(self):
+        response = self.client.get('/contact/contact.vcf', HTTP_HOST='www.beacon-innovation.com')
+        self.assertContains(response, 'URL:https://dannyrjenkins.com/contact/')
+
+    def test_one_edit_updates_page_and_download(self):
+        page = ContactPage.load()
+        page.job_title = 'Vice President, HR; Systems'
+        page.cell_phone = '+18655550100'
+        page.save()
+        html = self.client.get('/contact/').content.decode()
+        card = self._vcard().content.decode()
+        self.assertIn('Vice President, HR; Systems', html)
+        self.assertIn('865-555-0100', html)
+        self.assertIn('href="tel:+18655550100"', html)
+        self.assertIn('TITLE:Vice President\\, HR\\; Systems\r\n', card)
+        self.assertIn('TEL;TYPE=CELL;TYPE=VOICE:+18655550100\r\n', card)
+
+    def test_long_lines_fold_at_75_octets_without_breaking_characters(self):
+        page = ContactPage(job_title='Résumé ' * 30)
+        raw = build_vcard(page).encode('utf-8')
+        for line in raw.split(b'\r\n'):
+            self.assertLessEqual(len(line), 75)
+            line.decode('utf-8')  # Raises if a character was split.
+        unfolded = raw.decode('utf-8').replace('\r\n ', '')
+        self.assertIn(f'TITLE:{page.job_title}\r\n', unfolded)
+
+    def test_phone_must_be_international(self):
+        page = ContactPage.load()
+        for bad in ('423-309-4701', '4233094701', '+14233094701\n'):
+            page.cell_phone = bad
+            with self.assertRaises(ValidationError):
+                page.full_clean()
+        page.cell_phone = '+14233094701'
+        page.full_clean()
+
+    def test_only_one_record_and_admin_opens_it(self):
+        ContactPage(job_title='Second save').save()
+        self.assertEqual(ContactPage.objects.count(), 1)
+        admin_user = get_user_model().objects.create_superuser('staff', password='test-only')
+        self.client.force_login(admin_user)
+        response = self.client.get('/admin/website/contactpage/')
+        self.assertRedirects(response, '/admin/website/contactpage/1/change/')

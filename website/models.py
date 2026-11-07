@@ -1,3 +1,4 @@
+from django.core.validators import RegexValidator
 from django.db import models
 from tinymce.models import HTMLField
 
@@ -947,6 +948,102 @@ class ConnectPage(models.Model):
     def load(cls):
         obj, _ = cls.objects.get_or_create(pk=1)
         return obj
+
+
+class ContactPage(models.Model):
+    """Singleton for /contact/ — the page opened by the business card.
+
+    The single source for the contact details: both the page and the .vcf
+    download read this row, so they cannot disagree. The detail fields are
+    required, so they have no template fallbacks that could drift from it.
+    """
+
+    # Printed on QR codes and NFC tags, and written into the .vcf. Fixed here
+    # rather than built from the request, because the app also answers on
+    # other hosts and sits behind a proxy that terminates HTTPS.
+    CANONICAL_URL = 'https://dannyrjenkins.com/contact/'
+
+    first_name = models.CharField(
+        max_length=60,
+        default='Danny',
+        help_text='First name. Combined with the other name fields as the H1 on /contact/ and the name in the saved contact.',
+    )
+    middle_name = models.CharField(
+        max_length=60,
+        default='R.',
+        blank=True,
+        help_text='Middle name or initial (optional).',
+    )
+    last_name = models.CharField(
+        max_length=60,
+        default='Jenkins',
+        help_text='Last name.',
+    )
+    job_title = models.CharField(
+        max_length=120,
+        default='Director of HRIS',
+        help_text='Job title on /contact/ and in the saved contact.',
+    )
+    organization = models.CharField(
+        max_length=120,
+        default='Covenant Health',
+        help_text='Organization on /contact/ and in the saved contact.',
+    )
+    email = models.EmailField(
+        default='djenki11@CovHlth.com',
+        help_text='Work email on /contact/, behind the email button, and in the saved contact.',
+    )
+    cell_phone = models.CharField(
+        max_length=16,
+        default='+14233094701',
+        validators=[
+            RegexValidator(
+                r'^\+[1-9]\d{6,14}\Z',
+                'Use international format with no spaces, e.g. +14233094701.',
+            ),
+        ],
+        help_text=(
+            'Cell number in international format, e.g. +14233094701. Used by '
+            'the call button and the saved contact; US numbers display on the '
+            'page as 423-309-4701.'
+        ),
+    )
+    page_eyebrow = models.CharField(max_length=80, default='Contact', blank=True, help_text='Small uppercase label above the name.')
+    email_label = models.CharField(max_length=40, default='Email', blank=True, help_text='Label beside the email address.')
+    cell_label = models.CharField(max_length=40, default='Cell', blank=True, help_text='Label beside the cell number.')
+    save_button_label = models.CharField(max_length=40, default='Save Contact', blank=True, help_text='Text on the button that downloads the contact file.')
+    email_button_label = models.CharField(max_length=40, default='Email', blank=True, help_text='Text on the email button.')
+    call_button_label = models.CharField(max_length=40, default='Call', blank=True, help_text='Text on the call button.')
+
+    class Meta:
+        verbose_name = 'Contact (business card)'
+        verbose_name_plural = 'Contact (business card)'
+
+    def __str__(self):
+        return 'Contact (business card)'
+
+    def save(self, *args, **kwargs):
+        self.pk = 1
+        super().save(*args, **kwargs)
+
+    @classmethod
+    def load(cls):
+        obj, _ = cls.objects.get_or_create(pk=1)
+        return obj
+
+    @property
+    def full_name(self):
+        return ' '.join(
+            part for part in (self.first_name, self.middle_name, self.last_name) if part
+        )
+
+    @property
+    def cell_phone_display(self):
+        """+14233094701 -> 423-309-4701; other countries show as stored."""
+        if self.cell_phone.startswith('+1') and len(self.cell_phone) == 12:
+            digits = self.cell_phone[2:]
+            return f'{digits[:3]}-{digits[3:6]}-{digits[6:]}'
+        return self.cell_phone
 
 
 class HomepagePillar(models.Model):

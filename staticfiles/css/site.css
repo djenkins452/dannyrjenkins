@@ -533,6 +533,76 @@ p { margin: 0 0 1em; max-width: 66ch; }
     .connect-ctas { grid-template-columns: 1fr; gap: 0; }
 }
 
+/* ---------- Contact page (business card) ----------
+   Opened from a QR code or NFC tag, usually on a phone, so the hero is
+   tighter than other pages to keep Save Contact on the first screen. */
+.contact-hero { padding: var(--space-4) 0; }
+.contact-hero .eyebrow { margin-bottom: var(--space-1); }
+.contact-hero__name {
+    font-size: clamp(2.25rem, 6vw, var(--step-3xl));
+    margin: 0 0 var(--space-1);
+}
+.contact-hero__role {
+    font-family: var(--font-serif);
+    font-size: var(--step-l);
+    line-height: 1.3;
+    margin: 0;
+}
+.contact-card {
+    max-width: 600px;
+    padding: var(--space-3);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    background: var(--bg-card);
+}
+.contact-card__details { margin: 0 0 var(--space-3); }
+.contact-card__detail + .contact-card__detail { margin-top: var(--space-2); }
+.contact-card__detail dt {
+    font-size: var(--step-xs);
+    color: var(--ink-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+.contact-card__detail dd {
+    margin: 0;
+    font-size: var(--step-l);
+    color: var(--ink);
+    overflow-wrap: anywhere;
+}
+.contact-card__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+}
+.contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 10px var(--space-2);
+    font-size: var(--step-m);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-align: center;
+    text-decoration: none;
+    color: var(--accent);
+    background: var(--bg-panel);
+    border: 1px solid var(--accent);
+    border-radius: 5px;
+    transition: background-color 120ms ease, border-color 120ms ease;
+}
+.contact-btn:hover { color: var(--accent); background: var(--bg-subtle); }
+.contact-btn--primary,
+.contact-btn--primary:hover { color: #fff; }
+.contact-btn--primary { background: var(--accent); }
+.contact-btn--primary:hover { background: var(--accent-soft); border-color: var(--accent-soft); }
+.contact-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
 /* ---------- Resume page (version-driven) ---------- */
 /* Executive resume header: typography-driven hierarchy, no sidebars,
    no chips, calm spacing. Per the Architecture brief: "feels like an
