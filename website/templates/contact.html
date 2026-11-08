@@ -2,7 +2,11 @@
 
 {% block title %}{{ page.full_name }} — {{ page.page_eyebrow|default:"Contact" }}{% endblock %}
 {% block description %}{{ page.full_name }}, {{ page.job_title }}, {{ page.organization }}.{% endblock %}
-{% block head_extra %}<link rel="canonical" href="{{ page.CANONICAL_URL }}" />{% endblock %}
+{% block head_extra %}<meta name="robots" content="noindex" />{% endblock %}
+
+{# Standalone page: reached only from the business card, with no links to the rest of the site. #}
+{% block site_header %}{% endblock %}
+{% block site_footer %}{% endblock %}
 
 {% block content %}
 <section class="section--hero contact-hero">

@@ -1,5 +1,6 @@
 import importlib
 import json
+import re
 from pathlib import Path
 
 from django.apps import apps
@@ -8,7 +9,7 @@ from django.core.exceptions import ValidationError
 from django.test import TestCase
 from django.urls import reverse
 
-from .models import CaseStudy, ContactPage, Perspective, ResumeSection
+from .models import CaseStudy, ContactPage, Perspective, ResumeSection, SiteConfig
 from .services.vcard import build_vcard
 
 alignment = importlib.import_module('website.migrations.0018_align_professional_facts')
@@ -145,6 +146,26 @@ class ContactPageTests(TestCase):
     def test_permanent_urls(self):
         self.assertEqual(reverse('contact'), '/contact/')
         self.assertEqual(ContactPage.CANONICAL_URL, 'https://dannyrjenkins.com/contact/')
+
+    def test_page_is_standalone_with_no_links_to_the_site(self):
+        SiteConfig.objects.update_or_create(
+            pk=1, defaults={'contact_email': 'footer@example.com'},
+        )
+        html = self.client.get('/contact/').content.decode()
+        self.assertEqual(re.findall(r'<a\b[^>]*\bhref="([^"]*)"', html), [
+            '/contact/contact.vcf',
+            'mailto:djenki11@CovHlth.com',
+            'tel:+14233094701',
+        ])
+        for removed in ('<header', '<nav', '<footer', 'footer@example.com'):
+            self.assertNotIn(removed, html)
+        self.assertIn('<meta name="robots" content="noindex" />', html)
+
+    def test_other_pages_keep_header_and_footer(self):
+        html = self.client.get('/connect/').content.decode()
+        for kept in ('<header', '<nav', '<footer'):
+            self.assertIn(kept, html)
+        self.assertNotIn('noindex', html)
 
     def test_page_is_public_and_shows_every_detail(self):
         response = self.client.get('/contact/')

@@ -15,7 +15,7 @@
     {% block head_extra %}{% endblock %}
 </head>
 <body>
-<header class="site-header">
+{% block site_header %}<header class="site-header">
     <div class="site-header__inner">
         <a class="site-header__brand" href="{% url 'home' %}">{{ site_config.brand_wordmark|default:"Danny R. Jenkins" }}</a>
         <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">{{ site_config.nav_menu_toggle_label|default:"Menu" }}</button>
@@ -31,13 +31,13 @@
             </ul>
         </nav>
     </div>
-</header>
+</header>{% endblock %}
 
 <main id="main">
     {% block content %}{% endblock %}
 </main>
 
-<footer class="site-footer">
+{% block site_footer %}<footer class="site-footer">
     <div class="container site-footer__inner">
         <div>© {% now "Y" %} {{ site_config.footer_owner_name|default:"Danny R. Jenkins" }}</div>
         <div class="site-footer__links">
@@ -45,7 +45,7 @@
             {% if site_config.linkedin_url %}<a href="{{ site_config.linkedin_url }}" target="_blank" rel="noopener noreferrer">{{ site_config.footer_linkedin_label|default:"LinkedIn" }}</a>{% endif %}
         </div>
     </div>
-</footer>
+</footer>{% endblock %}
 
 <script nonce="{{ csp_nonce }}">
     (function () {
