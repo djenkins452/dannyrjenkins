@@ -119,7 +119,7 @@ def connect(request):
             )
 
             mail = EmailMessage(
-                subject=f'New {inquiry_display} request from {name}',
+                subject=f'Website inquiry ({inquiry_display}) from {name}',
                 body=body,
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 to=[settings.EMAIL_HOST_USER] if settings.EMAIL_HOST_USER else [],

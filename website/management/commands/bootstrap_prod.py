@@ -63,8 +63,14 @@ CONTENT_KEY = {
     'website.resumeversion':       'slug',
     'website.resumesection':       'pk',
     'website.connectpage':         'pk',     # singleton (pk=1)
+    'website.casestudiesindexpage': 'pk',    # singleton (pk=1)
+    'website.perspectivesindexpage': 'pk',   # singleton (pk=1)
 }
 
+# The fixture matches approved production content as captured on 2026-11-08
+# (with migration 0020 applied). Normal deploys never load it over existing
+# content (seed-if-empty), but a manual --rebuild-from-fixture overwrites
+# fixture records, so it would roll back any admin edits made after that.
 FIXTURE_PATH = Path('website/fixtures/initial_content.json')
 
 

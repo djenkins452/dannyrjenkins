@@ -129,10 +129,11 @@ class PublicUrlRegressionTests(TestCase):
         for url in urls:
             self.assertEqual(self.client.get(url).status_code, 200, url)
 
-    def test_default_meta_description_uses_official_title(self):
+    def test_default_meta_description_is_employer_neutral(self):
         body = self.client.get('/').content.decode()
-        self.assertIn('content="Director of HRIS, Compensation, and Payroll.', body)
+        self.assertIn('content="Healthcare HRIS leader connecting people, technology,', body)
         self.assertNotIn('Director of Compensation, HRIS, and Payroll', body)
+        self.assertNotIn('Director of HRIS, Compensation, and Payroll', body)
 
 
 class ContactPageTests(TestCase):

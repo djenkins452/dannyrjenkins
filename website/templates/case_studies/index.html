@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block title %}Case Studies — Danny R. Jenkins{% endblock %}
-{% block description %}Selected case studies in HR operations leadership and personal AI systems.{% endblock %}
+{% block description %}Selected work in healthcare HR leadership, workforce technology, operational improvement, and independent software development.{% endblock %}
 
 {% block content %}
 <section class="section--hero">
     <div class="container container--narrow">
         <p class="eyebrow">{{ page.page_eyebrow|default:"Case Studies" }}</p>
         <h1 class="page-title">{{ page.page_title|default:"Selected work" }}</h1>
-        {% if page.page_lead %}<div class="lead">{{ page.page_lead|safe }}</div>{% else %}<p class="lead">Structured studies of problems I've owned — in HR operations at scale, and in personal AI systems design. Each runs the same four beats: problem, role, approach, outcome.</p>{% endif %}
+        {% if page.page_lead %}<div class="lead">{{ page.page_lead|safe }}</div>{% endif %}
     </div>
 </section>
 

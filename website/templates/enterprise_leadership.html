@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block title %}Enterprise Leadership — Danny R. Jenkins{% endblock %}
-{% block description %}Running HR operations at scale: compensation, HRIS, and payroll for a 6,000-employee academic medical center.{% endblock %}
+{% block description %}Broad HR expertise, workforce technology leadership, data governance, and practical approaches to developing teams and improving operations.{% endblock %}
 
 {% block content %}
 <section class="section--hero">
     <div class="container container--narrow">
         <p class="eyebrow">{{ overview.page_eyebrow|default:"Enterprise Leadership" }}</p>
         <h1 class="page-title">{{ overview.hero_heading|default:"Running HR operations at scale" }}</h1>
-        {% if overview.hero_lead %}<div class="lead">{{ overview.hero_lead|safe }}</div>{% else %}<p class="lead">Three functions, one operating discipline. The overview below is how the role is shaped; the function sections are what the role actually does.</p>{% endif %}
+        {% if overview.hero_lead %}<div class="lead">{{ overview.hero_lead|safe }}</div>{% endif %}
     </div>
 </section>
 

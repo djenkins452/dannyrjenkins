@@ -152,7 +152,7 @@ class EnterpriseOverviewAdmin(admin.ModelAdmin):
         }),
         ('"What I lead" section heading', {
             'fields': ('function_section_eyebrow', 'function_section_heading'),
-            'description': 'Eyebrow and H2 above the three function blocks (Compensation, HRIS, Payroll).',
+            'description': 'Eyebrow and H2 above the Enterprise Function blocks (HR Strategy & Employee Lifecycle; HR Technology & Data Governance; People Leadership & Operational Improvement).',
         }),
         ('Closing section', {
             'fields': ('system_integration_eyebrow', 'system_integration_heading', 'system_integration'),

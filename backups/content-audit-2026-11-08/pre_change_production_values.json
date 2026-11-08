@@ -1,0 +1,56 @@
+{
+  "captured": "2026-11-08, read-only from production (manage.py dumpdata via railway ssh)",
+  "migration": "website/migrations/0020_content_audit_2026_11.py",
+  "records": [
+    {
+      "model": "website.homepagepillar",
+      "lookup": {
+        "category": "INNOVATION",
+        "title": "Whole Life Journey"
+      },
+      "field": "body",
+      "value": "<p>A framework integrating faith, health, journaling, tasks, and goals into one connected operational view. It helps reduce fragmentation, improve prioritization, and create clearer direction across everyday decisions and responsibilities.</p>"
+    },
+    {
+      "model": "website.homepagepillar",
+      "lookup": {
+        "category": "INNOVATION",
+        "title": "AI Chief of Staff"
+      },
+      "field": "body",
+      "value": "<p>A decision support layer that interprets inputs across domains and produces clear, prioritized guidance. It reflects the discipline of executive decision-making by focusing attention on what matters most and what should happen next.</p>"
+    },
+    {
+      "model": "website.homepagepillar",
+      "lookup": {
+        "category": "INNOVATION",
+        "title": "Kairos Core HQ"
+      },
+      "field": "body",
+      "value": "<p>An executive decision environment designed to bring operational responsibilities and strategic priorities into one clear view. It helps leaders evaluate competing demands, maintain focus, and drive disciplined execution over time.</p>"
+    },
+    {
+      "model": "website.page",
+      "lookup": {
+        "slug": "profile"
+      },
+      "field": "seo_description",
+      "value": "Danny R. Jenkins — executive profile. HR leadership, HRIS, payroll, and personal AI systems."
+    },
+    {
+      "model": "website.resumesection",
+      "lookup": {
+        "version__slug": "general",
+        "section_type": "HIGHLIGHTS"
+      },
+      "field": "content",
+      "value": "<ul>\r\n<li>\r\n<p>Led multidisciplinary teams across HRIS, compensation, and payroll, combining operational accountability with workforce technology leadership.</p>\r\n<p>Oversaw complex healthcare payroll operations across monthly, biweekly, supplemental, and special processing cycles.</p>\r\n<p>Developed compensation analysis and models to evaluate market alignment, pay structures, workforce implications, and financial tradeoffs.</p>\r\n<p>Sponsored workforce management modernization, including requirements, vendor selection, implementation coordination, and vendor management.</p>\r\n<p>Led HR technology initiatives involving applicant tracking, emergency notification systems, and enterprise HR platform upgrades.</p>\r\n<p>Strengthened operational continuity through documentation, cross-training, process controls, and automation of selected workflows.</p>\r\n<p>Created independent software projects through Beacon Innovation, applying data modeling, application architecture, and AI-assisted decision support.</p>\r\n</li>\r\n</ul>"
+    },
+    {
+      "model": "website.connectpage",
+      "lookup": {},
+      "field": "submit_button_label",
+      "value": "Send message"
+    }
+  ]
+}

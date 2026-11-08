@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block title %}Perspectives — Danny R. Jenkins{% endblock %}
-{% block description %}Perspectives on HR operations — compensation, HRIS, payroll, and system fragmentation — written as an operator.{% endblock %}
+{% block description %}Practical perspectives on HR, people leadership, workforce technology, data governance, and organizational improvement.{% endblock %}
 
 {% block content %}
 <section class="section--hero">
     <div class="container container--narrow">
         <p class="eyebrow">{{ page.page_eyebrow|default:"Perspectives" }}</p>
         <h1 class="page-title">{{ page.page_title|default:"Perspectives" }}</h1>
-        {% if page.page_lead %}<div class="lead">{{ page.page_lead|safe }}</div>{% else %}<p class="lead">A small library of arguments about how HR operations actually work — compensation, HRIS, payroll, and the systems beneath them. Written as an operator explaining the work, not as a blog.</p>{% endif %}
+        {% if page.page_lead %}<div class="lead">{{ page.page_lead|safe }}</div>{% endif %}
     </div>
 </section>
 
