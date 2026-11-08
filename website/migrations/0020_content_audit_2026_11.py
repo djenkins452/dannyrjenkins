@@ -21,6 +21,9 @@ WLJ_NEW = '<p>A personal platform connecting faith, health, journaling, tasks, a
 COS_OLD = '<p>A decision support layer that interprets inputs across domains and produces clear, prioritized guidance. It reflects the discipline of executive decision-making by focusing attention on what matters most and what should happen next.</p>'
 COS_NEW = '<p>A decision-support concept using stored context, commitments, and priorities to suggest useful next steps. Designed to explain recommendations, acknowledge uncertainty, and keep the user in control.</p>'
 
+KAIROS_OLD = '<p>An executive decision environment designed to bring operational responsibilities and strategic priorities into one clear view. It helps leaders evaluate competing demands, maintain focus, and drive disciplined execution over time.</p>'
+KAIROS_NEW = '<p>An executive decision environment designed to bring operational responsibilities and strategic priorities into one clear view. Its aim is to help leaders evaluate competing demands, maintain focus, and coordinate daily work with longer-term goals.</p>'
+
 PROFILE_DESC_OLD = 'Danny R. Jenkins — executive profile. HR leadership, HRIS, payroll, and personal AI systems.'
 PROFILE_DESC_NEW = 'Danny R. Jenkins’s approach to people leadership, HR technology, systems thinking, and operational improvement.'
 
@@ -50,6 +53,7 @@ HIGHLIGHTS_NEW = (
 CORRECTIONS = [
     ('homepagepillar', {'category': 'INNOVATION', 'title': 'Whole Life Journey'}, 'body', WLJ_OLD, WLJ_NEW, True),
     ('homepagepillar', {'category': 'INNOVATION', 'title': 'AI Chief of Staff'}, 'body', COS_OLD, COS_NEW, True),
+    ('homepagepillar', {'category': 'INNOVATION', 'title': 'Kairos Core HQ'}, 'body', KAIROS_OLD, KAIROS_NEW, True),
     ('page', {'slug': 'profile'}, 'seo_description', PROFILE_DESC_OLD, PROFILE_DESC_NEW, True),
     ('resumesection', {'version__slug': 'general', 'section_type': 'HIGHLIGHTS'}, 'content', HIGHLIGHTS_OLD, HIGHLIGHTS_NEW, True),
     # Submit button: the label is rendered verbatim, so a stored

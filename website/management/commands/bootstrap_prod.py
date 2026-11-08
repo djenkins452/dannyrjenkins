@@ -67,9 +67,10 @@ CONTENT_KEY = {
     'website.perspectivesindexpage': 'pk',   # singleton (pk=1)
 }
 
-# The fixture is a snapshot of approved production content (last refreshed
-# 2026-11-08, after migration 0020). Admin edits made after that date are
-# NOT in it, so --rebuild-from-fixture would roll them back.
+# The fixture matches approved production content as captured on 2026-11-08
+# (with migration 0020 applied). Normal deploys never load it over existing
+# content (seed-if-empty), but a manual --rebuild-from-fixture overwrites
+# fixture records, so it would roll back any admin edits made after that.
 FIXTURE_PATH = Path('website/fixtures/initial_content.json')
 
 

@@ -21,6 +21,15 @@
       "value": "<p>A decision support layer that interprets inputs across domains and produces clear, prioritized guidance. It reflects the discipline of executive decision-making by focusing attention on what matters most and what should happen next.</p>"
     },
     {
+      "model": "website.homepagepillar",
+      "lookup": {
+        "category": "INNOVATION",
+        "title": "Kairos Core HQ"
+      },
+      "field": "body",
+      "value": "<p>An executive decision environment designed to bring operational responsibilities and strategic priorities into one clear view. It helps leaders evaluate competing demands, maintain focus, and drive disciplined execution over time.</p>"
+    },
+    {
       "model": "website.page",
       "lookup": {
         "slug": "profile"

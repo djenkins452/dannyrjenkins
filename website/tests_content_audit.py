@@ -176,6 +176,10 @@ class AuditMigrationTests(TestCase):
         cos = HomepagePillar.objects.get(category='INNOVATION', title='AI Chief of Staff')
         self.assertIn('A personal platform connecting faith, health, journaling, tasks, and goals.', wlj.body)
         self.assertIn('keep the user in control.', cos.body)
+        kairos = HomepagePillar.objects.get(category='INNOVATION', title='Kairos Core HQ')
+        self.assertIn('Its aim is to help leaders evaluate competing demands', kairos.body)
+        self.assertIn('coordinate daily work with longer-term goals.', kairos.body)
+        self.assertNotIn('drive disciplined execution', kairos.body)
         self.assertEqual(
             Page.objects.get(slug='profile').seo_description,
             DESCRIPTIONS['/profile/'],
@@ -212,7 +216,7 @@ class AuditMigrationTests(TestCase):
         before = self._values()
         audit.forwards(apps, None)
         audit.backwards(apps, None)
-        self.assertEqual(before[:4], self._values()[:4])
+        self.assertEqual(before[:-1], self._values()[:-1])
         self.assertEqual(ConnectPage.load().submit_button_label, 'Send message')
 
     def test_highlights_render_as_seven_bullets(self):
@@ -244,3 +248,23 @@ class EnterpriseFunctionTests(TestCase):
         data = json.loads((Path(__file__).resolve().parent / 'fixtures/initial_content.json').read_text())
         slugs = {o['fields']['slug'] for o in data if o['model'] == 'website.enterprisefunction'}
         self.assertFalse(slugs & {'compensation', 'hris', 'payroll'})
+
+
+class PreservedContentTests(TestCase):
+    fixtures = ['initial_content']
+
+    def test_payroll_scale_wording_is_unchanged(self):
+        self.assertContains(
+            self.client.get('/case-studies/payroll-operations/'),
+            'more than $30 million in monthly payroll',
+        )
+
+    def test_innovation_pillars_keep_order(self):
+        self.assertEqual(
+            list(HomepagePillar.objects.filter(category='INNOVATION').values_list('title', 'order')),
+            [('Beacon Innovation, LLC', 1), ('Whole Life Journey', 2),
+             ('Kairos Core HQ', 3), ('AI Chief of Staff', 4)],
+        )
+        html = self.client.get('/').content.decode()
+        self.assertIn('coordinate daily work with longer-term goals.', html)
+        self.assertLess(html.index('<h3>Kairos Core HQ</h3>'), html.index('<h3>AI Chief of Staff</h3>'))
