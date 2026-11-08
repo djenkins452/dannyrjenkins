@@ -1,6 +1,7 @@
 {% extends "base.html" %}
+{% load site_meta %}
 
-{% block title %}{{ study.seo_title|default:study.title }} — Case Study{% endblock %}
+{% block title %}{% page_title study.seo_title|default:study.title %}{% endblock %}
 {% block description %}{{ study.seo_description|default:study.summary }}{% endblock %}
 
 {% block content %}

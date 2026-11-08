@@ -218,7 +218,15 @@ class Page(models.Model):
         blank=True,
         help_text='Optional lead paragraph under the title.',
     )
-    seo_title = models.CharField(max_length=120, blank=True)
+    seo_title = models.CharField(
+        max_length=120,
+        blank=True,
+        help_text=(
+            'Browser-tab title. If it already includes your name it is used '
+            'exactly as entered; otherwise " — Danny R. Jenkins" is added once. '
+            'Blank uses the title.'
+        ),
+    )
     seo_description = models.CharField(max_length=300, blank=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -302,7 +310,15 @@ class CaseStudy(models.Model):
     published = models.BooleanField(default=True)
     published_at = models.DateField(null=True, blank=True)
 
-    seo_title = models.CharField(max_length=120, blank=True)
+    seo_title = models.CharField(
+        max_length=120,
+        blank=True,
+        help_text=(
+            'Browser-tab title. If it already includes your name it is used '
+            'exactly as entered; otherwise " — Danny R. Jenkins" is added once. '
+            'Blank uses the title.'
+        ),
+    )
     seo_description = models.CharField(max_length=300, blank=True)
 
     class Meta:
@@ -368,7 +384,7 @@ class EnterpriseOverview(models.Model):
         max_length=200,
         default='What I lead',
         blank=True,
-        help_text='Appears on the Enterprise Leadership page as the H2 heading above the three function blocks (Compensation, HRIS, Payroll).',
+        help_text='Appears on the Enterprise Leadership page as the H2 heading above the Enterprise Function blocks (HR Strategy & Employee Lifecycle; HR Technology & Data Governance; People Leadership & Operational Improvement).',
     )
     system_integration_eyebrow = models.CharField(
         max_length=80,
@@ -387,8 +403,8 @@ class EnterpriseOverview(models.Model):
         verbose_name='Closing section body',
         help_text=(
             'Appears on the Enterprise Leadership page as the body of the closing '
-            'section. Explain how Compensation, HRIS, and Payroll operate as one '
-            'system — not three parallel jobs.'
+            'section: how the functions and teams connect across the employee '
+            'lifecycle.'
         ),
     )
 
@@ -410,7 +426,12 @@ class EnterpriseOverview(models.Model):
 
 
 class EnterpriseFunction(models.Model):
-    """One function under the director remit: Compensation, HRIS, Payroll.
+    """One area of leadership and expertise on the Enterprise Leadership page.
+
+    Current records (by slug): hr-strategy-employee-lifecycle,
+    hr-technology-data-governance, people-leadership-operational-improvement.
+    Slugs are admin identifiers only: no URL, anchor, or query depends on
+    them, and blocks render in `order`.
 
     Three fixed sub-sections per function — responsibilities, systems led,
     role in the organization — all as TinyMCE-restricted HTML. Structure is
@@ -679,7 +700,15 @@ class Perspective(models.Model):
     published = models.BooleanField(default=True)
     published_at = models.DateField(null=True, blank=True)
 
-    seo_title = models.CharField(max_length=120, blank=True)
+    seo_title = models.CharField(
+        max_length=120,
+        blank=True,
+        help_text=(
+            'Browser-tab title. If it already includes your name it is used '
+            'exactly as entered; otherwise " — Danny R. Jenkins" is added once. '
+            'Blank uses the title.'
+        ),
+    )
     seo_description = models.CharField(max_length=300, blank=True)
 
     class Meta:
@@ -883,7 +912,7 @@ class ResumeSection(models.Model):
 
 
 class ConnectPage(models.Model):
-    """Singleton for /connect/ — two CTAs (conversation + resume request)."""
+    """Singleton for /connect/ — intro copy and contact-form labels."""
 
     page_eyebrow = models.CharField(
         max_length=80,
@@ -912,7 +941,7 @@ class ConnectPage(models.Model):
     inquiry_label = models.CharField(max_length=80, default='Reason for reaching out', blank=True, help_text='Label above the inquiry-type dropdown on the contact form.')
     message_label = models.CharField(max_length=40, default='Message', blank=True, help_text='Label above the Message textarea on the contact form.')
     message_optional_label = models.CharField(max_length=20, default='(optional)', blank=True, help_text='Small parenthetical note next to the Message label.')
-    submit_button_label = models.CharField(max_length=80, default='Submit', blank=True, help_text='Visible text on the contact-form submit button. The form covers multiple inquiry types (resume request, conversation, etc.), so a neutral verb like "Submit" is the safe default.')
+    submit_button_label = models.CharField(max_length=80, default='Send message', blank=True, help_text='The complete visible text on the contact-form submit button, e.g. "Send message". Nothing is added before or after it.')
     success_heading = models.CharField(
         max_length=200,
         default='Thank you — I’ve received your message.',

@@ -63,8 +63,13 @@ CONTENT_KEY = {
     'website.resumeversion':       'slug',
     'website.resumesection':       'pk',
     'website.connectpage':         'pk',     # singleton (pk=1)
+    'website.casestudiesindexpage': 'pk',    # singleton (pk=1)
+    'website.perspectivesindexpage': 'pk',   # singleton (pk=1)
 }
 
+# The fixture is a snapshot of approved production content (last refreshed
+# 2026-11-08, after migration 0020). Admin edits made after that date are
+# NOT in it, so --rebuild-from-fixture would roll them back.
 FIXTURE_PATH = Path('website/fixtures/initial_content.json')
 
 

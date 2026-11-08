@@ -1,6 +1,7 @@
 {% extends "base.html" %}
+{% load site_meta %}
 
-{% block title %}{{ perspective.seo_title|default:perspective.title }} — Perspectives{% endblock %}
+{% block title %}{% page_title perspective.seo_title|default:perspective.title %}{% endblock %}
 {% block description %}{{ perspective.seo_description|default:perspective.deck }}{% endblock %}
 
 {% block content %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}Connect — Danny R. Jenkins{% endblock %}
-{% block description %}Direct introduction — conversation or tailored resume request.{% endblock %}
+{% block description %}Connect with Danny R. Jenkins about HR leadership, workforce technology, software development, automation, and applied AI.{% endblock %}
 
 {% block content %}
 <section class="section--hero">
@@ -54,7 +54,7 @@
                 {% if form.message.errors %}<p class="form-field__error">{{ form.message.errors|join:" " }}</p>{% endif %}
             </div>
 
-            <button type="submit" class="btn-submit">{{ page.submit_button_label|default:"Submit" }}</button>
+            <button type="submit" class="btn-submit">{{ page.submit_button_label|default:"Send message" }}</button>
         </form>
         {% endif %}
     </div>

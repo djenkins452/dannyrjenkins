@@ -1,7 +1,8 @@
 {% extends "base.html" %}
+{% load site_meta %}
 
-{% block title %}{{ page.seo_title|default:page.title }} — Danny R. Jenkins{% endblock %}
-{% block description %}{{ page.seo_description|default:"Executive profile." }}{% endblock %}
+{% block title %}{% page_title page.seo_title|default:page.title %}{% endblock %}
+{% block description %}{{ page.seo_description|default:"Danny R. Jenkins’s approach to people leadership, HR technology, systems thinking, and operational improvement." }}{% endblock %}
 
 {% block content %}
 <section class="section--hero">

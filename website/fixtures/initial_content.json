@@ -3,30 +3,62 @@
         "model": "website.siteconfig",
         "pk": 1,
         "fields": {
-            "homepage_headline": "Leading HR Operations and Transformation, Building Practical AI Systems",
-            "homepage_positioning_line": "Compensation, HRIS, and payroll don’t operate separately. I lead them as one.",
-            "homepage_subheadline": "<p>I lead compensation, HRIS, and payroll for a 6,000-employee Level 1 academic medical center, $30M+ in monthly payroll across continuous cycles, 24/7. I run HR operations as an integrated operating model, designed to generate trust, reduce decision friction, and perform reliably under complexity.</p>",
-            "vision_heading": "How HR operations should work",
-            "enterprise_column_heading": "Running HR operations that people can depend on",
-            "innovation_column_heading": "Designing personal AI systems",
-            "read_profile_link_label": "Read the executive profile →",
-            "homepage_vision": "<p>My vision is to transform HR operations into a true enterprise system that enables leadership, not just administration.</p><p>Compensation, HRIS, and payroll are often managed as separate functions. I believe they must operate as a unified system, aligned to support decision-making, reduce complexity, and build trust across the organization.</p><p>In a 24/7 healthcare environment, HR operations is not a back-office function. It is the operating system the workforce depends on. Accuracy, consistency, and scalability are not goals. They are the baseline.</p><p>I focus on building systems that align data, processes, and people into a single, reliable foundation that supports both operational execution and strategic leadership.</p>",
-            "enterprise_section_intro": "<p>Three functions, one operating system. Compensation, HRIS, and payroll are not separate disciplines. They work together to support decisions, reduce friction, and keep the organization running without disruption.</p>",
-            "enterprise_section_closing": "<p>This is not about managing functions. It is about building an operating system the organization can rely on.</p><p>When compensation, HRIS, and payroll work together, decisions become clearer, execution becomes more consistent, and the organization runs with less friction.</p>",
-            "innovation_section_intro": "<p>A separate endeavor, built on the same principles — unify the sources, surface the signals, prioritize the action.</p>",
+            "homepage_headline": "Connecting people, technology, and HR operations",
+            "homepage_positioning_line": "Broad HR knowledge. Connected workforce systems. Practical leadership.",
+            "homepage_subheadline": "<p>I lead HRIS for an integrated, not-for-profit healthcare system spanning hospitals, physician practices, outpatient care, and specialty services. My experience across talent acquisition and management, benefits, compensation, payroll, and broader HR operations shapes how I connect technology, data, and processes across the employee lifecycle.</p>",
+            "homepage_vision": "<p>My vision is an HR environment where people, processes, and technology work together to support employees and organizational goals.</p>\r\n<p>The employee experience crosses many functions&mdash;from recruiting and onboarding to benefits, development, compensation, and payroll. Decisions in one area affect the others. Effective HR technology supports those connections through reliable data, clear ownership, and well-designed processes.</p>\r\n<p>I focus on developing teams, strengthening partnerships, and turning complex needs into practical solutions. The goal is dependable operations, useful information, and a foundation that can evolve with the organization.</p>",
+            "vision_heading": "How HR and technology should work together",
+            "enterprise_column_heading": "Bringing an enterprise perspective to HR technology",
+            "enterprise_section_intro": "<p>Effective HRIS leadership requires an understanding of the work behind the systems. My experience across HR disciplines helps me translate business needs into technology priorities, anticipate downstream effects, and improve how teams work together.</p>",
+            "enterprise_section_closing": "<p>I bring a connected view of the employee lifecycle, supported by hands-on experience in HR operations and technology.</p>\r\n<p>Through partnerships across HR, IT, Finance, and operational leadership, I focus on improving processes, strengthening data integrity, and building systems employees and leaders can trust.</p>",
+            "innovation_column_heading": "Building tools that improve decisions and execution",
+            "innovation_section_intro": "<p>A separate endeavor applying the same discipline: unify the sources, surface the signals, and prioritize the action.</p>",
+            "read_profile_link_label": "Explore the leadership approach →",
             "contact_email": "dannyjenkins71@gmail.com",
-            "linkedin_url": "https://www.linkedin.com/in/dannyjenkins/"
+            "linkedin_url": "https://www.linkedin.com/in/dannyjenkins/",
+            "brand_wordmark": "Danny R. Jenkins",
+            "nav_menu_toggle_label": "Menu",
+            "nav_home_label": "Home",
+            "nav_profile_label": "Profile",
+            "nav_enterprise_label": "Enterprise Leadership",
+            "nav_case_studies_label": "Case Studies",
+            "nav_innovation_label": "Innovation",
+            "nav_perspectives_label": "Perspectives",
+            "nav_connect_label": "Connect",
+            "footer_owner_name": "Danny R. Jenkins",
+            "footer_linkedin_label": "LinkedIn",
+            "vision_eyebrow": "Vision",
+            "enterprise_column_eyebrow": "Enterprise Leadership",
+            "innovation_column_eyebrow": "Innovation",
+            "case_study_back_link_label": "← All Case Studies",
+            "case_study_chip_suffix": "Case Study",
+            "case_study_problem_eyebrow": "Problem",
+            "case_study_problem_heading": "The problem",
+            "case_study_role_eyebrow": "Role",
+            "case_study_role_heading": "My role",
+            "case_study_approach_eyebrow": "Approach",
+            "case_study_approach_heading": "Approach",
+            "case_study_outcome_eyebrow": "Outcome",
+            "case_study_outcome_heading": "Outcome",
+            "case_study_back_to_all_label": "← Back to all case studies",
+            "perspective_back_link_label": "← All Perspectives",
+            "perspective_closing_eyebrow": "Closing",
+            "perspective_back_to_all_label": "← Back to all Perspectives",
+            "resume_eyebrow_prefix": "Resume",
+            "resume_print_button_label": "Download PDF",
+            "resume_phone": "",
+            "resume_location": "",
+            "site_url": "https://dannyrjenkins.com"
         }
     },
-
     {
         "model": "website.homepagepillar",
         "pk": 1,
         "fields": {
             "category": "ENTERPRISE",
-            "order": 1,
-            "title": "Compensation as a System",
-            "body": "<p>Philosophy, job architecture, and market pricing designed as a trust system — between the organization and the workforce it depends on.</p>"
+            "title": "HR Strategy & Employee Lifecycle",
+            "body": "<p>Broad HR knowledge spanning talent acquisition, onboarding, benefits, compensation, payroll, and employee development. Connecting these disciplines to improve the employee experience, strengthen processes, and align workforce practices with organizational needs.</p>",
+            "order": 1
         }
     },
     {
@@ -34,9 +66,9 @@
         "pk": 2,
         "fields": {
             "category": "ENTERPRISE",
-            "order": 2,
-            "title": "HR Systems That Drive Decisions",
-            "body": "<p>ERP, LMS, ATS, and the integrations between them. Treated not as software, but as a decision engine for senior leadership.</p>"
+            "title": "HR Technology & Data Governance",
+            "body": "<p>HRIS leadership grounded in how HR operates. Aligning system configuration, integrations, data governance, and reporting across workforce platforms to support reliable operations and informed decisions.</p>",
+            "order": 2
         }
     },
     {
@@ -44,20 +76,19 @@
         "pk": 3,
         "fields": {
             "category": "ENTERPRISE",
-            "order": 3,
-            "title": "Payroll Operations That Must Be Right",
-            "body": "<p>Accurate, compliant, on-time compensation for thousands of employees. A high-risk operational discipline where the standard is zero error.</p>"
+            "title": "People Leadership & Operational Improvement",
+            "body": "<p>Developing teams, establishing clear ownership, and improving how work gets done. Building strong partnerships across HR, IT, Finance, and operational leadership to turn complex needs into practical, sustainable solutions.</p>",
+            "order": 3
         }
     },
-
     {
         "model": "website.homepagepillar",
         "pk": 4,
         "fields": {
             "category": "INNOVATION",
-            "order": 1,
             "title": "Beacon Innovation, LLC",
-            "body": "<p>An independent studio for AI-assisted personal systems. Owned and operated outside any employer context.</p>"
+            "body": "<p>A company I own and operate, focused on building tools that support real decisions and everyday execution. Operated independently from any employer context.</p>",
+            "order": 1
         }
     },
     {
@@ -65,9 +96,9 @@
         "pk": 5,
         "fields": {
             "category": "INNOVATION",
-            "order": 2,
             "title": "Whole Life Journey",
-            "body": "<p>A personal operating system integrating faith, health, journaling, tasks, and goals. One view of a life, engineered from fragmented sources.</p>"
+            "body": "<p>A personal platform connecting faith, health, journaling, tasks, and goals. Designed to help users understand their responsibilities, review progress, and identify practical next steps.</p>",
+            "order": 2
         }
     },
     {
@@ -75,12 +106,21 @@
         "pk": 6,
         "fields": {
             "category": "INNOVATION",
-            "order": 3,
             "title": "AI Chief of Staff",
-            "body": "<p>A pipeline that turns cross-domain signals into ranked, proactive guidance. Data to signals to decisions — designed as an executive would think, not as an assistant would chat.</p>"
+            "body": "<p>A decision-support concept using stored context, commitments, and priorities to suggest useful next steps. Designed to explain recommendations, acknowledge uncertainty, and keep the user in control.</p>",
+            "order": 4
         }
     },
-
+    {
+        "model": "website.homepagepillar",
+        "pk": 7,
+        "fields": {
+            "category": "INNOVATION",
+            "title": "Kairos Core HQ",
+            "body": "<p>An executive decision environment designed to bring operational responsibilities and strategic priorities into one clear view. It helps leaders evaluate competing demands, maintain focus, and drive disciplined execution over time.</p>",
+            "order": 3
+        }
+    },
     {
         "model": "website.page",
         "pk": 1,
@@ -88,13 +128,12 @@
             "slug": "profile",
             "title": "How I lead, how I think",
             "eyebrow": "EXECUTIVE PROFILE",
-            "intro": "<p>A short accounting of scope, operating approach, and where my attention goes.</p>",
+            "intro": "<p>My approach to people leadership, HR technology, and operational improvement&mdash;grounded in broad HR experience and practical execution.</p>",
             "seo_title": "Executive Profile",
-            "seo_description": "Danny R. Jenkins — executive profile. HR leadership, HRIS, payroll, and personal AI systems.",
-            "updated_at": "2026-04-24T12:00:00Z"
+            "seo_description": "Danny R. Jenkins’s approach to people leadership, HR technology, systems thinking, and operational improvement.",
+            "updated_at": "2026-11-08T12:09:44.579Z"
         }
     },
-
     {
         "model": "website.narrativeblock",
         "pk": 1,
@@ -103,7 +142,7 @@
             "order": 1,
             "eyebrow": "LEADERSHIP",
             "heading": "How I Lead",
-            "body": "<p>I lead by reducing ambiguity. The work of a senior HR leader is to convert unstructured organizational pressure into a small set of decisions worth making — and then to make sure execution follows. I favor durable answers over novel ones, and I hold the function accountable to what it said it would do.</p>"
+            "body": "<p>I lead by establishing clear expectations, developing people, and helping teams understand how their work supports the organization.</p>\r\n<p>I value early communication, shared problem-solving, and accountability. When something starts moving off track, I want it surfaced while we still have time to respond thoughtfully.</p>\r\n<p>My role is to provide direction, remove barriers, and build an environment where people can take ownership, grow their capabilities, and deliver dependable results.</p>"
         }
     },
     {
@@ -113,8 +152,8 @@
             "page": 1,
             "order": 2,
             "eyebrow": "WORKFORCE",
-            "heading": "Compensation & Workforce Strategy",
-            "body": "<p>Compensation is a trust system. Philosophy, job architecture, and market pricing are not three projects — they are one integrated design problem, and inconsistency is a reputational failure, not a technical one. I treat the workforce decisions it produces (how we hire, how we pay, how we promote, how we explain it) as the real product of the function.</p>"
+            "heading": "HR Expertise Across the Employee Lifecycle",
+            "body": "<p>My experience spans talent acquisition and management, benefits, compensation, payroll, HR technology, and broader HR operations. That breadth helps me understand the needs behind a request and how a change in one area affects the others.</p>\r\n<p>I consider the employee experience alongside operational requirements, data quality, and organizational priorities. Effective solutions need to work for the people using them and the teams responsible for sustaining them.</p>\r\n<p>I bring this perspective to partnerships across HR, IT, Finance, and operational leadership, connecting functional knowledge with practical improvements.</p>"
         }
     },
     {
@@ -125,7 +164,7 @@
             "order": 3,
             "eyebrow": "SYSTEMS",
             "heading": "Systems Thinking",
-            "body": "<p>Across a 6,000-employee workforce, HR is one integrated operating model — not three departments. I design for how the levers connect: how a policy change lands in the HRIS, how a market adjustment propagates to payroll, how an incentive shows up in behavior six months later. The job isn't to produce dashboards. It's to remove the noise between raw operational data and the decisions leadership actually has to make.</p>"
+            "body": "<p>I approach HR as a connected set of people, processes, policies, and technologies. A recruiting decision affects onboarding. A job change can affect benefits, pay, security access, and reporting. Understanding those connections is essential to making changes responsibly.</p>\r\n<p>I look beyond the immediate request to understand the underlying need, the source of the problem, and the downstream effects of a proposed solution.</p>\r\n<p>My focus is clear ownership, reliable data, well-managed integrations, and processes that remain effective as the organization evolves. Technology should make work easier to perform, understand, and sustain.</p>"
         }
     },
     {
@@ -135,35 +174,136 @@
             "page": 1,
             "order": 4,
             "eyebrow": "INNOVATION",
-            "heading": "Innovation & WLJ",
-            "body": "<p>Outside my enterprise role, I founded <strong>Beacon Innovation</strong> and built <strong>Whole Life Journey</strong> — a personal operating system that applies the same discipline to individual life: unify the sources, surface the signals, prioritize the action. The two domains stay cleanly separated, but they reinforce the same way of thinking.</p>"
+            "heading": "Innovation & Applied Thinking",
+            "body": "<p>Through Beacon Innovation, my independent company, I explore how software, automation, and AI can help people organize information, evaluate priorities, and take useful action.</p>\r\n<p>My projects include Whole Life Journey, which connects areas such as faith, health, journaling, tasks, and goals, and Kairos Core HQ, which explores how leaders can manage competing responsibilities and strategic priorities.</p>\r\n<p>I approach innovation with curiosity and discipline: understand the problem, test assumptions, and evaluate whether the solution improves the work. AI is useful when its outputs can be understood, checked, and applied with sound judgment.</p>\r\n<p>These projects are developed independently of my employment.</p>"
         }
     },
-
+    {
+        "model": "website.casestudy",
+        "pk": 1,
+        "fields": {
+            "slug": "compensation-transformation",
+            "title": "Compensation & Workforce Governance",
+            "category": "ENTERPRISE",
+            "summary": "Strengthening compensation practices through clearer job structures, market analysis, and consistent guidance for workforce pay decisions.",
+            "problem": "<p>In a complex healthcare environment, compensation practices had evolved through individual requests and changing organizational needs. Inherited job titles, grade structures, and market comparisons made consistent evaluation difficult.</p>\r\n<p>The challenge was to establish a clearer basis for pay decisions while balancing internal equity, external competitiveness, recruiting needs, and financial constraints.</p>",
+            "role": "<p>I led compensation operations, working with senior HR leadership and organizational partners on job architecture, market pricing, salary structures, and pay practices.</p>\r\n<p>My responsibilities included translating workforce needs into compensation analysis, developing recommendations, and helping leaders understand the reasoning and tradeoffs behind proposed decisions.</p>\r\n<p>I also worked with an external compensation consulting partner on a broader redesign initiative. That work remained in progress when my role concluded.</p>",
+            "approach": "<p>I approached the work through connected areas: compensation philosophy, job structure, market analysis, and decision governance.</p>\r\n<p>The work involved reviewing how roles were defined and grouped, evaluating relevant market comparisons, and considering internal relationships alongside recruiting and retention needs.</p>\r\n<p>I used compensation modeling to evaluate alternatives and communicate their financial and workforce implications. Recommendations considered affordability, consistency, implementation requirements, and the effects on related positions.</p>\r\n<p>Documentation and coordination with HR leadership helped make the basis for recommendations clearer and supported continuity as the work progressed.</p>",
+            "outcome": "<p>The work provided a more structured basis for evaluating compensation requests and presenting options to leadership. Job and market analysis, supported by compensation modeling, helped make the reasoning and financial implications behind recommendations more explicit.</p>\r\n<p>The broader redesign remained in progress at the end of my tenure. Completed analysis and handoff documentation supported continued work by the team and consulting partner.</p>",
+            "order": 1,
+            "published": true,
+            "published_at": "2026-04-01",
+            "seo_title": "Compensation & Workforce Governance | Danny R. Jenkins",
+            "seo_description": "A healthcare compensation case study covering job structures, market analysis, pay modeling, and a more consistent approach to workforce pay decisions."
+        }
+    },
+    {
+        "model": "website.casestudy",
+        "pk": 2,
+        "fields": {
+            "slug": "unified-life-wlj",
+            "title": "Whole Life Journey",
+            "category": "INNOVATION",
+            "summary": "Developing a personal platform that connects faith, health, journaling, tasks, and goals, with AI-assisted guidance designed to support clearer priorities and everyday decisions.",
+            "problem": "<p>Personal responsibilities are often spread across separate tools for calendars, tasks, health, journaling, and goals. Each captures useful information, but understanding how those responsibilities fit together still requires manual effort.</p>\r\n<p>I wanted a connected environment that could retain context, support reflection, and help answer a practical question: given my commitments and priorities, what deserves attention next?</p>\r\n<p>The challenge was to make information useful across these areas while respecting the user&rsquo;s preferences, privacy, and control.</p>",
+            "role": "<p>I am the creator and architect of Whole Life Journey, developed independently through Beacon Innovation, LLC.</p>\r\n<p>My work spans product direction, data modeling, application architecture, workflows, AI-assisted guidance, and user experience. I use AI development tools to support implementation while retaining responsibility for design decisions, review, testing, and product direction.</p>\r\n<p>The project draws on my experience connecting business needs, reliable data, and practical technology solutions.</p>",
+            "approach": "<p>The design connects three layers: data, signals, and decision support.</p>\r\n<p>Data provides structured context from areas such as goals, tasks, journaling, faith, and health. Signals identify relevant patterns, changes, or commitments that may deserve attention. Decision support uses that context to suggest priorities and possible next steps.</p>\r\n<p>The AI Chief of Staff concept builds on this foundation, aiming to provide guidance informed by stored context rather than treating each conversation as an isolated request.</p>\r\n<p>Development emphasizes traceable reasoning, appropriate boundaries, and user control. Recommendations should acknowledge missing information and uncertainty, with refinement guided by testing and practical use.</p>",
+            "outcome": "<p>Whole Life Journey provides an ongoing project through which I apply systems architecture, software development, data modeling, and AI-assisted decision support.</p>\r\n<p>The intended user benefits include less fragmentation, clearer priorities, and better follow-through across personal responsibilities. These remain goals to evaluate through use and testing, rather than claims of measured improvement.</p>\r\n<p>The project demonstrates my approach to translating a broad vision into connected capabilities, examining how they interact, and refining the system over time.</p>",
+            "order": 4,
+            "published": true,
+            "published_at": "2026-04-15",
+            "seo_title": "Whole Life Journey Case Study | Danny R. Jenkins",
+            "seo_description": "An independent software project connecting personal goals, tasks, faith, health, and journaling with AI-assisted prioritization and decision support."
+        }
+    },
+    {
+        "model": "website.casestudy",
+        "pk": 3,
+        "fields": {
+            "slug": "hris-ecosystem",
+            "title": "Workforce Data & Operational Alignment",
+            "category": "ENTERPRISE",
+            "summary": "Improving workforce data consistency, system integrations, and reporting through HRIS leadership and collaboration across HR, IT, and Finance.",
+            "problem": "<p>In a complex healthcare environment, workforce information moved across multiple HR, payroll, recruiting, learning, and financial systems. Differences in data definitions, system configuration, and reporting logic made reconciliation difficult.</p>\r\n<p>Questions about headcount, FTE, organizational structure, and employee status required careful review of sources and assumptions. The challenge was to improve consistency while supporting daily operations and changing business needs.</p>",
+            "role": "<p>I led HRIS operations, including system configuration, reporting, integrations, vendor coordination, and workforce data management.</p>\r\n<p>Working with HR functional teams, IT, Finance, and operational partners, I translated business requirements into system and reporting improvements. My responsibilities included investigating discrepancies, evaluating downstream effects, and coordinating changes across connected processes.</p>",
+            "approach": "<p>I focused on the data and processes behind the reports: where information originated, how it was maintained, and how it moved between systems.</p>\r\n<p>The work included reviewing employee and organizational data, clarifying reporting definitions, and investigating differences across sources. Integration and configuration changes were evaluated alongside the operational processes they supported.</p>\r\n<p>I partnered with functional owners and technical teams to resolve issues, validate changes, and document important workflows. Reporting and automation supported repeatable work, while reconciliation remained an important control for identifying discrepancies.</p>",
+            "outcome": "<p>The work strengthened the foundation for workforce reporting and connected HR operations through clearer definitions, documented processes, and coordinated system improvements.</p>\r\n<p>It also reinforced the importance of shared ownership: reliable reporting depended on the quality of source data, consistent business rules, and collaboration across the teams maintaining and using the information.</p>\r\n<p>The focus was sustained improvement in data reliability and operational support, rather than treating a new report or dashboard as the complete solution.</p>",
+            "order": 2,
+            "published": true,
+            "published_at": "2026-04-25",
+            "seo_title": "Workforce Data & Operational Alignment | Danny R. Jenkins",
+            "seo_description": "A healthcare HRIS case study exploring workforce data consistency, system integrations, reporting, and collaboration across HR, IT, and Finance."
+        }
+    },
+    {
+        "model": "website.casestudy",
+        "pk": 4,
+        "fields": {
+            "slug": "payroll-operations",
+            "title": "Payroll Operations & Workforce Execution",
+            "category": "ENTERPRISE",
+            "summary": "Leading complex healthcare payroll operations while strengthening processing controls, team coverage, documentation, and coordination across HR, Finance, and IT.",
+            "problem": "<p>Payroll operations supported monthly, biweekly, supplemental, and special processing cycles in a 24/7 healthcare environment. Timekeeping, overtime, differentials, deductions, and employee changes created dependencies across multiple teams and systems.</p>\r\n<p>The challenge was to maintain timely processing while strengthening controls, clarifying responsibilities, and reducing reliance on individual knowledge. Recurring deadlines required improvements to be introduced alongside ongoing operations.</p>",
+            "role": "<p>I directed payroll operations, overseeing the payroll team, processing priorities, issue escalation, and coordination with HR, Finance, IT, and external vendors.</p>\r\n<p>The scope included more than $30 million in monthly payroll and over 50 scheduled runs annually, alongside additional special processing.</p>\r\n<p>My accountability included supporting the team&rsquo;s daily execution while addressing system issues, reviewing operational risks, and developing more sustainable processes.</p>",
+            "approach": "<p>I focused on clear processing schedules, defined review points, and stronger coordination between payroll and the teams supplying employee and timekeeping information.</p>\r\n<p>The work included tightening off-cycle processing expectations, documenting procedures, cross-training team members, and introducing automation for repeatable tasks. System and vendor issues were tracked and escalated with attention to their effect on payroll deadlines and accuracy.</p>\r\n<p>Controls and reconciliation remained central to the process. The aim was to identify issues early, establish clear paths for resolution, and support dependable execution across different payroll cycles.</p>",
+            "outcome": "<p>The work established clearer processing expectations and supported continuity through documentation, cross-training, and more structured handling of special payroll requests.</p>\r\n<p>Automation reduced manual steps in selected workflows, while coordination across payroll, HRIS, Finance, IT, and vendors supported issue resolution and ongoing processing.</p>\r\n<p>The result was a stronger operational foundation for the team, with continued attention to accuracy, timely pay, and the controls needed to sustain reliable payroll operations.</p>",
+            "order": 3,
+            "published": true,
+            "published_at": "2026-04-25",
+            "seo_title": "Payroll Operations & Workforce Execution | Danny R. Jenkins",
+            "seo_description": "A healthcare payroll leadership case study covering processing controls, automation, team development, and coordination across HR, Finance, and IT."
+        }
+    },
+    {
+        "model": "website.casestudy",
+        "pk": 5,
+        "fields": {
+            "slug": "executive-decision-environment-kairos",
+            "title": "Executive Decision Environment (Kairos)",
+            "category": "INNOVATION",
+            "summary": "Designing an environment that connects operational responsibilities, strategic initiatives, and competing priorities to support more deliberate leadership decisions.",
+            "problem": "<p>Leaders often manage operational responsibilities, strategic initiatives, metrics, and commitments across separate tools and conversations. This makes it difficult to see how demands compete for time and attention.</p>\r\n<p>Urgent requests can overshadow important work, while dependencies and unresolved decisions remain scattered. A consolidated view helps, but leaders also need context to evaluate priorities and make tradeoffs.</p>\r\n<p>Kairos explores how a structured environment can support that process while preserving the leader&rsquo;s judgment.</p>",
+            "role": "<p>I am the creator and architect of Kairos, developed independently through Beacon Innovation, LLC.</p>\r\n<p>My work includes product direction, data structures, prioritization logic, application workflows, and user experience. I translate leadership needs into a design that connects responsibilities with the information needed to evaluate them.</p>\r\n<p>The project draws on my experience in people leadership, HR technology, and operational improvement.</p>",
+            "approach": "<p>The design brings operational responsibilities and strategic priorities into a shared view, with context such as intended outcomes, ownership, timing, dependencies, and current status.</p>\r\n<p>Prioritization considers urgency alongside impact and the consequences of delay. The aim is to make tradeoffs visible and help leaders recognize when a decision or dependency is preventing progress.</p>\r\n<p>Guidance should explain why an item deserves attention and allow the user to revise priorities as circumstances change. Development emphasizes clear workflows and practical review rather than adding more information for leaders to manage.</p>",
+            "outcome": "<p>Kairos provides a design and development effort focused on connecting leadership priorities with daily execution.</p>\r\n<p>The intended benefits include clearer visibility of competing demands, earlier recognition of dependencies, and more deliberate allocation of time and attention. These are objectives to evaluate through practical use, rather than claims of measured organizational results.</p>\r\n<p>The project demonstrates how I translate leadership challenges into structured information, application workflows, and decision-support capabilities.</p>",
+            "order": 5,
+            "published": true,
+            "published_at": "2026-05-04",
+            "seo_title": "Kairos Executive Decision Environment | Danny R. Jenkins",
+            "seo_description": "An independent software project exploring how connected responsibilities, strategic priorities, and decision support can improve leadership planning."
+        }
+    },
     {
         "model": "website.enterpriseoverview",
         "pk": 1,
         "fields": {
-            "hero_heading": "Running HR operations at scale",
-            "hero_lead": "<p>Three functions, one operating discipline. The overview below is how the role is shaped; the function sections are what the role actually does.</p>",
-            "function_section_heading": "What I lead",
-            "system_integration_heading": "How the system works together",
-            "scope":"<p>Enterprise HR operations for a 6,000-employee Level 1 trauma and academic medical center. Three operating functions — compensation, HRIS, and payroll — across a multi-system HR technology stack, with 50+ payroll runs annually for thousands of clinical and non-clinical staff. Director-level ownership across all three.</p>",
-            "impact": "<p>Measured on three outcomes: trust in compensation decisions, reliability of workforce data, and consistency of payroll execution. Each has moved from a reactive posture to a governed discipline — documented, repeatable, and durable through staff and organizational change.</p><p>In a 24/7 hospital, HR operations is not a back-office function — it is the operating system the workforce runs on, and zero error is the baseline.</p>",
-            "system_integration": "<p>Compensation, HRIS, and Payroll are presented as three functions because that is how work is organized. They operate as one system. A job architecture decision surfaces in the HRIS. An HRIS configuration determines what payroll can process. A payroll incident lands on trust in the compensation philosophy. The role is not three parallel jobs — it is one: keeping them aligned so the organization experiences a single, coherent HR operation.</p>"
+            "page_eyebrow": "Enterprise Leadership",
+            "hero_heading": "Connecting HR expertise, technology, and execution",
+            "hero_lead": "<p>Effective HR leadership requires understanding how people, policies, processes, and technology work together. I bring experience across HR disciplines and a technical perspective to develop teams, improve operations, and translate organizational needs into practical solutions.</p>",
+            "scope_label": "Scope",
+            "scope": "<p>I lead HRIS within an integrated, not-for-profit healthcare system supporting hospitals, physician practices, outpatient care, and specialty services.</p>\r\n<p>My experience spans talent acquisition and management, benefits, compensation, payroll, and broader HR operations. That background informs how I approach workforce technology, data governance, integrations, reporting, and process improvement.</p>\r\n<p>I partner with functional leaders to understand their needs, establish priorities, and deliver solutions that work across the employee lifecycle.</p>",
+            "impact_label": "Impact",
+            "impact": "<p>I evaluate success through the reliability of our systems, the usefulness of our information, the effectiveness of our processes, and the capabilities of our team.</p>\r\n<p>That means improving data quality, reducing unnecessary manual work, resolving recurring problems, and helping employees and leaders get the support they need.</p>\r\n<p>Sustainable improvement requires clear ownership, appropriate controls, and strong partnerships across HR, IT, Finance, and operational leadership. The goal is dependable execution today and the ability to adapt as organizational needs change.</p>",
+            "function_section_eyebrow": "Leadership & Expertise",
+            "function_section_heading": "Where I bring experience and accountability",
+            "system_integration_eyebrow": "Connected HR Operations",
+            "system_integration_heading": "Understanding the connections behind the work",
+            "system_integration": "<p>The employee lifecycle crosses organizational boundaries. Recruiting flows into onboarding. Job and status changes affect benefits, compensation, payroll, access, and reporting. Each function has its own responsibilities, but its decisions often affect several others.</p>\r\n<p>My approach is to make those connections visible, clarify ownership, and involve the right partners before changes are made. Broad HR knowledge helps me ask better questions; technical expertise helps me translate the answers into workable solutions.</p>\r\n<p>The result I work toward is coordinated execution: teams understand their responsibilities, information moves reliably, and improvements hold up beyond the initial implementation.</p>"
         }
     },
-
     {
         "model": "website.enterprisefunction",
         "pk": 1,
         "fields": {
-            "slug": "compensation",
-            "title": "Compensation",
-            "summary": "Compensation is treated as a system, not a series of transactions. Philosophy, job architecture, and market pricing — owned and governed as one integrated design problem.",
-            "responsibilities": "<p>Set and maintain compensation philosophy. Own job architecture and salary structures. Govern the market pricing cycle and exception process. Partner with Finance and operations on total rewards, salary planning, and incentive design.</p><p>The compensation system spans the full workforce — exempt and non-exempt roles, advanced practice providers, nursing (full-time and part-time), and specialized areas such as event medicine.</p><p>It governs multiple compensation models and layered differential structures required for 24/7 clinical operations.</p><p>The complexity is not in the number of structures. It is maintaining consistency across them.</p><p>Without that alignment, the system fragments — and trust erodes.</p>",
-            "systems_led": "<p>Market survey sources across clinical and non-clinical categories, salary administration tooling within the HRIS, and the internal review and approval workflow for new roles, promotions, and off-cycle adjustments.</p>",
-            "organizational_role": "<p>The compensation function is the organization's answer to <em>why does this role pay what it pays?</em> The function's job is to make that answer coherent and repeatable — and to keep the philosophy defensible under scrutiny from leadership, staff, and regulators. Every answer it produces has to land in the HRIS the same way.</p>",
+            "slug": "hr-strategy-employee-lifecycle",
+            "title": "HR Strategy & Employee Lifecycle",
+            "summary": "Connecting broad HR knowledge with workforce technology and processes across the employee lifecycle.",
+            "responsibilities_label": "HR EXPERTISE",
+            "responsibilities": "<p>Experience across talent acquisition and management, onboarding, benefits, compensation, payroll, and broader HR operations.</p>\r\n<p>I apply this knowledge to understand business requirements, evaluate process changes, and anticipate their effects across the employee lifecycle. My approach considers employee needs, policy requirements, operational controls, and the teams responsible for delivering the work.</p>",
+            "systems_led": "<p>Experience with HR information systems and connected platforms supporting recruiting, onboarding, benefits administration, compensation, payroll, learning, and performance management.</p>\r\n<p>My work connects functional requirements with system configuration, integrations, workflows, and reporting. The focus is making technology support the process while maintaining reliable information across systems.</p>",
+            "platforms_and_tools_label": "TECHNOLOGY & PROCESSES",
+            "organizational_role": "<p>I bring an enterprise perspective to HR technology decisions, helping functional leaders identify shared needs, clarify ownership, and understand downstream effects.</p>\r\n<p>Through partnerships across HR, IT, Finance, and operational leadership, I help translate business priorities into coordinated improvements that teams can implement and sustain.</p>",
+            "role_and_accountability_label": "CROSS-FUNCTIONAL PARTNERSHIP",
             "order": 1
         }
     },
@@ -171,12 +311,15 @@
         "model": "website.enterprisefunction",
         "pk": 2,
         "fields": {
-            "slug": "hris",
-            "title": "HRIS",
-            "summary": "The infrastructure behind workforce operations — and the foundation of every consistent leadership choice about hiring, pay, and organizational design across HR, Finance, and operations.",
-            "responsibilities": "<p>Own the HR technology ecosystem end to end: configuration, vendor relationships, integration strategy, data governance, and the roadmap for how the stack evolves with the business. Accountable for the integrity of the workforce data leadership uses to make decisions, and for its consistency across functions.</p><p>Led the replacement of a legacy UKG Kronos deployment with Infor Workforce Management — RFP, vendor selection, implementation, and ongoing vendor management. In a 24/7 hospital environment with a hard cutover deadline. Go-live was delayed three times until readiness criteria were met, then completed in November 2025 at Kronos end of life with a managed defect list and controlled stabilization.</p><p>That data does not stay in HR. It feeds finance, operations, and downstream systems across the organization.</p>",
-            "systems_led": "<p>Core HRIS (ERP-integrated), Applicant Tracking System, Learning Management System, time and attendance, and integrations to Finance and clinical operations platforms.</p>",
-            "organizational_role": "<p>HRIS is not a reporting tool. It is the infrastructure behind every workforce decision the organization makes. When leadership asks a question, the answer has to hold across systems, and it has to match between what HR says, what Finance records, and what operations see. That alignment is the function's primary product — and the spine that payroll runs on.</p>",
+            "slug": "hr-technology-data-governance",
+            "title": "HR Technology & Data Governance",
+            "summary": "Aligning workforce systems, integrations, and data to support reliable HR operations and informed decisions.",
+            "responsibilities_label": "RESPONSIBILITIES",
+            "responsibilities": "<p>HRIS leadership encompassing system configuration, employee and organizational data, integrations, reporting, data governance, and technology planning.</p>\r\n<p>I work with functional partners to define requirements, prioritize improvements, and evaluate downstream effects. My approach emphasizes clear data definitions, appropriate access, documented processes, and testing before changes reach production.</p>",
+            "systems_led": "<p>Experience across enterprise HR platforms and connected systems supporting recruiting, benefits, talent management, learning, workforce management, payroll, and HR service delivery.</p>\r\n<p>My technical background includes integrations, SQL, reporting, analytics, automation, and application development. I apply that experience in partnership with IT to evaluate options, troubleshoot problems, and build maintainable solutions within organizational standards.</p>",
+            "platforms_and_tools_label": "PLATFORMS AND TOOLS",
+            "organizational_role": "<p>I connect HR business needs with technical delivery, helping teams understand what information they need, how it is maintained, and how it moves across systems.</p>\r\n<p>Through shared priorities and clear governance, I work to strengthen data integrity, reduce manual effort, and provide information leaders can use with confidence. This requires close partnership across HR, IT, Finance, and operational leadership.</p>",
+            "role_and_accountability_label": "ROLE AND ACCOUNTABILITY",
             "order": 2
         }
     },
@@ -184,51 +327,101 @@
         "model": "website.enterprisefunction",
         "pk": 3,
         "fields": {
-            "slug": "payroll",
-            "title": "Payroll",
-            "summary": "Accurate, compliant, on-time compensation for thousands — where the operating standard is zero error.",
-            "responsibilities": "<p>Lead the payroll operation through every pay cycle: time capture, processing, tax and deductions, third-party reporting, audit support, and post-cycle reconciliation. Own the control environment and the escalation process when cycles don't land clean.</p><p>Payroll operates across three distinct cycles — monthly (~$21M), biweekly (~$9M), and supplemental (~$3M).</p><p>This results in roughly 50 scheduled payroll runs per year, with additional runs occurring weekly.</p><p>The system does not run periodically. It runs continuously.</p><p>The expectation is simple: it runs without error, without delay, and without drawing attention.</p>",
-            "systems_led": "<p>Payroll system (HRIS-integrated), time and attendance capture across clinical and non-clinical workgroups, tax engine, and the integration layer to the general ledger.</p>",
-            "organizational_role": "<p>Payroll is the most visible output HR produces — and the function's single largest operating risk. A miss shows up on every paystub in the organization at once. The discipline is to make payroll uneventful in a way that earns both leadership's trust and the workforce's, every cycle — trust that, once broken, takes the compensation philosophy down with it.</p>",
+            "slug": "people-leadership-operational-improvement",
+            "title": "People Leadership & Operational Improvement",
+            "summary": "Developing capable teams, improving processes, and turning organizational priorities into dependable execution.",
+            "responsibilities_label": "LEADERSHIP APPROACH",
+            "responsibilities": "<p>Setting priorities, developing team capabilities, clarifying responsibilities, and improving how work is planned and delivered.</p>\r\n<p>I emphasize early communication, practical problem-solving, and accountability. I work with teams to identify recurring issues, address underlying causes, and document processes so reliable performance does not depend on a single person.</p>",
+            "systems_led": "<p>Clear intake and prioritization, documented workflows, cross-training, operational controls, and meaningful measures of service and performance.</p>\r\n<p>I use reporting, automation, and AI where they can reduce manual effort or improve quality. Changes need appropriate testing, clear ownership, and team understanding so improvements can be maintained over time.</p>",
+            "platforms_and_tools_label": "METHODS & TOOLS",
+            "organizational_role": "<p>I help teams translate organizational goals into clear priorities and achievable work, while keeping stakeholders informed about progress, risks, and decisions that need their attention.</p>\r\n<p>My role is to build capability, remove barriers, and coordinate across functions. Success means people understand what is expected, raise concerns early, and have the knowledge and support to deliver.</p>",
+            "role_and_accountability_label": "ROLE AND ACCOUNTABILITY",
             "order": 3
         }
     },
-
     {
-        "model": "website.casestudy",
+        "model": "website.innovationoverview",
         "pk": 1,
         "fields": {
-            "slug": "compensation-transformation",
-            "title": "Rebuilding Compensation Framework",
-            "category": "ENTERPRISE",
-            "summary": "Rebuilding a fragmented compensation function into a coherent philosophy, job architecture, and market pricing discipline that both leadership and staff can trust.",
-            "problem": "<p>The compensation function had grown through accretion rather than design. A 6,000-employee academic medical center was paying against a patchwork of inherited job titles, inconsistent grade structures, and market surveys layered over each other across years of reorganization.</p><p>The symptoms were visible everywhere: managers couldn't explain pay decisions to their teams. Recruiting was losing candidates in final offers. HR leadership had no durable answer to the obvious executive question — <em>why does this role pay what it pays?</em></p><p>What presented as market-competitiveness issues were really the symptoms of missing architecture underneath. Competitiveness is impossible to demonstrate when the structure being measured is internally inconsistent.</p>",
-            "role": "<p>I led the rebuild end to end. Reporting to senior HR leadership and partnering with Finance, clinical operations, and non-clinical division heads, my remit was explicit: set the compensation philosophy, design a job architecture, and stand up a pricing discipline the organization could run on.</p><p>The work was scoped not as a project with a completion date but as an operating system with ongoing governance — one that had to survive staff transitions, leadership changes, and continuous organizational growth.</p>",
-            "approach": "<p>The work moved in three layers, done in sequence because each depended on the one beneath it.</p><p><strong>First, a stated philosophy.</strong> Pay targets, positioning against market, and the relationship between internal equity and external competitiveness — committed to paper and signed off by executive leadership. Without a stated philosophy, every downstream decision remained re-negotiable and the function had no center.</p><p><strong>Second, a job architecture.</strong> Jobs were grouped into families, leveled against common criteria, and mapped to salary structures. This took roughly six months of analysis and stakeholder review across clinical and non-clinical divisions. The outcome was a system where placing a new role did not require inventing a pay decision — it required placing the role in the architecture.</p><p><strong>Third, a market pricing discipline.</strong> Survey sources were rationalized. Pricing cycles were scheduled and documented. Adjustments were tied to defined thresholds rather than case-by-case negotiation, and exceptions were governed rather than tolerated.</p><p>Governance — not a one-time rollout — was the deliverable. The architecture had to function without me in the room.</p>",
-            "outcome": "<p>Managers could explain pay. Compensation moved from a reactive, request-driven function to a governed one — with documented philosophy, a job architecture owned by the function, and a defensible market pricing cycle.</p><p>The most important outcome was not a number. It was that senior leadership had, for the first time, a coherent answer to the <em>why does this pay what it pays</em> question — and that the answer held up under scrutiny from inside and outside the organization.</p>",
-            "order": 1,
-            "published": true,
-            "published_at": "2026-04-01",
-            "seo_title": "Rebuilding Compensation Framework — Case Study",
-            "seo_description": "How a fragmented compensation function at a 6,000-employee academic medical center was rebuilt into a governed framework of philosophy, architecture, and pricing."
+            "page_eyebrow": "Innovation",
+            "hero_heading": "Innovation & Decision Environments",
+            "intro": "<p>I design software and decision-support tools that help people connect information, evaluate priorities, and take useful action.</p>\r\n<p>Through Beacon Innovation, I explore how structured data, automation, and AI can reduce fragmentation across personal responsibilities and leadership work. This independent work draws on my experience in HR, technology, and operational improvement.</p>",
+            "beacon_eyebrow": "Beacon Innovation",
+            "beacon_heading": "Beacon Innovation, LLC",
+            "beacon_positioning": "<p>Beacon Innovation is my independent company focused on developing software and exploring practical applications of automation and AI.</p>\r\n<p>My approach starts with understanding the problem: what information is needed, which decisions matter, and what would make the work easier or more reliable. I then design, build, and refine solutions around those needs.</p>\r\n<p>These projects are developed independently of my employment. They reflect my own interests in systems thinking, software development, and decision support.</p>",
+            "wlj_case_study_link_label": "Explore the Whole Life Journey case study →",
+            "wlj_eyebrow": "Whole Life Journey",
+            "wlj_heading": "Whole Life Journey",
+            "wlj_positioning": "Connecting everyday responsibilities to clearer priorities and practical next steps.",
+            "wlj_overview": "<p>Whole Life Journey brings areas such as faith, health, journaling, tasks, and goals into a connected personal environment.</p>\r\n<p>The aim is to help people understand how their commitments, habits, and priorities relate to one another. Bringing information together creates a foundation for identifying patterns, reviewing progress, and deciding where to focus.</p>\r\n<p>Development centers on useful guidance, user control, and recommendations grounded in available information. The goal is to support personal judgment while reducing the effort required to organize and review daily responsibilities.</p>",
+            "architecture_eyebrow": "Architecture",
+            "architecture_heading": "Data → Signals → Decisions",
+            "diagram_box_1_label": "Data",
+            "diagram_box_2_label": "Signals",
+            "diagram_box_3_label": "Decisions",
+            "diagram_caption_1": "INFORMATION FROM CONNECTED SOURCES",
+            "diagram_caption_2": "PATTERNS THAT DESERVE ATTENTION",
+            "diagram_caption_3": "GUIDANCE FOR THE NEXT STEP",
+            "architecture_caption": "<p>Data describes what is happening. Signals highlight patterns or changes that may deserve attention. Decision support helps the user evaluate possible next steps.</p>\r\n<p>The design connects structured information with defined rules and AI-assisted interpretation. Recommendations should reflect the available evidence, acknowledge uncertainty, and leave the user in control.</p>\r\n<p>The aim is useful guidance that helps people decide where to focus and why.</p>",
+            "in_practice_eyebrow": "In Practice",
+            "practical_example": "<p>A project review is approaching. A required task is overdue, a related decision remains unresolved, and the calendar has limited time available.</p>\r\n<p>Viewed separately, these are three disconnected pieces of information. Considered together, they reveal a dependency: the decision needs to be resolved before the task can be completed.</p>\r\n<p>A useful recommendation would explain that connection and suggest addressing the decision first, then reserving time for the task before the review. The user can assess the recommendation and adjust it based on context the system may not have.</p>",
+            "chief_of_staff_eyebrow": "AI Chief of Staff",
+            "chief_of_staff_heading": "AI Chief of Staff",
+            "chief_of_staff": "<p>The AI Chief of Staff concept explores how an assistant can use stored context, commitments, and priorities to provide more relevant guidance over time.</p>\r\n<p>The aim is to help identify competing demands, surface overlooked commitments, and suggest practical next steps with a clear explanation of why they matter.</p>\r\n<p>Useful assistance requires reliable information, appropriate boundaries, and the ability to distinguish evidence from inference. When context is incomplete, the assistant should ask a focused question or acknowledge uncertainty.</p>\r\n<p>The user remains responsible for decisions and controls which actions are taken.</p>",
+            "what_this_demonstrates_eyebrow": "What This Demonstrates",
+            "what_this_demonstrates_heading": "What this demonstrates",
+            "what_this_demonstrates": "<p>These independent projects demonstrate how I approach complex problems: understand the need, connect the information, define the logic, and test whether the solution is useful.</p>\r\n<p>Systems thinking<br>Understanding relationships, dependencies, and the effects of change across connected processes.</p>\r\n<p>Technical execution<br>Translating an idea into data structures, application workflows, integrations, and usable software.</p>\r\n<p>Responsible AI application<br>Designing guidance that can be reviewed, questioned, and checked against available evidence.</p>\r\n<p>Practical improvement<br>Evaluating whether a solution reduces effort, improves clarity, or helps someone take a useful next step.</p>"
         }
     },
-
     {
         "model": "website.perspective",
         "pk": 1,
         "fields": {
             "slug": "compensation-is-a-trust-system",
-            "title": "Compensation is a trust system",
-            "deck": "What the pay function is actually doing, and why getting it wrong looks like a market problem when it isn't.",
+            "title": "Compensation reflects organizational trust",
+            "deck": "How market competitiveness, internal equity, and clear explanations work together to build confidence in pay decisions.",
             "eyebrow": "COMPENSATION",
-            "lead": "<p>Compensation is treated as a pricing function. That is the mistake. The function is on the hook for trust, not benchmarks.</p>",
-            "closing": "<p>The operating test for a compensation function is not the market percentile. It is whether, three years from now, the system still produces decisions the organization can trust and defend — without the person who built it in the room.</p><p>The system is the asset. The numbers are an output, not the objective.</p>",
+            "lead": "<p>Compensation decisions communicate what an organization values and how consistently it applies those values. Competitive pay matters. So do internal equity, financial sustainability, and the ability to explain how decisions are made. Trust depends on the relationship between all of them.</p>",
+            "closing": "<p>A strong compensation function produces decisions that are competitive, financially sustainable, and explainable. It also creates a framework that can adapt as workforce needs and market conditions change.</p>\r\n<p>The test is whether leaders can apply that framework consistently, recognize when adjustments are needed, and explain their decisions without depending on the person who originally designed it.</p>",
             "order": 1,
             "published": true,
             "published_at": "2026-04-20",
-            "seo_title": "Compensation is a trust system",
-            "seo_description": "Why compensation is a trust system, not a pricing function — and why market-competitiveness problems are usually architecture problems underneath."
+            "seo_title": "Compensation Reflects Organizational Trust | Danny R. Jenkins",
+            "seo_description": "Why competitive pay, internal equity, clear compensation structures, and consistent communication all matter to confidence in workforce pay decisions."
+        }
+    },
+    {
+        "model": "website.perspective",
+        "pk": 2,
+        "fields": {
+            "slug": "hris-is-a-decision-engine",
+            "title": "HRIS supports workforce operational alignment",
+            "deck": "How reliable workforce systems, shared data definitions, and useful reporting support coordinated operations and better decisions.",
+            "eyebrow": "HRIS",
+            "lead": "<p>HRIS connects the systems, information, and processes that support the employee lifecycle. Its value includes dependable daily operations, a better experience for employees and HR teams, and information leaders can use with confidence. Strong reporting matters, and it depends on the quality of the data and processes behind it.</p>",
+            "closing": "<p>Evaluate HRIS by how well it supports the people and decisions that depend on it. Can employees complete essential tasks? Can HR teams maintain accurate information? Can leaders understand what a workforce measure means and use it appropriately?</p>\r\n<p>Reliable systems, clear definitions, effective reporting, and shared ownership work together. Maintaining those connections is an ongoing responsibility as the organization changes.</p>",
+            "order": 2,
+            "published": true,
+            "published_at": "2026-04-22",
+            "seo_title": "HRIS Supports Workforce Operational Alignment | Danny R. Jenkins",
+            "seo_description": "How workforce systems, data governance, shared definitions, and useful reporting support reliable HR operations and informed leadership decisions."
+        }
+    },
+    {
+        "model": "website.perspective",
+        "pk": 3,
+        "fields": {
+            "slug": "system-fragmentation-is-inherited",
+            "title": "Operational fragmentation grows over time",
+            "deck": "How changing processes, disconnected systems, and unclear ownership create friction—and how leaders can restore coordination.",
+            "eyebrow": "SYSTEMS",
+            "lead": "<p>Operational fragmentation often develops through a series of changes that make sense individually but become difficult to manage together. A new platform, a reorganization, or a temporary workaround can alter how information and responsibilities move across teams. Over time, the connections need deliberate review and maintenance.</p>",
+            "closing": "<p>Coordination requires ongoing attention to how work crosses team and system boundaries. Clear ownership, documented decisions, and regular review help organizations adapt without losing the connections that make daily operations reliable.</p>\r\n<p>Start with the problems that matter most, involve the people who understand the work, and build improvements the organization can sustain.</p>",
+            "order": 3,
+            "published": true,
+            "published_at": "2026-04-23",
+            "seo_title": "Operational Fragmentation Grows Over Time | Danny R. Jenkins",
+            "seo_description": "How disconnected systems, changing processes, and unclear ownership create operational friction, and practical ways leaders can improve coordination."
         }
     },
     {
@@ -237,8 +430,8 @@
         "fields": {
             "perspective": 1,
             "order": 1,
-            "heading": "The symptom is rarely the problem",
-            "body": "<p>When a compensation function is in trouble, the first move is always market data. Offers lost at final stage. Turnover concentrated in specific roles. A department head arguing the range is wrong. The reflex: benchmark harder.</p><p>It is almost never the right move. A well-governed compensation function does not lose offers because benchmarks are wrong. It loses them because candidates and managers do not trust the reasoning.</p><p>Treating a trust problem as a pricing problem is how functions end up in a loop: benchmark harder, lose the next candidate, benchmark harder again.</p>"
+            "heading": "Understand the problem before choosing the response",
+            "body": "<p>Lost candidates, turnover, and concerns about pay ranges deserve investigation. Market competitiveness may be the issue, but it should not be the only explanation considered.</p>\r\n<p>A role may be priced below its relevant market. Job responsibilities may have changed. Internal pay relationships may have become inconsistent. Managers may also lack the information needed to explain a sound decision.</p>\r\n<p>The right response depends on the evidence. Review market data, role content, internal relationships, and recruiting or retention patterns together. Better communication cannot fix uncompetitive pay, and a market adjustment alone cannot fix unclear job structures or inconsistent practices.</p>"
         }
     },
     {
@@ -248,7 +441,7 @@
             "perspective": 1,
             "order": 2,
             "heading": "The architecture beneath the number",
-            "body": "<p>Every pay decision rests on three things the recipient cannot see: a philosophy, a job architecture, and a pricing discipline. When they are aligned, the number is explainable. When they drift — usually through accretion, not any single decision — the number stops being explainable, and the function stops being trusted.</p><p>The common failure mode is to treat these as three separate projects. Philosophy gets a workshop. Architecture gets a rebuild. Pricing gets a cycle. They drift on separate timelines. The next time a department head asks why a role pays what it pays, there is no coherent answer — the three layers no longer tell the same story.</p><p>The discipline is to operate them as one system, on one cadence, governed by one owner. Not three projects with three timelines. One operating model, continuously maintained.</p>"
+            "body": "<p>Pay decisions rest on connected foundations: compensation philosophy, job architecture, market analysis, and governance.</p>\r\n<p>Philosophy establishes the organization&rsquo;s approach to pay. Job architecture provides a consistent way to understand roles and levels. Market analysis informs external competitiveness. Governance defines how decisions, exceptions, and changes are reviewed.</p>\r\n<p>These foundations need to evolve together. A new salary structure will not resolve unclear role definitions, and a documented philosophy has limited value if daily decisions routinely bypass it.</p>\r\n<p>Clear ownership and regular review help keep the framework useful as the organization changes.</p>"
         }
     },
     {
@@ -257,26 +450,8 @@
         "fields": {
             "perspective": 1,
             "order": 3,
-            "heading": "Trust is the product",
-            "body": "<p>The way to know a compensation function is healthy is not the pay data. It is the conversations.</p><p>If managers cannot explain pay decisions to their teams, the system is already broken — regardless of what the benchmarks say.</p><p>Can a candidate ask why they were offered what they were offered and get a real answer? Does leadership defend the philosophy the way they would defend any other strategic commitment?</p><p>When the conversations go well, the numbers are right. When they go badly, no benchmarking fixes it. The problem was never the numbers.</p>"
-        }
-    },
-
-    {
-        "model": "website.perspective",
-        "pk": 2,
-        "fields": {
-            "slug": "hris-is-a-decision-engine",
-            "title": "HRIS is workforce infrastructure",
-            "deck": "Why the best-run HR technology functions treat the system as infrastructure, and why treating it as a reporting layer is why workforce decisions stop holding up.",
-            "eyebrow": "HRIS",
-            "lead": "<p>Most HRIS failures are architectural, not technical. A system built for reports cannot carry the operational weight of a workforce. HRIS is not a reporting tool. It is the infrastructure behind workforce operations — and it either holds up or it does not.</p>",
-            "closing": "<p>The test for an HRIS is not the number of reports. It is whether, three years from now, leadership can ask a workforce question and get an answer that holds up.</p><p>The infrastructure is the asset. The reports are an output, not the objective.</p>",
-            "order": 2,
-            "published": true,
-            "published_at": "2026-04-22",
-            "seo_title": "HRIS is workforce infrastructure",
-            "seo_description": "Why HRIS is infrastructure for workforce decisions — and why treating it as a reporting layer is why those decisions stop holding up."
+            "heading": "Trust requires sound decisions and clear explanations",
+            "body": "<p>Employees and candidates may not agree with every pay decision. They should still be able to receive a clear explanation of the factors considered and how concerns can be reviewed.</p>\r\n<p>Managers need guidance they can use: how roles are evaluated, what salary ranges represent, and how experience, performance, and internal equity influence decisions. They also need to know when to involve compensation specialists.</p>\r\n<p>Communication should be supported by evidence. Review competitiveness, pay relationships, exceptions, and employee feedback to identify where the framework or its application needs improvement.</p>\r\n<p>Trust grows when the organization makes thoughtful decisions, applies its approach consistently, and responds when the evidence shows something needs to change.</p>"
         }
     },
     {
@@ -285,8 +460,8 @@
         "fields": {
             "perspective": 2,
             "order": 1,
-            "heading": "The reporting trap",
-            "body": "<p>Most HRIS programs begin with a reporting problem. Leadership asks a workforce question; the answer is slow, inconsistent, or involves three people reconciling spreadsheets. The response is predictable — better reporting. Dashboards, KPIs, a BI tool on top.</p><p>This improves visibility, not decisions. Worse, it hides the real problem: whether the data layer can produce a trustworthy answer at all. Dashboards make the system look healthier. They do not make it healthier.</p><p>Reporting is a symptom. The system is the target.</p>"
+            "heading": "Start with the question behind the report",
+            "body": "<p>A request for a dashboard often begins with a practical need: understand turnover, evaluate staffing, track recruiting progress, or identify a process that needs attention.</p>\r\n<p>Before selecting measures or building visuals, clarify the decision the information should support. Who will use it? What action could follow? Which definitions, time periods, and organizational boundaries matter?</p>\r\n<p>Then examine the source data and reporting logic. A useful dashboard can reveal patterns and improve decisions, but it also needs clear definitions, appropriate validation, and an explanation of its limitations.</p>\r\n<p>Reporting and data improvement should inform one another. Building the report may expose a process problem; improving the process may make the report more reliable.</p>"
         }
     },
     {
@@ -295,8 +470,8 @@
         "fields": {
             "perspective": 2,
             "order": 2,
-            "heading": "The decision load",
-            "body": "<p>When senior leadership asks a workforce question, they are making a decision. How to structure a reorganization. Where to place hiring priority. Whether a compensation adjustment is defensible.</p><p>And HRIS is behind more than the decision itself — it runs the systems those decisions originate from: payroll, compensation, integrations, downstream reporting.</p><p>The HRIS either produces an answer the organization can act on, or numbers that do not match what Finance, operations, and HR each see separately. The difference is not data volume. It is whether the data model was designed for decisions or for reports.</p><p>More data does not fix a broken model. It makes the cracks wider.</p><p>A decision system has one version of each fact. A reporting tool has as many versions as there are ways to query it.</p>"
+            "heading": "Understand the work behind the data",
+            "body": "<p>Workforce information reflects events and decisions across recruiting, onboarding, benefits, development, compensation, payroll, and other HR activities.</p>\r\n<p>A job change, for example, may affect pay, benefits eligibility, reporting relationships, access, and downstream integrations. Understanding those connections helps teams evaluate changes and investigate discrepancies.</p>\r\n<p>HRIS contributes technical and functional expertise, while process owners provide essential context. Reliable information depends on both: how the system is configured and how the work is performed.</p>\r\n<p>That partnership helps ensure technology supports operational needs and that reporting reflects the business rules leaders expect.</p>"
         }
     },
     {
@@ -305,26 +480,8 @@
         "fields": {
             "perspective": 2,
             "order": 3,
-            "heading": "The product is alignment",
-            "body": "<p>The output of a well-designed HRIS is not a dashboard. It is alignment — the same number showing up in HR, Finance, and operations for the same question.</p><p>Alignment cannot be retrofit on top of reporting. It has to be built into the data model, the integration contracts, and the governance of who can change what. Most HRIS implementations skip this and try to solve alignment downstream with BI tooling. It does not work.</p><p>If leadership gets three different answers to the same workforce question from three systems, the HRIS is broken — regardless of what the dashboards say.</p>"
-        }
-    },
-
-    {
-        "model": "website.perspective",
-        "pk": 3,
-        "fields": {
-            "slug": "system-fragmentation-is-inherited",
-            "title": "System fragmentation is inherited, not designed",
-            "deck": "Why organizational silos accumulate without anyone deciding to build them, and what it actually takes to resolve them.",
-            "eyebrow": "SYSTEMS",
-            "lead": "<p>Fragmentation is not designed. It is inherited. Every silo that makes a leader's job harder was once a reasonable decision — and then the context changed.</p>",
-            "closing": "<p>The test for an organization's systems is not whether they look coordinated on paper. It is whether, three years from now, the same question produces the same answer across the functions that have to act on it.</p><p>The architecture is the asset. Fragmentation is the absence of ownership.</p>",
-            "order": 3,
-            "published": true,
-            "published_at": "2026-04-23",
-            "seo_title": "System fragmentation is inherited, not designed",
-            "seo_description": "Why organizational fragmentation accumulates without anyone deciding to build it, and why resolving it is an operating discipline — not a project."
+            "heading": "Build shared definitions and clear ownership",
+            "body": "<p>Different workforce numbers do not always mean a system is wrong. HR and Finance may use different populations, effective dates, or definitions for legitimate reasons.</p>\r\n<p>The first step is to make those differences explicit. Define each measure, identify its authoritative sources, and explain how timing, exclusions, and calculation rules affect the result.</p>\r\n<p>Where teams intend to measure the same thing, reconcile discrepancies and address the underlying causes. Establish ownership for data maintenance, integration monitoring, and changes to reporting logic.</p>\r\n<p>Alignment means people understand what the information represents, why results may differ, and which measure is appropriate for the decision at hand.</p>"
         }
     },
     {
@@ -333,8 +490,8 @@
         "fields": {
             "perspective": 3,
             "order": 1,
-            "heading": "The accumulation is invisible until it isn't",
-            "body": "<p>Fragmentation does not arrive. It accumulates.</p><p>A reorg splits a function. A vendor swap introduces a different data model. A cost pressure consolidates two systems that used to be separate. Each decision is defensible. None of them are architecturally coordinated.</p><p>Leadership does not tolerate fragmentation out of negligence. It tolerates it because each individual decision looked rational at the time — and the cumulative effect only becomes visible after years, when the same question starts producing different answers in different meetings.</p><p>The tolerance is not a failure. It is the mechanism.</p>"
+            "heading": "Small changes can create larger disconnects",
+            "body": "<p>A department introduces a tool to meet an urgent need. A reorganization changes approval responsibilities. A manual workaround keeps a process moving while a system issue is resolved.</p>\r\n<p>Each decision may be reasonable. Problems develop when related workflows, integrations, documentation, and ownership do not change with it.</p>\r\n<p>The effects can appear as duplicate entry, repeated reconciliation, delayed handoffs, or uncertainty about which information to use. These symptoms deserve investigation across the process, rather than being treated only as isolated team or technology problems.</p>\r\n<p>The goal is to understand where coordination has weakened and what would restore it.</p>"
         }
     },
     {
@@ -343,8 +500,8 @@
         "fields": {
             "perspective": 3,
             "order": 2,
-            "heading": "Systems drift because their owners do",
-            "body": "<p>Systems do not drift because they are neglected. They drift because their owners change — and each new owner inherits the system as a tool to operate, not as a design to maintain.</p><p>The first person who designed the compensation architecture understood why it was shaped that way. The fifth person inherited the shape without the reasoning. A question gets answered the way the system now allows, not the way it was originally intended to answer it. The distance between those two things grows, quietly, every cycle.</p><p>This is why fragmentation is rarely anyone's fault — and also why no one's job is to fix it. Fragmentation belongs to a role that does not exist on any org chart: the person who holds the architecture across ownership transitions.</p><p>At senior levels, that role becomes the job.</p>"
+            "heading": "Preserve the reasoning behind the process",
+            "body": "<p>Processes become harder to maintain when the reasoning behind them is lost. A team may know which steps to follow without knowing why a rule exists, which dependency it protects, or when an exception is appropriate.</p>\r\n<p>Staff turnover and leadership changes can contribute, but so can incomplete documentation, limited training, competing priorities, and unclear accountability.</p>\r\n<p>Useful documentation explains purpose, ownership, dependencies, controls, and important decisions. Cross-training and thoughtful handoffs help preserve that knowledge.</p>\r\n<p>As circumstances change, teams also need permission to question inherited practices and determine whether the original reasoning still applies.</p>"
         }
     },
     {
@@ -353,28 +510,10 @@
         "fields": {
             "perspective": 3,
             "order": 3,
-            "heading": "Resolving what was never designed",
-            "body": "<p>Resolving fragmentation is not a project. It is an operating discipline.</p><p>The move is not to redesign everything. That is what accumulates the next generation of fragmentation. The move is to identify the load-bearing misalignments — the specific points where the same question produces different answers — and resolve those first, one layer at a time.</p><p>The work requires acknowledging that no existing owner is fully to blame, and that no existing owner has the authority to resolve it alone. Senior leadership does not execute fragmentation resolution. It sponsors it — by naming the architecture as an asset the organization will now maintain, and by making that maintenance someone's job.</p><p>If fragmentation is not explicitly someone's job, it remains everyone's problem.</p>"
+            "heading": "Improve the connections that matter most",
+            "body": "<p>Start with a specific operational problem and trace it across the teams and systems involved. Identify where information changes, ownership becomes unclear, or work stops moving.</p>\r\n<p>Prioritize improvements based on employee impact, operational risk, recurring effort, and the dependencies they affect. Some issues require a defined project; others can be addressed through clearer procedures, configuration changes, or better coordination.</p>\r\n<p>Assign an owner for the improvement, involve the relevant partners, and verify that the change works across the full process. Document what changed and how it will be maintained.</p>\r\n<p>Leadership supports this work by resolving competing priorities, providing resources, and establishing accountability across organizational boundaries.</p>"
         }
     },
-
-    {
-        "model": "website.connectpage",
-        "pk": 1,
-        "fields": {
-            "intro": "<p>Direct outreach for VP HR Operations, VP Total Rewards, and Executive Director HR opportunities. Also: advisory engagements, speaking, and conversations about how the work actually gets done.</p>",
-            "form_prelude": "If you’d like to connect, share a few details below.",
-            "success_heading": "Thank you — I’ve received your message.",
-            "success_body": "<p>I’ll review it and follow up directly. No automated sequences, no CRM.</p>",
-            "conversation_label": "Request a conversation",
-            "conversation_blurb": "Direct introduction. No recruiter, no form.",
-            "conversation_href": "mailto:dannyjenkins71@gmail.com?subject=Conversation%20request",
-            "resume_label": "Request a resume",
-            "resume_blurb": "Tailored to the role you are considering.",
-            "resume_href": "mailto:dannyjenkins71@gmail.com?subject=Resume%20request"
-        }
-    },
-
     {
         "model": "website.resumeversion",
         "pk": 1,
@@ -383,7 +522,16 @@
             "name": "General",
             "type": "GENERAL",
             "is_active": true,
-            "updated_at": "2026-04-24T12:00:00Z"
+            "headline": "HRIS Leadership | HR Strategy, Workforce Technology & Operational Improvement",
+            "summary_source": "MANUAL",
+            "include_innovation": true,
+            "operational_emphasis": 5,
+            "technology_emphasis": 5,
+            "transformation_emphasis": 5,
+            "healthcare_emphasis": 5,
+            "target_role_notes": "",
+            "updated_at": "2026-11-08T13:08:51.259Z",
+            "featured_case_studies": []
         }
     },
     {
@@ -393,7 +541,7 @@
             "version": 1,
             "section_type": "SUMMARY",
             "heading": "",
-            "content": "<p>Leads compensation, HRIS, and payroll for a 6,000-employee Level 1 trauma and academic medical center. Runs the three functions as one integrated operating model — more than $500M in annual payroll across three payroll cycles, with a zero-error operating standard. Approaches HR for a 6,000-employee Level 1 academic medical center as an integrated operating model: unified data, governed decisions, quiet execution.</p>",
+            "content": "<p>Healthcare HRIS leader with broad experience across talent acquisition and management, benefits, compensation, payroll, and HR operations.</p>\r\n<p>Combines functional HR knowledge with technical expertise in workforce systems, integrations, reporting, data governance, automation, and application development. Brings an understanding of how decisions and processes connect across the employee lifecycle.</p>\r\n<p>Leadership approach emphasizes developing people, establishing clear priorities, improving operational reliability, and building strong partnerships across HR, IT, Finance, and operational leadership.</p>",
             "order": 1
         }
     },
@@ -404,7 +552,7 @@
             "version": 1,
             "section_type": "CURRENT_ROLE",
             "heading": "",
-            "content": "<p><strong>Director of HRIS, Compensation, and Payroll</strong><br>UT Medical Center &nbsp;·&nbsp; 2023 — Present</p><ul><li>Lead compensation, HRIS, and payroll for a 6,000-employee academic medical center — $500M+ in annual payroll across three payroll cycles (biweekly, monthly, supplemental).</li><li>Executive sponsor of the replacement of UKG Kronos with Infor Workforce Management for 7,000–7,500 employees and contractors — delayed go-live three times until readiness criteria were met, went live in November 2025 at Kronos end of life with a managed defect list, and continue post-go-live stabilization under controlled governance (about 85% complete as of September 2026).</li><li>Rebuilt the compensation function from a transactional posture into a governed operating model: documented philosophy, owned job architecture, disciplined market pricing cycle.</li><li>Own the HR technology ecosystem end to end — HRIS, ATS, LMS, time and attendance, and integrations to Finance and clinical operations.</li><li>Direct workforce data governance so leadership questions resolve to one answer across HR, Finance, and operations.</li><li>Operate the three functions as one integrated system, with cross-function alignment built into the design rather than patched after.</li></ul>",
+            "content": "<p>Director, HRIS<br>Integrated, not-for-profit healthcare system</p>\r\n<p>Lead HRIS in a healthcare environment spanning hospitals, physician practices, outpatient care, and specialty services.</p>\r\n<p>Focus on workforce technology, data integrity, reporting, integrations, process improvement, and reliable system operations.</p>\r\n<p>Partner with HR functional leaders, IT, Finance, and operational stakeholders to understand business needs, establish shared priorities, and coordinate system improvements.</p>\r\n<p>Develop team capabilities through clear expectations, knowledge sharing, documentation, and accountability.</p>",
             "order": 2
         }
     },
@@ -415,7 +563,7 @@
             "version": 1,
             "section_type": "PRIOR_ROLES",
             "heading": "",
-            "content": "<p>Progressive leadership across HR operations at UT Medical Center — HRIS, payroll, and compensation, with scope expanding over time. Earlier managerial and analyst roles in HR technology and compensation administration. Full history available on request.</p>",
+            "content": "<p>Progressive experience in healthcare HR leadership, workforce technology, and HR operations, including direct leadership of HRIS, compensation, and payroll teams.</p>\r\n<p>Responsibilities have included compensation strategy, job architecture, market pricing, payroll oversight, system configuration, integrations, reporting, vendor coordination, and technology implementation.</p>\r\n<p>Earlier management and analyst roles provided hands-on experience in HR systems, business requirements, process improvement, and support across HR disciplines.</p>\r\n<p>Detailed employment history is available upon request.</p>",
             "order": 3
         }
     },
@@ -425,8 +573,8 @@
         "fields": {
             "version": 1,
             "section_type": "EDUCATION",
-            "heading": "",
-            "content": "<p>Bachelor's degree. Additional professional certifications relevant to total rewards, HR technology, and payroll operations. Full details available on request.</p>",
+            "heading": "Education & Professional Development",
+            "content": "<p>Bachelor&rsquo;s degree in Management Information Systems, University of Alabama.</p>\r\n<p>Executive leadership development through the Haslam College of Business at the University of Tennessee.</p>\r\n<p>Continued professional development in HR technology, software development, automation, and applied AI.</p>",
             "order": 4
         }
     },
@@ -437,85 +585,54 @@
             "version": 1,
             "section_type": "HIGHLIGHTS",
             "heading": "",
-            "content": "<ul><li>Kronos &rarr; Infor WFM conversion for 7,000–7,500 employees and contractors, governed by readiness: go-live delayed three times to protect payroll, then completed in November 2025 at Kronos end of life with a managed defect list and controlled stabilization.</li><li>Compensation function rebuilt from a transactional posture into a governed operating model.</li><li>Workforce data aligned across HR, Finance, and operations — from inconsistent cross-function answers to one-version truth.</li><li>Three payroll cycles per month maintained at a zero-error operating standard across ~50 scheduled runs per year.</li></ul>",
+            "content": "<ul>\r\n<li>Led multidisciplinary teams across HRIS, compensation, and payroll, combining operational accountability with workforce technology leadership.</li>\r\n<li>Oversaw complex healthcare payroll operations across monthly, biweekly, supplemental, and special processing cycles.</li>\r\n<li>Developed compensation analysis and models to evaluate market alignment, pay structures, workforce implications, and financial tradeoffs.</li>\r\n<li>Sponsored workforce management modernization, including requirements, vendor selection, implementation coordination, and vendor management.</li>\r\n<li>Led HR technology initiatives involving applicant tracking, emergency notification systems, and enterprise HR platform upgrades.</li>\r\n<li>Strengthened operational continuity through documentation, cross-training, process controls, and automation of selected workflows.</li>\r\n<li>Created independent software projects through Beacon Innovation, applying data modeling, application architecture, and AI-assisted decision support.</li>\r\n</ul>",
             "order": 5
         }
     },
-
     {
-        "model": "website.innovationoverview",
+        "model": "website.connectpage",
         "pk": 1,
         "fields": {
-            "hero_heading": "Innovation & Systems Design",
-            "wlj_case_study_link_label": "See how this operates in practice → WLJ Case Study",
-            "intro":"<p>This is not separate from my work. It changes how I make decisions, not just how I think about them. The same discipline that runs HR operations for a 6,000-employee academic medical center runs Whole Life Journey — enforcing accountability between data, interpretation, and action, on a smaller surface area.</p>",
-            "beacon_positioning": "<p>Beacon Innovation, LLC is an independent design studio I own outside any employer context. It exists to build AI-assisted personal systems. The work is mine end to end — not a side project, not a hobby — and it operates under the same discipline I apply to enterprise HR operations.</p>",
-            "wlj_positioning": "Most tools optimize individual functions. WLJ is designed to optimize decisions across functions.",
-            "wlj_overview": "<p>Whole Life Journey integrates the data sources a life actually runs on — calendar, health, tasks, faith practice, journaling — into one model under one cadence. The point is not the integration. It is the decision-making the integration makes possible: fewer decisions, better ordered, closer to the moment they matter.</p>",
-            "architecture_caption": "<p><strong>Data</strong> — the raw output of the sources a life runs on (calendar, health, tasks, journaling, faith practice). <strong>Signals</strong> — interpreted patterns worth attending to, not raw rows. <strong>Decisions</strong> — the single next action that moves a priority forward.</p><p>The pipeline is unidirectional and governed. It does not surface noise, and it does not ask the person to parse it.</p><p>The same shape runs the HR operations side: data → signal → decision. Same discipline, different surface area.</p>",
-            "practical_example": "<p>A concrete instance. The calendar shows a 9:30 AM meeting with a hard stop. Health tracking flags a medication dose as overdue. Task data surfaces a one-step follow-up from the prior day. A traditional assistant would present the three as separate items.</p><p>The pipeline resolves them into a single next action: <strong>take the medication now</strong>, in the six-minute window before the meeting — it is the only item shorter than the walk to the room, and the meeting itself cannot be interrupted.</p><p>The value is not the information. It is the sequencing.</p>",
-            "chief_of_staff": "<p>The AI layer is designed as a Chief of Staff would think, not as an assistant would chat. A Chief of Staff does not add information; they reduce the number of decisions the principal has to make, and they sequence what remains.</p><p><strong>If everything is important, nothing is prioritized.</strong> The Chief of Staff's job is to do the prioritization the principal otherwise ends up doing under time pressure — and to do it quietly, before the pressure arrives.</p><p>The AI in WLJ is scoped the same way. It reads across domains, understands cadence and priority, and its output is a short, ranked list of what to do next. The goal is not awareness — it is execution. Fewer decisions, better ordered, closer to the moment they matter.</p><p>The executive analogy is intentional. Not a product metaphor, but a design constraint.</p>",
-            "what_this_demonstrates": "<p>This is not separate from my work. It changes how I make decisions, not just how I think about them. It enforces discipline between data, interpretation, and action — and surfaces the consequence when any of the three slips.</p><p><strong>Systems thinking.</strong> Designing how fragmented data layers connect into one coherent view, instead of leaving them as silos that each require their own discipline.</p><p><strong>AI application.</strong> Using a language model as structured inference over a governed data pipeline — not as a conversational novelty layered on top.</p><p><strong>Cross-domain integration.</strong> Treating faith, health, tasks, and goals as data sources that must match each other the same way HRIS, payroll, and compensation must match across a 6,000-employee workforce.</p><p><strong>Decision discipline.</strong> The artifact is not a dashboard. It is the next decision — sequenced, prioritized, and timed to the moment it is useful. Accountability runs through every step: bad data produces a bad signal, a bad signal produces a bad action, and the system makes that visible rather than absorbing it.</p><p>The surface area is smaller. The discipline is the same one I run at work.</p>"
+            "page_eyebrow": "Connect",
+            "page_title": "Connect",
+            "intro": "<p>I welcome conversations about HR leadership, workforce technology, employee experience, and practical approaches to organizational improvement.</p>\r\n<p>I also enjoy exchanging ideas about software development, automation, and thoughtful applications of AI, including my independent work through Beacon Innovation.</p>",
+            "form_prelude": "To connect, introduce yourself and share what you would like to discuss.",
+            "name_label": "Name",
+            "email_label": "Email",
+            "inquiry_label": "Reason for reaching out",
+            "message_label": "Message",
+            "message_optional_label": "(optional)",
+            "submit_button_label": "Send message",
+            "success_heading": "Thank you, your message has been received.",
+            "success_body": "<p>Thank you for reaching out. I review messages personally and will follow up as appropriate based on the topic and my availability.</p>",
+            "conversation_label": "Request a conversation",
+            "conversation_blurb": "Direct introduction. No recruiter, no form.",
+            "conversation_href": "mailto:dannyjenkins71@gmail.com?subject=Conversation%20request",
+            "resume_label": "Request a resume",
+            "resume_blurb": "Tailored to the role you are considering.",
+            "resume_href": "mailto:dannyjenkins71@gmail.com?subject=Resume%20request"
         }
     },
-
     {
-        "model": "website.casestudy",
-        "pk": 2,
+        "model": "website.casestudiesindexpage",
+        "pk": 1,
         "fields": {
-            "slug": "unified-life-wlj",
-            "title": "A Unified Life: How AI Connected My Faith, Health, Journaling, Tasks, and Goals into One View",
-            "category": "INNOVATION",
-            "summary": "Designing a personal operating system that integrates fragmented life data into one coherent view, with an AI Chief of Staff layer that prioritizes action across domains.",
-            "problem": "<p>The problem was not a lack of tools. It was that none of them understood each other.</p><p>The tools I used to run my personal life were optimized as silos. A calendar for appointments. A task manager for what I owed. A journaling app for reflection. A health tracker for sleep, activity, and medication. A reading plan for faith practice. Each tool was reasonably well-designed for its own function — and collectively useless for the question that actually needed answering: <em>given everything I am carrying this week, what deserves my attention next?</em></p><p>Integrations and dashboards did not fix it. They made more information visible, which is a different problem. What was missing was not visibility. It was judgment across the sources. No tool knew that a missed medication dose, an overdue follow-up, and a meeting in six minutes were parts of the same operational moment — because no tool saw them at once.</p>",
-            "role": "<p>I am the sole owner and architect of Whole Life Journey, operating under Beacon Innovation, LLC. The work is mine end to end: data model, architecture, AI layer, UX, infrastructure. No employer involvement, no team to delegate to. The constraint that produces is clarity — every decision has one principal, and every tradeoff gets resolved inside the system rather than across a stakeholder table.</p><p>The scope of the role is the same kind I hold at work, applied to a single individual instead of a 6,000-person workforce: set the philosophy, design the architecture, and operate the system so the decisions it surfaces are trustworthy.</p>",
-            "approach": "<p>The system was built in three layers, sequenced the same way I sequence enterprise systems work.</p><p><strong>Data.</strong> Each source is treated as a first-class emitter with a defined contract. Calendar, health tracking, journaling, tasks, faith practice — each stream is ingested, typed, and timestamped so that downstream inference knows what it is looking at. Anything that belongs to a day lives in one place, in one schema, under one cadence.</p><p><strong>Signals.</strong> Raw data is interpreted against a small set of prioritization rules — urgency, duration, dependency, and the principal's stated priorities for the week. The output is not a feed. It is a short list of patterns worth attending to: a drifting commitment, a compressed window, a missed cadence. Most raw data never becomes a signal; that is the point.</p><p><strong>Decisions.</strong> The AI Chief of Staff layer ranks signals into the next one or two actions worth taking, with timing. It does not generate a list of ten things. It generates the sequence that moves the week forward. The rest is held back until it becomes relevant.</p><p>The pipeline is unidirectional and governed. Raw data never reaches the user uninterpreted; signals never reach the user unranked. The system is designed to fail closed — if the Chief of Staff cannot produce a confident recommendation, it surfaces a pending state rather than a guess.</p>",
-            "outcome": "<p>The value is not that WLJ consolidates data. Any integration layer can do that. The value is that it makes the right decision surface at the right moment — in the six-minute window before a meeting, in the ten minutes between a morning practice and the start of the workday, in the margin of a Sunday evening where the shape of the week is actually set.</p><p>Personally, the outcome is fewer missed commitments, less cognitive overhead carrying the list, and a reliable answer to <em>what is the one thing worth doing in the next fifteen minutes.</em></p><p>Architecturally, the outcome is proof that the discipline I run at work translates directly — that systems thinking, structured AI inference, and cross-domain integration produce the same kind of clarity in a personal context as they do in an institutional one. The two domains stay separate. The discipline is the same.</p><p>The net effect is practical: decisions are made faster and with more confidence, because the system has already done the sorting before the decision moment arrives. That is the same outcome the enterprise function aims for — and it is achievable for the same reason.</p>",
-            "order": 4,
-            "published": true,
-            "published_at": "2026-04-15",
-            "seo_title": "A Unified Life — WLJ Case Study",
-            "seo_description": "How Whole Life Journey integrates fragmented personal data — faith, health, journaling, tasks, goals — into a single decision layer powered by an AI Chief of Staff."
+            "page_eyebrow": "Case Studies",
+            "page_title": "Selected work",
+            "page_lead": "<p>Selected examples from my experience in HR leadership, workforce technology, and operational improvement, alongside independent software projects developed through Beacon Innovation.</p>\r\n<p>Each case study explains the problem, my role, the approach, and the outcomes or intended benefits.</p>",
+            "read_more_label": "Read case study →",
+            "empty_state_label": "No published case studies yet."
         }
     },
-
     {
-        "model": "website.casestudy",
-        "pk": 3,
+        "model": "website.perspectivesindexpage",
+        "pk": 1,
         "fields": {
-            "slug": "hris-ecosystem",
-            "title": "HRIS Ecosystem",
-            "category": "ENTERPRISE",
-            "summary": "Bringing the HR technology stack — HRIS, ATS, LMS, time and attendance, plus the integrations between them — under one consistent data model so workforce decisions hold up across HR, Finance, and operations.",
-            "problem": "<p>The HR technology stack at a 6,000-employee academic medical center had grown the way most do: each function bought what it needed, integrations were added as exceptions rather than design, and reporting was the band-aid for everything underneath. The same workforce question — headcount in a department, pay distribution by job family, FTE roll-up by cost center — produced different answers depending on which system you asked.</p><p>Leadership had stopped trusting the data without explicitly knowing why. Recruiting decisions, pay decisions, and budget decisions were each being made off whichever system was most convenient at the moment, and the discrepancies were being reconciled in spreadsheets one analyst at a time. The function had drifted from infrastructure into a reporting layer, and trust in the data had eroded with it.</p>",
-            "role": "<p>I own the HR technology stack end to end — HRIS configuration, vendor relationships, integration strategy, data governance, and the roadmap for how the stack evolves with the organization. The remit is not &ldquo;support HR.&rdquo; It is to make sure the data leadership uses to run the workforce holds up across HR, Finance, and operations. That accountability sits with me, not with a project team.</p>",
-            "approach": "<p>The work was disciplined into three layers, each one supporting the next.</p><p><strong>One source of truth.</strong> HRIS was named as the system of record for every workforce attribute that mattered downstream — headcount, FTE, position, pay, status. Every other system either pulled from HRIS or stopped being authoritative for that data. No exceptions reconciled in spreadsheets.</p><p><strong>Integration as contract.</strong> Integrations between HRIS, payroll, ATS, LMS, time and attendance, and the Finance ERP were rebuilt as documented contracts, not point-to-point patches. Each integration had an owner, a cadence, and a defined behavior when something went wrong. Failures were detected by the system rather than discovered by an analyst at the end of the month.</p><p><strong>Governed change.</strong> No configuration change to a load-bearing field shipped without going through a defined review. The function moved from reactive to governed — every change reviewed, every owner accountable, every implication understood before it landed in production.</p>",
-            "outcome": "<p>The same workforce question now produces the same answer across HR, Finance, and operations. Leadership questions resolve quickly because the data layer is trustworthy. Recruiting, pay, and budget decisions are made off one number, not three. The function is no longer the bottleneck on workforce reporting; it is the source of it.</p><p>HRIS is positioned where it should be: infrastructure for decisions, not a reporting tool. That is the only positioning that survives a CFO conversation.</p>",
-            "order": 2,
-            "published": true,
-            "published_at": "2026-04-25",
-            "seo_title": "HRIS Ecosystem Case Study",
-            "seo_description": "Rebuilding the HR technology stack at a 6,000-employee academic medical center so workforce data holds up across HR, Finance, and operations."
-        }
-    },
-
-    {
-        "model": "website.casestudy",
-        "pk": 4,
-        "fields": {
-            "slug": "payroll-operations",
-            "title": "Payroll Operations",
-            "category": "ENTERPRISE",
-            "summary": "Running payroll for ~6,000 employees across monthly, biweekly, and supplemental cycles — 50+ scheduled runs per year in a 24/7 clinical environment where the standard is zero error.",
-            "problem": "<p>Payroll at a 6,000-employee Level 1 academic medical center is not a single function. It is three concurrent payrolls — monthly (~$21M), biweekly (~$9M), and supplemental (~$3M) — running together in a 24/7 clinical environment where time capture, overtime rules, and shift differentials change by workgroup.</p><p>A miss on any cycle does not show up as a help-desk ticket. It shows up on every paystub the organization issues, simultaneously, to the workforce that depends on the institution to function. Cycles were landing on time, but each one carried more risk than the next: controls behind the scenes were a function of who happened to be in their seat that week rather than a discipline the organization could rely on.</p>",
-            "role": "<p>I own payroll execution end to end — every pay cycle, every disbursement, the control environment behind it, and the escalation process when something does not land clean. Payroll does not have a project owner separate from me. The accountability is mine: when leadership asks whether payroll will run, I am the answer.</p>",
-            "approach": "<p>The work was tightening the function into a discipline that does not depend on any one person being in the room.</p><p><strong>Process discipline.</strong> Every cycle was decomposed into the same steps in the same order, with the same checkpoints, run on the same calendar. Time capture, processing, tax and deductions, third-party reporting, audit support, post-cycle reconciliation — each stage with a documented owner and a documented expectation. Cycles became repeatable rather than improvised.</p><p><strong>Controls in front of risk, not behind it.</strong> The largest payroll risks — incorrect hours, missed differentials, miscoded deductions — were identified and instrumented before they could land on a paystub. Issues were caught in pre-processing, not discovered in the next-week complaints inbox. Reviews moved upstream of the cycle itself.</p><p><strong>Consistency under load.</strong> 50+ scheduled runs per year, plus supplemental and special runs, with no weeks off. The function does not run periodically — it runs continuously. The discipline is to make sure the operation is the same on cycle 49 as it was on cycle 1, and that the workforce experiences none of the operational reality that produces it.</p>",
-            "outcome": "<p>Payroll runs consistently across 50+ scheduled cycles a year, without disruption. Issues are caught and resolved before they reach a paystub. Leadership trusts cycles will land. Employees trust their pay without needing to question it. Auditors find what they expect.</p><p>The function moved from a state where any cycle was a potential incident to one where the workforce never sees a missed deduction, a wrong rate, or a delayed paycheck. That is the right standard for payroll.</p>",
-            "order": 3,
-            "published": true,
-            "published_at": "2026-04-25",
-            "seo_title": "Payroll Operations Case Study",
-            "seo_description": "Operating payroll for 6,000 employees across monthly, biweekly, and supplemental cycles in a 24/7 clinical environment, with the standard set at zero error."
+            "page_eyebrow": "Perspectives",
+            "page_title": "Perspectives",
+            "page_lead": "<p>Practical perspectives on HR, people leadership, workforce technology, and organizational improvement.</p>\r\n<p>Drawing on experience across HR disciplines, I explore how teams can strengthen processes, use information thoughtfully, and apply technology including automation and AI with sound judgment and clear accountability.</p>",
+            "read_more_label": "Read →",
+            "empty_state_label": "No perspectives published yet."
         }
     }
 ]
